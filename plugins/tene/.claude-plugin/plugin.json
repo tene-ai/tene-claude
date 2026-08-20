@@ -21,7 +21,6 @@
     "intent"
   ],
   "defaultEnabled": true,
-  "hooks": "./hooks/hooks.json",
   "userConfig": {
     "docs_root": {
       "type": "string",
