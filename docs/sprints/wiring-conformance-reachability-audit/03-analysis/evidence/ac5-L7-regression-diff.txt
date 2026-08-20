@@ -1,0 +1,31 @@
+# ac_5 L7 회귀 대조 — 2026-08-20T11:49:53Z
+
+## 1. 스위트 요약 대조
+baseline = evidence/ac8-full-suite.txt (직전 수집)
+current  = evidence/ac5-L7-full-suite.txt (이번 수집)
+field        baseline   current   
+tests        336        336       
+pass         336        336       
+fail         0          0         
+cancelled    0          0         
+skipped      0          0         
+todo         0          0         
+
+## 2. 테스트 이름 집합 diff (baseline vs current)
+(diff 없음: 통과 테스트 이름 집합 동일)
+
+## 3. 프로브 실행 후 저장소 상태
+$ git status --porcelain
+?? .tene-claude/
+?? docs/sprints/__probe__/
+?? docs/sprints/self-conformance-spec-audit/
+?? docs/sprints/wiring-conformance-reachability-audit/
+?? evals/reachability.mjs
+?? sh.err
+
+$ git diff --stat -- .tene-claude plugins
+(출력 없음 = 프로브가 저장소 상태/소스를 바꾸지 않았다)
+
+## 4. 활성 sprint 상태 파일의 stale 카운트
+$ node -e '...current.json summary.ac'
+{"blockingFailed":0,"blockingPending":8,"failed":0,"insufficient":0,"passed":0,"pending":10,"stale":0,"total":10,"waived":0}

@@ -1,0 +1,49 @@
+== 배포본 vs 저장소 사본 diff (bin/lib/hooks/test) ==
+Only in plugins/tene/test/fixtures: code
+Only in plugins/tene/test/fixtures: docs
+Only in plugins/tene/test/fixtures: state
+(위에 출력이 없으면 diff 가 차이를 보고하지 않은 것)
+
+== 배포본 전체 스위트 실패 14건 중 2건의 메시지 ==
+✖ E-4 [정직성] 규칙에 없는 디렉토리를 추측으로 배정하지 않는다 (30.570681ms)
+  Error: ENOENT: no such file or directory, lstat '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/flat-app'
+      at cpSyncFn (node:internal/fs/cp/cp-sync:56:13)
+      at cpSync (node:fs:3131:3)
+      at fixture (file:///Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/eval-honesty.test.js:32:3)
+      at TestContext.<anonymous> (file:///Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/eval-honesty.test.js:44:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'lstat',
+    path: '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/flat-app'
+  }
+
+test at test/eval-honesty.test.js:68:1
+✖ E-4 [정직성] 낮은 확신을 높은 확신으로 올리지 않는다 (86.868298ms)
+  Error: ENOENT: no such file or directory, lstat '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/flat-app'
+      at cpSyncFn (node:internal/fs/cp/cp-sync:56:13)
+      at cpSync (node:fs:3131:3)
+      at fixture (file:///Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/eval-honesty.test.js:32:3)
+      at TestContext.<anonymous> (file:///Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/eval-honesty.test.js:69:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'lstat',
+    path: '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/flat-app'
+  }
+
+test at test/eval-honesty.test.js:88:1
+✖ E-3 심어둔 계층 위반 2건을 정확히 찾는다 (12.111057ms)
+  Error: ENOENT: no such file or directory, lstat '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/layered-app'
+      at cpSyncFn (node:internal/fs/cp/cp-sync:56:13)
+      at cpSync (node:fs:3131:3)
+      at fixture (file:///Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/eval-honesty.test.js:32:3)
+      at TestContext.<anonymous> (file:///Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/eval-honesty.test.js:89:16)

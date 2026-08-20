@@ -1,0 +1,46 @@
+{
+  "observation": "직전 sprint self-conformance 의 RTM 27개 판정과 이번 sprint 의 실측을 대조",
+  "previous": { "implemented": 13, "partial": 13, "unverifiable": 1, "missing": 0 },
+  "changes": [
+    {
+      "rtm": "4.1",
+      "before": "unverifiable — 감사자가 턴 한도로 조사 중단",
+      "after": "partial — Stage 1·stale·Intent Ledger 는 implemented, Stage 2 절반, Stage 3 missing",
+      "evidence": "ac7-rtm41-audit.json",
+      "reason": "재감사로 판정 확정. 조사 범위를 6개 하위 항목으로 좁혀 턴 한도 안에 끝냈다"
+    },
+    {
+      "rtm": "1.5 / 1.6",
+      "before": "partial — lib/plan/aggregate.js 가 프로덕션에서 import 0건 (grep 근거)",
+      "after": "partial 유지 — 도달성 계측기로 확정. 유일한 test-only 모듈",
+      "evidence": "ac1-reachability.json",
+      "reason": "grep 이 아니라 진입점 기반 BFS 로 확정했고, 동적 디스패치 11건과 구분됐다. 판정은 같지만 근거의 강도가 다르다"
+    },
+    {
+      "rtm": "1.2 (loop-check 반복)",
+      "before": "partial — lastLoopResult 등을 쓰는 코드가 없다",
+      "after": "partial 유지 — 이번에 재확인하지 않음",
+      "evidence": null,
+      "reason": "이번 sprint 의 AC 에 포함되지 않았다. 직전 판정을 그대로 이어받는다"
+    }
+  ],
+  "newFindings": [
+    {
+      "id": "W-1",
+      "detail": "6질문 Q3·Q4 가 테스트 참조와 프로덕션 참조를 구분하지 않는다. 배선 안 된 aggregate 가 Q1~Q4 전부 high confidence 로 '건강함' 으로 나온다",
+      "evidence": "ac1-reachability.json + design §5 의 6질문 표"
+    },
+    {
+      "id": "W-2",
+      "detail": "orphans() 는 참조 0건만 잡는다(lib/scan/query.js:128). test-only 는 참조가 있으므로 걸리지 않는다",
+      "evidence": "ac1-reachability.json"
+    },
+    {
+      "id": "W-3",
+      "detail": "앵커 스키마의 resolvedAt·source:'human'(D10 §3.1·§3.2 Stage 3)이 구현되지 않았다. lib/ 전체 grep 0건",
+      "evidence": "ac7-rtm41-audit.json"
+    }
+  ],
+  "totals": { "implemented": 13, "partial": 14, "unverifiable": 0, "missing": 0 },
+  "note": "unverifiable 1건이 partial 로 확정되어 미판정이 0이 되었다. 총계는 27로 동일하다."
+}

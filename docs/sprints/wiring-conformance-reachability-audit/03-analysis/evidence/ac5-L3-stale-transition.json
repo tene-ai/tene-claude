@@ -1,0 +1,170 @@
+{
+  "probe": "ac_5 L3 stale-transition",
+  "ranAt": "2026-08-20T11:47:04.257Z",
+  "fixtureRoot": "/var/folders/r9/fbtgppdn7t7f_04mvv64n8_w0000gn/T/tene-ac5-mUPdei",
+  "indexStats": {
+    "files": null,
+    "anchors": {
+      "data": {
+        "ac": 5,
+        "paths": 2,
+        "rebuilt": true,
+        "unresolved": []
+      },
+      "elapsedMs": 175,
+      "ok": true,
+      "schemaVersion": 1,
+      "tool": "tene-scan",
+      "warnings": []
+    }
+  },
+  "anchorsByPath": {
+    "src/pay.js": [
+      "ac5probe:ac_pay_failed",
+      "ac5probe:ac_pay_insuf",
+      "ac5probe:ac_pay_passed"
+    ],
+    "src/ship.js": [
+      "ac5probe:ac_ship_passed",
+      "ac5probe:ac_ship_path"
+    ]
+  },
+  "editedFiles": [
+    "src/pay.js"
+  ],
+  "unEditedFiles": [
+    "src/ship.js"
+  ],
+  "hookStdout": "{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"[tene] 이 변경으로 수용 기준 1건의 판정이 무효가 되었습니다: ac5probe:ac_pay_passed. 다시 검증하려면 /tene:qa 를 실행하세요.\"}}",
+  "sprintFileBefore": {
+    "rev": 2,
+    "updatedAt": "2026-08-20T11:46:58Z",
+    "ac": {
+      "ac_pay_failed": {
+        "verdict": "failed",
+        "staledBy": null,
+        "staledAt": null
+      },
+      "ac_pay_insuf": {
+        "verdict": "insufficient",
+        "staledBy": null,
+        "staledAt": null
+      },
+      "ac_pay_passed": {
+        "verdict": "passed",
+        "staledBy": null,
+        "staledAt": null
+      },
+      "ac_ship_passed": {
+        "verdict": "passed",
+        "staledBy": null,
+        "staledAt": null
+      },
+      "ac_ship_path": {
+        "verdict": "passed",
+        "staledBy": null,
+        "staledAt": null
+      }
+    }
+  },
+  "sprintFileAfter": {
+    "rev": 3,
+    "updatedAt": "2026-08-20T11:47:02Z",
+    "ac": {
+      "ac_pay_failed": {
+        "verdict": "failed",
+        "staledBy": null,
+        "staledAt": null
+      },
+      "ac_pay_insuf": {
+        "verdict": "insufficient",
+        "staledBy": null,
+        "staledAt": null
+      },
+      "ac_pay_passed": {
+        "verdict": "stale",
+        "staledBy": "src/pay.js",
+        "staledAt": "2026-08-20T11:47:02Z"
+      },
+      "ac_ship_passed": {
+        "verdict": "passed",
+        "staledBy": null,
+        "staledAt": null
+      },
+      "ac_ship_path": {
+        "verdict": "passed",
+        "staledBy": null,
+        "staledAt": null
+      }
+    }
+  },
+  "verdictChanges": {
+    "ac_pay_passed": "passed -> stale"
+  },
+  "currentJsonSummaryBefore": {
+    "blockingFailed": 1,
+    "blockingPending": 0,
+    "failed": 1,
+    "insufficient": 1,
+    "passed": 3,
+    "pending": 0,
+    "stale": 0,
+    "total": 5,
+    "waived": 0
+  },
+  "currentJsonSummaryAfter": {
+    "blockingFailed": 1,
+    "blockingPending": 0,
+    "failed": 1,
+    "insufficient": 1,
+    "passed": 3,
+    "pending": 0,
+    "stale": 0,
+    "total": 5,
+    "waived": 0
+  },
+  "touchedQuery": {
+    "src/pay.js": {
+      "data": {
+        "acs": [
+          "ac5probe:ac_pay_failed",
+          "ac5probe:ac_pay_insuf",
+          "ac5probe:ac_pay_passed"
+        ],
+        "byPath": {
+          "src/pay.js": [
+            "ac5probe:ac_pay_failed",
+            "ac5probe:ac_pay_insuf",
+            "ac5probe:ac_pay_passed"
+          ]
+        },
+        "unknownPaths": []
+      },
+      "elapsedMs": 3,
+      "ok": true,
+      "schemaVersion": 1,
+      "tool": "tene-scan",
+      "warnings": []
+    },
+    "src/ship.js": {
+      "data": {
+        "acs": [
+          "ac5probe:ac_ship_passed",
+          "ac5probe:ac_ship_path"
+        ],
+        "byPath": {
+          "src/ship.js": [
+            "ac5probe:ac_ship_passed",
+            "ac5probe:ac_ship_path"
+          ]
+        },
+        "unknownPaths": []
+      },
+      "elapsedMs": 3,
+      "ok": true,
+      "schemaVersion": 1,
+      "tool": "tene-scan",
+      "warnings": []
+    }
+  }
+}

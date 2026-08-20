@@ -1,0 +1,1775 @@
+{
+  "artifacts": [
+    {
+      "ac": "ac_1",
+      "bytes": 11713,
+      "createdAt": "2026-08-20T10:45:32Z",
+      "id": "art_reach",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-reachability.json",
+      "sha256": "06a0d81b82353eb9d0e5d06c5e8f3aeafa3226ad31b174941626bb1ddbc3e515",
+      "tool": "evals/reachability.mjs"
+    },
+    {
+      "ac": "ac_2",
+      "bytes": 11713,
+      "createdAt": "2026-08-20T10:45:32Z",
+      "id": "art_dyn",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac2-dynamic-vs-unwired.json",
+      "sha256": "06a0d81b82353eb9d0e5d06c5e8f3aeafa3226ad31b174941626bb1ddbc3e515",
+      "tool": "evals/reachability.mjs"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 861,
+      "createdAt": "2026-08-20T10:45:32Z",
+      "id": "art_f1",
+      "kind": "data",
+      "layer": "L2",
+      "path": "ac6-f1-regression.json",
+      "sha256": "b4b385ed08699a9dec71e169779ccb37e707747e407ce806cbf1c76c294e0d9e",
+      "tool": "tene-doc validate"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 582,
+      "createdAt": "2026-08-20T10:46:41Z",
+      "id": "art_stale",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac5-stale-transition.json",
+      "sha256": "ae94f99380125a67cdaedd61ed06f9ed21a6d28a4e05c0f9ba43be7bf7d99e59",
+      "tool": "tene-hook post-edit"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 26265,
+      "createdAt": "2026-08-20T10:47:48Z",
+      "id": "art_suite",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac8-full-suite.txt",
+      "sha256": "79816e8e232c0f8b96d8fe191b91c40a9da6f82d5148e28731019a1f671550be",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 441,
+      "createdAt": "2026-08-20T10:47:48Z",
+      "id": "art_bench2",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac10-hook-bench.txt",
+      "sha256": "02a4640cc94d5be20a9778b29f8c1c29d6dc98ce2f5e792b0b4010f4aa272071",
+      "tool": "test/bench.js"
+    },
+    {
+      "ac": "ac_7",
+      "bytes": 3232,
+      "createdAt": "2026-08-20T10:49:31Z",
+      "id": "art_rtm41",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac7-rtm41-audit.json",
+      "sha256": "ffe2503f7c78dbeca718a3cd49aae34052deac506351755f50d3f234e86f5724",
+      "tool": "grep + 실행 관찰"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 1205,
+      "createdAt": "2026-08-20T11:00:18Z",
+      "id": "art_hl_gates",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac3-headless-gates.json",
+      "sha256": "661c393ec0aac6a186f4edbeba6cad9f0d2f533bcb625203e7f6aba0a42138ff",
+      "tool": "claude -p"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 1114,
+      "createdAt": "2026-08-20T11:00:19Z",
+      "id": "art_hl_ctx",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac4-headless-sessionstart.json",
+      "sha256": "fe3ac84aa2cfa0de433bfafafbc8948e1ea34715250a11ecef01ca20fa45bfd6",
+      "tool": "claude -p"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 484362,
+      "createdAt": "2026-08-20T11:00:19Z",
+      "id": "art_hl_log",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac3-session-log.jsonl",
+      "sha256": "34764092e1a82d96b9a31a4975fd1dabf9baa3fc94d902ac833363699868f231",
+      "tool": "claude -p stream-json"
+    },
+    {
+      "ac": "ac_9",
+      "bytes": 2333,
+      "createdAt": "2026-08-20T11:00:45Z",
+      "id": "art_delta",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac9-rtm-delta.json",
+      "sha256": "ed4cc1902a8fa6094b063cbfb3ef742fe4c41868bf5c1ff216341640d6d4204b",
+      "tool": "대조"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 90287,
+      "createdAt": "2026-08-20T11:07:52Z",
+      "id": "art_reach2",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-reachability-v2.json",
+      "sha256": "c6ac1d6af868a0bf05d6904aaf6b02522d0231e12ee646666dc402afd4a6fdd9",
+      "tool": "evals/reachability.mjs v2"
+    },
+    {
+      "ac": "ac_2",
+      "bytes": 3310,
+      "createdAt": "2026-08-20T11:07:52Z",
+      "id": "art_class",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac2-classification-proof.json",
+      "sha256": "2d24727687d7eed6c3137a9204743cbc0db0c0fcdb9b182f25f26493c376ed6a",
+      "tool": "evals/reachability.mjs v2"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 47666,
+      "createdAt": "2026-08-20T11:07:52Z",
+      "id": "art_s2raw",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac4-session2-raw.jsonl",
+      "sha256": "de629f67c8a8f484a26c450620b08fc88c01c96c4fb787f5083b670ad1570ab1",
+      "tool": "claude -p stream-json"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 252519,
+      "createdAt": "2026-08-20T11:13:37Z",
+      "id": "art_reach3",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-reachability-v3.json",
+      "sha256": "fd4c69f8df5df29bcef22507db06e08dea9bbc7951d53fa1ac260e7df060cb9d",
+      "tool": "evals/reachability.mjs v3 (심볼 단위)"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 2451,
+      "createdAt": "2026-08-20T11:13:37Z",
+      "id": "art_xcheck",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-independent-crosscheck.json",
+      "sha256": "8f1bb57bed0beebae051f1eef507b37c114bea20b181eb8ec89869ac510ee558",
+      "tool": "grep (계측기 외부)"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 268145,
+      "createdAt": "2026-08-20T11:19:59Z",
+      "id": "art_reach4",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-reachability-v4.json",
+      "sha256": "c04f5591e2fdfa47f61bd6229b09c7ebfde848e0cf274b6d9f920011f43a82eb",
+      "tool": "evals/reachability.mjs v4"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 3826,
+      "createdAt": "2026-08-20T11:20:00Z",
+      "id": "art_xcheck2",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-crosscheck-v2.json",
+      "sha256": "b04a31a8fa1ff029c3f2a82d674fbf1cdd9d6d652de70e321a4a020e926b7196",
+      "tool": "모듈 인지 대조 (절차 사전 고정)"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 1022,
+      "createdAt": "2026-08-20T11:45:56Z",
+      "id": "art_v_l1",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac1-verify-L1-static.txt",
+      "sha256": "c1789e31e4eeb4129dd219f2d0051ebd0450d27f57665f23d480b7fe60ed9425",
+      "tool": "which/ls + node --check"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 2201,
+      "createdAt": "2026-08-20T11:45:58Z",
+      "id": "art_v_self",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac1-verify-L2-selfcheck.txt",
+      "sha256": "c5821d8996adae34c643e7a27127ab032d4772bae1fe8c725ac54cd7e6c701c7",
+      "tool": "evals/reachability.mjs (텍스트 출력)"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 2406,
+      "createdAt": "2026-08-20T11:46:00Z",
+      "id": "art_v_unit",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac1-verify-L2-unit.txt",
+      "sha256": "24a3d96fb3c62b117aa3af4e59c987dfb35af9cfbab9acd58dae380d82d0710b",
+      "tool": "node --test test/unit/*.test.js + grep"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 268145,
+      "createdAt": "2026-08-20T11:46:01Z",
+      "id": "art_v_run1",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-verify-L3-run1.json",
+      "sha256": "484121fad9436b8a28f89128c3da5ece0994a0a9dd3e0a02c8c3d3bef611cdaa",
+      "tool": "evals/reachability.mjs --json"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 3132,
+      "createdAt": "2026-08-20T11:46:02Z",
+      "id": "art_v_inv",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-verify-L3-invariants.json",
+      "sha256": "69771a04f8e7b6f6f0d9b5df862da575e61c0b3739d4de22adeab78bc60ff7de",
+      "tool": "scratchpad/invariants.mjs (계측기 외부)"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 3913,
+      "createdAt": "2026-08-20T11:46:02Z",
+      "id": "art_v_xg",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-verify-L3-xcheck.json",
+      "sha256": "fcaebc77f51eedc6ceb5ed8cd44a6982713297900b70d013a7af6edecb87e4ed",
+      "tool": "이름 기반 grep 대조 (계측기 외부)"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 3938,
+      "createdAt": "2026-08-20T11:46:03Z",
+      "id": "art_v_xm",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac1-verify-L3-xcheck-moduleaware.json",
+      "sha256": "04374f59c610555104d9f8a5616694ff4abf44c1d155b7833cba8c10db84a63d",
+      "tool": "모듈 출처 해석 대조 (계측기 외부)"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 685,
+      "createdAt": "2026-08-20T11:46:04Z",
+      "id": "art_v_det",
+      "kind": "data",
+      "layer": "L7",
+      "path": "ac1-verify-L7-determinism.json",
+      "sha256": "0af2cfde0ab398895573180e5268b7a7b13539b2beb1a476a58ed79d83db8705",
+      "tool": "동일 입력 2회 실행 비교"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 847,
+      "createdAt": "2026-08-20T11:46:06Z",
+      "id": "art_v_base",
+      "kind": "data",
+      "layer": "L7",
+      "path": "ac1-verify-L7-baseline-delta.json",
+      "sha256": "5f77ce25e0ec8fbde7bac76027d8b49565a69b69892af004536db7361e209410",
+      "tool": "기준선(ac1-reachability-v4.json) 대조"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 3367,
+      "createdAt": "2026-08-20T11:46:08Z",
+      "id": "art_v_dup",
+      "kind": "data",
+      "layer": "L6",
+      "path": "ac1-verify-L6-dup-request.json",
+      "sha256": "ca7335a6f67b44331e9ebb04c8d46d6dc6f9ef29f0c35c16ac788089c7131a81",
+      "tool": "tene-qa evidence 2회 호출 (격리 프로젝트)"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 1247,
+      "createdAt": "2026-08-20T11:47:07Z",
+      "id": "art_a10_l1",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac10-l1-static.txt",
+      "sha256": "90fbf3c0b2a9245666b7c1e3e49cc6123d092388ed82dceea96e7fb496ba8e2c",
+      "tool": "node --check + ls"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 4927,
+      "createdAt": "2026-08-20T11:47:08Z",
+      "id": "art_a10_bsrc",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac10-l1-budget-source.txt",
+      "sha256": "1c617526a47d63b31a256666c77f7c131c4b9932c93087c2b70476c9fef34522",
+      "tool": "grep + sed"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 3895,
+      "createdAt": "2026-08-20T11:47:09Z",
+      "id": "art_a10_inst",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac10-l1-hook-instrumentation.txt",
+      "sha256": "3248b30c0d9c9e9aadd2e92031c435a91ec45c21093bf529c08e3807c8835b83",
+      "tool": "grep + sed"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 623,
+      "createdAt": "2026-08-20T11:47:10Z",
+      "id": "art_a10_run1",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac10-l2-bench-run1.txt",
+      "sha256": "e3a046359b87bcddc0d47da5f4c65ef245a7354e7c83a509051cb04692b81e12",
+      "tool": "node plugins/tene/test/bench.js"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 680,
+      "createdAt": "2026-08-20T11:47:11Z",
+      "id": "art_a10_run2",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac10-l2-bench-run2.txt",
+      "sha256": "53683a73853d3ea6b90589adb61c4cddbe8650293543df8432be37d3c5727df2",
+      "tool": "node plugins/tene/test/bench.js"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 1939,
+      "createdAt": "2026-08-20T11:47:12Z",
+      "id": "art_a10_npm",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac10-l2-npm-scripts.txt",
+      "sha256": "3e012b37c21ea3bdad9a7c0bdf94f2b1943f7fb3fb8f0d699937dc13ca6ad81a",
+      "tool": "npm run"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 2790,
+      "createdAt": "2026-08-20T11:47:12Z",
+      "id": "art_a10_unit",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac10-l2-anchor-unit.txt",
+      "sha256": "1e2c40297b2b88146b417af755028c21800dd3b231e2f398e13d9dc077d7bdfd",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 1105,
+      "createdAt": "2026-08-20T11:47:47Z",
+      "id": "art_v_drift",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac1-verify-L7-source-vs-deployed.txt",
+      "sha256": "1e9a4b63f7407290e381a1bec7575d335613d7c10162e33f1591e18aba36b999",
+      "tool": "diff -rq + ls + sed"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 477,
+      "createdAt": "2026-08-20T11:49:47Z",
+      "id": "art_ac3_l1",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac3-l1-static.txt",
+      "sha256": "0d30d2023ff59b8f1b352f182895e62b5c4dc2393ae1ed5725a0bba203c26c51",
+      "tool": "node --check + scripts/assert-no-deps.js + scripts/check-docs-consistency.js"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 19155,
+      "createdAt": "2026-08-20T11:49:48Z",
+      "id": "art_ac3_l2_unit",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac3-l2-unit-suite.txt",
+      "sha256": "fdfd3ba8c69157b777f70d3e9caa28c7f06c607703ac1f8bf5e81975c3e48beb",
+      "tool": "npm test (node --test test/unit/*.test.js)"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 1652,
+      "createdAt": "2026-08-20T11:49:49Z",
+      "id": "art_ac3_l2_cycle",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac3-l2-cycle-integration.txt",
+      "sha256": "6795154c09f275a1107de47ed52076ecd67b4347e2ce78b6da1940254947d329",
+      "tool": "node --test test/integration/cycle.test.js"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 7444,
+      "createdAt": "2026-08-20T11:49:51Z",
+      "id": "art_ac3_l3_replay",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac3-l3-cli-replay.txt",
+      "sha256": "e96318d81075ec829089a645f86b519bfbb54093d1877e096bf3721624cf2f4a",
+      "tool": "tene-state CLI (마켓플레이스 배포본)"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 4125,
+      "createdAt": "2026-08-20T11:49:52Z",
+      "id": "art_ac3_l3_dup",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac3-l3-duplicate-records.json",
+      "sha256": "8f45bed6390c3120c2dd159266a0d8bea98858300611d4867d5d82a962551d2e",
+      "tool": "tene-state CLI + node 집계"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 3713,
+      "createdAt": "2026-08-20T11:49:54Z",
+      "id": "art_ac3_l3_reobs",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac3-l3-headless-reobservation.json",
+      "sha256": "0f7f8b30dcd0ae32f622a97416c076be65c86a7b8866d489c56a661a8950f8cb",
+      "tool": "shasum + node (선행 claude -p 산출물 재관찰)"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 5627,
+      "createdAt": "2026-08-20T11:49:55Z",
+      "id": "art_ac3_state_raw",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac3-state-file-raw.json",
+      "sha256": "848e95f17dcc00ecd297f12f74cdc8143f5ba247d76548197d43de59d14f8e23",
+      "tool": "claude -p 헤드리스 실행 후 상태 파일 사본"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 2739,
+      "createdAt": "2026-08-20T11:49:55Z",
+      "id": "art_ac3_l7",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac3-l7-regression.txt",
+      "sha256": "d2ae0c0473b3d05aec2ec8e71b237eaf59f5c2a554e1a2b2f6b31e137d13bef8",
+      "tool": "기준선 대조 + shasum"
+    },
+    {
+      "ac": "ac_3",
+      "bytes": 5839,
+      "createdAt": "2026-08-20T11:49:56Z",
+      "id": "art_ac3_l7_root",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac3-l7-root-tests.txt",
+      "sha256": "a5971bca98a65eedcffe3dca25c29925bd93e7b3b625385681e9f175074ebb04",
+      "tool": "node --test test/*.test.js"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 3479,
+      "createdAt": "2026-08-20T11:50:00Z",
+      "id": "art_ac4_l1",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac4-l1-static.txt",
+      "sha256": "420d8279d6012aafea95c5d659a36ec37f2aadbfc951cc2c52650196c32edc98",
+      "tool": "node --check + scripts/assert-no-deps.js"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 2224,
+      "createdAt": "2026-08-20T11:50:02Z",
+      "id": "art_ac4_l2",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac4-l2-unit.txt",
+      "sha256": "8e3ba67bdf9b731a6c99679769a5d028291ed0bea2d40733b0e67687786a7997",
+      "tool": "node --test (state-summary, hooks)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 680,
+      "createdAt": "2026-08-20T11:50:03Z",
+      "id": "art_ac4_hookbin",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac4-l3-hookbin-direct.txt",
+      "sha256": "44b0f0c94015eed48fd5e473fc9b9b546167133092a581b99c65de5a7051d805",
+      "tool": "tene-hook session-start (설치 캐시본 직접 실행)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 49031,
+      "createdAt": "2026-08-20T11:50:04Z",
+      "id": "art_ac4_streamB",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac4-l3-headless-b-stream.jsonl",
+      "sha256": "25fd30a46ca499f64b3ddc1ae44015c46ea849caab7c4743317998f0859eb6dc",
+      "tool": "claude -p --output-format stream-json"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 111058,
+      "createdAt": "2026-08-20T11:50:05Z",
+      "id": "art_ac4_trB",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac4-l3-transcript-b.jsonl",
+      "sha256": "f99ce8d4b0e8030b3c7d24af5ac96e0d0f08996e08b7550feb39d0ed59777d51",
+      "tool": "~/.claude/projects 세션 전사 로그"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 48391,
+      "createdAt": "2026-08-20T11:50:06Z",
+      "id": "art_ac4_streamA",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac4-l3-headless-a-control-stream.jsonl",
+      "sha256": "15a84878571131c5c4fe012f6ec1c26715ee85d968c6b96f2900e6a7383d91ef",
+      "tool": "claude -p (대조군: 상태 없음)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 107426,
+      "createdAt": "2026-08-20T11:50:08Z",
+      "id": "art_ac4_trA",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac4-l3-transcript-a-control.jsonl",
+      "sha256": "cf979b474db01f7b7c0b525dfbfb74da4ce1a1041ccab6e69165d013234d9b7d",
+      "tool": "세션 전사 로그 (대조군)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 51050,
+      "createdAt": "2026-08-20T11:50:09Z",
+      "id": "art_ac4_streamC",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac4-l3-headless-c-echo-stream.jsonl",
+      "sha256": "dc563c477f56e0d42795c16692b9809644da75fd2b6f58c8bea0e503e7751982",
+      "tool": "claude -p (모델 에코 프로브)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 118088,
+      "createdAt": "2026-08-20T11:50:10Z",
+      "id": "art_ac4_trC",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac4-l3-transcript-c.jsonl",
+      "sha256": "cf2b6b3c1f8d7479b24b5106e01bf6f5773c80252b61e8213f0293aab3e4e226",
+      "tool": "세션 전사 로그 (에코 프로브)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 48090,
+      "createdAt": "2026-08-20T11:50:11Z",
+      "id": "art_ac4_streamD",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac4-l3-headless-d-corrupt-stream.jsonl",
+      "sha256": "973af3f3797e369136cb7cbb432bc4dd5668478aabb1bd89aca56246ed1c3ce8",
+      "tool": "claude -p (손상 상태 파일)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 44,
+      "createdAt": "2026-08-20T11:50:13Z",
+      "id": "art_ac4_corruptin",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac4-l3-corrupt-current-input.json",
+      "sha256": "2ec5b656973d28af3bc9a309a5691d13ad3dad14d89b31625f7abb76fa250619",
+      "tool": "주입한 손상 current.json 원문"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 43768,
+      "createdAt": "2026-08-20T11:50:14Z",
+      "id": "art_ac4_streamE",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac4-l3-headless-e-resume-stream.jsonl",
+      "sha256": "29c65a375608a02e95310cf3a873961b3cbf7cac68af7a72b596bd381f7f8622",
+      "tool": "claude -p --resume (복구 후)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 129504,
+      "createdAt": "2026-08-20T11:50:15Z",
+      "id": "art_ac4_trDE",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac4-l3-transcript-d-e.jsonl",
+      "sha256": "7864a8cced6ac2acab683c0392020fe9cffb6e52fe78ddd642e3a853d4f27c9e",
+      "tool": "세션 전사 로그 (D 세션 + E resume)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 11288,
+      "createdAt": "2026-08-20T11:50:16Z",
+      "id": "art_ac4_obs",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac4-l3-observation.json",
+      "sha256": "29f64720ae5185a19c904829d9f0db6215bac04b8d0fe2df0ca3b56bba1b5666",
+      "tool": "python3 집계 (스트림·전사 로그 파싱)"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 26392,
+      "createdAt": "2026-08-20T11:50:18Z",
+      "id": "art_ac4_l7",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac4-l7-full-suite.txt",
+      "sha256": "7080261a69b6f47047a5ad33becc0c8b3598c663adbd3d1c7f7dd03c4cd7ff13",
+      "tool": "node --test test/unit + test/integration + test/*.test.js"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 357,
+      "createdAt": "2026-08-20T11:51:02Z",
+      "id": "art_ac5_l1_static",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac5-L1-static.txt",
+      "sha256": "381bcbab7c49edc58b25882a3f28abac3a947ce15fffbfed5faa0adcffc3cbf6",
+      "tool": "node --check"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 1678,
+      "createdAt": "2026-08-20T11:51:03Z",
+      "id": "art_ac5_l1_workflows",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac5-L1-workflows-check.txt",
+      "sha256": "907004320ed402502c619ca00fc1988855155281f3b8247a2599b655073c7075",
+      "tool": "node --check"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 4898,
+      "createdAt": "2026-08-20T11:51:03Z",
+      "id": "art_ac5_l2_unit",
+      "kind": "report",
+      "layer": "L2",
+      "path": "ac5-L2-unit-targeted.txt",
+      "sha256": "3261849d3f774486d8856c42940d12f7b17e49baa23363ffac303d81d79940a2",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 3880,
+      "createdAt": "2026-08-20T11:51:04Z",
+      "id": "art_ac5_l3_transition",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac5-L3-stale-transition.json",
+      "sha256": "13d6c16d645f5a4fd530f5b40a70a86821ec045a2bebbaa06aae0c6f82bf6078",
+      "tool": "tene-hook post-edit + 상태파일 직접 조회"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 2447,
+      "createdAt": "2026-08-20T11:51:05Z",
+      "id": "art_ac5_l3_isolation",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac5-L3-isolation.json",
+      "sha256": "2a9a479c3a470b89040899f400ff4455fd0927086f0719eddc1446554f4f97d1",
+      "tool": "tene-hook post-edit + 상태파일 직접 조회"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 26309,
+      "createdAt": "2026-08-20T11:51:05Z",
+      "id": "art_ac5_l7_suite",
+      "kind": "report",
+      "layer": "L7",
+      "path": "ac5-L7-full-suite.txt",
+      "sha256": "967267c552d464684d8495501825583258d5e51ee540f0f016acd98bc60788e6",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 1138,
+      "createdAt": "2026-08-20T11:51:06Z",
+      "id": "art_ac5_l7_diff",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac5-L7-regression-diff.txt",
+      "sha256": "ad8f9826b72f3c3547af5c51febf267ef7dac14be8684de1da0f471ad6187d09",
+      "tool": "diff + git status"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 1930,
+      "createdAt": "2026-08-20T11:51:10Z",
+      "id": "art_ac6_l1",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac6-l1-static.txt",
+      "sha256": "5d22d0a03bfd1a06f270eec7e4e863aee8db8a04376612bd323969ff14ce89fb",
+      "tool": "eslint 10.8.1 + node --check"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 4086,
+      "createdAt": "2026-08-20T11:51:11Z",
+      "id": "art_ac6_scan",
+      "kind": "data",
+      "layer": "L2",
+      "path": "ac6-l2-scan-layers-raw.json",
+      "sha256": "861a5de5a338de9258738f1359925d625f7a50c27e0ec1a3ccf45f6fa03cd542",
+      "tool": "tene-scan layers --json"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 155,
+      "createdAt": "2026-08-20T11:51:13Z",
+      "id": "art_ac6_block",
+      "kind": "data",
+      "layer": "L2",
+      "path": "ac6-l2-injected-block.md",
+      "sha256": "4f80794e3804c22cd0b94b35e73087bd20076c4e9e08fb1e754d380dca5d40ae",
+      "tool": "scratchpad/mkblock.mjs"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 769,
+      "createdAt": "2026-08-20T11:51:16Z",
+      "id": "art_ac6_vraw",
+      "kind": "data",
+      "layer": "L2",
+      "path": "ac6-l2-validate-raw.json",
+      "sha256": "d63fdf29705ee97460fdbfd13f1ad9886948b6260598b2d906d8b4d1327ddfb5",
+      "tool": "tene-doc validate"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 616,
+      "createdAt": "2026-08-20T11:51:18Z",
+      "id": "art_ac6_vctl",
+      "kind": "data",
+      "layer": "L2",
+      "path": "ac6-l2-validate-control.json",
+      "sha256": "edf8ec9b11345ab6b26c69c27440b3b57d4c6a0c8f2fbd9ed1cbddce564cf73b",
+      "tool": "tene-doc validate"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 253,
+      "createdAt": "2026-08-20T11:51:19Z",
+      "id": "art_ac6_lib",
+      "kind": "data",
+      "layer": "L2",
+      "path": "ac6-l2-validatedoc-lib-probe.json",
+      "sha256": "b67829eb66aea38723e371590375631bf02f6c18a6919a61af292c2f538db11f",
+      "tool": "validateDoc() 직접 호출"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 473,
+      "createdAt": "2026-08-20T11:51:20Z",
+      "id": "art_ac6_hint",
+      "kind": "data",
+      "layer": "L2",
+      "path": "ac6-l2-hint-matrix.json",
+      "sha256": "fa5a5d0bc6f8b1b6f149982297243289b7eaac8456ab532622f30ce2f701ac2d",
+      "tool": "node -e (LAYER_HINTS.business 정규식)"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 3774,
+      "createdAt": "2026-08-20T11:51:20Z",
+      "id": "art_ac6_unit",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac6-l2-targeted-tests.txt",
+      "sha256": "f3723f7a5133b58740b0f243699bc27290f4f0c91e011a046f26339b9e265e9f",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 23612,
+      "createdAt": "2026-08-20T11:51:21Z",
+      "id": "art_ac6_l7",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac6-l7-full-suite-rerun.txt",
+      "sha256": "c795c32d65bfc9662ed432d834983ab645da7948a88a4ecfe5bba6254e2bdbba",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 2365,
+      "createdAt": "2026-08-20T11:53:49Z",
+      "id": "art_ac8_l1_static",
+      "kind": "log",
+      "layer": "L1",
+      "path": "ac8-l1-static.txt",
+      "sha256": "4acf803171702937cb3409f2f5da9099b17e82b676fa370dd943bb2885073cc7",
+      "tool": "claude plugin validate + scripts/*.js"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 983,
+      "createdAt": "2026-08-20T11:53:50Z",
+      "id": "art_ac8_l1_cap",
+      "kind": "data",
+      "layer": "L1",
+      "path": "ac8-l1-capability-probe.json",
+      "sha256": "17c2919b85e115a27600c4c9b51dae82e6488e2099767eddf4933f26df9dfdef",
+      "tool": "tene-qa capability"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 19273,
+      "createdAt": "2026-08-20T11:53:50Z",
+      "id": "art_ac8_l2_npm",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac8-l2-npm-test.txt",
+      "sha256": "0175c6bea29907e486cca08864a6a864b8984b19ebde7f38a8cb37d4972b5b55",
+      "tool": "npm test"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 26448,
+      "createdAt": "2026-08-20T11:53:51Z",
+      "id": "art_ac8_l2_full",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac8-l2-full-suite-run2.txt",
+      "sha256": "451fd088074107d7e87ef8b0a37754d39b4e3bdd6fadde9aa9f8d43428515cfe",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 42511,
+      "createdAt": "2026-08-20T11:53:51Z",
+      "id": "art_ac8_l2_deployed",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac8-l2-deployed-suite.txt",
+      "sha256": "d4353fa7591de1bcdeca2528e4e6197faaa7d1e48c9f983963730c0d59b77cbd",
+      "tool": "node --test (배포본 캐시)"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 26953,
+      "createdAt": "2026-08-20T11:53:51Z",
+      "id": "art_ac8_l7_rerun",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac8-l7-rerun.txt",
+      "sha256": "430705c3892799eb73c0db5c803f9b5e3c6460ccf6370414ba49e598f81d3bbb",
+      "tool": "node --test 재실행 + bench.js"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 1719,
+      "createdAt": "2026-08-20T11:53:52Z",
+      "id": "art_ac8_l7_bench",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac8-l7-bench-repeat.txt",
+      "sha256": "1d1beadc761e9893b053d69448b213492c51107f3e89436a2fdb534cc0121fa2",
+      "tool": "test/bench.js x3"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 460,
+      "createdAt": "2026-08-20T11:53:52Z",
+      "id": "art_ac8_l7_deployeddiff",
+      "kind": "log",
+      "layer": "L7",
+      "path": "ac8-l7-deployed-vs-repo.txt",
+      "sha256": "fc94b55701810dfe8d47f8ba389132f2d2f9d206d84a577c8a3931377f0037b6",
+      "tool": "diff -rq"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 5617,
+      "createdAt": "2026-08-20T11:53:53Z",
+      "id": "art_ac8_l7_compare",
+      "kind": "data",
+      "layer": "L7",
+      "path": "ac8-l7-regression-compare.json",
+      "sha256": "38be5000bec42234fdd563b8bf2179877f19049aacd13d205569894a02f7511f",
+      "tool": "python3 대조"
+    },
+    {
+      "ac": "ac_9",
+      "bytes": 201886,
+      "createdAt": "2026-08-20T12:35:22Z",
+      "id": "art_wf_conf",
+      "kind": "log",
+      "layer": "L3",
+      "path": "wf-conformance-audit.txt",
+      "sha256": "88ab2608bfea88b5a24e8c3a671208c4eefd766302e5e22fa4965683e17e58e0",
+      "tool": "tene:conformance-audit 워크플로"
+    },
+    {
+      "ac": "ac_9",
+      "bytes": 74261,
+      "createdAt": "2026-08-20T12:35:22Z",
+      "id": "art_wf_qa",
+      "kind": "log",
+      "layer": "L3",
+      "path": "wf-qa-sweep.txt",
+      "sha256": "3b644822c7089929c57ae0651ab1e4df0a8c5f86dc9f41b790da3c8ca0341241",
+      "tool": "tene:qa-sweep 워크플로"
+    }
+  ],
+  "cases": [
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_reach"
+      ],
+      "at": "2026-08-20T11:03:36Z",
+      "id": "c_1",
+      "layer": "L3",
+      "observed": "진입점 12개에서 BFS 결과 lib 67개 중 reachable 55 / dynamic 11 / test-only 1 / unreachable 0. 계측기 자체 검사 3건 일치",
+      "steps": [],
+      "tool": "evals/reachability.mjs",
+      "variant": null
+    },
+    {
+      "ac": "ac_2",
+      "artifacts": [
+        "art_dyn"
+      ],
+      "at": "2026-08-20T11:03:37Z",
+      "id": "c_2",
+      "layer": "L3",
+      "observed": "동적 등록표(bin/tene-hook HANDLERS)로만 도달하는 11건을 dynamic 으로 분리했고, 테스트만 부르는 1건을 test-only 로 분리했다",
+      "steps": [],
+      "tool": "evals/reachability.mjs",
+      "variant": null
+    },
+    {
+      "ac": "ac_3",
+      "artifacts": [
+        "art_hl_gates",
+        "art_hl_log"
+      ],
+      "at": "2026-08-20T11:03:37Z",
+      "id": "c_3",
+      "layer": "L3",
+      "observed": ".tene-claude 가 없는 빈 git 프로젝트에서 claude -p 실행 후 상태 파일에 G0~G3 가 전부 result=pass, forced=false 로 기록됐다. AC 8건·의도 3건·문서 3종 생성",
+      "steps": [],
+      "tool": "claude -p",
+      "variant": null
+    },
+    {
+      "ac": "ac_4",
+      "artifacts": [
+        "art_hl_ctx"
+      ],
+      "at": "2026-08-20T11:03:37Z",
+      "id": "c_4",
+      "layer": "L3",
+      "observed": "상태가 생긴 뒤 2회차 claude -p 세션의 system 이벤트에 SessionStart 주입 텍스트가 나타났고 대화형 tene-state summary 출력과 동일했다. 1회차는 상태가 없어 silent 였다",
+      "steps": [],
+      "tool": "claude -p",
+      "variant": null
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_stale"
+      ],
+      "at": "2026-08-20T11:03:37Z",
+      "id": "c_5",
+      "layer": "L3",
+      "observed": "앵커된 src/pay.js 편집 후 PostToolUse 훅 실행. ac_p: passed→stale, ac_f: failed 유지, ac_i: insufficient 유지",
+      "steps": [],
+      "tool": "tene-hook post-edit",
+      "variant": null
+    },
+    {
+      "ac": "ac_6",
+      "artifacts": [
+        "art_f1"
+      ],
+      "at": "2026-08-20T11:03:38Z",
+      "id": "c_6",
+      "layer": "L2",
+      "observed": "tene-scan layers 의 계층 키를 가공 없이 design 자동 블록에 넣고 tene-doc validate 실행 → layers_all_four 가 기재되지 않은 계층: business 로 fail",
+      "steps": [],
+      "tool": "tene-doc validate",
+      "variant": null
+    },
+    {
+      "ac": "ac_7",
+      "artifacts": [
+        "art_rtm41"
+      ],
+      "at": "2026-08-20T11:03:38Z",
+      "id": "c_7",
+      "layer": "L3",
+      "observed": "Stage1·stale·Intent Ledger 는 파일:라인 확인. Stage2 는 미귀속 보고만 존재하고 앵커 자동 추가 코드 0건. Stage3 의 resolvedAt·human 은 lib 전체 grep 0건",
+      "steps": [],
+      "tool": "grep + 실행 관찰",
+      "variant": null
+    },
+    {
+      "ac": "ac_8",
+      "artifacts": [
+        "art_suite"
+      ],
+      "at": "2026-08-20T11:03:38Z",
+      "id": "c_8",
+      "layer": "L2",
+      "observed": "node --test 로 unit·통합·매트릭스 전체 실행 결과 tests 336 / pass 336 / fail 0",
+      "steps": [],
+      "tool": "node --test",
+      "variant": null
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_reach2"
+      ],
+      "at": "2026-08-20T11:08:10Z",
+      "id": "c_1b",
+      "layer": "L3",
+      "observed": "export 408개를 파일#심볼 단위로 분류: reachable 381 / dynamic 21 / test-only 6 / unreachable 0. test-only 6건 전부 도달 경로(test/unit/router-report.test.js) 기록됨. 계측기 한계(모듈 단위까지만 해석)를 limitation 필드에 명시",
+      "steps": [],
+      "tool": "evals/reachability.mjs v2",
+      "variant": null
+    },
+    {
+      "ac": "ac_2",
+      "artifacts": [
+        "art_class"
+      ],
+      "at": "2026-08-20T11:08:10Z",
+      "id": "c_2b",
+      "layer": "L3",
+      "observed": "dynamic 21건 각각에 bin/tene-hook 경유 도달 경로 기록. test-only 6건에 테스트 경로 기록. unreachable 은 실물 트리에서 0건이라 합성 트리(배선·미배선·테스트전용·동적 4종)로 분기를 산출시켜 4/4 일치 확인",
+      "steps": [],
+      "tool": "evals/reachability.mjs v2 합성 검사",
+      "variant": null
+    },
+    {
+      "ac": "ac_4",
+      "artifacts": [
+        "art_s2raw",
+        "art_hl_ctx"
+      ],
+      "at": "2026-08-20T11:08:11Z",
+      "id": "c_4b",
+      "layer": "L3",
+      "observed": "2회차 claude -p 세션의 stream-json 원본 로그를 귀속. type=system 이벤트 1건에 [tene] 주입 텍스트가 들어 있다",
+      "steps": [],
+      "tool": "claude -p stream-json",
+      "variant": null
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_reach3",
+        "art_xcheck"
+      ],
+      "at": "2026-08-20T11:14:32Z",
+      "id": "c_1c",
+      "layer": "L3",
+      "observed": "심볼 단위 재측정: export 408개 중 reachable 211 / dynamic 2 / test-only 61 / unreachable 134. 모듈 도달과 별개로 각 export 를 named import·네임스페이스 접근으로 실제 쓰는 곳을 찾았다. 표본 7건을 모듈 인지 grep 과 tene-scan 으로 교차 확인해 7/7 일치",
+      "steps": [],
+      "tool": "evals/reachability.mjs v3 + 독립 대조",
+      "variant": null
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_reach4",
+        "art_xcheck2"
+      ],
+      "at": "2026-08-20T11:20:00Z",
+      "id": "c_1d",
+      "layer": "L3",
+      "observed": "심볼 단위 export 408개: reachable 211 / dynamic 12 / test-only 61 / unreachable 124. 심볼 단위 자체검사 5건이 4분기를 전부 태워 통과. 동적 멤버 접근을 과대근사해 훅 run 오탐을 없앴고 approximated 플래그로 표시. 대조 절차를 표본 보기 전에 고정하고 네 버킷 각 2건씩 8표본을 검증해 8/8 일치",
+      "steps": [],
+      "tool": "evals/reachability.mjs v4 + 사전고정 대조",
+      "variant": null
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_l1"
+      ],
+      "at": "2026-08-20T11:46:52Z",
+      "id": "case_v1",
+      "layer": "L1",
+      "observed": "eslint·tsc 는 which 에서 not found. 저장소와 배포본 모두 node_modules 없음, eslint.config.js·tsconfig.json 없음. plugin package.json scripts 에 lint·typecheck 항목 없음(test·test:guard·test:latency 3개). node --check 은 계측기 1개와 배포본 76개 파일에서 종료코드 0, 출력 없음. node v26.0.0",
+      "steps": [
+        "which eslint / which tsc",
+        "node_modules · eslint.config.js · tsconfig.json 존재 확인",
+        "node --check evals/reachability.mjs",
+        "배포본 lib+bin 76개 파일에 node --check 병렬 실행"
+      ],
+      "tool": "which + node --check",
+      "variant": "normal"
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_self"
+      ],
+      "at": "2026-08-20T11:46:53Z",
+      "id": "case_v2",
+      "layer": "L2",
+      "observed": "알려진 정답 3건: aggregate.js 기대 test-only/실제 test-only, session-start.js 기대 dynamic/실제 dynamic, store.js 기대 reachable/실제 reachable. 합성 4분기 4건: wired reachable, orphan unreachable, testonly test-only, dyn dynamic 이 각각 기대와 동일. 심볼 단위 5건: store.js#advance reachable, aggregate.js#promote test-only, session-start.js#run dynamic, sections.js#isAutoBlock unreachable, sections.js#DOC_PATH reachable 이 각각 기대와 동일. 출력 마지막 줄은 trustworthy=true 분기 문구",
+      "steps": [
+        "node evals/reachability.mjs <배포본 루트> (텍스트 모드) 실행",
+        "출력의 자체검사 3블록 확인"
+      ],
+      "tool": "evals/reachability.mjs",
+      "variant": "normal"
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_unit"
+      ],
+      "at": "2026-08-20T11:46:54Z",
+      "id": "case_v3",
+      "layer": "L2",
+      "observed": "tests 252 / pass 252 / fail 0 / cancelled 0 / skipped 0 / todo 0, duration_ms 7347. grep 결과 orphans 정의는 lib/scan/query.js:128, 프로덕션 참조는 같은 파일 내부 query() 디스패치(lib/scan/query.js:172)와 문자열 목록(181), 파일 밖 named import 는 test/unit/scan.test.js:10 한 곳",
+      "steps": [
+        "plugins/tene 에서 node --test test/unit/*.test.js 실행",
+        "앵커 orphans 의 정의·참조 위치 grep"
+      ],
+      "tool": "node --test + grep",
+      "variant": "normal"
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_run1",
+        "art_v_inv"
+      ],
+      "at": "2026-08-20T11:46:55Z",
+      "id": "case_v4",
+      "layer": "L3",
+      "observed": "진입점 12개(bin 9 + workflows 3), lib 파일 67개, export id 408개. reachable 211 / dynamic 12 / test-only 61 / unreachable 124, 합 408 로 totals.exports 와 일치. 408개 id 가 버킷 간 중복 0, 버킷 내 중복 0, byFile 기대 집합과 누락 0·초과 0. 네 값 외의 버킷 키 0개. 경로 기록: reachable 211/211 에 module 경로와 symbolUsers 둘 다 존재, dynamic 12/12 동일, test-only 61/61 동일, unreachable 124건은 module 경로는 있고 symbolUsers 는 0건. AC 앵커 심볼 lib/scan/query.js#orphans 는 test-only 로 분류되고 module 경로 [bin/tene-scan, lib/scan/query.js], symbolUsers [test/unit/scan.test.js] 가 기록됨(파일 단위로는 reachable)",
+      "steps": [
+        "node evals/reachability.mjs ~/.claude/plugins/cache/tene-ai/tene/0.1.0 --json 실행",
+        "산출 JSON 을 계측기 밖 스크립트로 읽어 버킷 배타성·총계·경로 기록을 집계"
+      ],
+      "tool": "evals/reachability.mjs --json + invariants.mjs",
+      "variant": "normal"
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_xg",
+        "art_v_xm",
+        "art_v_run1"
+      ],
+      "at": "2026-08-20T11:46:57Z",
+      "id": "case_v5",
+      "layer": "L3",
+      "observed": "이름 기반 grep 은 8건 중 2건에서 계측기와 다른 사용처를 냈다 — lib/doc/extract.js#extractRequirements 에 bin/tene-loop·lib/loop/run.js 히트, lib/hooks/compact.js#run 에 bin/tene-doc 등 히트. 출처 모듈을 해석하니 그 두 히트는 각각 lib/loop/requirements.js 와 lib/util/envelope.js 의 동명 심볼이었다(bin/tene-loop:13, lib/loop/run.js:16, bin/tene-doc:7). 모듈 해석 대조에서는 8건 중 7건이 계측기 symbolUsers 와 동일 집합. 불일치 1건은 lib/hooks/compact.js#run — 계측기 symbolUsers 는 [bin/tene-hook], 모듈 해석 grep 은 그 모듈을 동적 import 하는 곳으로 bin/tene-hook 과 test/unit/hooks.test.js 2곳을 냄. 해당 심볼의 approximated 필드는 true(동적 멤버 접근으로만 근거). approximated:true 는 훅 10개의 run 심볼에만 붙어 있다",
+      "steps": [
+        "표본 규칙을 먼저 고정: 각 버킷을 id 사전순 정렬해 첫·마지막 2건씩 8건",
+        "1단계 이름 기반 grep 으로 사용처 집계",
+        "2단계 import 출처 모듈을 해석해 같은 8건 재집계",
+        "계측기 symbolUsers 와 대조"
+      ],
+      "tool": "grep 2단계 (계측기 외부)",
+      "variant": "crosscheck"
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_det",
+        "art_v_base"
+      ],
+      "at": "2026-08-20T11:46:58Z",
+      "id": "case_v6",
+      "layer": "L7",
+      "observed": "2회 실행: 분류 변경 0건, 합성 검사 tmpDir 필드를 뺀 전체 JSON 문자열 동일. 기준선 v4 대조: 분류 변경 0건, totals 동일(408 / 211 / 12 / 61 / 124), tmpDir 제외 전체 동일",
+      "steps": [
+        "같은 입력으로 계측기를 2회 실행해 산출을 비교",
+        "이전에 등록된 기준선 ac1-reachability-v4.json 과 비교"
+      ],
+      "tool": "cmp.mjs",
+      "variant": "normal"
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_dup"
+      ],
+      "at": "2026-08-20T11:47:00Z",
+      "id": "case_v7",
+      "layer": "L6",
+      "observed": "1회차 응답 artifacts=1 cases=1, 2회차 응답 artifacts=1 cases=2. manifest 에 artifact id art_probe 1건, case id c_probe 2건(at 이 11:44:46Z 와 11:44:48Z 로 다름). 코드상 registerArtifact 는 같은 id 를 찾아 교체(lib/qa/evidence.js:91-93), addCase 는 조건 없이 push(lib/qa/evidence.js:156). 이번 sprint 실물 manifest 조회 결과 중복 artifact id 0건, 중복 case id 0건, 다만 art_reach 와 art_dyn 두 아티팩트가 동일 sha256(06a0d81b...)을 가짐",
+      "steps": [
+        "격리된 임시 프로젝트에 sprint 상태를 만들고",
+        "tene-qa evidence 에 완전히 동일한 --data(artifact art_probe + case c_probe)를 2회 전달",
+        "manifest.json 레코드 수와 id 를 조회"
+      ],
+      "tool": "tene-qa evidence (격리 프로젝트)",
+      "variant": "duplicate-request"
+    },
+    {
+      "ac": "ac_10",
+      "artifacts": [
+        "art_a10_l1"
+      ],
+      "at": "2026-08-20T11:47:45Z",
+      "id": "c_a10_1",
+      "layer": "L1",
+      "observed": "node --check 5개 파일 모두 출력 없이 종료(OK). package.json scripts 는 test, test:guard=node test/guard-matrix.js, test:latency=node test/hook-latency.js 3개. ls plugins/tene/test/hook-latency.js -> No such file or directory (exit 1). test/ 최상위 .js 는 agent-contract.test.js, bench.js, eval-honesty.test.js, frontmatter.test.js, guard-matrix.test.js, plugin-layout.test.js 6개이며 hook-latency.js 와 guard-matrix.js 는 없음",
+      "steps": [
+        "node --check 를 plugins/tene/test/bench.js, bin/tene-hook, lib/state/summary.js, lib/util/budget.js, lib/util/deadline.js 에 실행",
+        "plugins/tene/package.json 의 scripts 확인",
+        "test:latency 가 가리키는 test/hook-latency.js 존재 확인"
+      ],
+      "tool": "node --check + ls",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_10",
+      "artifacts": [
+        "art_a10_bsrc"
+      ],
+      "at": "2026-08-20T11:47:47Z",
+      "id": "c_a10_2",
+      "layer": "L1",
+      "observed": "bench.js:2 주석은 \"성능 벤치 — D12 §6.2\". bench.js:90 에 const BUDGET = { SessionStart: 150, PostToolUse: 150, UserPromptSubmit: 100, Guard: 300 }. 예산 숫자를 출력하는 console 문은 bench.js:102 (초과 항목만, console.error) 한 곳이며, 로직 시간 출력문 bench.js:75,76,77,85 에는 예산 값이 들어 있지 않음. 통과 시 출력은 bench.js:105 의 \"✔ 모든 훅이 로직 예산 안에 있습니다\" 문자열 하나. D05 파일 안의 ms 예산 언급은 406행 \"### 3.5 PostToolUse:Edit|Write 상세 (로직 200ms 예산 — D12 §6.2)\" 이며 훅별 ms 예산 표는 D12 §6.2(docs/02-design/12-errors-concurrency-migration.md:489-496)에 있고 6개 경로(PostToolUse 150, SessionStart 150, PreToolUse 가드 300, TaskCompleted 500, SessionEnd 500, Stop 300)를 나열. D05 안의 예산 수치는 359행 \"≤600 토큰\"(토큰 예산). 앵커 formatSummary 는 plugins/tene/lib/state/summary.js:79 에 정의. bench.js 안에 formatSummary 문자열 없음",
+      "steps": [
+        "bench.js 의 예산 상수와 console 출력문을 grep",
+        "D05(docs/02-design/05-skills-hooks-routing.md) 에서 ms 단위 예산 표현 grep",
+        "D12 §6.2 로직 예산 표 원문 출력",
+        "앵커 심볼 formatSummary 정의 위치 확인"
+      ],
+      "tool": "grep + sed",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_1",
+      "artifacts": [
+        "art_v_drift"
+      ],
+      "at": "2026-08-20T11:47:48Z",
+      "id": "case_v8",
+      "layer": "L7",
+      "observed": "diff -rq 결과 파일 내용 차이 0건. 한쪽에만 있는 항목 5건 — 저장소에만 .bkit, test/fixtures/code, test/fixtures/docs, test/fixtures/state / 배포본에만 .in_use. lib·bin·hooks·skills·workflows 에는 차이 없음. qa.md §3 Test Charter 표는 헤더만 있고 데이터 행 0건 — ac_1 의 행위자·변형·필요 레이어·위험이 문서에 기재되어 있지 않다(이번 실행의 레이어는 호출자가 지정한 L1·L2·L3·L7 을 따랐다)",
+      "steps": [
+        "계측 대상(배포본)과 테스트 대상(저장소 소스)을 diff -rq 로 비교",
+        "qa.md Test Charter 섹션 원문 확인"
+      ],
+      "tool": "diff + sed",
+      "variant": "normal"
+    },
+    {
+      "ac": "ac_10",
+      "artifacts": [
+        "art_a10_run1"
+      ],
+      "at": "2026-08-20T11:48:14Z",
+      "id": "c_a10_4",
+      "layer": "L2",
+      "observed": "출력: 기준선 2286ms / 인덱스 전체 빌드 2740ms(로직 453ms) / 인덱스 증분 2860ms(로직 574ms) / SessionStart 훅 2616ms(로직 330ms) / PostToolUse 훅 2242ms(로직 -45ms) / UserPromptSubmit 훅 1968ms(로직 -319ms) / 시크릿 가드 1601ms(로직 -685ms). 이어서 stderr 에 \"✖ 로직 예산 초과:\" 와 \"SessionStart: 330ms > 150ms\" 1줄. 종료코드 1. 예산 숫자가 출력에 나타난 항목은 SessionStart 1건이고 나머지 3개 훅 줄에는 예산 값이 없음",
+      "steps": [
+        "node plugins/tene/test/bench.js 실행 (run#1, 2026-08-20T11:38:07Z, node v26.0.0, Darwin 24.6.0 x86_64)",
+        "stdout+stderr 와 종료코드 기록"
+      ],
+      "tool": "node plugins/tene/test/bench.js",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_10",
+      "artifacts": [
+        "art_a10_run2",
+        "art_a10_run1"
+      ],
+      "at": "2026-08-20T11:48:15Z",
+      "id": "c_a10_5",
+      "layer": "L2",
+      "observed": "출력: 기준선 2070ms / 인덱스 전체 빌드 3909ms(로직 1840ms) / 인덱스 증분 3027ms(로직 957ms) / SessionStart 훅 1739ms(로직 -331ms) / PostToolUse 훅 1724ms(로직 -345ms) / UserPromptSubmit 훅 1798ms(로직 -272ms) / 시크릿 가드 1249ms(로직 -820ms) / \"✔ 모든 훅이 로직 예산 안에 있습니다\". 종료코드 0. 이 출력에는 예산 숫자(150/150/100/300)가 한 번도 나타나지 않음. 같은 명령의 run#1 과 run#2 가 SessionStart 로직 330ms(초과) 대 -331ms(미초과)로 갈리고 종료코드도 1 대 0 으로 갈림. 훅 4개 중 3~4개의 로직 시간이 음수로 출력됨",
+      "steps": [
+        "동일 명령 node plugins/tene/test/bench.js 재실행 (run#2, 2026-08-20T11:42:24Z, 같은 머신, loadavg { 859.85 736.30 411.68 })",
+        "stdout+stderr 와 종료코드 기록"
+      ],
+      "tool": "node plugins/tene/test/bench.js",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_10",
+      "artifacts": [
+        "art_a10_npm",
+        "art_a10_bsrc"
+      ],
+      "at": "2026-08-20T11:48:17Z",
+      "id": "c_a10_6",
+      "layer": "L2",
+      "observed": "test:latency: \"Error: Cannot find module .../plugins/tene/test/hook-latency.js\" (MODULE_NOT_FOUND), 종료코드 1. test:guard: \"Error: Cannot find module .../plugins/tene/test/guard-matrix.js\" (MODULE_NOT_FOUND). D12 §6.3(docs/02-design/12-errors-concurrency-migration.md:501-510)은 node plugins/tene/test/hook-latency.js 실행과 p50/p95/p99 및 (<150)/(<300) 표기가 붙은 출력 예를 싣고 있음",
+      "steps": [
+        "D12 §6.3 에 적힌 벤치마크 명령 경로로 plugins/tene 에서 npm run test:latency 실행",
+        "npm run test:guard 실행"
+      ],
+      "tool": "npm run",
+      "variant": "error"
+    },
+    {
+      "ac": "ac_10",
+      "artifacts": [
+        "art_a10_unit",
+        "art_a10_bsrc"
+      ],
+      "at": "2026-08-20T11:48:20Z",
+      "id": "c_a10_7",
+      "layer": "L2",
+      "observed": "tests 18, pass 18, fail 0, duration_ms 2005.3. 예산 관련 단언은 state-summary.test.js:47 assert.ok(out.tokens <= SESSION_BUDGET_TOKENS) 등 토큰 예산 3건. 훅 로직 시간(ms) 또는 D12 §6.2 ms 예산을 단언하는 테스트는 unit/*.test.js 및 test/*.test.js grep 결과 0건이며 ms 예산 검사는 test/bench.js 에만 존재",
+      "steps": [
+        "앵커 심볼 formatSummary 의 단위 테스트 node --test plugins/tene/test/unit/state-summary.test.js 실행",
+        "단위 테스트 파일들에서 예산·로직시간 단언 grep"
+      ],
+      "tool": "node --test",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_10",
+      "artifacts": [
+        "art_a10_inst"
+      ],
+      "at": "2026-08-20T11:48:55Z",
+      "id": "c_a10_3",
+      "layer": "L1",
+      "observed": "bin/tene-hook 에서 hrtime|performance.now|Date.now|duration|withDeadline 매치 0건. lib/hooks/ 10개 파일이 withDeadline 을 import 하고 DEADLINE_MS 를 각자 정의(session-start 150, post-edit 150, compact 150, task-created 150, subagent-stop 150, stop 200, session-end 200, pre-edit 100, user-prompt 100, post-bash 100). deadline.js 의 withDeadline 은 초과 시 DeadlineExceeded 를 던지며 경과 시간을 반환하거나 파일에 기록하지 않음. elapsedMs(t0) 는 deadline.js:25 에 정의. log.js(26줄)에서 duration|elapsed|ms grep 매치 0건",
+      "steps": [
+        "bin/tene-hook 과 lib/hooks/*.js 에서 시간 계측·기록 코드 grep",
+        "lib/util/deadline.js 원문 출력",
+        "lib/util/log.js 에서 duration/elapsed/ms 필드 grep"
+      ],
+      "tool": "grep + sed",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_3",
+      "artifacts": [
+        "art_ac3_l1"
+      ],
+      "at": "2026-08-20T11:50:25Z",
+      "id": "case_ac3_l1",
+      "layer": "L1",
+      "observed": "store.js·schema.js·bin/tene-state 는 ok 출력. lib/state/transitions.js 는 MISSING 출력. lib+bin 전수 구문 검사에서 SYNTAX_FAIL 행 0건. assert-no-deps.js 는 \"외부 의존 0 확인\" 출력 exit=0. check-docs-consistency.js 는 \"문서 정합성 확인 (문서 34개, 규칙 10종)\" 출력. eslint 바이너리 없음(devDependencies 비어 있음)",
+      "steps": [
+        "게이트 기록 경로 파일 3종(lib/state/store.js, lib/state/schema.js, bin/tene-state)에 node --check 실행",
+        "plugins/tene/lib 와 bin 전체에 node --check 반복",
+        "node scripts/assert-no-deps.js 실행",
+        "node scripts/check-docs-consistency.js 실행",
+        "node_modules/.bin/eslint 존재 확인"
+      ],
+      "tool": "node --check + repo scripts",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_3",
+      "artifacts": [
+        "art_ac3_l2_unit",
+        "art_ac3_l2_cycle"
+      ],
+      "at": "2026-08-20T11:50:26Z",
+      "id": "case_ac3_l2",
+      "layer": "L2",
+      "observed": "unit 252 tests / pass 252 / fail 0 (exit=0). integration cycle 13 tests / pass 13 / fail 0 (exit=0), 그 중 \"사이클을 draft 에서 archived 까지 완주한다\", \"phase 를 건너뛸 수 없다\", \"미완성 PRD 는 G1 이 막고, 채우면 통과한다\" 항목이 ✔ 로 출력. grep 결과 gates 를 단언하는 파일은 test/unit/state-store.test.js:105(gates.G0.result==fail), :116(gates.G0.forced==true) 와 test/integration/cycle.test.js 두 곳",
+      "steps": [
+        "plugins/tene 에서 npm test 실행",
+        "node --test test/integration/cycle.test.js 실행",
+        "게이트 기록을 덮는 테스트 파일을 grep 으로 검색"
+      ],
+      "tool": "node --test",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_3",
+      "artifacts": [
+        "art_ac3_l3_replay"
+      ],
+      "at": "2026-08-20T11:50:27Z",
+      "id": "case_ac3_l3_replay",
+      "layer": "L3",
+      "observed": "상태 파일 phase=design, rev=5. gates.G0 {at 11:44:48Z, result pass}, G1 {11:44:51Z, pass}, G2 {11:44:54Z, pass}, G3 {11:44:57Z, pass}, G4~G7 은 null. detail 은 4건 모두 null, forced 키 없음. sprint 파일 1개. events.ndjson 5행 = SprintCreated 1, PhaseTransitioned 3(gate G0/G1/G2), GateEvaluated 1(G3)",
+      "steps": [
+        "스크래치패드에 빈 git 프로젝트 생성(.tene-claude 없음)",
+        "tene-state init --id gate-probe",
+        "advance --to prd/--to plan/--to design 을 각각 --result pass 로 실행",
+        "tene-state gate --to G3 --result pass 실행",
+        "상태 파일 .tene-claude/state/sprints/gate-probe.json 을 직접 읽음",
+        "history/events.ndjson 을 직접 읽음"
+      ],
+      "tool": "tene-state CLI",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_3",
+      "artifacts": [
+        "art_ac3_l3_reobs",
+        "art_ac3_state_raw",
+        "art_hl_gates",
+        "art_hl_log"
+      ],
+      "at": "2026-08-20T11:50:28Z",
+      "id": "case_ac3_l3_headless",
+      "layer": "L3",
+      "observed": "살아 있는 상태 파일의 gates: G0 {10:49:16Z,pass} G1 {10:51:25Z,pass} G2 {10:53:15Z,pass} G3 {10:58:24Z,pass}, G4~G7 null, phase=design, rev=11, forced 키 없음. sprint 파일 1개. events.ndjson 8행(SprintCreated 1, PhaseTransitioned 3 with gate G0/G1/G2, AcJudged 2, IntentCaptured 1, GateEvaluated 1 with G3). 두 아티팩트 sha256 은 manifest 값과 일치. ac3-state-file-raw.json 은 manifest.json 안에 문자열로 나타나지 않으며(미등록 상태였음), 그 사본의 sha256 848e95f1… 은 살아 있는 상태 파일과 동일. 세션 로그 꼬리: is_error=false, num_turns=65, duration_api_ms=540141, total_cost_usd=4.9224145, permission_denials 1건(layers.yml 복사)",
+      "steps": [
+        "선행 세션 9644f30c 의 claude -p 실행이 남긴 프로젝트 scratchpad/headless3 가 살아 있는지 확인",
+        "그 프로젝트의 .tene-claude/state/sprints/order-guard.json 을 직접 읽음",
+        "history/events.ndjson 을 직접 읽음",
+        "등록된 아티팩트 ac3-session-log.jsonl·ac3-headless-gates.json 의 sha256 을 재계산해 manifest 값과 대조",
+        "세션 로그에서 tene-state/tene-gate 호출 29건을 추출해 게이트 관련 6건을 뽑음"
+      ],
+      "tool": "shasum + node (선행 claude -p 산출물 재관찰)",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_3",
+      "artifacts": [
+        "art_ac3_l3_dup",
+        "art_ac3_l3_replay"
+      ],
+      "at": "2026-08-20T11:51:05Z",
+      "id": "case_ac3_l3_dup",
+      "layer": "L3",
+      "observed": "init 2회차는 ok=false SPRINT_EXISTS exit=3, sprint 파일 1개. advance 2회차는 ok=false INVALID_TRANSITION{from:prd,to:prd} exit=2, gates.G0 은 객체 1건(배열 아님), 이벤트 PhaseTransitioned 1건. 동시 실행 2건 중 하나는 exit=0(from prd to plan gate G1), 다른 하나는 exit=2 INVALID_TRANSITION{from:plan,to:plan}, gates.G1 1건, 동일 payload 이벤트 1건, sprint 파일 1개. 같은 게이트 2회 기록은 둘 다 ok=true 이고 상태 파일 gates.G0 에는 마지막 것(detail 2회차, result fail)만 남았으며 첫 회 pass 는 상태 파일에서 사라짐, events.ndjson 에는 GateEvaluated 2건(seq4 pass, seq5 fail)이 남음. sprint.gates 는 G0~G7 8키 고정 객체이고 게이트당 배열이 아님(store.js:246,255,350). 이 저장소 events 72건 중 (type,sprint,ts,payload) 완전 동일 그룹 3건이며 전부 AgentCompleted 이고, 게이트 계열(PhaseTransitioned/PhaseForced/GateEvaluated) 동일 그룹은 0건. 이벤트 레코드에 고유 id 가 없어 동일 레코드가 같은 요청의 중복인지 서로 다른 두 완료인지 레코드만으로 구분되지 않음",
+      "steps": [
+        "같은 init 명령을 2회 실행",
+        "같은 advance --to prd --result pass 명령을 2회 연속 실행",
+        "같은 advance --to plan --result pass 명령 2개를 동시에 백그라운드로 실행",
+        "같은 게이트 G0 을 --result pass, 이어서 --result fail 로 2회 기록",
+        "각 단계마다 상태 파일의 gates 와 history/events.ndjson 을 직접 읽음",
+        "이 저장소 .tene-claude/history/events.ndjson 전체에서 (type,sprint,ts,payload) 동일 레코드를 집계"
+      ],
+      "tool": "tene-state CLI + node 집계",
+      "variant": "duplicate"
+    },
+    {
+      "ac": "ac_3",
+      "artifacts": [
+        "art_ac3_l7",
+        "art_ac3_l7_root",
+        "art_ac3_l2_unit",
+        "art_ac3_l2_cycle"
+      ],
+      "at": "2026-08-20T11:51:06Z",
+      "id": "case_ac3_l7",
+      "layer": "L7",
+      "observed": "재실행 합계 336 tests(unit 252 + root 71 + integration 13), fail 합계 0. 기준선도 336 tests fail 0. current.json·sprints/self-conformance.json·sprints/wiring-conformance.json 의 sha256 은 프로브 전후 동일. history/events.ndjson 은 a08773e2… → 41f42d85… 로 바뀌었고 프로브 시각(11:44~11:46Z)에 AgentCompleted 6건(seq 66~71)이 찍혔으며 게이트 계열 이벤트 추가는 0건. git status 는 추적되지 않은 디렉토리 .tene-claude/, docs/sprints/*, evals/reachability.mjs, sh.err 만 표시",
+      "steps": [
+        "기준선 ac8-full-suite.txt(11:47 수집, tests 336 fail 0)의 요약을 읽음",
+        "test/unit, test/*.test.js, test/integration/cycle.test.js 를 재실행해 합산",
+        "프로브 전후로 이 저장소 .tene-claude 상태 파일 sha256 을 비교",
+        "git status --porcelain 확인"
+      ],
+      "tool": "node --test + shasum + git status",
+      "variant": "regression"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l1_static"
+      ],
+      "at": "2026-08-20T11:52:07Z",
+      "id": "case_ac5_l1",
+      "layer": "L1",
+      "observed": "ac_5 경로 8개 파일 전부 node --check 출력 없음(exit 0). lib+bin 합계 76개 파일 checked=76 failed=0. 저장소에 eslint/biome/prettier 설정 파일 없음(ls -a 로 확인, 매칭 0건)",
+      "steps": [
+        "ac_5 앵커 경로 파일(lib/hooks/post-edit.js, lib/state/store.js, lib/scan/anchors.js, lib/util/atomic.js, lib/util/deadline.js, lib/util/paths.js, lib/util/json.js, bin/tene-hook)에 node --check 실행",
+        "plugins/tene/lib/**/*.js 와 bin/* 전체에 node --check 실행"
+      ],
+      "tool": "node --check v26.0.0",
+      "variant": "nominal"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l1_workflows"
+      ],
+      "at": "2026-08-20T11:52:08Z",
+      "id": "case_ac5_l1_workflows",
+      "layer": "L1",
+      "observed": "workflows/conformance-audit.js:16, workflows/qa-sweep.js:17, workflows/understand-sweep.js:16 세 파일 모두 'SyntaxError: Illegal return statement' 로 node --check 실패. 세 파일은 anchors.json 의 byPath 에 없고 ac_5 앵커(markStaleNoLock) 경로에 포함되지 않음. sh.err 는 understand-sweep.js 의 동일 오류 출력이었고, 같은 시각 다른 수집 작업(ac_3)이 같은 저장소에서 동시 실행 중이었음",
+      "steps": [
+        "L1 수집 중 저장소 루트에 sh.err 파일이 생긴 것을 git status 에서 발견",
+        "sh.err 내용 확인",
+        "plugins/tene/workflows/* 3개 파일에 node --check 실행"
+      ],
+      "tool": "node --check",
+      "variant": "nominal"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l2_unit"
+      ],
+      "at": "2026-08-20T11:52:09Z",
+      "id": "case_ac5_l2",
+      "layer": "L2",
+      "observed": "tests 59, pass 59, fail 0, skipped 0, exit=0. 통과 항목에 'markStaleNoLock 은 passed 만 stale 로 바꾼다'(256.6ms), 'touched 는 편집 경로로 AC 를 찾는다'(30.2ms), '해석되지 않은 앵커를 조용히 버리지 않는다'(51.2ms), 'sprint:ac 키를 sprint 별로 나눈다'(0.5ms) 포함. state-store.test.js:119 의 해당 테스트는 passed/failed/insufficient 3건에 markStaleNoLock 을 호출해 반환값이 ['ac_1'] 임을 단언",
+      "steps": [
+        "node --test test/unit/state-store.test.js test/unit/scan.test.js test/unit/hooks.test.js 실행"
+      ],
+      "tool": "node --test",
+      "variant": "nominal"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l3_transition"
+      ],
+      "at": "2026-08-20T11:52:10Z",
+      "id": "case_ac5_l3_edit_anchored",
+      "layer": "L3",
+      "observed": "anchors.json byPath: src/pay.js→[ac_pay_failed, ac_pay_insuf, ac_pay_passed], src/ship.js→[ac_ship_passed, ac_ship_path], unresolved 0. 훅 stdout 은 hookSpecificOutput.additionalContext 로 '수용 기준 1건의 판정이 무효가 되었습니다: ac5probe:ac_pay_passed'. 상태 파일 verdict 변화는 ac_pay_passed: passed→stale (staledBy=src/pay.js, staledAt=2026-08-20T11:47:02Z) 1건뿐. ac_pay_failed=failed, ac_pay_insuf=insufficient 로 불변. 편집하지 않은 src/ship.js 에 앵커된 ac_ship_passed, ac_ship_path 는 둘 다 passed 로 불변(staledBy=null). sprint 파일 rev 2→3. current.json 의 summary.ac 는 훅 전후 모두 {passed:3, stale:0, total:5} 로 동일해 sprint 파일(passed 2, stale 1)과 불일치",
+      "steps": [
+        "임시 프로젝트에 src/pay.js(processPayment), src/ship.js(shipOrder) 생성",
+        "store.initSprint + setAc 로 AC 5건 등록(pay 앵커 3건: passed/failed/insufficient, ship 앵커 2건: passed 2)",
+        "tene-scan build, tene-scan anchors --rebuild 실행",
+        "src/pay.js 파일 내용을 실제로 수정",
+        "실제 PostToolUse 페이로드(tool_name=Edit, tool_input.file_path=<abs>/src/pay.js)를 stdin 으로 bin/tene-hook post-edit 실행",
+        "편집 전후 .tene-claude/state/sprints/ac5probe.json 을 직접 읽어 verdict 비교",
+        "current.json 의 summary.ac 를 직접 읽어 비교",
+        "tene-scan touched 로 두 경로의 AC 매핑 조회"
+      ],
+      "tool": "tene-scan + tene-hook post-edit + 상태 파일 직접 read",
+      "variant": "nominal"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l3_isolation"
+      ],
+      "at": "2026-08-20T11:52:10Z",
+      "id": "case_ac5_l3_edit_other_file",
+      "layer": "L3",
+      "observed": "훅 stdout: '수용 기준 2건... ac5probe:ac_ship_passed, ac5probe:ac_ship_path'. after: ac_ship_passed=stale, ac_ship_path=stale, ac_pay_passed=passed(불변)",
+      "steps": [
+        "새 임시 프로젝트에 AC 3건(pay 앵커 1건 passed, ship 앵커 2건 passed) 등록 후 인덱스 생성",
+        "src/ship.js 만 수정하고 PostToolUse 페이로드로 post-edit 훅 실행",
+        "상태 파일 verdict 직접 조회"
+      ],
+      "tool": "tene-hook post-edit + 상태 파일 직접 read",
+      "variant": "nominal"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l3_isolation"
+      ],
+      "at": "2026-08-20T11:52:11Z",
+      "id": "case_ac5_l3_unanchored_file",
+      "layer": "L3",
+      "observed": "훅 stdout 빈 문자열. AC 3건 모두 passed 로 불변",
+      "steps": [
+        "어떤 AC 도 앵커하지 않은 src/unrelated.js 를 수정",
+        "PostToolUse 페이로드로 post-edit 훅 실행",
+        "상태 파일 verdict 직접 조회"
+      ],
+      "tool": "tene-hook post-edit + 상태 파일 직접 read",
+      "variant": "boundary"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l3_isolation"
+      ],
+      "at": "2026-08-20T11:52:11Z",
+      "id": "case_ac5_l3_write_tool",
+      "layer": "L3",
+      "observed": "훅 stdout: '수용 기준 1건... ac5probe:ac_pay_passed'. after: ac_pay_passed=stale, ac_ship_passed=passed, ac_ship_path=passed",
+      "steps": [
+        "tool_name 을 Write 로 한 PostToolUse 페이로드로 src/pay.js 편집 신고",
+        "상태 파일 verdict 직접 조회"
+      ],
+      "tool": "tene-hook post-edit + 상태 파일 직접 read",
+      "variant": "nominal"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l3_isolation"
+      ],
+      "at": "2026-08-20T11:52:12Z",
+      "id": "case_ac5_l3_multifile",
+      "layer": "L3",
+      "observed": "훅 stdout: '수용 기준 3건... ac_pay_passed, ac_ship_passed, ac_ship_path'. after 3건 모두 stale. staledBy 는 세 건 모두 'src/pay.js' 로 기록됨 — ship 앵커 AC 의 staledBy 에도 src/pay.js 가 들어감(post-edit.js:62 의 cause = paths[0])",
+      "steps": [
+        "src/pay.js 와 src/ship.js 를 모두 수정",
+        "tool_input.file_paths 에 두 절대경로를 담은 PostToolUse 페이로드로 post-edit 훅 실행",
+        "상태 파일의 verdict 와 staledBy 를 직접 조회"
+      ],
+      "tool": "tene-hook post-edit + 상태 파일 직접 read",
+      "variant": "boundary"
+    },
+    {
+      "ac": "ac_5",
+      "artifacts": [
+        "art_ac5_l7_suite",
+        "art_ac5_l7_diff"
+      ],
+      "at": "2026-08-20T11:52:12Z",
+      "id": "case_ac5_l7",
+      "layer": "L7",
+      "observed": "tests 336, pass 336, fail 0, skipped 0, exit=0. 기준선도 tests 336 pass 336 fail 0 으로 동일하고 통과 테스트 이름 집합 diff 0줄. git diff --stat -- .tene-claude plugins 출력 없음. git status 는 추적되지 않은 .tene-claude/, docs/sprints/*, evals/reachability.mjs 만 표시. 이 저장소 current.json summary.ac 는 {total:10, pending:10, stale:0} 로 프로브 전후 동일(프로브는 전부 별도 임시 프로젝트에서 실행)",
+      "steps": [
+        "node --test test/*.test.js test/unit/*.test.js test/integration/*.test.js 실행",
+        "기준선 evidence/ac8-full-suite.txt 의 요약과 통과 테스트 이름 집합을 diff",
+        "git status --porcelain 및 git diff --stat -- .tene-claude plugins 확인",
+        "이 저장소 current.json 의 summary.ac 확인"
+      ],
+      "tool": "node --test + diff + git status",
+      "variant": "regression"
+    },
+    {
+      "ac": "ac_8",
+      "artifacts": [
+        "art_ac8_l1_static",
+        "art_ac8_l1_cap"
+      ],
+      "at": "2026-08-20T11:54:16Z",
+      "id": "c_ac8_l1",
+      "layer": "L1",
+      "observed": "repo 루트에 eslint/prettier/biome/tsconfig 설정 파일 없음. devDependencies {} . 정적 단계 6종 exit code: claude plugin validate ./plugins/tene --strict=0, claude plugin validate . --strict=0, scripts/assert-no-deps.js=0, scripts/sync-version.js --check=0, bin 실행권한·shebang 검사 rc=0, scripts/check-docs-consistency.js=0 (문서 34개, 규칙 10종). package.json 의 test:guard 가 가리키는 test/guard-matrix.js 와 test:latency 가 가리키는 test/hook-latency.js 는 파일이 없음 (실제 파일명은 guard-matrix.test.js, bench.js). tene-qa capability 출력은 testRunner=null, linter=null, typechecker=null 이며 warnings 에 \"testRunner 없음 → L2/L3/L7 가 insufficient 로 기록됩니다\", \"static 없음 → L1 가 insufficient 로 기록됩니다\" 가 포함됨",
+      "steps": [
+        "repo 에 eslint/prettier/biome/tsconfig 설정 파일이 있는지 확인",
+        "plugins/tene/package.json 의 scripts·devDependencies 확인",
+        "validate.yml 의 static job 중 테스트가 아닌 단계 6종을 순서대로 실행",
+        "package.json scripts 가 가리키는 파일 존재 여부 확인",
+        "tene-qa capability 실행"
+      ],
+      "tool": "claude plugin validate + node scripts/*.js",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_8",
+      "artifacts": [
+        "art_ac8_l2_npm"
+      ],
+      "at": "2026-08-20T11:54:16Z",
+      "id": "c_ac8_l2_declared",
+      "layer": "L2",
+      "observed": "tests 252 / pass 252 / fail 0 / skipped 0 / todo 0, duration_ms 8781.68, exit=0. 실행 대상은 test/unit/*.test.js 12개 파일이며 test/ 최상위 5개 파일과 test/integration/ 1개 파일은 이 명령에 포함되지 않았다",
+      "steps": [
+        "npm --prefix plugins/tene test 실행 (스크립트 본문: node --test test/unit/*.test.js)"
+      ],
+      "tool": "npm test",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_8",
+      "artifacts": [
+        "art_ac8_l2_full"
+      ],
+      "at": "2026-08-20T11:54:17Z",
+      "id": "c_ac8_l2_ci_full",
+      "layer": "L2",
+      "observed": "node v26.0.0 에서 tests 336 / pass 336 / fail 0 / skipped 0 / todo 0, duration_ms 153718.98, exit=0. CI matrix 가 선언한 node 버전은 20·22·24 이며 26 은 포함되어 있지 않다",
+      "steps": [
+        "validate.yml static job 이 node --test 로 돌리는 파일 집합(unit 12 + guard-matrix + integration/cycle + plugin-layout + frontmatter + agent-contract + eval-honesty)을 한 번에 실행"
+      ],
+      "tool": "node --test",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_8",
+      "artifacts": [
+        "art_ac8_l7_rerun",
+        "art_ac8_l7_compare"
+      ],
+      "at": "2026-08-20T11:54:17Z",
+      "id": "c_ac8_l7_rerun",
+      "layer": "L7",
+      "observed": "재실행 결과 tests 336 / pass 336 / fail 0, duration_ms 142883.77, exit=0. 이름집합 336건이 run2·직전 wiring 아티팩트·self-conformance 기준선과 각각 diff 0행. run3 로그 파일 뒤에 bench.js 출력이 이어 붙어 있어 diff 에 bench 의 \"로직 예산 초과:\" 1행이 추가로 잡혔다",
+      "steps": [
+        "run2 와 동일한 명령을 재실행",
+        "테스트 이름집합을 정규화(소요시간 제거·정렬)해 run2, 직전 아티팩트 ac8-full-suite.txt, self-conformance sprint 의 full-suite.txt 와 diff"
+      ],
+      "tool": "node --test 재실행 + 이름집합 대조",
+      "variant": "happy"
+    },
+    {
+      "ac": "ac_8",
+      "artifacts": [
+        "art_ac8_l2_deployed",
+        "art_ac8_l7_deployeddiff",
+        "art_ac8_l7_compare"
+      ],
+      "at": "2026-08-20T11:54:34Z",
+      "id": "c_ac8_l7_deployed",
+      "layer": "L7",
+      "observed": "diff -rq 결과 lib·bin·hooks·skills·workflows·agents·templates·package.json 동일, test 는 저장소에만 있는 빈 fixture 디렉토리 3개(code·docs·state) 차이. 배포본에서 실행하니 tests 336 / pass 322 / fail 14 / exit=1. 실패 14건은 eval-honesty 8건, scan E-1 4건(합계 12건은 ENOENT ../../evals/fixtures/{flat-app,layered-app,no-tools-app,express-app}), plugin-layout 2건(ENOENT docs/02-design/05-skills-hooks-routing.md, assert.ok(existsSync(join(P, \"../../.claude-plugin/marketplace.json\"))) 가 falsy). 실패 경로는 모두 캐시 경로 기준 상위 디렉토리(/Users/kaykim/.claude/plugins/cache/tene-ai/...)를 가리킨다",
+      "steps": [
+        "저장소 사본과 마켓플레이스 캐시 배포본을 diff -rq 로 비교",
+        "run2 와 동일한 파일 집합을 ~/.claude/plugins/cache/tene-ai/tene/0.1.0 경로로 실행"
+      ],
+      "tool": "node --test (배포본 캐시)",
+      "variant": "error"
+    },
+    {
+      "ac": "ac_8",
+      "artifacts": [
+        "art_ac8_l7_bench",
+        "art_ac8_l7_rerun",
+        "art_ac8_l7_compare"
+      ],
+      "at": "2026-08-20T11:54:35Z",
+      "id": "c_ac8_l7_bench",
+      "layer": "L7",
+      "observed": "4회 실행 중 3회 exit=1, 1회 exit=0. 스위트 직후 실행: 기준선 1219ms, SessionStart 로직 350ms > 150ms 로 예산 초과, exit=1. 단독 1회차: 기준선 449ms, SessionStart 460ms·PostToolUse 178ms 초과, exit=1. 단독 2회차: 기준선 369ms, SessionStart 659ms·PostToolUse 901ms·UserPromptSubmit 888ms·Guard 561ms 초과, exit=1. 단독 3회차: 기준선 814ms, 초과 0건, exit=0. 측정 시각 load averages 685.45 874.53 560.87. sprint 의 기존 아티팩트 ac10-hook-bench.txt 는 기준선 299ms 에 초과 0건",
+      "steps": [
+        "CI validate.yml 의 마지막 검사 단계인 bench.js 를 스위트 직후 1회, 단독으로 3회 실행"
+      ],
+      "tool": "node plugins/tene/test/bench.js",
+      "variant": "error"
+    }
+  ],
+  "createdAt": "2026-08-20T10:45:32Z",
+  "schemaVersion": 1,
+  "sprint": "wiring-conformance",
+  "updatedAt": "2026-08-20T12:35:22Z"
+}

@@ -1,0 +1,57 @@
+### env
+node: v26.0.0  npm: 11.12.1  claude: 2.1.237 (Claude Code)
+git HEAD: 72fd1f1099260cda75e4b016fa5906f82117cb95
+date: 2026-08-20T11:36:30Z
+
+### step 1: claude plugin validate ./plugins/tene --strict
+Validating plugin manifest: /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/.claude-plugin/plugin.json
+
+✔ Validation passed
+exit=0
+
+### step 2: claude plugin validate . --strict
+Validating marketplace manifest: /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/.claude-plugin/marketplace.json
+
+✔ Validation passed
+exit=0
+
+### step 3: node scripts/assert-no-deps.js
+✔ 외부 의존 0 확인
+exit=0
+
+### step 4: node scripts/sync-version.js --check
+✔ 버전 동기화 확인: 0.1.0
+exit=0
+
+### step 5: bin exec+shebang
+bin check rc=0
+
+### step 6: node scripts/check-docs-consistency.js
+✔ 문서 정합성 확인 (문서 34개, 규칙 10종)
+exit=0
+
+### step 7: linter/typechecker probe
+(no eslint/prettier/biome/tsconfig at repo root)
+scripts: {"test":"node --test test/unit/*.test.js","test:guard":"node test/guard-matrix.js","test:latency":"node test/hook-latency.js"}
+devDependencies: {}
+ls: plugins/tene/test/guard-matrix.js: No such file or directory
+ls: plugins/tene/test/hook-latency.js: No such file or directory
+
+### step 8: package.json scripts 가 가리키는 파일 존재 여부
+MISSING plugins/tene/test/guard-matrix.js
+MISSING plugins/tene/test/hook-latency.js
+EXISTS plugins/tene/test/unit
+
+### step 9: CI validate.yml 이 실행하는 테스트 파일 목록
+36:        run: node --test plugins/tene/test/unit/*.test.js
+39:        run: node --test plugins/tene/test/guard-matrix.test.js
+45:          node --test plugins/tene/test/integration/*.test.js
+48:        run: node --test plugins/tene/test/plugin-layout.test.js
+51:        run: node --test plugins/tene/test/frontmatter.test.js
+54:        run: node --test plugins/tene/test/agent-contract.test.js
+57:        run: node --test plugins/tene/test/eval-honesty.test.js
+60:        run: node plugins/tene/test/bench.js
+66:  # Node 26 에서 `node --test <dir>` 이 깨지는 등 버전별 차이가 실제로 있었다.
+78:        run: node --test plugins/tene/test/unit/*.test.js
+80:        run: node --test plugins/tene/test/guard-matrix.test.js
+82:        run: node --test plugins/tene/test/agent-contract.test.js plugins/tene/test/eval-honesty.test.js

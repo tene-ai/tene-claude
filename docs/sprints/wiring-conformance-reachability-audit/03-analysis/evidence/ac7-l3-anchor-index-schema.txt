@@ -1,0 +1,48 @@
+# L3 — anchors.json 실제 스키마 조회 (읽기 전용)
+# utc: 2026-08-20T11:45:00Z
+## 최상위 키
+byAc, byPath, bySymbol, generatedAt, schemaVersion, stats, unresolved
+stats= {"ac":10,"paths":6,"unresolved":1}
+generatedAt= 2026-08-20T11:00:58Z
+
+## byAc 엔트리 전수 — 필드 집합
+anchor entries= 10
+fields= confidence, file, kind, line, source, value
+has resolvedAt= false
+source values= ["indexed","unresolved"]
+
+## 샘플 3건
+[
+  [
+    "wiring-conformance:ac_1",
+    {
+      "anchors": [
+        {
+          "confidence": "high",
+          "file": "plugins/tene/lib/scan/query.js",
+          "kind": "symbol",
+          "line": 128,
+          "source": "indexed",
+          "value": "orphans"
+        }
+      ],
+      "resolved": true
+    }
+  ],
+  [
+    "wiring-conformance:ac_10",
+    {
+      "anchors": [
+        {
+          "confidence": "high",
+          "file": "plugins/tene/lib/state/summary.js",
+          "kind": "symbol",
+          "line": 79,
+          "source": "indexed",
+          "value": "formatSummary"
+        }
+      ],
+      "resolved": true
+    }
+  ]
+]

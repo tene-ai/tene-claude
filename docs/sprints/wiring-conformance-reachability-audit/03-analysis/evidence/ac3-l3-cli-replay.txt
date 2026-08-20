@@ -1,0 +1,124 @@
+########## A. 빈 프로젝트 draft→design 재현 ##########
+-- 초기 상태 디렉토리 --
+. .. .git package.json 
+-- init --
+{"data":{"sprint":{"ac":[],"archivedAt":null,"carryOver":[],"counters":{"loopChecks":0,"maxLoopChecks":3,"maxQaRetries":3,"qaRetries":0,"qaRuns":0},"coverage":{"transitions":null},"createdAt":"2026-08-20T11:44:45Z","docs":{"design":null,"loopCheck":[],"plan":null,"prd":null,"qa":null,"report":null},"docsRoot":"docs/sprints","gaps":[],"gates":{"G0":null,"G1":null,"G2":null,"G3":null,"G4":null,"G5":null,"G6":null,"G7":null},"id":"gate-probe","intents":[],"layers":{"notApplicableReason":{},"required":[],"resolution":{}},"phase":"draft","profile":"standard","rev":1,"runs":[],"schemaVersion":1,"slug":"replay","sprintDir":"gate-probe-replay","startCommit":null,"status":"active","title":"게이트 재현","updatedAt":"2026-08-20T11:44:45Z","updatedBy":{"kind":"claude","sessionId":"1ae7078d"},"waivers":[]}},"elapsedMs":271,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- advance draft->prd (G0) --
+{"data":{"forced":false,"from":"draft","gate":"G0","nextAction":{"alternatives":["prd (보완)"],"reason":"수용 기준을 작업으로 나누세요","skill":"plan"},"to":"prd"},"elapsedMs":173,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- advance prd->plan (G1) --
+{"data":{"forced":false,"from":"prd","gate":"G1","nextAction":{"alternatives":[],"reason":"처리 로직과 4계층을 설계하세요","skill":"design"},"to":"plan"},"elapsedMs":245,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- advance plan->design (G2) --
+{"data":{"forced":false,"from":"plan","gate":"G2","nextAction":{"alternatives":["loop-check (구현 후)"],"reason":"구현을 시작하세요","skill":null},"to":"design"},"elapsedMs":236,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- gate G3 --
+{"data":{"at":"2026-08-20T11:44:57Z","detail":null,"gate":"G3","result":"pass"},"elapsedMs":140,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- 상태 파일 gates --
+{
+  "phase": "design",
+  "rev": 5,
+  "gates": {
+    "G0": {
+      "at": "2026-08-20T11:44:48Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G1": {
+      "at": "2026-08-20T11:44:51Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G2": {
+      "at": "2026-08-20T11:44:54Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G3": {
+      "at": "2026-08-20T11:44:57Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G4": null,
+    "G5": null,
+    "G6": null,
+    "G7": null
+  }
+}
+-- sprint 파일 개수 --
+       1
+-- events --
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"profile":"standard","title":"게이트 재현"},"seq":1,"sprint":"gate-probe","ts":"2026-08-20T11:44:45Z","type":"SprintCreated"}
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"from":"draft","gate":"G0","to":"prd"},"seq":2,"sprint":"gate-probe","ts":"2026-08-20T11:44:48Z","type":"PhaseTransitioned"}
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"from":"prd","gate":"G1","to":"plan"},"seq":3,"sprint":"gate-probe","ts":"2026-08-20T11:44:51Z","type":"PhaseTransitioned"}
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"from":"plan","gate":"G2","to":"design"},"seq":4,"sprint":"gate-probe","ts":"2026-08-20T11:44:54Z","type":"PhaseTransitioned"}
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"gate":"G3","result":"pass"},"seq":5,"sprint":"gate-probe","ts":"2026-08-20T11:44:57Z","type":"GateEvaluated"}
+
+########## B. 같은 요청 반복 (중복 레코드 금지 조건) ##########
+-- B1. 동일 init 요청 2회차 --
+{"elapsedMs":9,"error":{"code":"SPRINT_EXISTS","detail":{"id":"dup-probe"},"hint":"다른 id 를 쓰거나 /tene:sprint status 로 확인하세요","message":"sprint 가 이미 존재합니다: dup-probe"},"ok":false,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+exit=3
+-- sprint 파일 목록 --
+dup-probe.json
+-- B2. 동일 advance 요청 1회차 --
+{"data":{"forced":false,"from":"draft","gate":"G0","nextAction":{"alternatives":["prd (보완)"],"reason":"수용 기준을 작업으로 나누세요","skill":"plan"},"to":"prd"},"elapsedMs":79,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+exit=0
+-- B3. 동일 advance 요청 2회차 (같은 명령 그대로) --
+{"elapsedMs":15,"error":{"code":"INVALID_TRANSITION","detail":{"allowed":["plan"],"from":"prd","to":"prd"},"hint":"허용된 전이: plan","message":"허용되지 않는 전이입니다: prd → prd"},"ok":false,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+exit=2
+-- G0 레코드 --
+{
+  "phase": "prd",
+  "rev": 2,
+  "G0": {
+    "at": "2026-08-20T11:45:04Z",
+    "detail": null,
+    "result": "pass"
+  }
+}
+-- events 전문 --
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"profile":"standard","title":"중복 요청"},"seq":1,"sprint":"dup-probe","ts":"2026-08-20T11:45:01Z","type":"SprintCreated"}
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"from":"draft","gate":"G0","to":"prd"},"seq":2,"sprint":"dup-probe","ts":"2026-08-20T11:45:05Z","type":"PhaseTransitioned"}
+-- 이벤트 타입별 건수 --
+{"SprintCreated":1,"PhaseTransitioned":1}
+
+########## C. 동시 동일 요청 2건 (경합) ##########
+-- 프로세스1 exit=2 --
+{"elapsedMs":122,"error":{"code":"INVALID_TRANSITION","detail":{"allowed":["design"],"from":"plan","to":"plan"},"hint":"허용된 전이: design","message":"허용되지 않는 전이입니다: plan → plan"},"ok":false,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- 프로세스2 exit=0 --
+{"data":{"forced":false,"from":"prd","gate":"G1","nextAction":{"alternatives":[],"reason":"처리 로직과 4계층을 설계하세요","skill":"design"},"to":"plan"},"elapsedMs":97,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- G1 레코드 --
+{
+  "phase": "plan",
+  "rev": 3,
+  "G1": {
+    "at": "2026-08-20T11:45:10Z",
+    "detail": null,
+    "result": "pass"
+  }
+}
+-- 이벤트 타입별 건수 --
+{
+  "SprintCreated:{\"profile\":\"standard\",\"title\":\"중복 요청\"}": 1,
+  "PhaseTransitioned:{\"from\":\"draft\",\"gate\":\"G0\",\"to\":\"prd\"}": 1,
+  "PhaseTransitioned:{\"from\":\"prd\",\"gate\":\"G1\",\"to\":\"plan\"}": 1
+}
+-- sprint 파일 목록 --
+dup-probe.json
+
+########## D. 같은 게이트를 두 번 기록 (덮어쓰기/누적 관찰) ##########
+-- D1. gate G0 --result pass (1회차) --
+{"data":{"at":"2026-08-20T11:47:26Z","detail":"1회차","gate":"G0","result":"pass"},"elapsedMs":78,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- D2. gate G0 --result fail (2회차, 같은 게이트) --
+{"data":{"at":"2026-08-20T11:47:26Z","detail":"2회차","gate":"G0","result":"fail"},"elapsedMs":90,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}
+-- 상태 파일의 G0 --
+{
+  "at": "2026-08-20T11:47:26Z",
+  "detail": "2회차",
+  "result": "fail"
+}
+-- gates 키 개수 / G0 레코드 개수 --
+gates keys: G0,G1,G2,G3,G4,G5,G6,G7
+G0 는 배열인가: false
+-- events 중 GateEvaluated --
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"gate":"G0","result":"pass"},"seq":4,"sprint":"dup-probe","ts":"2026-08-20T11:47:26Z","type":"GateEvaluated"}
+{"by":{"kind":"claude","sessionId":"1ae7078d"},"payload":{"gate":"G0","result":"fail"},"seq":5,"sprint":"dup-probe","ts":"2026-08-20T11:47:27Z","type":"GateEvaluated"}
+-- 이벤트 총 건수 --
+       5

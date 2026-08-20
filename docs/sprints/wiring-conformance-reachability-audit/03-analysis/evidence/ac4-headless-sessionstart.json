@@ -1,0 +1,9 @@
+{
+  "observation": "상태가 생긴 뒤 같은 프로젝트에서 2회차 claude -p 세션을 띄우고 SessionStart 주입을 관찰",
+  "firstSessionNote": "1회차는 .tene-claude 가 없어 주입 없음(kind: silent). 정상 동작이며 부재가 실패의 증거가 아니다",
+  "interactiveBaseline": "  kind: sprint | tokens: 80\n[tene] 진행 중: order-guard (phase: design, profile: standard)\n  · G3 PASS\n  · AC 8건 — 미판정 8\n  · 다음: 구현 계속 (또는 loop-check (구현 후)) — 구현을 시작하세요\n  · 문서: docs/sprints/order-guard-order-create-cancel-guard/\n",
+  "headlessInjected": "[tene] 진행 중: order-guard (phase: design, profile: standard)\\n  · G3 PASS\\n  · AC 8건 — 미판정 8\\n  · 다음: 구현 계속 (또는 loop-check (구현 후)) — 구현을 시작하세요\\n  · 문서: docs/sprints/order-guard-order-create-cancel-guard/\\n\", \"stdout\": \"[tene] 진행 중: order-gua",
+  "injectionEventCount": 1,
+  "modelEchoedInjection": true,
+  "match": "대화형 tene-state summary 출력과 헤드리스 SessionStart 주입이 동일"
+}

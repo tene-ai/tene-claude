@@ -1,0 +1,175 @@
+{
+  "purpose": "계측기 밖의 두 수단으로 표본을 검증한다 — (1) 모듈 인지 grep, (2) tene 자신의 인덱서(tene-scan questions)",
+  "firstAttemptNote": "첫 대조는 이름만 보는 grep 이라 모듈을 구분하지 못해 2건이 어긋났다. 확인 결과 계측기가 아니라 그 grep 이 틀렸다 — extractRequirements 는 같은 이름이 두 모듈에 있고, advance 는 네임스페이스 import 로 쓰인다. 대조 수단을 모듈 인지 방식으로 바꿨다.",
+  "samples": [
+    {
+      "id": "lib/doc/sections.js#isAutoBlock",
+      "instrument": "unreachable",
+      "instrumentProdUsers": [],
+      "moduleAwareNamedImporters": [],
+      "teneScan": {
+        "tier": "indexed",
+        "q2": [
+          "plugins/tene/lib/doc/sections.js:90"
+        ],
+        "q3": [],
+        "q4": [],
+        "q3note": "import 하는 파일이 없습니다 (같은 파일 안에서만 쓰이거나 진입점)"
+      },
+      "agrees": true
+    },
+    {
+      "id": "lib/doc/patch.js#patchBlocks",
+      "instrument": "unreachable",
+      "instrumentProdUsers": [],
+      "moduleAwareNamedImporters": [],
+      "teneScan": {
+        "tier": "indexed",
+        "q2": [
+          "plugins/tene/lib/doc/patch.js:86"
+        ],
+        "q3": [],
+        "q4": [],
+        "q3note": "import 하는 파일이 없습니다 (같은 파일 안에서만 쓰이거나 진입점)"
+      },
+      "agrees": true
+    },
+    {
+      "id": "lib/doc/extract.js#extractRequirements",
+      "instrument": "unreachable",
+      "instrumentProdUsers": [],
+      "moduleAwareNamedImporters": [],
+      "teneScan": {
+        "tier": "indexed",
+        "q2": [
+          "plugins/tene/lib/loop/requirements.js:252",
+          "plugins/tene/lib/doc/extract.js:200"
+        ],
+        "q3": [
+          "plugins/tene/bin/tene-loop:13",
+          "plugins/tene/lib/loop/run.js:16",
+          "plugins/tene/test/unit/loop.test.js:5"
+        ],
+        "q4": [
+          "plugins/tene/lib/loop/run.js:86",
+          "plugins/tene/test/unit/loop.test.js:95",
+          "plugins/tene/test/unit/loop.test.js:106",
+          "plugins/tene/test/unit/loop.test.js:114",
+          "plugins/tene/test/unit/loop.test.js:120",
+          "plugins/tene/lib/doc/extract.js:237"
+        ],
+        "q3note": null
+      },
+      "agrees": true
+    },
+    {
+      "id": "lib/doc/sections.js#SECTIONS",
+      "instrument": "unreachable",
+      "instrumentProdUsers": [],
+      "moduleAwareNamedImporters": [],
+      "teneScan": {
+        "tier": "indexed",
+        "q2": [
+          "plugins/tene/lib/doc/sections.js:11"
+        ],
+        "q3": [],
+        "q4": [],
+        "q3note": "import 하는 파일이 없습니다 (같은 파일 안에서만 쓰이거나 진입점)"
+      },
+      "agrees": true
+    },
+    {
+      "id": "lib/doc/template.js#templatePath",
+      "instrument": "unreachable",
+      "instrumentProdUsers": [],
+      "moduleAwareNamedImporters": [],
+      "teneScan": {
+        "tier": "indexed",
+        "q2": [
+          "plugins/tene/lib/doc/template.js:17"
+        ],
+        "q3": [],
+        "q4": [
+          "plugins/tene/lib/doc/template.js:38"
+        ],
+        "q3note": "import 하는 파일이 없습니다 (같은 파일 안에서만 쓰이거나 진입점)"
+      },
+      "agrees": true
+    },
+    {
+      "id": "lib/state/store.js#advance",
+      "instrument": "reachable",
+      "instrumentProdUsers": [
+        "bin/tene-state"
+      ],
+      "moduleAwareNamedImporters": [],
+      "teneScan": {
+        "tier": "indexed",
+        "q2": [
+          "plugins/tene/lib/state/store.js:229"
+        ],
+        "q3": [],
+        "q4": [
+          "plugins/tene/bin/tene-state:135",
+          "plugins/tene/bin/tene-state:135 (member-call)",
+          "plugins/tene/test/unit/state-store.test.js:89",
+          "plugins/tene/test/unit/state-store.test.js:89 (member-call)",
+          "plugins/tene/test/unit/state-store.test.js:100",
+          "plugins/tene/test/unit/state-store.test.js:100 (member-call)",
+          "plugins/tene/test/unit/state-store.test.js:113",
+          "plugins/tene/test/unit/state-store.test.js:113 (member-call)",
+          "plugins/tene/test/unit/state-store.test.js:154",
+          "plugins/tene/test/unit/state-store.test.js:154 (member-call)"
+        ],
+        "q3note": "import 하는 파일이 없습니다 (같은 파일 안에서만 쓰이거나 진입점)"
+      },
+      "agrees": true
+    },
+    {
+      "id": "lib/loop/requirements.js#extractRequirements",
+      "instrument": "reachable",
+      "instrumentProdUsers": [
+        "bin/tene-loop",
+        "lib/loop/run.js"
+      ],
+      "moduleAwareNamedImporters": [
+        "bin/tene-loop",
+        "lib/loop/run.js"
+      ],
+      "teneScan": {
+        "tier": "indexed",
+        "q2": [
+          "plugins/tene/lib/loop/requirements.js:252",
+          "plugins/tene/lib/doc/extract.js:200"
+        ],
+        "q3": [
+          "plugins/tene/bin/tene-loop:13",
+          "plugins/tene/lib/loop/run.js:16",
+          "plugins/tene/test/unit/loop.test.js:5"
+        ],
+        "q4": [
+          "plugins/tene/lib/loop/run.js:86",
+          "plugins/tene/test/unit/loop.test.js:95",
+          "plugins/tene/test/unit/loop.test.js:106",
+          "plugins/tene/test/unit/loop.test.js:114",
+          "plugins/tene/test/unit/loop.test.js:120",
+          "plugins/tene/lib/doc/extract.js:237"
+        ],
+        "q3note": null
+      },
+      "agrees": true
+    }
+  ],
+  "allAgree": true,
+  "notableFindings": [
+    {
+      "symbol": "lib/doc/extract.js#extractRequirements",
+      "detail": "같은 이름이 lib/loop/requirements.js:252 에도 있고 bin/tene-loop:13 · lib/loop/run.js:16 의 import 는 전부 loop 쪽을 가리킨다. doc/extract.js 쪽은 아무도 부르지 않는 중복 구현이다"
+    },
+    {
+      "symbol": "lib/doc/sections.js#SECTIONS",
+      "detail": "sections.js:28,29,86 에서 자기 파일 안에서만 쓰인다. 죽은 코드가 아니라 과다 export 다"
+    }
+  ],
+  "bucketSemantics": "unreachable = 외부에서 named import 도 네임스페이스 접근도 하지 않는 export. 죽은 코드의 상위집합이며 과다 export 를 포함한다. 미배선 확정이 아니라 후보다."
+}

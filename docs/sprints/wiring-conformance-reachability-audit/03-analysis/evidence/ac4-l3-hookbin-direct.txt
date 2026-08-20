@@ -1,0 +1,16 @@
+# 설치된 플러그인 캐시 경로로 직접 실행 (~/.claude/plugins/cache/tene-ai/tene/0.1.0)
+# 캐시본 vs 저장소 작업트리 diff: hooks.json / session-start.js / summary.js 모두 차이 없음
+
+=== proj-b (.tene-claude/state/current.json 있음) ===
+[tene] 진행 중: ac4-probe (phase: qa, profile: strict)
+  · G6 FAIL
+  · AC 10건 — blocking 미충족 1, 미판정 4
+  · 차단: ac_4 — AC4-PROBE-BLOCKREASON-9c1d
+  · 다음: /tene:qa — AC4-PROBE-NEXTREASON-7f3a
+  · loop-check 1/3회
+  · 전이 커버리지 2/5
+  · 문서: docs/sprints/ac4-probe-headless-sessionstart/
+[exit=0]
+
+=== proj-a (.tene-claude 없음) ===
+[exit=0] (stdout 비어 있음)

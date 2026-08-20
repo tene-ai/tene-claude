@@ -1,0 +1,32 @@
+[tene] G6 게이트가 이 태스크의 완료를 막았습니다.
+  ⛔ doc_exists:qa: qa 문서가 상태에 등록되지 않았습니다
+  ⛔ all_ac_judged: qa 문서를 읽지 못했습니다
+  ⛔ blocking_ac_all_passed: blocking AC 미통과: ac_1(failed)
+
+해결:
+  → /tene:qa 로 문서를 만드세요
+  → 검증을 다시 하거나, 통과할 수 없다면 사유와 함께 waiver 를 승인하세요
+
+게이트를 넘기려면 사유와 함께 /tene:sprint waiver 를 쓰세요.
+✔ 빈 프로젝트에서 sprint 를 만들고 문서 경로가 하나로 통일된다 (7846.996958ms)
+✔ 미완성 PRD 는 G1 이 막고, 채우면 통과한다 (18351.498193ms)
+✔ AC 를 추출하면 EARS 패턴과 우선도가 보존된다 (10438.607047ms)
+✔ phase 를 건너뛸 수 없다 (5198.869774ms)
+✔ 구현하면 인덱스가 앵커를 잇고 loop-check 가 통과한다 (21618.858771ms)
+✔ 앵커 없는 파일은 미귀속 변경으로 잡힌다 (21618.282079ms)
+✔ 코드를 고치면 passed 판정이 stale 이 된다 (17006.967507ms)
+✔ G6 fail 상태에서 TaskCompleted 가 exit 2 로 막는다 (10901.846952ms)
+✔ tene 태스크가 아니면 게이트가 개입하지 않는다 (6921.270598ms)
+✔ 상태를 지워도 문서만으로 복구된다 (7734.578712ms)
+✔ SessionStart 는 빈 프로젝트에서 조용하다 (3089.141162ms)
+✔ 사이클을 draft 에서 archived 까지 완주한다 (28354.221352ms)
+✔ 시크릿 가드는 fail-closed — 깨진 입력에도 차단한다 (2855.344337ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 165041.26012
+exit=0

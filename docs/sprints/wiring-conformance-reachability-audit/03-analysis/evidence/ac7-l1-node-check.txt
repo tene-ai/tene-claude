@@ -1,0 +1,4 @@
+# L1 static — node --check on all plugin JS
+# date: 2026-08-20T11:37:01Z
+# node: v26.0.0
+

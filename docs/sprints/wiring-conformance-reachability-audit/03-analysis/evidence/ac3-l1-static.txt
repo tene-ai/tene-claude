@@ -1,0 +1,19 @@
+### node --check (ac_3 경로 파일)
+ok plugins/tene/lib/state/store.js
+ok plugins/tene/lib/state/schema.js
+ok plugins/tene/bin/tene-state
+MISSING plugins/tene/lib/state/transitions.js
+
+### node --check (전체 lib+bin)
+syntax scan done
+
+### scripts/assert-no-deps.js
+✔ 외부 의존 0 확인
+exit=0
+
+### scripts/check-docs-consistency.js
+✔ 문서 정합성 확인 (문서 34개, 규칙 10종)
+exit=
+
+### eslint 존재 여부
+eslint 없음 (devDependencies 비어 있음)

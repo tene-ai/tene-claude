@@ -1,0 +1,167 @@
+{
+  "baselines": {
+    "self_conformance_full_suite": {
+      "duration_ms": 49645.062005,
+      "exit": null,
+      "fail": 0,
+      "file": "full-suite.txt",
+      "pass": 336,
+      "skipped": 0,
+      "tests": 336,
+      "todo": 0
+    },
+    "wiring_ac8_full_suite_prior": {
+      "duration_ms": 27484.36187,
+      "exit": null,
+      "fail": 0,
+      "file": "ac8-full-suite.txt",
+      "pass": 336,
+      "skipped": 0,
+      "tests": 336,
+      "todo": 0
+    }
+  },
+  "benchRuns": [
+    {
+      "baselineMs": 1219,
+      "context": "run3 직후 (스위트와 연속 실행)",
+      "exit": 1,
+      "over": [
+        "SessionStart 350ms > 150ms"
+      ]
+    },
+    {
+      "baselineMs": 449,
+      "context": "단독 run1",
+      "exit": 1,
+      "over": [
+        "SessionStart 460ms > 150ms",
+        "PostToolUse 178ms > 150ms"
+      ]
+    },
+    {
+      "baselineMs": 369,
+      "context": "단독 run2",
+      "exit": 1,
+      "over": [
+        "SessionStart 659ms > 150ms",
+        "PostToolUse 901ms > 150ms",
+        "UserPromptSubmit 888ms > 100ms",
+        "Guard 561ms > 300ms"
+      ]
+    },
+    {
+      "baselineMs": 814,
+      "context": "단독 run3",
+      "exit": 0,
+      "over": []
+    },
+    {
+      "baselineMs": 299,
+      "context": "sprint 기존 아티팩트 ac10-hook-bench.txt",
+      "exit": null,
+      "over": []
+    }
+  ],
+  "ciMatrixNodeVersions": [
+    "20",
+    "22",
+    "24"
+  ],
+  "collectedAt": "2026-08-20T11:53:17Z",
+  "collectionNotes": [
+    "run3 파일(ac8-l7-rerun.txt)에는 node --test 출력 뒤에 bench.js 출력이 이어 붙어 있다. 이름집합 diff 의 '✖ 로직 예산 초과:' 1행은 bench 출력이며 테스트 케이스가 아니다.",
+    "run4 의 실패 테스트 이름은 node --test 요약의 fail 14 와 일치한다.",
+    "저장소 사본과 배포본 캐시의 lib/bin/hooks/skills/workflows/agents/templates/package.json 은 diff -rq 결과 동일했다 (ac8-l7-deployed-vs-repo.txt)."
+  ],
+  "commands": {
+    "run1_npm_test_repo": "npm --prefix plugins/tene test  (= node --test test/unit/*.test.js)",
+    "run2_ci_full_repo": "node --test <validate.yml 의 unit+guard-matrix+integration+plugin-layout+frontmatter+agent-contract+eval-honesty>",
+    "run3_ci_full_repo_repeat": "run2 와 동일 명령 재실행",
+    "run4_ci_full_deployed_cache": "run2 와 동일 파일 집합을 ~/.claude/plugins/cache/tene-ai/tene/0.1.0 에서 실행"
+  },
+  "gitHead": "72fd1f1099260cda75e4b016fa5906f82117cb95",
+  "machineLoadAtBench": "20:53  up 80 days,  4:01, 17 users, load averages: 89.81 381.92 437.66",
+  "nameSetDiff": {
+    "run2_vs_prior_wiring_artifact": {
+      "onlyInPrior": [],
+      "onlyInRun2": []
+    },
+    "run2_vs_run3": {
+      "onlyInRun2": [],
+      "onlyInRun3": [
+        "✖ 로직 예산 초과:\n"
+      ]
+    },
+    "run2_vs_self_conformance_baseline": {
+      "onlyInBaseline": [],
+      "onlyInRun2": []
+    }
+  },
+  "node": "v26.0.0",
+  "run4_failing_test_names": [
+    "E-1 Python 심볼과 호출 관계를 찾는다",
+    "E-1 Python 프로젝트도 경로·import 로 분류한다",
+    "E-1 기본 프리셋이 실제 Express 앱 구조를 정확히 분류한다",
+    "E-1 실제 프로젝트의 검증 도구를 정확히 감지한다",
+    "E-10 [정직성] 도구 없음을 not-applicable 로 바꾸지 않는다",
+    "E-10 [정직성] 도구가 없으면 없다고 하고 0%/passed 로 위장하지 않는다",
+    "E-12 [정직성] 앵커에 걸리지 않은 변경을 미귀속으로 보고한다",
+    "E-3 심어둔 계층 위반 2건을 정확히 찾는다",
+    "E-4 [정직성] 규칙에 없는 디렉토리를 추측으로 배정하지 않는다",
+    "E-4 [정직성] 낮은 확신을 높은 확신으로 올리지 않는다",
+    "E-7 [정직성] 6질문에서 모르는 항목을 지어내지 않는다",
+    "E-7 [정직성] 인덱스로 답할 수 없으면 needs-investigation 을 낸다",
+    "설계 카탈로그와 실제 스킬 디렉토리가 일치한다",
+    "플러그인 매니페스트가 루트가 아니라 plugins/tene 에 있다"
+  ],
+  "run4_failure_causes_verbatim": [
+    "ENOENT: no such file or directory, lstat '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/flat-app'",
+    "ENOENT: no such file or directory, lstat '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/layered-app'",
+    "ENOENT: no such file or directory, lstat '/Users/kaykim/.claude/plugins/cache/tene-ai/evals/fixtures/no-tools-app'",
+    "ENOENT: no such file or directory, open '/Users/kaykim/.claude/plugins/cache/tene-ai/docs/02-design/05-skills-hooks-routing.md'",
+    "assert.ok(existsSync(join(P, '../../.claude-plugin/marketplace.json'))) 가 falsy"
+  ],
+  "runs": {
+    "run1_npm_test_repo": {
+      "duration_ms": 8781.675156,
+      "exit": 0,
+      "fail": 0,
+      "file": "ac8-l2-npm-test.txt",
+      "pass": 252,
+      "skipped": 0,
+      "tests": 252,
+      "todo": 0
+    },
+    "run2_ci_full_repo": {
+      "duration_ms": 153718.980283,
+      "exit": 0,
+      "fail": 0,
+      "file": "ac8-l2-full-suite-run2.txt",
+      "pass": 336,
+      "skipped": 0,
+      "tests": 336,
+      "todo": 0
+    },
+    "run3_ci_full_repo_repeat": {
+      "duration_ms": 142883.771134,
+      "exit": 0,
+      "fail": 0,
+      "file": "ac8-l7-rerun.txt",
+      "pass": 336,
+      "skipped": 0,
+      "tests": 336,
+      "todo": 0
+    },
+    "run4_ci_full_deployed_cache": {
+      "duration_ms": 51039.397736,
+      "exit": 1,
+      "fail": 14,
+      "file": "ac8-l2-deployed-suite.txt",
+      "pass": 322,
+      "skipped": 0,
+      "tests": 336,
+      "todo": 0
+    }
+  }
+}

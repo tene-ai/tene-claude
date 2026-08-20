@@ -1,0 +1,197 @@
+{
+  "ac": [
+    {
+      "anchors": [
+        "createOrder"
+      ],
+      "id": "ac_1",
+      "method": "UNIT",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "statement": "If 주문 생성 요청의 items 가 없거나 길이가 0 이면, then 시스템은 주문을 생성하지 않고 code 가 EMPTY_CART 인 오류를 발생시켜야 한다",
+      "status": "pending"
+    },
+    {
+      "anchors": [
+        "cancelOrder"
+      ],
+      "id": "ac_2",
+      "method": "UNIT",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "statement": "If status 가 cancelled 인 주문에 취소를 요청하면, then 시스템은 code 가 ALREADY_CANCELLED 인 오류를 발생시켜야 한다",
+      "status": "pending"
+    },
+    {
+      "anchors": [
+        "cancelOrder",
+        "findOrder"
+      ],
+      "id": "ac_3",
+      "method": "DATA",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "statement": "If status 가 cancelled 인 주문에 취소를 요청하면, then 시스템은 그 주문의 status 를 cancelled 로 유지해야 한다",
+      "status": "pending"
+    },
+    {
+      "anchors": [
+        "cancelOrder",
+        "findOrder"
+      ],
+      "id": "ac_4",
+      "method": "UNIT",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "statement": "If 저장소에 없는 id 로 취소를 요청하면, then 시스템은 code 가 ORDER_NOT_FOUND 인 오류를 발생시켜야 한다",
+      "status": "pending"
+    },
+    {
+      "anchors": [
+        "createOrder",
+        "saveOrder"
+      ],
+      "id": "ac_5",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "statement": "When items 가 1개 이상인 주문 생성 요청을 받으면, 시스템은 status 가 pending 인 주문을 저장소에 기록하고 그 주문을 반환해야 한다",
+      "status": "pending"
+    },
+    {
+      "anchors": [
+        "cancelOrder",
+        "updateOrderStatus"
+      ],
+      "id": "ac_6",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "statement": "When status 가 pending 인 주문에 취소를 요청하면, 시스템은 저장소의 해당 주문 status 를 cancelled 로 바꾸고 그 주문을 반환해야 한다",
+      "status": "pending"
+    },
+    {
+      "anchors": [
+        "createOrder",
+        "countOrders"
+      ],
+      "id": "ac_7",
+      "method": "DATA",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "statement": "If 주문 생성이 items 검사로 거부되면, then 시스템은 저장소의 주문 개수를 거부 이전과 같게 유지해야 한다",
+      "status": "pending"
+    },
+    {
+      "anchors": [
+        "saveOrder"
+      ],
+      "id": "ac_8",
+      "method": "UNIT",
+      "pattern": "ubiquitous",
+      "priority": "non-blocking",
+      "statement": "시스템은 주문마다 서로 다른 id 를 발급해야 한다",
+      "status": "pending"
+    }
+  ],
+  "archivedAt": null,
+  "carryOver": [],
+  "counters": {
+    "loopChecks": 0,
+    "maxLoopChecks": 3,
+    "maxQaRetries": 3,
+    "qaRetries": 0,
+    "qaRuns": 0
+  },
+  "coverage": {
+    "transitions": null
+  },
+  "createdAt": "2026-08-20T10:49:07Z",
+  "docs": {
+    "design": "02-design/design.md",
+    "loopCheck": [],
+    "plan": "01-plan/plan.md",
+    "prd": "00-prd/prd.md",
+    "qa": null,
+    "report": null
+  },
+  "docsRoot": "docs/sprints",
+  "gaps": [],
+  "gates": {
+    "G0": {
+      "at": "2026-08-20T10:49:16Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G1": {
+      "at": "2026-08-20T10:51:25Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G2": {
+      "at": "2026-08-20T10:53:15Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G3": {
+      "at": "2026-08-20T10:58:24Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G4": null,
+    "G5": null,
+    "G6": null,
+    "G7": null
+  },
+  "id": "order-guard",
+  "intents": [
+    {
+      "actors": [
+        "주문 API 호출자"
+      ],
+      "id": "intent_1",
+      "rationale": "금액 0원·항목 0개 주문이 만들어지면 이후 결제·배송 단계가 판단할 근거를 잃는다",
+      "source": "conversation",
+      "statement": "빈 장바구니 주문을 생성 단계에서 차단하고, 거부 사유를 호출자가 코드로 식별하게 한다"
+    },
+    {
+      "actors": [
+        "주문 API 호출자"
+      ],
+      "id": "intent_2",
+      "rationale": "취소가 여러 번 성공하면 환불·재고 복구 같은 후속 처리가 중복 실행된다",
+      "source": "conversation",
+      "statement": "이미 취소된 주문의 재취소를 거부해 취소를 한 번만 성립시킨다"
+    },
+    {
+      "actors": [
+        "개발자"
+      ],
+      "id": "intent_3",
+      "rationale": "현재 cancelOrder 는 조회 없이 결과를 지어내므로, 저장소 없이는 두 번째 취소를 구분할 방법 자체가 없다",
+      "source": "assumption",
+      "statement": "주문 상태를 함수 밖에 보관해 취소 판정이 실제 상태를 근거로 이뤄지게 한다"
+    }
+  ],
+  "layers": {
+    "notApplicableReason": {},
+    "required": [],
+    "resolution": {}
+  },
+  "phase": "design",
+  "profile": "standard",
+  "rev": 11,
+  "runs": [],
+  "schemaVersion": 1,
+  "slug": "order-create-cancel-guard",
+  "sprintDir": "order-guard-order-create-cancel-guard",
+  "startCommit": null,
+  "status": "active",
+  "title": "주문 생성·취소 가드",
+  "updatedAt": "2026-08-20T10:58:24Z",
+  "updatedBy": {
+    "kind": "claude",
+    "sessionId": "9644f30c"
+  },
+  "waivers": []
+}

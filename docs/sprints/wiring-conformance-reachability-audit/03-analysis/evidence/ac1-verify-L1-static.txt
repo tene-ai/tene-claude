@@ -1,0 +1,21 @@
+== which eslint/tsc ==
+eslint not found
+tsc not found
+(not found)
+== node_modules ==
+ls: /Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/node_modules: No such file or directory
+ls: /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/node_modules: No such file or directory
+== lint/type configs ==
+ls: /Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/eslint.config.js: No such file or directory
+ls: /Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/tsconfig.json: No such file or directory
+ls: /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/eslint.config.js: No such file or directory
+ls: /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/tsconfig.json: No such file or directory
+== package.json scripts (plugin) ==
+{"test":"node --test test/unit/*.test.js","test:guard":"node test/guard-matrix.js","test:latency":"node test/hook-latency.js"}
+== node --check instrument ==
+OK evals/reachability.mjs
+== node --check deployed lib+bin ==
+      76
+syntax_check_exit=0
+== node -v ==
+v26.0.0

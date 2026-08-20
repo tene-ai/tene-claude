@@ -1,0 +1,68 @@
+{
+  "kind": "재관찰 (새 claude -p 실행 아님)",
+  "target": "선행 세션 9644f30c 의 claude -p 헤드리스 실행 산출물",
+  "collectedBy": "session 1ae7078d, 2026-08-20T11:4x UTC",
+  "liveProject": "/private/tmp/claude-501/-Users-kaykim-Documents-GitHub-agent-kay-it-tene-claude/1ae7078d-07f7-4ff8-9958-0bf56ab81418/scratchpad/headless3",
+  "artifactHashRecheck": {
+    "ac3-session-log.jsonl": {
+      "manifest": "34764092e1a82d96b9a31a4975fd1dabf9baa3fc94d902ac833363699868f231",
+      "recomputed": "34764092e1a82d96b9a31a4975fd1dabf9baa3fc94d902ac833363699868f231",
+      "match": true
+    },
+    "ac3-headless-gates.json": {
+      "manifest": "661c393ec0aac6a186f4edbeba6cad9f0d2f533bcb625203e7f6aba0a42138ff",
+      "recomputed": "661c393ec0aac6a186f4edbeba6cad9f0d2f533bcb625203e7f6aba0a42138ff",
+      "match": true
+    },
+    "ac3-state-file-raw.json": {
+      "manifest": "등록 항목 없음 (manifest.json 에 ac3-state-file-raw 문자열이 나타나지 않음)",
+      "recomputed": "848e95f17dcc00ecd297f12f74cdc8143f5ba247d76548197d43de59d14f8e23",
+      "liveStateFile": "848e95f17dcc00ecd297f12f74cdc8143f5ba247d76548197d43de59d14f8e23",
+      "match": "사본과 살아 있는 상태 파일이 바이트 동일"
+    }
+  },
+  "liveStateFileGates": {
+    "G0": { "at": "2026-08-20T10:49:16Z", "detail": null, "result": "pass" },
+    "G1": { "at": "2026-08-20T10:51:25Z", "detail": null, "result": "pass" },
+    "G2": { "at": "2026-08-20T10:53:15Z", "detail": null, "result": "pass" },
+    "G3": { "at": "2026-08-20T10:58:24Z", "detail": null, "result": "pass" },
+    "G4": null, "G5": null, "G6": null, "G7": null,
+    "phase": "design",
+    "rev": 11,
+    "forcedKeyPresent": false
+  },
+  "liveEventsNdjson": {
+    "lines": 8,
+    "types": {
+      "SprintCreated": 1,
+      "PhaseTransitioned": 3,
+      "AcJudged": 2,
+      "IntentCaptured": 1,
+      "GateEvaluated": 1
+    },
+    "gateBearingEvents": [
+      "PhaseTransitioned draft→prd gate=G0 @10:49:16Z",
+      "PhaseTransitioned prd→plan gate=G1 @10:51:25Z",
+      "PhaseTransitioned plan→design gate=G2 @10:53:15Z",
+      "GateEvaluated gate=G3 result=pass @10:58:24Z"
+    ]
+  },
+  "sprintStateFiles": ["order-guard.json"],
+  "sprintStateFileCount": 1,
+  "gateCommandsExtractedFromSessionLog": [
+    { "ts": "2026-08-20T10:49:15.516Z", "cmd": "tene-state advance --id order-guard --to prd --result pass", "resultObserved": "ok" },
+    { "ts": "2026-08-20T10:51:24.801Z", "cmd": "tene-state advance --id order-guard --to plan --result pass", "resultObserved": "ok" },
+    { "ts": "2026-08-20T10:53:14.764Z", "cmd": "tene-state advance --id order-guard --to design --result pass", "resultObserved": "ok" },
+    { "ts": "2026-08-20T10:58:09.555Z", "cmd": "tene-gate check --gate G3 --sprint order-guard", "resultObserved": "checks 6건 전부 pass 로 출력" },
+    { "ts": "2026-08-20T10:58:20.944Z", "cmd": "tene-state gate --id order-guard --gate G3 --result pass", "resultObserved": "{\"ok\":false,\"error\":{\"code\":\"BAD_ARGS\",\"detail\":{\"need\":\"--to <G0..G7> --result <pass|fail|warn>\"}}}" },
+    { "ts": "2026-08-20T10:58:24.127Z", "cmd": "tene-state gate --id order-guard --to G3 --result pass", "resultObserved": "{\"ok\":true,\"data\":{\"at\":\"2026-08-20T10:58:24Z\",\"gate\":\"G3\",\"result\":\"pass\"}}" }
+  ],
+  "duplicateRequestObservation": "G3 기록 요청이 4초 간격으로 2회 발신됨(첫 회 --gate 플래그, 두 번째 --to 플래그). 상태 파일 gates.G3 는 1건, events.ndjson 의 GateEvaluated 는 1건.",
+  "sessionLogFooter": {
+    "is_error": false,
+    "num_turns": 65,
+    "duration_api_ms": 540141,
+    "total_cost_usd": 4.9224145,
+    "permission_denials": 1
+  }
+}

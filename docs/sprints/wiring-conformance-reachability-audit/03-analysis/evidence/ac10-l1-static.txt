@@ -1,0 +1,29 @@
+### ac_10 L1 static — 2026-08-20T11:37:17Z
+### node: v26.0.0 | platform: Darwin 24.6.0 x86_64
+
+## [1] node --check (구문 검사)
+OK   plugins/tene/test/bench.js
+OK   plugins/tene/bin/tene-hook
+OK   plugins/tene/lib/state/summary.js
+OK   plugins/tene/lib/util/budget.js
+OK   plugins/tene/lib/util/deadline.js
+
+## [2] package.json scripts (plugins/tene/package.json)
+11:  "scripts": {
+12-    "test": "node --test test/unit/*.test.js",
+13-    "test:guard": "node test/guard-matrix.js",
+14-    "test:latency": "node test/hook-latency.js"
+15-  }
+16-}
+
+## [3] test:latency 가 가리키는 파일 존재 여부
+ls: plugins/tene/test/hook-latency.js: No such file or directory
+exit=1
+
+## [4] 벤치 스크립트 파일 목록 (test/ 최상위)
+-rw-r--r--@ 1 kaykim  staff   8522  8 20 15:11 plugins/tene/test/agent-contract.test.js
+-rw-r--r--@ 1 kaykim  staff   4199  8 20 12:23 plugins/tene/test/bench.js
+-rw-r--r--@ 1 kaykim  staff  14333  8 20 13:32 plugins/tene/test/eval-honesty.test.js
+-rw-r--r--@ 1 kaykim  staff  11444  8 20 15:35 plugins/tene/test/frontmatter.test.js
+-rw-r--r--@ 1 kaykim  staff   3333  8 20 12:18 plugins/tene/test/guard-matrix.test.js
+-rw-r--r--@ 1 kaykim  staff   7524  8 20 15:36 plugins/tene/test/plugin-layout.test.js

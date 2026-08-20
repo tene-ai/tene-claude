@@ -1,0 +1,790 @@
+{
+  "root": "/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0",
+  "totals": {
+    "libFiles": 67,
+    "exports": 408,
+    "reachable": 211,
+    "dynamic": 12,
+    "test-only": 61,
+    "unreachable": 124
+  },
+  "moduleCounts": {
+    "reachable": 55,
+    "dynamic": 11,
+    "test-only": 1
+  },
+  "staticallyUnreachableModules": {
+    "dynamic": [
+      "lib/hooks/compact.js",
+      "lib/hooks/post-bash.js",
+      "lib/hooks/post-edit.js",
+      "lib/hooks/pre-edit.js",
+      "lib/hooks/session-end.js",
+      "lib/hooks/session-start.js",
+      "lib/hooks/stop.js",
+      "lib/hooks/subagent-stop.js",
+      "lib/hooks/task-created.js",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "test-only": [
+      "lib/plan/aggregate.js"
+    ],
+    "unreachable": []
+  },
+  "moduleRecords": [
+    {
+      "file": "lib/hooks/compact.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/compact.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/hooks/post-bash.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/post-bash.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/hooks/post-edit.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/post-edit.js"
+      ],
+      "exports": 2
+    },
+    {
+      "file": "lib/hooks/pre-edit.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/pre-edit.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/hooks/session-end.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/session-end.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/hooks/session-start.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/session-start.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/hooks/stop.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/stop.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/hooks/subagent-stop.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/subagent-stop.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/hooks/task-created.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/task-created.js"
+      ],
+      "exports": 3
+    },
+    {
+      "file": "lib/hooks/user-prompt.js",
+      "classification": "dynamic",
+      "pathLen": 2,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/user-prompt.js"
+      ],
+      "exports": 1
+    },
+    {
+      "file": "lib/router/match.js",
+      "classification": "dynamic",
+      "pathLen": 3,
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/user-prompt.js",
+        "lib/router/match.js"
+      ],
+      "exports": 8
+    },
+    {
+      "file": "lib/plan/aggregate.js",
+      "classification": "test-only",
+      "pathLen": 1,
+      "path": [
+        "test/unit/router-report.test.js"
+      ],
+      "exports": 6
+    }
+  ],
+  "duplicateCheck": {
+    "classifiedEntries": 408,
+    "uniqueIds": 408,
+    "duplicates": [],
+    "pathsKeys": 408,
+    "totalsExports": 408,
+    "idsInMultipleBuckets": []
+  },
+  "dynamicSymbols": [
+    {
+      "id": "lib/hooks/compact.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/compact.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/post-bash.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/post-bash.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/post-edit.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/post-edit.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/pre-edit.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/pre-edit.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/session-end.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/session-end.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/session-start.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/session-start.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/stop.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/stop.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/subagent-stop.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/subagent-stop.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/task-created.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/task-created.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/hooks/user-prompt.js#run",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/user-prompt.js"
+      ],
+      "symbolUsers": [
+        "bin/tene-hook"
+      ],
+      "approximated": true
+    },
+    {
+      "id": "lib/router/match.js#route",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/user-prompt.js",
+        "lib/router/match.js"
+      ],
+      "symbolUsers": [
+        "lib/hooks/user-prompt.js",
+        "test/unit/router-report.test.js"
+      ],
+      "approximated": false
+    },
+    {
+      "id": "lib/router/match.js#formatSuggestion",
+      "module": [
+        "bin/tene-hook",
+        "lib/hooks/user-prompt.js",
+        "lib/router/match.js"
+      ],
+      "symbolUsers": [
+        "lib/hooks/user-prompt.js",
+        "test/unit/router-report.test.js"
+      ],
+      "approximated": false
+    }
+  ],
+  "testOnlySymbols": [
+    {
+      "id": "lib/doc/extract.js#earsPattern",
+      "symbolUsers": [
+        "test/unit/doc-extract.test.js"
+      ]
+    },
+    {
+      "id": "lib/gate/rules.js#GATES",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/guard/rules.js#isVaultPath",
+      "symbolUsers": [
+        "test/unit/guard.test.js"
+      ]
+    },
+    {
+      "id": "lib/guard/rules.js#isPlainEnvFile",
+      "symbolUsers": [
+        "test/unit/guard.test.js"
+      ]
+    },
+    {
+      "id": "lib/guard/segment.js#segments",
+      "symbolUsers": [
+        "test/unit/guard.test.js"
+      ]
+    },
+    {
+      "id": "lib/guard/segment.js#stripPrefix",
+      "symbolUsers": [
+        "test/unit/guard.test.js"
+      ]
+    },
+    {
+      "id": "lib/guard/segment.js#expandIndirect",
+      "symbolUsers": [
+        "test/unit/guard.test.js"
+      ]
+    },
+    {
+      "id": "lib/guard/segment.js#heredocBodies",
+      "symbolUsers": [
+        "test/unit/guard.test.js"
+      ]
+    },
+    {
+      "id": "lib/guard/segment.js#substitutions",
+      "symbolUsers": [
+        "test/unit/guard.test.js"
+      ]
+    },
+    {
+      "id": "lib/hooks/task-created.js#parsePhaseFromTitle",
+      "symbolUsers": [
+        "test/unit/hooks.test.js"
+      ]
+    },
+    {
+      "id": "lib/hooks/task-created.js#parseAcRefs",
+      "symbolUsers": [
+        "test/unit/hooks.test.js"
+      ]
+    },
+    {
+      "id": "lib/loop/judge.js#judgeRequirement",
+      "symbolUsers": [
+        "test/unit/loop.test.js"
+      ]
+    },
+    {
+      "id": "lib/loop/judge.js#severityOf",
+      "symbolUsers": [
+        "test/unit/loop.test.js"
+      ]
+    },
+    {
+      "id": "lib/loop/judge.js#kindOf",
+      "symbolUsers": [
+        "test/unit/loop.test.js"
+      ]
+    },
+    {
+      "id": "lib/loop/judge.js#summarize",
+      "symbolUsers": [
+        "test/unit/loop.test.js"
+      ]
+    },
+    {
+      "id": "lib/loop/progress.js#VERDICT",
+      "symbolUsers": [
+        "test/unit/loop.test.js"
+      ]
+    },
+    {
+      "id": "lib/loop/progress.js#detectStall",
+      "symbolUsers": [
+        "test/unit/loop.test.js"
+      ]
+    },
+    {
+      "id": "lib/loop/unattributed.js#isExempt",
+      "symbolUsers": [
+        "test/unit/loop.test.js"
+      ]
+    },
+    {
+      "id": "lib/plan/aggregate.js#aggregate",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/plan/aggregate.js#recommendNext",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/plan/aggregate.js#promote",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/plan/aggregate.js#upsertSprint",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/qa/capability.js#detectTestRunner",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/qa/charter.js#selectVariants",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/qa/charter.js#extractForbidden",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/qa/coverage.js#crossJudgeDataFlow",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/qa/evidence.js#sha256",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/qa/evidence.js#scanSecrets",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/qa/evidence.js#redact",
+      "symbolUsers": [
+        "test/unit/qa-gate.test.js"
+      ]
+    },
+    {
+      "id": "lib/recover/resync.js#detectDocs",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/recover/resync.js#inferPhase",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/recover/resync.js#mergeAc",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/report/carry.js#CARRY_KIND",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/report/lineage.js#recentArchived",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/report/lineage.js#extractProducedSymbols",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/router/match.js#loadRules",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/router/match.js#detectLang",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/router/match.js#matchesCondition",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/router/match.js#matchesKeywords",
+      "symbolUsers": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/anchors.js#classifyAnchor",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/index-builder.js#build",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/langs/index.js#PACKS",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/langs/index.js#validatePack",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/langs/typescript.js#stripNonCode",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/langs/typescript.js#extractDefinitions",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/langs/typescript.js#extractImports",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/langs/typescript.js#extractReferences",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/layer.js#violationKind",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/query.js#orphans",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/questions.js#parseParams",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/questions.js#parseReturn",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/walk.js#parseGitignore",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/scan/walk.js#matchesIgnore",
+      "symbolUsers": [
+        "test/unit/scan.test.js"
+      ]
+    },
+    {
+      "id": "lib/state/retention.js#compactEvents",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/state/store.js#ensureStateDir",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/state/summary.js#SESSION_BUDGET_TOKENS",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/state/summary.js#formatSummary",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/state/summary.js#recommendNext",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/state/summary.js#formatNextSuggestion",
+      "symbolUsers": [
+        "test/unit/state-summary.test.js"
+      ]
+    },
+    {
+      "id": "lib/util/json.js#sortKeys",
+      "symbolUsers": [
+        "test/unit/util-json.test.js"
+      ]
+    },
+    {
+      "id": "lib/util/paths.js#isStatePath",
+      "symbolUsers": [
+        "test/unit/util-paths.test.js"
+      ]
+    }
+  ],
+  "unreachableSymbolsSample": [
+    "lib/doc/extract.js#extractRequirements",
+    "lib/doc/patch.js#patchBlocks",
+    "lib/doc/sections.js#SECTIONS",
+    "lib/doc/sections.js#REQUIRED_BY_PROFILE",
+    "lib/doc/sections.js#AUTO_BLOCKS",
+    "lib/doc/sections.js#DOC_PHASE",
+    "lib/doc/sections.js#DOC_GATE",
+    "lib/doc/sections.js#isAutoBlock",
+    "lib/doc/template.js#templatePath",
+    "lib/doc/template.js#render",
+    "lib/doctor.js#versionGte",
+    "lib/doctor.js#detectClaudeVersion",
+    "lib/guard/rules.js#SR",
+    "lib/hooks/post-edit.js#pathsFrom",
+    "lib/loop/judge.js#SCORE",
+    "lib/loop/requirements.js#SOURCES",
+    "lib/loop/requirements.js#coverageGaps",
+    "lib/loop/unattributed.js#RESOLUTIONS",
+    "lib/loop/unattributed.js#diffStat",
+    "lib/loop/unattributed.js#promptFor"
+  ],
+  "unreachableSymbolCount": 124,
+  "unreachableSplit": {
+    "moduleUnreachable": 0,
+    "moduleReachableButSymbolUnused": 124
+  },
+  "selfCheck": {
+    "known": [
+      {
+        "kind": "known",
+        "file": "lib/plan/aggregate.js",
+        "want": "test-only",
+        "got": "test-only",
+        "ok": true
+      },
+      {
+        "kind": "known",
+        "file": "lib/hooks/session-start.js",
+        "want": "dynamic",
+        "got": "dynamic",
+        "ok": true
+      },
+      {
+        "kind": "known",
+        "file": "lib/state/store.js",
+        "want": "reachable",
+        "got": "reachable",
+        "ok": true
+      }
+    ],
+    "synthetic": {
+      "kind": "synthetic",
+      "detail": "임시 디렉토리에 배선·미배선·테스트전용·동적 모듈을 만들어 분류기를 태웠다",
+      "rows": [
+        {
+          "file": "lib/wired.js",
+          "want": "reachable",
+          "got": "reachable"
+        },
+        {
+          "file": "lib/orphan.js",
+          "want": "unreachable",
+          "got": "unreachable"
+        },
+        {
+          "file": "lib/testonly.js",
+          "want": "test-only",
+          "got": "test-only"
+        },
+        {
+          "file": "lib/dyn.js",
+          "want": "dynamic",
+          "got": "dynamic"
+        }
+      ],
+      "ok": true,
+      "tmpDir": "/var/folders/r9/fbtgppdn7t7f_04mvv64n8_w0000gn/T/reach-uNsKf3"
+    },
+    "symbol": [
+      {
+        "kind": "symbol",
+        "id": "lib/state/store.js#advance",
+        "want": "reachable",
+        "got": "reachable",
+        "ok": true
+      },
+      {
+        "kind": "symbol",
+        "id": "lib/plan/aggregate.js#promote",
+        "want": "test-only",
+        "got": "test-only",
+        "ok": true
+      },
+      {
+        "kind": "symbol",
+        "id": "lib/hooks/session-start.js#run",
+        "want": "dynamic",
+        "got": "dynamic",
+        "ok": true
+      },
+      {
+        "kind": "symbol",
+        "id": "lib/doc/sections.js#isAutoBlock",
+        "want": "unreachable",
+        "got": "unreachable",
+        "ok": true
+      },
+      {
+        "kind": "symbol",
+        "id": "lib/doc/sections.js#DOC_PATH",
+        "want": "reachable",
+        "got": "reachable",
+        "ok": true
+      }
+    ]
+  },
+  "limitation": "동적 접근(obj[name])·재-export·기본 export 는 추적하지 못한다. 그 경우 unreachable 오탐이 날 수 있으므로 결과를 미배선 확정이 아니라 후보로 읽어야 한다.",
+  "trustworthy": true
+}

@@ -1,0 +1,130 @@
+{
+  "artifacts": [
+    {
+      "ac": "ac_3",
+      "bytes": 474,
+      "createdAt": "2026-08-20T09:55:42Z",
+      "id": "art_guard",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac3-guard-matrix.txt",
+      "sha256": "81c17578ac6763afadcc0ac89b79bcab68657499ca6252c68a67a49844d5c545",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_4",
+      "bytes": 2996,
+      "createdAt": "2026-08-20T09:55:43Z",
+      "id": "art_honesty",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac4-honesty.txt",
+      "sha256": "9a6e25c70acf12169ec413487b6676d645c9153233471584414594aedaa81c5a",
+      "tool": "node --test"
+    },
+    {
+      "ac": "ac_5",
+      "bytes": 1907,
+      "createdAt": "2026-08-20T09:55:43Z",
+      "id": "art_bins",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac5-bin-commands.txt",
+      "sha256": "9fc16122e4a615863bfff180d81f0c726808c39d09138c2af08ce1e768511800",
+      "tool": "bin/*"
+    },
+    {
+      "ac": "ac_7",
+      "bytes": 370,
+      "createdAt": "2026-08-20T09:55:44Z",
+      "id": "art_env_i",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac7-envelope-interactive.json",
+      "sha256": "9f975221874978376a744644e7d2681df88c1c2d3362c90c7914c34d58a63f49",
+      "tool": "tene-state summary"
+    },
+    {
+      "ac": "ac_7",
+      "bytes": 370,
+      "createdAt": "2026-08-20T09:55:45Z",
+      "id": "art_env_h",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac7-envelope-headless.json",
+      "sha256": "9f975221874978376a744644e7d2681df88c1c2d3362c90c7914c34d58a63f49",
+      "tool": "claude -p"
+    },
+    {
+      "ac": "ac_9",
+      "bytes": 542,
+      "createdAt": "2026-08-20T09:55:45Z",
+      "id": "art_bench",
+      "kind": "log",
+      "layer": "L2",
+      "path": "ac9-hook-bench.txt",
+      "sha256": "e83decf7b69f71018512a9b3f66551d72895a4f3a492f90d75d31faa2385ccd3",
+      "tool": "test/bench.js"
+    },
+    {
+      "ac": "ac_10",
+      "bytes": 378,
+      "createdAt": "2026-08-20T09:55:46Z",
+      "id": "art_ctx",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac10-session-context.json",
+      "sha256": "3e1eb077aaec91b5485c8c4a251b0e01695621502ff3354df46ed2a67c949741",
+      "tool": "tene-state summary"
+    },
+    {
+      "ac": "ac_1",
+      "bytes": 27493,
+      "createdAt": "2026-08-20T09:55:46Z",
+      "id": "art_loop",
+      "kind": "data",
+      "layer": "L3",
+      "path": "loop-check-round1.json",
+      "sha256": "91419b842278d6f4186c377ee526a17ac1ea867ba7d3eba12c882a12d4a4120b",
+      "tool": "tene-loop check"
+    },
+    {
+      "ac": "ac_6",
+      "bytes": 582,
+      "createdAt": "2026-08-20T10:00:43Z",
+      "id": "art_gate_skip",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac6-gate-skipped.json",
+      "sha256": "8fa737e0d1e52de166b6117cebd35ed2be306e17b7f97d7a2a63632662e2d159",
+      "tool": "tene-state advance --force"
+    },
+    {
+      "ac": "ac_8",
+      "bytes": 1178,
+      "createdAt": "2026-08-20T10:00:44Z",
+      "id": "art_gate_rec",
+      "kind": "data",
+      "layer": "L3",
+      "path": "ac8-gate-records.json",
+      "sha256": "7f2d9952a937c3e79c588f2b56425552af3c249f8ad628e27daaf1b6c505935f",
+      "tool": "state file"
+    },
+    {
+      "ac": "ac_7",
+      "bytes": 520,
+      "createdAt": "2026-08-20T10:00:44Z",
+      "id": "art_env_h2",
+      "kind": "log",
+      "layer": "L3",
+      "path": "ac7-headless-run.txt",
+      "sha256": "7357e4428009d8f5e48d5e8a3333a25f8998c04bc66caa1cbc59f8705b52bdb8",
+      "tool": "claude -p"
+    }
+  ],
+  "cases": [],
+  "createdAt": "2026-08-20T09:55:42Z",
+  "schemaVersion": 1,
+  "sprint": "self-conformance",
+  "updatedAt": "2026-08-20T10:00:44Z"
+}

@@ -1,0 +1,1 @@
+{"data":{"kind":"sprint","text":"[tene] 진행 중: self-conformance (phase: do, profile: strict)\n  · AC 10건 — 미판정 10\n  · 다음: /tene:loop-check — 문서 대비 구현을 검증하세요\n  · 문서: docs/sprints/self-conformance-spec-audit/","tokens":69,"truncated":false},"elapsedMs":7,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}

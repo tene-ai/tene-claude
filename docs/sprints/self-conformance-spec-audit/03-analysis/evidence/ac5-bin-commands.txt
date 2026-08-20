@@ -1,0 +1,37 @@
+명령                         exit  코드               봉투
+tene-doc extract              3  UNKNOWN_COMMAND  OK
+tene-doc patch               10  INTERNAL         OK
+tene-doc scaffold             0  ok               OK
+tene-doc validate            10  INTERNAL         OK
+tene-gate check               0  ok               OK
+tene-loop check               3  SPRINT_NOT_FOUND OK
+tene-qa capability            0  ok               OK
+tene-qa coverage              0  ok               OK
+tene-qa evidence              3  BAD_ARGS         OK
+tene-qa judge-input           3  BAD_ARGS         OK
+tene-qa plan                  0  ok               OK
+tene-qa scan-secrets          0  ok               OK
+tene-report build             0  ok               OK
+tene-report carry             3  SPRINT_NOT_FOUND OK
+tene-scan anchors             0  ok               OK
+tene-scan build               0  ok               OK
+tene-scan layers              0  ok               OK
+tene-scan questions           0  ok               OK
+tene-scan status              0  ok               OK
+tene-scan violations          0  ok               OK
+tene-state ac                 3  BAD_ARGS         OK
+tene-state advance            3  SPRINT_NOT_FOUND OK
+tene-state clean              0  ok               OK
+tene-state doctor             0  ok               OK
+tene-state init               3  INVALID_ID       OK
+tene-state intents            3  BAD_ARGS         OK
+tene-state list               0  ok               OK
+tene-state pause              3  SPRINT_NOT_FOUND OK
+tene-state read               0  ok               OK
+tene-state resume             3  SPRINT_NOT_FOUND OK
+tene-state resync             3  INVALID_ID       OK
+tene-state size               0  ok               OK
+tene-state summary            0  ok               OK
+tene-state waiver             3  BAD_ARGS         OK
+
+총 34개 · 봉투 규격 위반 0개

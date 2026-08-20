@@ -1,0 +1,15 @@
+# ac_5 L1 static — 2026-08-20T11:43:41Z
+node v26.0.0
+
+## A. node --check : ac_5 code path
+ok    lib/hooks/post-edit.js
+ok    lib/state/store.js
+ok    lib/scan/anchors.js
+ok    lib/util/atomic.js
+ok    lib/util/deadline.js
+ok    lib/util/paths.js
+ok    lib/util/json.js
+ok    bin/tene-hook
+
+## B. node --check : all lib/**/*.js + bin/*
+checked=76 failed=0

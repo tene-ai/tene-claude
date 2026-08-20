@@ -1,0 +1,44 @@
+{
+  "requirement": "RTM 4.1 — 기획 의도를 기억하여 QA를 더 꼼꼼히 (반영 위치: 02 §5.1 AC, 10 §3 앵커링, 07 §7 qa, 02 §4.4 워크플로)",
+  "note": "직전 sprint self-conformance 에서 감사자가 턴 한도로 unverifiable 로 남긴 항목. 이번에 재감사했다.",
+  "findings": [
+    {
+      "item": "10 §3.2 Stage 1 — design 시점 예상 앵커",
+      "verdict": "implemented",
+      "evidence": "lib/scan/anchors.js:48-53 앵커 종류 파싱(location/path/symbol), :82-106 인덱스로 해석하며 미해결은 source:'unresolved', confidence:'low' 로 남긴다",
+      "detail": "해석 실패를 숨기지 않는다"
+    },
+    {
+      "item": "10 §3.2 Stage 2 — do 이후 실측 교정",
+      "verdict": "partial",
+      "evidence": "lib/loop/unattributed.js:2 (D07 §5 미귀속 변경 검출), lib/scan/anchors.js:181, lib/gate/rules.js:165 remediation",
+      "detail": "Stage 2 의 절반인 '미귀속 변경 보고' 는 구현됐고 G5 가 강제한다. 나머지 절반인 '변경 파일을 보고 앵커를 자동 추가·교정' 은 없다 — grep 'anchors.push|addAnchor' 결과 lib/·bin/ 에 0건이고, 유일한 히트는 게이트의 사람 대상 안내 문구다. 즉 교정은 사람이 문서를 고쳐야 일어난다"
+    },
+    {
+      "item": "10 §3.2 Stage 3 — 수동 교정 우선 (source:'human', 자동 갱신 제외)",
+      "verdict": "missing",
+      "evidence": "grep 'resolvedAt' 0건, 'human' 0건, 'manual' 0건 (배포본 lib/ 전체)",
+      "detail": "D10 §3.1 이 정의한 앵커 스키마의 resolvedAt(design|do|manual) 필드와 §3.2 Stage 3 의 source:'human' 이 구현되지 않았다. 사람이 앵커 표를 직접 고쳐도 그 사실이 기록되지 않으므로 자동 갱신에서 보호되지 않는다. 다만 현재 Stage 2 자동 교정이 없으므로 덮어쓸 주체도 없다 — 두 결함이 서로를 가린다"
+    },
+    {
+      "item": "10 §3.4 stale 마킹 — pass 만 stale 로",
+      "verdict": "implemented",
+      "evidence": "lib/state/store.js:445 `if (ac?.verdict === 'passed')` 조건. 실행 관찰: ac5-stale-transition.json",
+      "detail": "정적 확인과 실행 관찰이 일치. passed→stale 전환, failed·insufficient 는 유지"
+    },
+    {
+      "item": "02 §5.1 Intent Ledger — AC 를 PRD 문서 표로",
+      "verdict": "implemented",
+      "evidence": "templates/prd.template.ko.md 의 AC 표, lib/doc/extract.js 가 표에서 추출, ADR-7 대로 별도 DB 없음",
+      "detail": "EARS 5패턴 검증도 lib/doc/validate.js 의 ac_unwanted_min 으로 강제"
+    },
+    {
+      "item": "02 §4.4 qa-sweep 워크플로 — 2/3 반박 강등",
+      "verdict": "implemented",
+      "evidence": "workflows/qa-sweep.js",
+      "detail": "정적 확인만. 이번 sprint 에서 워크플로를 실행하지 않았다"
+    }
+  ],
+  "summary": { "implemented": 4, "partial": 1, "missing": 1 },
+  "conclusion": "의도 축적(Stage 1 · Intent Ledger)과 무효화(stale)는 동작한다. 의도의 자동 교정(Stage 2 후반)과 사람 편집 보호(Stage 3)는 없다. 그래서 앵커는 design 시점에 한 번 정해지고 이후 사람이 손으로만 고친다."
+}

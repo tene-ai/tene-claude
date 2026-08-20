@@ -1,0 +1,43 @@
+✔ tene:judge 는 Read 만 갖는다 — 실행하면 판정이 오염된다 (14.083351ms)
+✔ tene:refuter 도 Read 만 갖는다 (2.087951ms)
+✔ tene:gap-auditor 는 Write 를 갖지 않는다 — 감사자가 고치면 판정이 무의미해진다 (3.80027ms)
+✔ tene:cartographer 는 Write 를 갖지 않는다 — 조사만 한다 (1.328118ms)
+✔ tene:qa-runner 는 증거를 남겨야 하므로 Write 를 갖는다 (1.78487ms)
+✔ E-7 judge 가 판정 5종을 정의한다 (0.942668ms)
+✔ E-7 judge 가 "증거 없이 passed" 를 금지한다 (1.521061ms)
+✔ E-7 judge 가 UX 증거로 DATA 기준을 판정하는 것을 금지한다 (1.501153ms)
+✔ E-7 judge 가 insufficient 를 실패가 아니라 "모름" 으로 정의한다 (1.301595ms)
+✔ E-7 judge 가 결정론 결과를 뒤집지 못하게 한다 (1.318007ms)
+✔ E-7 judge 가 forbidden 을 최우선으로 본다 (1.251612ms)
+✔ E-7 refuter 의 기본값이 반박이다 (1.023974ms)
+✔ E-2 interviewer 가 반드시 캐낼 다섯 가지를 명시한다 (2.091078ms)
+✔ E-2 interviewer 가 If-then 을 필수로 요구한다 (1.360856ms)
+✔ E-2 interviewer 가 판정 불가능한 형용사를 거부한다 (1.067189ms)
+✔ E-2 interviewer 가 데이터 흐름을 화면과 따로 묻는다 (0.837546ms)
+✔ E-2 interviewer 가 모르는 것을 지어내지 않게 한다 (0.832993ms)
+✔ tene:qa-runner 가 판정을 금지한다 (0.979733ms)
+✔ tene:gap-auditor 가 근거 없는 implemented 를 금지한다 (1.032139ms)
+✔ 모든 에이전트가 frontmatter 계약을 지킨다 (5.979032ms)
+✔ 모든 에이전트가 "하지 않는 것" 을 명시한다 (2.780329ms)
+✔ E-4 [정직성] 규칙에 없는 디렉토리를 추측으로 배정하지 않는다 (249.823146ms)
+✔ E-4 [정직성] 낮은 확신을 높은 확신으로 올리지 않는다 (152.330637ms)
+✔ E-3 심어둔 계층 위반 2건을 정확히 찾는다 (182.699331ms)
+✔ E-10 [정직성] 도구가 없으면 없다고 하고 0%/passed 로 위장하지 않는다 (106.7077ms)
+✔ E-10 [정직성] 도구 없음을 not-applicable 로 바꾸지 않는다 (145.247997ms)
+✔ E-12 [정직성] 앵커에 걸리지 않은 변경을 미귀속으로 보고한다 (174.827596ms)
+✔ E-7 [정직성] 인덱스로 답할 수 없으면 needs-investigation 을 낸다 (162.957838ms)
+✔ E-7 [정직성] 6질문에서 모르는 항목을 지어내지 않는다 (163.117842ms)
+✔ E-1 기본 프리셋이 실제 Express 앱 구조를 정확히 분류한다 (169.633882ms)
+✔ E-1 Python 프로젝트도 경로·import 로 분류한다 (176.394666ms)
+✔ E-1 Python 심볼과 호출 관계를 찾는다 (135.853535ms)
+✔ E-1 실제 프로젝트의 검증 도구를 정확히 감지한다 (119.055851ms)
+✔ 상대 경로 root 로도 lib 를 쓸 수 있다 (1.944884ms)
+✔ 정직성 케이스가 전부 정의되어 있다 (0.205059ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2861.263574

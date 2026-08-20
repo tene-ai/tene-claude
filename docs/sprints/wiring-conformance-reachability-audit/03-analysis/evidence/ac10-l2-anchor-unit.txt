@@ -1,0 +1,38 @@
+### ac_10 L2 — 앵커 formatSummary 단위 테스트 — 2026-08-20T11:45:57Z
+--- node --test plugins/tene/test/unit/state-summary.test.js ---
+✔ 요약은 600 토큰 예산 안에 든다 (12.769924ms)
+✔ 요약에 차단 사유와 다음 행동이 들어간다 (1.113343ms)
+✔ 예산이 부족하면 뒤쪽 줄부터 잘리고 차단 사유는 남는다 (0.828161ms)
+✔ 예산이 헤더보다 작으면 빈 문자열을 낸다 (0.631203ms)
+✔ AC 총계를 blocking 수처럼 표기하지 않는다 (0.790568ms)
+✔ 활성 sprint 도 master plan 도 없으면 조용하다 (12.698349ms)
+✔ 선행 sprint 가 끝나야 다음을 추천한다 (14.961249ms)
+✔ 선행이 전부 미완료면 추천 대신 대기 사유를 말한다 (1.327619ms)
+✔ 열린 이월 항목은 세션 시작에 노출된다 (1.011286ms)
+✔ checkSize 는 상한 아래에서 조용하다 (9.706767ms)
+✔ 이벤트 상한 초과 시 오래된 절반이 아카이브로 옮겨진다 (삭제 아님) (131.692073ms)
+✔ clean 은 기본이 dry-run 이다 — 명시하지 않으면 지우지 않는다 (44.659759ms)
+✔ id 로 디렉토리를 찾는다 — slug 가 바뀌어도 (5.82938ms)
+✔ _archive 하위 sprint 는 archived 로 인식된다 (14.3088ms)
+✔ loop-check 문서는 번호순으로 정렬된다 (10.46329ms)
+✔ qa 에만 있고 prd 에 없는 AC 는 버리지 않고 orphan 으로 남긴다 (12.225147ms)
+✔ resync 는 문서에서 상태를 재구성하고 게이트는 비운다 (124.167522ms)
+✔ 디렉토리가 없으면 SPRINT_DIR_NOT_FOUND (4.853012ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2005.336722
+
+--- 테스트 파일에서 로직시간/예산 단언 검색 ---
+plugins/tene/test/unit/state-summary.test.js:7:import { buildSessionContext, formatSummary, formatNextSuggestion, recommendNext, SESSION_BUDGET_TOKENS } from '../../lib/state/summary.js'
+plugins/tene/test/unit/state-summary.test.js:45:test('요약은 600 토큰 예산 안에 든다', () => {
+plugins/tene/test/unit/state-summary.test.js:47:  assert.ok(out.tokens <= SESSION_BUDGET_TOKENS, `${out.tokens} 토큰`)
+plugins/tene/test/unit/state-summary.test.js:60:test('예산이 부족하면 뒤쪽 줄부터 잘리고 차단 사유는 남는다', () => {
+plugins/tene/test/unit/state-summary.test.js:61:  const out = formatSummary(CURRENT, { budget: 60 })
+plugins/tene/test/unit/state-summary.test.js:67:// 헤더조차 못 넣을 예산이면 아무것도 내지 않는다. 반쪽짜리 문장을 주입하지 않는다.
+plugins/tene/test/unit/state-summary.test.js:68:test('예산이 헤더보다 작으면 빈 문자열을 낸다', () => {
+plugins/tene/test/unit/state-summary.test.js:69:  const out = formatSummary(CURRENT, { budget: 5 })

@@ -1,0 +1,16 @@
+### ac_10 L2 — node plugins/tene/test/bench.js  run#1 — 2026-08-20T11:38:07Z
+### node v26.0.0 / Darwin 24.6.0 x86_64
+--- stdout+stderr ---
+기준선 (node -e '')          : 2286ms
+
+인덱스 전체 빌드 (200 파일)   : 2740ms  (로직 453ms)
+인덱스 증분 (변경 없음)       : 2860ms  (로직 574ms)
+
+SessionStart 훅               : 2616ms  (로직 330ms)
+PostToolUse 훅                : 2242ms  (로직 -45ms)
+UserPromptSubmit 훅           : 1968ms  (로직 -319ms)
+시크릿 가드                   : 1601ms  (로직 -685ms)
+
+✖ 로직 예산 초과:
+   SessionStart: 330ms > 150ms
+--- exit code: 1 ---

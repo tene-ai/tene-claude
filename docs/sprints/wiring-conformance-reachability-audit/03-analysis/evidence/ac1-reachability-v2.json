@@ -1,0 +1,3441 @@
+{
+  "unit": "export — `파일#심볼`. 파일 단위가 아니다.",
+  "limitation": "정적 import 그래프는 모듈 단위까지만 해석한다. 도달 가능한 파일 안의 개별 export 가 실제로 호출되는지는 이 계측기가 답하지 않는다.",
+  "root": "/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0",
+  "entrypoints": [
+    {
+      "file": "bin/tene-hook",
+      "sources": [
+        "hooks.json",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-guard",
+      "sources": [
+        "hooks.json",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-gate",
+      "sources": [
+        "hooks.json",
+        "skills/archive",
+        "skills/design",
+        "skills/loop-check",
+        "skills/plan",
+        "skills/prd",
+        "skills/qa",
+        "skills/report",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-state",
+      "sources": [
+        "skills/archive",
+        "skills/clear",
+        "skills/design",
+        "skills/doctor",
+        "skills/loop-check",
+        "skills/master-plan",
+        "skills/plan",
+        "skills/prd",
+        "skills/qa",
+        "skills/report",
+        "skills/sprint",
+        "skills/status",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-report",
+      "sources": [
+        "skills/archive",
+        "skills/master-plan",
+        "skills/report",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-scan",
+      "sources": [
+        "skills/design",
+        "skills/layers",
+        "skills/loop-check",
+        "skills/report",
+        "skills/understand",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-doc",
+      "sources": [
+        "skills/design",
+        "skills/loop-check",
+        "skills/plan",
+        "skills/prd",
+        "skills/qa",
+        "skills/report",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-loop",
+      "sources": [
+        "skills/loop-check",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-qa",
+      "sources": [
+        "skills/qa",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "workflows/conformance-audit.js",
+      "sources": [
+        "workflow"
+      ]
+    },
+    {
+      "file": "workflows/qa-sweep.js",
+      "sources": [
+        "workflow"
+      ]
+    },
+    {
+      "file": "workflows/understand-sweep.js",
+      "sources": [
+        "workflow"
+      ]
+    }
+  ],
+  "totals": {
+    "libFiles": 67,
+    "exports": 408,
+    "reachable": 381,
+    "dynamic": 21,
+    "test-only": 6,
+    "unreachable": 0
+  },
+  "classified": {
+    "reachable": [
+      "lib/doc/extract.js#earsPattern",
+      "lib/doc/extract.js#extractIntents",
+      "lib/doc/extract.js#extractAc",
+      "lib/doc/extract.js#extractTasks",
+      "lib/doc/extract.js#extractCoverage",
+      "lib/doc/extract.js#extractTransitions",
+      "lib/doc/extract.js#extractAnchors",
+      "lib/doc/extract.js#extractVerdicts",
+      "lib/doc/extract.js#extractInsufficient",
+      "lib/doc/extract.js#extractCarry",
+      "lib/doc/extract.js#extractRequirements",
+      "lib/doc/extract.js#extract",
+      "lib/doc/extract.js#EXTRACT_TARGETS",
+      "lib/doc/parser.js#parseSimpleYaml",
+      "lib/doc/parser.js#parseTables",
+      "lib/doc/parser.js#isPlaceholderOnly",
+      "lib/doc/parser.js#parseDoc",
+      "lib/doc/parser.js#tableToObjects",
+      "lib/doc/parser.js#normalizeHeader",
+      "lib/doc/parser.js#plainCell",
+      "lib/doc/patch.js#patchBlock",
+      "lib/doc/patch.js#patchBlocks",
+      "lib/doc/patch.js#touchModified",
+      "lib/doc/sections.js#DOC_TYPES",
+      "lib/doc/sections.js#SECTIONS",
+      "lib/doc/sections.js#REQUIRED_BY_PROFILE",
+      "lib/doc/sections.js#AUTO_BLOCKS",
+      "lib/doc/sections.js#DOC_PHASE",
+      "lib/doc/sections.js#DOC_GATE",
+      "lib/doc/sections.js#DOC_PATH",
+      "lib/doc/sections.js#requiredSections",
+      "lib/doc/sections.js#isAutoBlock",
+      "lib/doc/template.js#templatePath",
+      "lib/doc/template.js#render",
+      "lib/doc/template.js#scaffold",
+      "lib/doc/template.js#isUntouched",
+      "lib/doc/template.js#mergeMissingSections",
+      "lib/doc/validate.js#RULES",
+      "lib/doc/validate.js#RULES_BY_DOC",
+      "lib/doc/validate.js#validateDoc",
+      "lib/doctor.js#versionGte",
+      "lib/doctor.js#detectClaudeVersion",
+      "lib/doctor.js#diagnose",
+      "lib/gate/rules.js#GATES",
+      "lib/gate/rules.js#GATE_IDS",
+      "lib/gate/rules.js#evaluateGate",
+      "lib/gate/rules.js#gateForTransition",
+      "lib/guard/rules.js#SR",
+      "lib/guard/rules.js#isVaultPath",
+      "lib/guard/rules.js#judgeBash",
+      "lib/guard/rules.js#judgeRead",
+      "lib/guard/rules.js#isPlainEnvFile",
+      "lib/guard/rules.js#envAdvice",
+      "lib/guard/rules.js#writeTargetsOf",
+      "lib/guard/segment.js#segments",
+      "lib/guard/segment.js#stripPrefix",
+      "lib/guard/segment.js#commandOf",
+      "lib/guard/segment.js#normalizedCommand",
+      "lib/guard/segment.js#expandIndirect",
+      "lib/guard/segment.js#heredocBodies",
+      "lib/guard/segment.js#substitutions",
+      "lib/guard/segment.js#allSegments",
+      "lib/loop/judge.js#SCORE",
+      "lib/loop/judge.js#judgeRequirement",
+      "lib/loop/judge.js#severityOf",
+      "lib/loop/judge.js#kindOf",
+      "lib/loop/judge.js#judgeAll",
+      "lib/loop/judge.js#summarize",
+      "lib/loop/progress.js#VERDICT",
+      "lib/loop/progress.js#judgeRound",
+      "lib/loop/progress.js#detectStall",
+      "lib/loop/progress.js#diffRounds",
+      "lib/loop/progress.js#formatProgress",
+      "lib/loop/progress.js#gateInputs",
+      "lib/loop/requirements.js#SOURCES",
+      "lib/loop/requirements.js#extractRequirements",
+      "lib/loop/requirements.js#coverageGaps",
+      "lib/loop/run.js#runLoopCheck",
+      "lib/loop/run.js#historyEntry",
+      "lib/loop/unattributed.js#RESOLUTIONS",
+      "lib/loop/unattributed.js#changedFiles",
+      "lib/loop/unattributed.js#workingChanges",
+      "lib/loop/unattributed.js#diffStat",
+      "lib/loop/unattributed.js#isExempt",
+      "lib/loop/unattributed.js#detectUnattributed",
+      "lib/loop/unattributed.js#applyResolutions",
+      "lib/loop/unattributed.js#unresolvedCount",
+      "lib/loop/unattributed.js#promptFor",
+      "lib/loop/unattributed.js#renderUnattributed",
+      "lib/qa/capability.js#detectTestRunner",
+      "lib/qa/capability.js#detectTypecheck",
+      "lib/qa/capability.js#detectLinter",
+      "lib/qa/capability.js#detectBrowser",
+      "lib/qa/capability.js#detectDb",
+      "lib/qa/capability.js#probe",
+      "lib/qa/capability.js#layerCapability",
+      "lib/qa/capability.js#renderCapability",
+      "lib/qa/charter.js#VARIANTS",
+      "lib/qa/charter.js#selectVariants",
+      "lib/qa/charter.js#extractForbidden",
+      "lib/qa/charter.js#buildSteps",
+      "lib/qa/charter.js#compile",
+      "lib/qa/charter.js#renderCharters",
+      "lib/qa/coverage.js#edgeId",
+      "lib/qa/coverage.js#computeTransitionCoverage",
+      "lib/qa/coverage.js#RETURN_PATHS",
+      "lib/qa/coverage.js#planReturnPaths",
+      "lib/qa/coverage.js#summarizeReturnPaths",
+      "lib/qa/coverage.js#renderCoverage",
+      "lib/qa/coverage.js#crossJudgeDataFlow",
+      "lib/qa/evidence.js#EVIDENCE_SCHEMA_VERSION",
+      "lib/qa/evidence.js#evidenceDir",
+      "lib/qa/evidence.js#manifestPath",
+      "lib/qa/evidence.js#sha256",
+      "lib/qa/evidence.js#sha256File",
+      "lib/qa/evidence.js#newManifest",
+      "lib/qa/evidence.js#readManifest",
+      "lib/qa/evidence.js#writeManifest",
+      "lib/qa/evidence.js#registerArtifact",
+      "lib/qa/evidence.js#verifyEvidence",
+      "lib/qa/evidence.js#evidenceVerifier",
+      "lib/qa/evidence.js#addCase",
+      "lib/qa/evidence.js#judgeInput",
+      "lib/qa/evidence.js#scanSecrets",
+      "lib/qa/evidence.js#redact",
+      "lib/qa/evidence.js#scanManifest",
+      "lib/qa/layers.js#LAYERS",
+      "lib/qa/layers.js#LAYER_INFO",
+      "lib/qa/layers.js#STATES",
+      "lib/qa/layers.js#RESULTS",
+      "lib/qa/layers.js#selectLayers",
+      "lib/qa/layers.js#planLayers",
+      "lib/qa/layers.js#validateHandling",
+      "lib/qa/layers.js#applyCapability",
+      "lib/qa/layers.js#LAYER_TOOLS",
+      "lib/qa/layers.js#renderLayerTable",
+      "lib/recover/resync.js#findSprintDir",
+      "lib/recover/resync.js#detectDocs",
+      "lib/recover/resync.js#inferPhase",
+      "lib/recover/resync.js#mergeAc",
+      "lib/recover/resync.js#resync",
+      "lib/recover/resync.js#formatResyncReport",
+      "lib/report/carry.js#CARRY_KIND",
+      "lib/report/carry.js#collectCarry",
+      "lib/report/carry.js#renderCarry",
+      "lib/report/carry.js#toPromotable",
+      "lib/report/changes.js#diffStat",
+      "lib/report/changes.js#workingStat",
+      "lib/report/changes.js#changedSymbolsInFile",
+      "lib/report/changes.js#buildChanges",
+      "lib/report/changes.js#changedSymbolSet",
+      "lib/report/changes.js#changedFileSet",
+      "lib/report/changes.js#renderChanges",
+      "lib/report/index.js#buildReport",
+      "lib/report/index.js#renderSummary",
+      "lib/report/intent-map.js#buildIntentMap",
+      "lib/report/intent-map.js#findDeviations",
+      "lib/report/intent-map.js#renderIntentMap",
+      "lib/report/layers-questions.js#buildLayerReport",
+      "lib/report/layers-questions.js#renderLayerReport",
+      "lib/report/layers-questions.js#buildQuestionsReport",
+      "lib/report/layers-questions.js#renderQuestionsReport",
+      "lib/report/layers-questions.js#findRevelations",
+      "lib/report/layers-questions.js#renderRevelations",
+      "lib/report/lineage.js#recentArchived",
+      "lib/report/lineage.js#extractProducedSymbols",
+      "lib/report/lineage.js#buildLineage",
+      "lib/report/lineage.js#renderLineage",
+      "lib/scan/anchors.js#ANCHOR_SCHEMA_VERSION",
+      "lib/scan/anchors.js#anchorsPath",
+      "lib/scan/anchors.js#readAnchors",
+      "lib/scan/anchors.js#acKey",
+      "lib/scan/anchors.js#classifyAnchor",
+      "lib/scan/anchors.js#buildAnchorIndex",
+      "lib/scan/anchors.js#writeAnchors",
+      "lib/scan/anchors.js#touched",
+      "lib/scan/anchors.js#groupBySprint",
+      "lib/scan/anchors.js#unattributed",
+      "lib/scan/index-builder.js#INDEX_SCHEMA_VERSION",
+      "lib/scan/index-builder.js#ENGINE",
+      "lib/scan/index-builder.js#indexPath",
+      "lib/scan/index-builder.js#readIndex",
+      "lib/scan/index-builder.js#build",
+      "lib/scan/index-builder.js#writeIndex",
+      "lib/scan/index-builder.js#buildAndWrite",
+      "lib/scan/index-builder.js#checkFreshness",
+      "lib/scan/langs/go.js#name",
+      "lib/scan/langs/go.js#extensions",
+      "lib/scan/langs/go.js#stripNonCode",
+      "lib/scan/langs/go.js#stripComments",
+      "lib/scan/langs/go.js#extractDefinitions",
+      "lib/scan/langs/go.js#extractImports",
+      "lib/scan/langs/go.js#extractReferences",
+      "lib/scan/langs/go.js#lineAt",
+      "lib/scan/langs/go.js#resolveCandidates",
+      "lib/scan/langs/index.js#PACKS",
+      "lib/scan/langs/index.js#packFor",
+      "lib/scan/langs/index.js#SUPPORTED_LANGS",
+      "lib/scan/langs/index.js#validatePack",
+      "lib/scan/langs/index.js#analyze",
+      "lib/scan/langs/java.js#name",
+      "lib/scan/langs/java.js#extensions",
+      "lib/scan/langs/java.js#stripNonCode",
+      "lib/scan/langs/java.js#extractDefinitions",
+      "lib/scan/langs/java.js#extractImports",
+      "lib/scan/langs/java.js#extractReferences",
+      "lib/scan/langs/java.js#lineAt",
+      "lib/scan/langs/java.js#resolveCandidates",
+      "lib/scan/langs/python.js#name",
+      "lib/scan/langs/python.js#extensions",
+      "lib/scan/langs/python.js#stripNonCode",
+      "lib/scan/langs/python.js#extractDefinitions",
+      "lib/scan/langs/python.js#extractImports",
+      "lib/scan/langs/python.js#extractReferences",
+      "lib/scan/langs/python.js#lineAt",
+      "lib/scan/langs/python.js#resolveCandidates",
+      "lib/scan/langs/typescript.js#name",
+      "lib/scan/langs/typescript.js#extensions",
+      "lib/scan/langs/typescript.js#stripNonCode",
+      "lib/scan/langs/typescript.js#stripComments",
+      "lib/scan/langs/typescript.js#extractDefinitions",
+      "lib/scan/langs/typescript.js#extractImports",
+      "lib/scan/langs/typescript.js#extractReferences",
+      "lib/scan/langs/typescript.js#lineAt",
+      "lib/scan/langs/typescript.js#resolveCandidates",
+      "lib/scan/layer.js#LAYERS",
+      "lib/scan/layer.js#UNCLASSIFIED",
+      "lib/scan/layer.js#loadRules",
+      "lib/scan/layer.js#globToRegExp",
+      "lib/scan/layer.js#matchAnyGlob",
+      "lib/scan/layer.js#judgeLayer",
+      "lib/scan/layer.js#classifyIndex",
+      "lib/scan/layer.js#violationKind",
+      "lib/scan/layer.js#VIOLATION_SEVERITY",
+      "lib/scan/layer.js#findViolations",
+      "lib/scan/query.js#MISS",
+      "lib/scan/query.js#definitions",
+      "lib/scan/query.js#references",
+      "lib/scan/query.js#callers",
+      "lib/scan/query.js#importsOf",
+      "lib/scan/query.js#importedBy",
+      "lib/scan/query.js#dependents",
+      "lib/scan/query.js#symbolsIn",
+      "lib/scan/query.js#orphans",
+      "lib/scan/query.js#unresolvedIn",
+      "lib/scan/query.js#query",
+      "lib/scan/query.js#QUERY_TARGETS",
+      "lib/scan/query.js#indexHealth",
+      "lib/scan/questions.js#QUESTION_IDS",
+      "lib/scan/questions.js#QUESTION_LABELS",
+      "lib/scan/questions.js#parseParams",
+      "lib/scan/questions.js#parseReturn",
+      "lib/scan/questions.js#answerSix",
+      "lib/scan/questions.js#answerMany",
+      "lib/scan/questions.js#renderQuestionsTable",
+      "lib/scan/walk.js#DEFAULT_EXCLUDES",
+      "lib/scan/walk.js#MAX_FILE_BYTES",
+      "lib/scan/walk.js#EXT_LANG",
+      "lib/scan/walk.js#langOf",
+      "lib/scan/walk.js#SHEBANG_LANG",
+      "lib/scan/walk.js#langOfFile",
+      "lib/scan/walk.js#extOf",
+      "lib/scan/walk.js#parseGitignore",
+      "lib/scan/walk.js#matchesIgnore",
+      "lib/scan/walk.js#loadGitignore",
+      "lib/scan/walk.js#walk",
+      "lib/scan/walk.js#collect",
+      "lib/state/events.js#EVENT_TYPES",
+      "lib/state/events.js#eventsPath",
+      "lib/state/events.js#appendEvent",
+      "lib/state/events.js#readEvents",
+      "lib/state/migrate.js#migrate",
+      "lib/state/retention.js#LIMITS",
+      "lib/state/retention.js#checkSize",
+      "lib/state/retention.js#markNeedsCleanup",
+      "lib/state/retention.js#clearNeedsCleanup",
+      "lib/state/retention.js#compactEvents",
+      "lib/state/retention.js#archiveOldSprints",
+      "lib/state/retention.js#pruneQuarantine",
+      "lib/state/retention.js#clean",
+      "lib/state/retention.js#carryOverPressure",
+      "lib/state/schema.js#SCHEMA_VERSION",
+      "lib/state/schema.js#PHASES",
+      "lib/state/schema.js#SPRINT_STATUS",
+      "lib/state/schema.js#PROFILES",
+      "lib/state/schema.js#VERDICTS",
+      "lib/state/schema.js#PRIORITIES",
+      "lib/state/schema.js#METHODS",
+      "lib/state/schema.js#SPRINT_ID_RE",
+      "lib/state/schema.js#TRANSITIONS",
+      "lib/state/schema.js#GATE_BY_PHASE",
+      "lib/state/schema.js#findTransition",
+      "lib/state/schema.js#allowedFrom",
+      "lib/state/schema.js#phaseIndex",
+      "lib/state/schema.js#phaseAtLeast",
+      "lib/state/schema.js#emptySummary",
+      "lib/state/schema.js#newSprint",
+      "lib/state/schema.js#newCurrent",
+      "lib/state/schema.js#newMasterPlan",
+      "lib/state/schema.js#sessionId",
+      "lib/state/schema.js#computeAcSummary",
+      "lib/state/schema.js#nextActionFor",
+      "lib/state/schema.js#validateSprintShape",
+      "lib/state/store.js#paths",
+      "lib/state/store.js#ensureStateDir",
+      "lib/state/store.js#readCurrent",
+      "lib/state/store.js#readSprint",
+      "lib/state/store.js#readMasterPlan",
+      "lib/state/store.js#listSprintIds",
+      "lib/state/store.js#writeSprint",
+      "lib/state/store.js#writeCurrent",
+      "lib/state/store.js#writeMasterPlan",
+      "lib/state/store.js#syncCurrent",
+      "lib/state/store.js#clearActiveIfMatches",
+      "lib/state/store.js#initSprint",
+      "lib/state/store.js#advance",
+      "lib/state/store.js#setAc",
+      "lib/state/store.js#setIntents",
+      "lib/state/store.js#setDocs",
+      "lib/state/store.js#setGate",
+      "lib/state/store.js#pauseSprint",
+      "lib/state/store.js#resumeSprint",
+      "lib/state/store.js#grantWaiver",
+      "lib/state/store.js#addCarryOver",
+      "lib/state/store.js#markStaleNoLock",
+      "lib/state/summary.js#SESSION_BUDGET_TOKENS",
+      "lib/state/summary.js#formatSummary",
+      "lib/state/summary.js#recommendNext",
+      "lib/state/summary.js#formatNextSuggestion",
+      "lib/state/summary.js#buildSessionContext",
+      "lib/util/atomic.js#writeAtomic",
+      "lib/util/atomic.js#appendLine",
+      "lib/util/atomic.js#readTextOrNull",
+      "lib/util/atomic.js#quarantine",
+      "lib/util/atomic.js#backupFile",
+      "lib/util/budget.js#estimateTokens",
+      "lib/util/budget.js#truncateToBudget",
+      "lib/util/deadline.js#DeadlineExceeded",
+      "lib/util/deadline.js#withDeadline",
+      "lib/util/deadline.js#elapsedMs",
+      "lib/util/envelope.js#SCHEMA_VERSION",
+      "lib/util/envelope.js#ok",
+      "lib/util/envelope.js#fail",
+      "lib/util/envelope.js#emit",
+      "lib/util/envelope.js#run",
+      "lib/util/errors.js#EXIT",
+      "lib/util/errors.js#CODES",
+      "lib/util/errors.js#TeneError",
+      "lib/util/errors.js#wrapError",
+      "lib/util/json.js#sortKeys",
+      "lib/util/json.js#stableJson",
+      "lib/util/json.js#lineJson",
+      "lib/util/json.js#parseJsonSafe",
+      "lib/util/lock.js#lockPath",
+      "lib/util/lock.js#withLock",
+      "lib/util/lock.js#inspectLock",
+      "lib/util/log.js#safePath",
+      "lib/util/log.js#isDebug",
+      "lib/util/log.js#debug",
+      "lib/util/log.js#warn",
+      "lib/util/paths.js#STATE_DIR",
+      "lib/util/paths.js#VAULT_DIR",
+      "lib/util/paths.js#DEFAULT_DOCS_ROOT",
+      "lib/util/paths.js#pluginRoot",
+      "lib/util/paths.js#findProjectRoot",
+      "lib/util/paths.js#assertInProject",
+      "lib/util/paths.js#relativeInProject",
+      "lib/util/paths.js#toProjectRelative",
+      "lib/util/paths.js#isVaultPath",
+      "lib/util/paths.js#isStatePath",
+      "lib/util/paths.js#isDocOrState",
+      "lib/util/paths.js#isConfigFile",
+      "lib/util/paths.js#isTestFile",
+      "lib/util/paths.js#statOrNull",
+      "lib/util/stdin.js#readStdinJson",
+      "lib/util/time.js#nowIso",
+      "lib/util/time.js#todayIso",
+      "lib/util/time.js#yearMonth",
+      "lib/util/time.js#makeRunId",
+      "lib/util/time.js#parseIso",
+      "lib/util/time.js#olderThan"
+    ],
+    "dynamic": [
+      "lib/hooks/compact.js#run",
+      "lib/hooks/post-bash.js#run",
+      "lib/hooks/post-edit.js#pathsFrom",
+      "lib/hooks/post-edit.js#run",
+      "lib/hooks/pre-edit.js#run",
+      "lib/hooks/session-end.js#run",
+      "lib/hooks/session-start.js#run",
+      "lib/hooks/stop.js#run",
+      "lib/hooks/subagent-stop.js#run",
+      "lib/hooks/task-created.js#parsePhaseFromTitle",
+      "lib/hooks/task-created.js#parseAcRefs",
+      "lib/hooks/task-created.js#run",
+      "lib/hooks/user-prompt.js#run",
+      "lib/router/match.js#loadRules",
+      "lib/router/match.js#detectLang",
+      "lib/router/match.js#matchesCondition",
+      "lib/router/match.js#matchesKeywords",
+      "lib/router/match.js#readSuggested",
+      "lib/router/match.js#markSuggested",
+      "lib/router/match.js#route",
+      "lib/router/match.js#formatSuggestion"
+    ],
+    "test-only": [
+      "lib/plan/aggregate.js#aggregate",
+      "lib/plan/aggregate.js#recommendNext",
+      "lib/plan/aggregate.js#promote",
+      "lib/plan/aggregate.js#upsertSprint",
+      "lib/plan/aggregate.js#renderStatus",
+      "lib/plan/aggregate.js#renderCarryTable"
+    ],
+    "unreachable": []
+  },
+  "byFile": {
+    "lib/doc/extract.js": {
+      "classification": "reachable",
+      "exports": [
+        "earsPattern",
+        "extractIntents",
+        "extractAc",
+        "extractTasks",
+        "extractCoverage",
+        "extractTransitions",
+        "extractAnchors",
+        "extractVerdicts",
+        "extractInsufficient",
+        "extractCarry",
+        "extractRequirements",
+        "extract",
+        "EXTRACT_TARGETS"
+      ],
+      "path": [
+        "bin/tene-doc",
+        "lib/doc/extract.js"
+      ]
+    },
+    "lib/doc/parser.js": {
+      "classification": "reachable",
+      "exports": [
+        "parseSimpleYaml",
+        "parseTables",
+        "isPlaceholderOnly",
+        "parseDoc",
+        "tableToObjects",
+        "normalizeHeader",
+        "plainCell"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/doc/parser.js"
+      ]
+    },
+    "lib/doc/patch.js": {
+      "classification": "reachable",
+      "exports": [
+        "patchBlock",
+        "patchBlocks",
+        "touchModified"
+      ],
+      "path": [
+        "bin/tene-doc",
+        "lib/doc/patch.js"
+      ]
+    },
+    "lib/doc/sections.js": {
+      "classification": "reachable",
+      "exports": [
+        "DOC_TYPES",
+        "SECTIONS",
+        "REQUIRED_BY_PROFILE",
+        "AUTO_BLOCKS",
+        "DOC_PHASE",
+        "DOC_GATE",
+        "DOC_PATH",
+        "requiredSections",
+        "isAutoBlock"
+      ],
+      "path": [
+        "bin/tene-doc",
+        "lib/doc/sections.js"
+      ]
+    },
+    "lib/doc/template.js": {
+      "classification": "reachable",
+      "exports": [
+        "templatePath",
+        "render",
+        "scaffold",
+        "isUntouched",
+        "mergeMissingSections"
+      ],
+      "path": [
+        "bin/tene-doc",
+        "lib/doc/template.js"
+      ]
+    },
+    "lib/doc/validate.js": {
+      "classification": "reachable",
+      "exports": [
+        "RULES",
+        "RULES_BY_DOC",
+        "validateDoc"
+      ],
+      "path": [
+        "bin/tene-doc",
+        "lib/doc/validate.js"
+      ]
+    },
+    "lib/doctor.js": {
+      "classification": "reachable",
+      "exports": [
+        "versionGte",
+        "detectClaudeVersion",
+        "diagnose"
+      ],
+      "path": [
+        "bin/tene-state",
+        "lib/doctor.js"
+      ]
+    },
+    "lib/gate/rules.js": {
+      "classification": "reachable",
+      "exports": [
+        "GATES",
+        "GATE_IDS",
+        "evaluateGate",
+        "gateForTransition"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/gate/rules.js"
+      ]
+    },
+    "lib/guard/rules.js": {
+      "classification": "reachable",
+      "exports": [
+        "SR",
+        "isVaultPath",
+        "judgeBash",
+        "judgeRead",
+        "isPlainEnvFile",
+        "envAdvice",
+        "writeTargetsOf"
+      ],
+      "path": [
+        "bin/tene-guard",
+        "lib/guard/rules.js"
+      ]
+    },
+    "lib/guard/segment.js": {
+      "classification": "reachable",
+      "exports": [
+        "segments",
+        "stripPrefix",
+        "commandOf",
+        "normalizedCommand",
+        "expandIndirect",
+        "heredocBodies",
+        "substitutions",
+        "allSegments"
+      ],
+      "path": [
+        "bin/tene-guard",
+        "lib/guard/rules.js",
+        "lib/guard/segment.js"
+      ]
+    },
+    "lib/hooks/compact.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/compact.js"
+      ]
+    },
+    "lib/hooks/post-bash.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/post-bash.js"
+      ]
+    },
+    "lib/hooks/post-edit.js": {
+      "classification": "dynamic",
+      "exports": [
+        "pathsFrom",
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/post-edit.js"
+      ]
+    },
+    "lib/hooks/pre-edit.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/pre-edit.js"
+      ]
+    },
+    "lib/hooks/session-end.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/session-end.js"
+      ]
+    },
+    "lib/hooks/session-start.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/session-start.js"
+      ]
+    },
+    "lib/hooks/stop.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/stop.js"
+      ]
+    },
+    "lib/hooks/subagent-stop.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/subagent-stop.js"
+      ]
+    },
+    "lib/hooks/task-created.js": {
+      "classification": "dynamic",
+      "exports": [
+        "parsePhaseFromTitle",
+        "parseAcRefs",
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/task-created.js"
+      ]
+    },
+    "lib/hooks/user-prompt.js": {
+      "classification": "dynamic",
+      "exports": [
+        "run"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/user-prompt.js"
+      ]
+    },
+    "lib/loop/judge.js": {
+      "classification": "reachable",
+      "exports": [
+        "SCORE",
+        "judgeRequirement",
+        "severityOf",
+        "kindOf",
+        "judgeAll",
+        "summarize"
+      ],
+      "path": [
+        "bin/tene-loop",
+        "lib/loop/run.js",
+        "lib/loop/judge.js"
+      ]
+    },
+    "lib/loop/progress.js": {
+      "classification": "reachable",
+      "exports": [
+        "VERDICT",
+        "judgeRound",
+        "detectStall",
+        "diffRounds",
+        "formatProgress",
+        "gateInputs"
+      ],
+      "path": [
+        "bin/tene-loop",
+        "lib/loop/run.js",
+        "lib/loop/progress.js"
+      ]
+    },
+    "lib/loop/requirements.js": {
+      "classification": "reachable",
+      "exports": [
+        "SOURCES",
+        "extractRequirements",
+        "coverageGaps"
+      ],
+      "path": [
+        "bin/tene-loop",
+        "lib/loop/requirements.js"
+      ]
+    },
+    "lib/loop/run.js": {
+      "classification": "reachable",
+      "exports": [
+        "runLoopCheck",
+        "historyEntry"
+      ],
+      "path": [
+        "bin/tene-loop",
+        "lib/loop/run.js"
+      ]
+    },
+    "lib/loop/unattributed.js": {
+      "classification": "reachable",
+      "exports": [
+        "RESOLUTIONS",
+        "changedFiles",
+        "workingChanges",
+        "diffStat",
+        "isExempt",
+        "detectUnattributed",
+        "applyResolutions",
+        "unresolvedCount",
+        "promptFor",
+        "renderUnattributed"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/loop/unattributed.js"
+      ]
+    },
+    "lib/plan/aggregate.js": {
+      "classification": "test-only",
+      "exports": [
+        "aggregate",
+        "recommendNext",
+        "promote",
+        "upsertSprint",
+        "renderStatus",
+        "renderCarryTable"
+      ],
+      "path": [
+        "test/unit/router-report.test.js"
+      ]
+    },
+    "lib/qa/capability.js": {
+      "classification": "reachable",
+      "exports": [
+        "detectTestRunner",
+        "detectTypecheck",
+        "detectLinter",
+        "detectBrowser",
+        "detectDb",
+        "probe",
+        "layerCapability",
+        "renderCapability"
+      ],
+      "path": [
+        "bin/tene-qa",
+        "lib/qa/capability.js"
+      ]
+    },
+    "lib/qa/charter.js": {
+      "classification": "reachable",
+      "exports": [
+        "VARIANTS",
+        "selectVariants",
+        "extractForbidden",
+        "buildSteps",
+        "compile",
+        "renderCharters"
+      ],
+      "path": [
+        "bin/tene-qa",
+        "lib/qa/charter.js"
+      ]
+    },
+    "lib/qa/coverage.js": {
+      "classification": "reachable",
+      "exports": [
+        "edgeId",
+        "computeTransitionCoverage",
+        "RETURN_PATHS",
+        "planReturnPaths",
+        "summarizeReturnPaths",
+        "renderCoverage",
+        "crossJudgeDataFlow"
+      ],
+      "path": [
+        "bin/tene-qa",
+        "lib/qa/coverage.js"
+      ]
+    },
+    "lib/qa/evidence.js": {
+      "classification": "reachable",
+      "exports": [
+        "EVIDENCE_SCHEMA_VERSION",
+        "evidenceDir",
+        "manifestPath",
+        "sha256",
+        "sha256File",
+        "newManifest",
+        "readManifest",
+        "writeManifest",
+        "registerArtifact",
+        "verifyEvidence",
+        "evidenceVerifier",
+        "addCase",
+        "judgeInput",
+        "scanSecrets",
+        "redact",
+        "scanManifest"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/qa/evidence.js"
+      ]
+    },
+    "lib/qa/layers.js": {
+      "classification": "reachable",
+      "exports": [
+        "LAYERS",
+        "LAYER_INFO",
+        "STATES",
+        "RESULTS",
+        "selectLayers",
+        "planLayers",
+        "validateHandling",
+        "applyCapability",
+        "LAYER_TOOLS",
+        "renderLayerTable"
+      ],
+      "path": [
+        "bin/tene-qa",
+        "lib/qa/layers.js"
+      ]
+    },
+    "lib/recover/resync.js": {
+      "classification": "reachable",
+      "exports": [
+        "findSprintDir",
+        "detectDocs",
+        "inferPhase",
+        "mergeAc",
+        "resync",
+        "formatResyncReport"
+      ],
+      "path": [
+        "bin/tene-state",
+        "lib/recover/resync.js"
+      ]
+    },
+    "lib/report/carry.js": {
+      "classification": "reachable",
+      "exports": [
+        "CARRY_KIND",
+        "collectCarry",
+        "renderCarry",
+        "toPromotable"
+      ],
+      "path": [
+        "bin/tene-report",
+        "lib/report/index.js",
+        "lib/report/carry.js"
+      ]
+    },
+    "lib/report/changes.js": {
+      "classification": "reachable",
+      "exports": [
+        "diffStat",
+        "workingStat",
+        "changedSymbolsInFile",
+        "buildChanges",
+        "changedSymbolSet",
+        "changedFileSet",
+        "renderChanges"
+      ],
+      "path": [
+        "bin/tene-report",
+        "lib/report/index.js",
+        "lib/report/changes.js"
+      ]
+    },
+    "lib/report/index.js": {
+      "classification": "reachable",
+      "exports": [
+        "buildReport",
+        "renderSummary"
+      ],
+      "path": [
+        "bin/tene-report",
+        "lib/report/index.js"
+      ]
+    },
+    "lib/report/intent-map.js": {
+      "classification": "reachable",
+      "exports": [
+        "buildIntentMap",
+        "findDeviations",
+        "renderIntentMap"
+      ],
+      "path": [
+        "bin/tene-report",
+        "lib/report/index.js",
+        "lib/report/intent-map.js"
+      ]
+    },
+    "lib/report/layers-questions.js": {
+      "classification": "reachable",
+      "exports": [
+        "buildLayerReport",
+        "renderLayerReport",
+        "buildQuestionsReport",
+        "renderQuestionsReport",
+        "findRevelations",
+        "renderRevelations"
+      ],
+      "path": [
+        "bin/tene-report",
+        "lib/report/index.js",
+        "lib/report/layers-questions.js"
+      ]
+    },
+    "lib/report/lineage.js": {
+      "classification": "reachable",
+      "exports": [
+        "recentArchived",
+        "extractProducedSymbols",
+        "buildLineage",
+        "renderLineage"
+      ],
+      "path": [
+        "bin/tene-report",
+        "lib/report/index.js",
+        "lib/report/lineage.js"
+      ]
+    },
+    "lib/router/match.js": {
+      "classification": "dynamic",
+      "exports": [
+        "loadRules",
+        "detectLang",
+        "matchesCondition",
+        "matchesKeywords",
+        "readSuggested",
+        "markSuggested",
+        "route",
+        "formatSuggestion"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/hooks/user-prompt.js",
+        "lib/router/match.js"
+      ]
+    },
+    "lib/scan/anchors.js": {
+      "classification": "reachable",
+      "exports": [
+        "ANCHOR_SCHEMA_VERSION",
+        "anchorsPath",
+        "readAnchors",
+        "acKey",
+        "classifyAnchor",
+        "buildAnchorIndex",
+        "writeAnchors",
+        "touched",
+        "groupBySprint",
+        "unattributed"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/anchors.js"
+      ]
+    },
+    "lib/scan/index-builder.js": {
+      "classification": "reachable",
+      "exports": [
+        "INDEX_SCHEMA_VERSION",
+        "ENGINE",
+        "indexPath",
+        "readIndex",
+        "build",
+        "writeIndex",
+        "buildAndWrite",
+        "checkFreshness"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/index-builder.js"
+      ]
+    },
+    "lib/scan/langs/go.js": {
+      "classification": "reachable",
+      "exports": [
+        "name",
+        "extensions",
+        "stripNonCode",
+        "stripComments",
+        "extractDefinitions",
+        "extractImports",
+        "extractReferences",
+        "lineAt",
+        "resolveCandidates"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/index-builder.js",
+        "lib/scan/langs/index.js",
+        "lib/scan/langs/go.js"
+      ]
+    },
+    "lib/scan/langs/index.js": {
+      "classification": "reachable",
+      "exports": [
+        "PACKS",
+        "packFor",
+        "SUPPORTED_LANGS",
+        "validatePack",
+        "analyze"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/index-builder.js",
+        "lib/scan/langs/index.js"
+      ]
+    },
+    "lib/scan/langs/java.js": {
+      "classification": "reachable",
+      "exports": [
+        "name",
+        "extensions",
+        "stripNonCode",
+        "extractDefinitions",
+        "extractImports",
+        "extractReferences",
+        "lineAt",
+        "resolveCandidates"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/index-builder.js",
+        "lib/scan/langs/index.js",
+        "lib/scan/langs/java.js"
+      ]
+    },
+    "lib/scan/langs/python.js": {
+      "classification": "reachable",
+      "exports": [
+        "name",
+        "extensions",
+        "stripNonCode",
+        "extractDefinitions",
+        "extractImports",
+        "extractReferences",
+        "lineAt",
+        "resolveCandidates"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/index-builder.js",
+        "lib/scan/langs/index.js",
+        "lib/scan/langs/python.js"
+      ]
+    },
+    "lib/scan/langs/typescript.js": {
+      "classification": "reachable",
+      "exports": [
+        "name",
+        "extensions",
+        "stripNonCode",
+        "stripComments",
+        "extractDefinitions",
+        "extractImports",
+        "extractReferences",
+        "lineAt",
+        "resolveCandidates"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/index-builder.js",
+        "lib/scan/langs/index.js",
+        "lib/scan/langs/typescript.js"
+      ]
+    },
+    "lib/scan/layer.js": {
+      "classification": "reachable",
+      "exports": [
+        "LAYERS",
+        "UNCLASSIFIED",
+        "loadRules",
+        "globToRegExp",
+        "matchAnyGlob",
+        "judgeLayer",
+        "classifyIndex",
+        "violationKind",
+        "VIOLATION_SEVERITY",
+        "findViolations"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/layer.js"
+      ]
+    },
+    "lib/scan/query.js": {
+      "classification": "reachable",
+      "exports": [
+        "MISS",
+        "definitions",
+        "references",
+        "callers",
+        "importsOf",
+        "importedBy",
+        "dependents",
+        "symbolsIn",
+        "orphans",
+        "unresolvedIn",
+        "query",
+        "QUERY_TARGETS",
+        "indexHealth"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/query.js"
+      ]
+    },
+    "lib/scan/questions.js": {
+      "classification": "reachable",
+      "exports": [
+        "QUESTION_IDS",
+        "QUESTION_LABELS",
+        "parseParams",
+        "parseReturn",
+        "answerSix",
+        "answerMany",
+        "renderQuestionsTable"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/questions.js"
+      ]
+    },
+    "lib/scan/walk.js": {
+      "classification": "reachable",
+      "exports": [
+        "DEFAULT_EXCLUDES",
+        "MAX_FILE_BYTES",
+        "EXT_LANG",
+        "langOf",
+        "SHEBANG_LANG",
+        "langOfFile",
+        "extOf",
+        "parseGitignore",
+        "matchesIgnore",
+        "loadGitignore",
+        "walk",
+        "collect"
+      ],
+      "path": [
+        "bin/tene-scan",
+        "lib/scan/index-builder.js",
+        "lib/scan/walk.js"
+      ]
+    },
+    "lib/state/events.js": {
+      "classification": "reachable",
+      "exports": [
+        "EVENT_TYPES",
+        "eventsPath",
+        "appendEvent",
+        "readEvents"
+      ],
+      "path": [
+        "bin/tene-state",
+        "lib/state/events.js"
+      ]
+    },
+    "lib/state/migrate.js": {
+      "classification": "reachable",
+      "exports": [
+        "migrate"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/state/store.js",
+        "lib/state/migrate.js"
+      ]
+    },
+    "lib/state/retention.js": {
+      "classification": "reachable",
+      "exports": [
+        "LIMITS",
+        "checkSize",
+        "markNeedsCleanup",
+        "clearNeedsCleanup",
+        "compactEvents",
+        "archiveOldSprints",
+        "pruneQuarantine",
+        "clean",
+        "carryOverPressure"
+      ],
+      "path": [
+        "bin/tene-state",
+        "lib/state/retention.js"
+      ]
+    },
+    "lib/state/schema.js": {
+      "classification": "reachable",
+      "exports": [
+        "SCHEMA_VERSION",
+        "PHASES",
+        "SPRINT_STATUS",
+        "PROFILES",
+        "VERDICTS",
+        "PRIORITIES",
+        "METHODS",
+        "SPRINT_ID_RE",
+        "TRANSITIONS",
+        "GATE_BY_PHASE",
+        "findTransition",
+        "allowedFrom",
+        "phaseIndex",
+        "phaseAtLeast",
+        "emptySummary",
+        "newSprint",
+        "newCurrent",
+        "newMasterPlan",
+        "sessionId",
+        "computeAcSummary",
+        "nextActionFor",
+        "validateSprintShape"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/state/store.js",
+        "lib/state/schema.js"
+      ]
+    },
+    "lib/state/store.js": {
+      "classification": "reachable",
+      "exports": [
+        "paths",
+        "ensureStateDir",
+        "readCurrent",
+        "readSprint",
+        "readMasterPlan",
+        "listSprintIds",
+        "writeSprint",
+        "writeCurrent",
+        "writeMasterPlan",
+        "syncCurrent",
+        "clearActiveIfMatches",
+        "initSprint",
+        "advance",
+        "setAc",
+        "setIntents",
+        "setDocs",
+        "setGate",
+        "pauseSprint",
+        "resumeSprint",
+        "grantWaiver",
+        "addCarryOver",
+        "markStaleNoLock"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/state/store.js"
+      ]
+    },
+    "lib/state/summary.js": {
+      "classification": "reachable",
+      "exports": [
+        "SESSION_BUDGET_TOKENS",
+        "formatSummary",
+        "recommendNext",
+        "formatNextSuggestion",
+        "buildSessionContext"
+      ],
+      "path": [
+        "bin/tene-state",
+        "lib/state/summary.js"
+      ]
+    },
+    "lib/util/atomic.js": {
+      "classification": "reachable",
+      "exports": [
+        "writeAtomic",
+        "appendLine",
+        "readTextOrNull",
+        "quarantine",
+        "backupFile"
+      ],
+      "path": [
+        "bin/tene-doc",
+        "lib/util/atomic.js"
+      ]
+    },
+    "lib/util/budget.js": {
+      "classification": "reachable",
+      "exports": [
+        "estimateTokens",
+        "truncateToBudget"
+      ],
+      "path": [
+        "bin/tene-state",
+        "lib/state/summary.js",
+        "lib/util/budget.js"
+      ]
+    },
+    "lib/util/deadline.js": {
+      "classification": "reachable",
+      "exports": [
+        "DeadlineExceeded",
+        "withDeadline",
+        "elapsedMs"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/util/envelope.js",
+        "lib/util/deadline.js"
+      ]
+    },
+    "lib/util/envelope.js": {
+      "classification": "reachable",
+      "exports": [
+        "SCHEMA_VERSION",
+        "ok",
+        "fail",
+        "emit",
+        "run"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/util/envelope.js"
+      ]
+    },
+    "lib/util/errors.js": {
+      "classification": "reachable",
+      "exports": [
+        "EXIT",
+        "CODES",
+        "TeneError",
+        "wrapError"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/util/errors.js"
+      ]
+    },
+    "lib/util/json.js": {
+      "classification": "reachable",
+      "exports": [
+        "sortKeys",
+        "stableJson",
+        "lineJson",
+        "parseJsonSafe"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/util/envelope.js",
+        "lib/util/json.js"
+      ]
+    },
+    "lib/util/lock.js": {
+      "classification": "reachable",
+      "exports": [
+        "lockPath",
+        "withLock",
+        "inspectLock"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/state/store.js",
+        "lib/util/lock.js"
+      ]
+    },
+    "lib/util/log.js": {
+      "classification": "reachable",
+      "exports": [
+        "safePath",
+        "isDebug",
+        "debug",
+        "warn"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/util/log.js"
+      ]
+    },
+    "lib/util/paths.js": {
+      "classification": "reachable",
+      "exports": [
+        "STATE_DIR",
+        "VAULT_DIR",
+        "DEFAULT_DOCS_ROOT",
+        "pluginRoot",
+        "findProjectRoot",
+        "assertInProject",
+        "relativeInProject",
+        "toProjectRelative",
+        "isVaultPath",
+        "isStatePath",
+        "isDocOrState",
+        "isConfigFile",
+        "isTestFile",
+        "statOrNull"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/util/paths.js"
+      ]
+    },
+    "lib/util/stdin.js": {
+      "classification": "reachable",
+      "exports": [
+        "readStdinJson"
+      ],
+      "path": [
+        "bin/tene-hook",
+        "lib/util/stdin.js"
+      ]
+    },
+    "lib/util/time.js": {
+      "classification": "reachable",
+      "exports": [
+        "nowIso",
+        "todayIso",
+        "yearMonth",
+        "makeRunId",
+        "parseIso",
+        "olderThan"
+      ],
+      "path": [
+        "bin/tene-gate",
+        "lib/state/store.js",
+        "lib/util/time.js"
+      ]
+    }
+  },
+  "paths": {
+    "lib/doc/extract.js#earsPattern": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractIntents": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractAc": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractTasks": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractCoverage": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractTransitions": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractAnchors": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractVerdicts": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractInsufficient": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractCarry": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extractRequirements": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#extract": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/extract.js#EXTRACT_TARGETS": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/parser.js#parseSimpleYaml": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/parser.js#parseTables": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/parser.js#isPlaceholderOnly": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/parser.js#parseDoc": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/parser.js#tableToObjects": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/parser.js#normalizeHeader": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/parser.js#plainCell": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/patch.js#patchBlock": [
+      "bin/tene-doc",
+      "lib/doc/patch.js"
+    ],
+    "lib/doc/patch.js#patchBlocks": [
+      "bin/tene-doc",
+      "lib/doc/patch.js"
+    ],
+    "lib/doc/patch.js#touchModified": [
+      "bin/tene-doc",
+      "lib/doc/patch.js"
+    ],
+    "lib/doc/sections.js#DOC_TYPES": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#SECTIONS": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#REQUIRED_BY_PROFILE": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#AUTO_BLOCKS": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#DOC_PHASE": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#DOC_GATE": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#DOC_PATH": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#requiredSections": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/sections.js#isAutoBlock": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/template.js#templatePath": [
+      "bin/tene-doc",
+      "lib/doc/template.js"
+    ],
+    "lib/doc/template.js#render": [
+      "bin/tene-doc",
+      "lib/doc/template.js"
+    ],
+    "lib/doc/template.js#scaffold": [
+      "bin/tene-doc",
+      "lib/doc/template.js"
+    ],
+    "lib/doc/template.js#isUntouched": [
+      "bin/tene-doc",
+      "lib/doc/template.js"
+    ],
+    "lib/doc/template.js#mergeMissingSections": [
+      "bin/tene-doc",
+      "lib/doc/template.js"
+    ],
+    "lib/doc/validate.js#RULES": [
+      "bin/tene-doc",
+      "lib/doc/validate.js"
+    ],
+    "lib/doc/validate.js#RULES_BY_DOC": [
+      "bin/tene-doc",
+      "lib/doc/validate.js"
+    ],
+    "lib/doc/validate.js#validateDoc": [
+      "bin/tene-doc",
+      "lib/doc/validate.js"
+    ],
+    "lib/doctor.js#versionGte": [
+      "bin/tene-state",
+      "lib/doctor.js"
+    ],
+    "lib/doctor.js#detectClaudeVersion": [
+      "bin/tene-state",
+      "lib/doctor.js"
+    ],
+    "lib/doctor.js#diagnose": [
+      "bin/tene-state",
+      "lib/doctor.js"
+    ],
+    "lib/gate/rules.js#GATES": [
+      "bin/tene-gate",
+      "lib/gate/rules.js"
+    ],
+    "lib/gate/rules.js#GATE_IDS": [
+      "bin/tene-gate",
+      "lib/gate/rules.js"
+    ],
+    "lib/gate/rules.js#evaluateGate": [
+      "bin/tene-gate",
+      "lib/gate/rules.js"
+    ],
+    "lib/gate/rules.js#gateForTransition": [
+      "bin/tene-gate",
+      "lib/gate/rules.js"
+    ],
+    "lib/guard/rules.js#SR": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/rules.js#isVaultPath": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/rules.js#judgeBash": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/rules.js#judgeRead": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/rules.js#isPlainEnvFile": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/rules.js#envAdvice": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/rules.js#writeTargetsOf": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/segment.js#segments": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/guard/segment.js#stripPrefix": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/guard/segment.js#commandOf": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/guard/segment.js#normalizedCommand": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/guard/segment.js#expandIndirect": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/guard/segment.js#heredocBodies": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/guard/segment.js#substitutions": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/guard/segment.js#allSegments": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/hooks/compact.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/compact.js"
+    ],
+    "lib/hooks/post-bash.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/post-bash.js"
+    ],
+    "lib/hooks/post-edit.js#pathsFrom": [
+      "bin/tene-hook",
+      "lib/hooks/post-edit.js"
+    ],
+    "lib/hooks/post-edit.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/post-edit.js"
+    ],
+    "lib/hooks/pre-edit.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/pre-edit.js"
+    ],
+    "lib/hooks/session-end.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/session-end.js"
+    ],
+    "lib/hooks/session-start.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/session-start.js"
+    ],
+    "lib/hooks/stop.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/stop.js"
+    ],
+    "lib/hooks/subagent-stop.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/subagent-stop.js"
+    ],
+    "lib/hooks/task-created.js#parsePhaseFromTitle": [
+      "bin/tene-hook",
+      "lib/hooks/task-created.js"
+    ],
+    "lib/hooks/task-created.js#parseAcRefs": [
+      "bin/tene-hook",
+      "lib/hooks/task-created.js"
+    ],
+    "lib/hooks/task-created.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/task-created.js"
+    ],
+    "lib/hooks/user-prompt.js#run": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js"
+    ],
+    "lib/loop/judge.js#SCORE": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/judge.js"
+    ],
+    "lib/loop/judge.js#judgeRequirement": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/judge.js"
+    ],
+    "lib/loop/judge.js#severityOf": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/judge.js"
+    ],
+    "lib/loop/judge.js#kindOf": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/judge.js"
+    ],
+    "lib/loop/judge.js#judgeAll": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/judge.js"
+    ],
+    "lib/loop/judge.js#summarize": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/judge.js"
+    ],
+    "lib/loop/progress.js#VERDICT": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/progress.js"
+    ],
+    "lib/loop/progress.js#judgeRound": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/progress.js"
+    ],
+    "lib/loop/progress.js#detectStall": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/progress.js"
+    ],
+    "lib/loop/progress.js#diffRounds": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/progress.js"
+    ],
+    "lib/loop/progress.js#formatProgress": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/progress.js"
+    ],
+    "lib/loop/progress.js#gateInputs": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/progress.js"
+    ],
+    "lib/loop/requirements.js#SOURCES": [
+      "bin/tene-loop",
+      "lib/loop/requirements.js"
+    ],
+    "lib/loop/requirements.js#extractRequirements": [
+      "bin/tene-loop",
+      "lib/loop/requirements.js"
+    ],
+    "lib/loop/requirements.js#coverageGaps": [
+      "bin/tene-loop",
+      "lib/loop/requirements.js"
+    ],
+    "lib/loop/run.js#runLoopCheck": [
+      "bin/tene-loop",
+      "lib/loop/run.js"
+    ],
+    "lib/loop/run.js#historyEntry": [
+      "bin/tene-loop",
+      "lib/loop/run.js"
+    ],
+    "lib/loop/unattributed.js#RESOLUTIONS": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#changedFiles": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#workingChanges": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#diffStat": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#isExempt": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#detectUnattributed": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#applyResolutions": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#unresolvedCount": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#promptFor": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/loop/unattributed.js#renderUnattributed": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/plan/aggregate.js#aggregate": [
+      "test/unit/router-report.test.js"
+    ],
+    "lib/plan/aggregate.js#recommendNext": [
+      "test/unit/router-report.test.js"
+    ],
+    "lib/plan/aggregate.js#promote": [
+      "test/unit/router-report.test.js"
+    ],
+    "lib/plan/aggregate.js#upsertSprint": [
+      "test/unit/router-report.test.js"
+    ],
+    "lib/plan/aggregate.js#renderStatus": [
+      "test/unit/router-report.test.js"
+    ],
+    "lib/plan/aggregate.js#renderCarryTable": [
+      "test/unit/router-report.test.js"
+    ],
+    "lib/qa/capability.js#detectTestRunner": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/capability.js#detectTypecheck": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/capability.js#detectLinter": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/capability.js#detectBrowser": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/capability.js#detectDb": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/capability.js#probe": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/capability.js#layerCapability": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/capability.js#renderCapability": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/charter.js#VARIANTS": [
+      "bin/tene-qa",
+      "lib/qa/charter.js"
+    ],
+    "lib/qa/charter.js#selectVariants": [
+      "bin/tene-qa",
+      "lib/qa/charter.js"
+    ],
+    "lib/qa/charter.js#extractForbidden": [
+      "bin/tene-qa",
+      "lib/qa/charter.js"
+    ],
+    "lib/qa/charter.js#buildSteps": [
+      "bin/tene-qa",
+      "lib/qa/charter.js"
+    ],
+    "lib/qa/charter.js#compile": [
+      "bin/tene-qa",
+      "lib/qa/charter.js"
+    ],
+    "lib/qa/charter.js#renderCharters": [
+      "bin/tene-qa",
+      "lib/qa/charter.js"
+    ],
+    "lib/qa/coverage.js#edgeId": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/coverage.js#computeTransitionCoverage": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/coverage.js#RETURN_PATHS": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/coverage.js#planReturnPaths": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/coverage.js#summarizeReturnPaths": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/coverage.js#renderCoverage": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/coverage.js#crossJudgeDataFlow": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/evidence.js#EVIDENCE_SCHEMA_VERSION": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#evidenceDir": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#manifestPath": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#sha256": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#sha256File": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#newManifest": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#readManifest": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#writeManifest": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#registerArtifact": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#verifyEvidence": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#evidenceVerifier": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#addCase": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#judgeInput": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#scanSecrets": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#redact": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/evidence.js#scanManifest": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/layers.js#LAYERS": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#LAYER_INFO": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#STATES": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#RESULTS": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#selectLayers": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#planLayers": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#validateHandling": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#applyCapability": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#LAYER_TOOLS": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/qa/layers.js#renderLayerTable": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/recover/resync.js#findSprintDir": [
+      "bin/tene-state",
+      "lib/recover/resync.js"
+    ],
+    "lib/recover/resync.js#detectDocs": [
+      "bin/tene-state",
+      "lib/recover/resync.js"
+    ],
+    "lib/recover/resync.js#inferPhase": [
+      "bin/tene-state",
+      "lib/recover/resync.js"
+    ],
+    "lib/recover/resync.js#mergeAc": [
+      "bin/tene-state",
+      "lib/recover/resync.js"
+    ],
+    "lib/recover/resync.js#resync": [
+      "bin/tene-state",
+      "lib/recover/resync.js"
+    ],
+    "lib/recover/resync.js#formatResyncReport": [
+      "bin/tene-state",
+      "lib/recover/resync.js"
+    ],
+    "lib/report/carry.js#CARRY_KIND": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/carry.js"
+    ],
+    "lib/report/carry.js#collectCarry": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/carry.js"
+    ],
+    "lib/report/carry.js#renderCarry": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/carry.js"
+    ],
+    "lib/report/carry.js#toPromotable": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/carry.js"
+    ],
+    "lib/report/changes.js#diffStat": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/changes.js#workingStat": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/changes.js#changedSymbolsInFile": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/changes.js#buildChanges": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/changes.js#changedSymbolSet": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/changes.js#changedFileSet": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/changes.js#renderChanges": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/index.js#buildReport": [
+      "bin/tene-report",
+      "lib/report/index.js"
+    ],
+    "lib/report/index.js#renderSummary": [
+      "bin/tene-report",
+      "lib/report/index.js"
+    ],
+    "lib/report/intent-map.js#buildIntentMap": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/intent-map.js"
+    ],
+    "lib/report/intent-map.js#findDeviations": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/intent-map.js"
+    ],
+    "lib/report/intent-map.js#renderIntentMap": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/intent-map.js"
+    ],
+    "lib/report/layers-questions.js#buildLayerReport": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/layers-questions.js"
+    ],
+    "lib/report/layers-questions.js#renderLayerReport": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/layers-questions.js"
+    ],
+    "lib/report/layers-questions.js#buildQuestionsReport": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/layers-questions.js"
+    ],
+    "lib/report/layers-questions.js#renderQuestionsReport": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/layers-questions.js"
+    ],
+    "lib/report/layers-questions.js#findRevelations": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/layers-questions.js"
+    ],
+    "lib/report/layers-questions.js#renderRevelations": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/layers-questions.js"
+    ],
+    "lib/report/lineage.js#recentArchived": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/lineage.js"
+    ],
+    "lib/report/lineage.js#extractProducedSymbols": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/lineage.js"
+    ],
+    "lib/report/lineage.js#buildLineage": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/lineage.js"
+    ],
+    "lib/report/lineage.js#renderLineage": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/lineage.js"
+    ],
+    "lib/router/match.js#loadRules": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/router/match.js#detectLang": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/router/match.js#matchesCondition": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/router/match.js#matchesKeywords": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/router/match.js#readSuggested": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/router/match.js#markSuggested": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/router/match.js#route": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/router/match.js#formatSuggestion": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/scan/anchors.js#ANCHOR_SCHEMA_VERSION": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#anchorsPath": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#readAnchors": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#acKey": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#classifyAnchor": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#buildAnchorIndex": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#writeAnchors": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#touched": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#groupBySprint": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/anchors.js#unattributed": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/index-builder.js#INDEX_SCHEMA_VERSION": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/index-builder.js#ENGINE": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/index-builder.js#indexPath": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/index-builder.js#readIndex": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/index-builder.js#build": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/index-builder.js#writeIndex": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/index-builder.js#buildAndWrite": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/index-builder.js#checkFreshness": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/langs/go.js#name": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#extensions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#stripNonCode": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#stripComments": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#extractDefinitions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#extractImports": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#extractReferences": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#lineAt": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/go.js#resolveCandidates": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/index.js#PACKS": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js"
+    ],
+    "lib/scan/langs/index.js#packFor": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js"
+    ],
+    "lib/scan/langs/index.js#SUPPORTED_LANGS": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js"
+    ],
+    "lib/scan/langs/index.js#validatePack": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js"
+    ],
+    "lib/scan/langs/index.js#analyze": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js"
+    ],
+    "lib/scan/langs/java.js#name": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/java.js#extensions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/java.js#stripNonCode": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/java.js#extractDefinitions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/java.js#extractImports": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/java.js#extractReferences": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/java.js#lineAt": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/java.js#resolveCandidates": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/python.js#name": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/python.js#extensions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/python.js#stripNonCode": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/python.js#extractDefinitions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/python.js#extractImports": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/python.js#extractReferences": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/python.js#lineAt": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/python.js#resolveCandidates": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/typescript.js#name": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#extensions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#stripNonCode": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#stripComments": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#extractDefinitions": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#extractImports": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#extractReferences": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#lineAt": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/langs/typescript.js#resolveCandidates": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/layer.js#LAYERS": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#UNCLASSIFIED": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#loadRules": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#globToRegExp": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#matchAnyGlob": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#judgeLayer": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#classifyIndex": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#violationKind": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#VIOLATION_SEVERITY": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/layer.js#findViolations": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/query.js#MISS": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#definitions": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#references": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#callers": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#importsOf": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#importedBy": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#dependents": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#symbolsIn": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#orphans": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#unresolvedIn": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#query": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#QUERY_TARGETS": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/query.js#indexHealth": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/questions.js#QUESTION_IDS": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/questions.js#QUESTION_LABELS": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/questions.js#parseParams": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/questions.js#parseReturn": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/questions.js#answerSix": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/questions.js#answerMany": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/questions.js#renderQuestionsTable": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/walk.js#DEFAULT_EXCLUDES": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#MAX_FILE_BYTES": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#EXT_LANG": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#langOf": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#SHEBANG_LANG": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#langOfFile": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#extOf": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#parseGitignore": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#matchesIgnore": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#loadGitignore": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#walk": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/scan/walk.js#collect": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/state/events.js#EVENT_TYPES": [
+      "bin/tene-state",
+      "lib/state/events.js"
+    ],
+    "lib/state/events.js#eventsPath": [
+      "bin/tene-state",
+      "lib/state/events.js"
+    ],
+    "lib/state/events.js#appendEvent": [
+      "bin/tene-state",
+      "lib/state/events.js"
+    ],
+    "lib/state/events.js#readEvents": [
+      "bin/tene-state",
+      "lib/state/events.js"
+    ],
+    "lib/state/migrate.js#migrate": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/migrate.js"
+    ],
+    "lib/state/retention.js#LIMITS": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#checkSize": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#markNeedsCleanup": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#clearNeedsCleanup": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#compactEvents": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#archiveOldSprints": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#pruneQuarantine": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#clean": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/retention.js#carryOverPressure": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/schema.js#SCHEMA_VERSION": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#PHASES": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#SPRINT_STATUS": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#PROFILES": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#VERDICTS": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#PRIORITIES": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#METHODS": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#SPRINT_ID_RE": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#TRANSITIONS": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#GATE_BY_PHASE": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#findTransition": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#allowedFrom": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#phaseIndex": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#phaseAtLeast": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#emptySummary": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#newSprint": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#newCurrent": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#newMasterPlan": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#sessionId": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#computeAcSummary": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#nextActionFor": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/schema.js#validateSprintShape": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/store.js#paths": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#ensureStateDir": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#readCurrent": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#readSprint": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#readMasterPlan": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#listSprintIds": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#writeSprint": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#writeCurrent": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#writeMasterPlan": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#syncCurrent": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#clearActiveIfMatches": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#initSprint": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#advance": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#setAc": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#setIntents": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#setDocs": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#setGate": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#pauseSprint": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#resumeSprint": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#grantWaiver": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#addCarryOver": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/store.js#markStaleNoLock": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/summary.js#SESSION_BUDGET_TOKENS": [
+      "bin/tene-state",
+      "lib/state/summary.js"
+    ],
+    "lib/state/summary.js#formatSummary": [
+      "bin/tene-state",
+      "lib/state/summary.js"
+    ],
+    "lib/state/summary.js#recommendNext": [
+      "bin/tene-state",
+      "lib/state/summary.js"
+    ],
+    "lib/state/summary.js#formatNextSuggestion": [
+      "bin/tene-state",
+      "lib/state/summary.js"
+    ],
+    "lib/state/summary.js#buildSessionContext": [
+      "bin/tene-state",
+      "lib/state/summary.js"
+    ],
+    "lib/util/atomic.js#writeAtomic": [
+      "bin/tene-doc",
+      "lib/util/atomic.js"
+    ],
+    "lib/util/atomic.js#appendLine": [
+      "bin/tene-doc",
+      "lib/util/atomic.js"
+    ],
+    "lib/util/atomic.js#readTextOrNull": [
+      "bin/tene-doc",
+      "lib/util/atomic.js"
+    ],
+    "lib/util/atomic.js#quarantine": [
+      "bin/tene-doc",
+      "lib/util/atomic.js"
+    ],
+    "lib/util/atomic.js#backupFile": [
+      "bin/tene-doc",
+      "lib/util/atomic.js"
+    ],
+    "lib/util/budget.js#estimateTokens": [
+      "bin/tene-state",
+      "lib/state/summary.js",
+      "lib/util/budget.js"
+    ],
+    "lib/util/budget.js#truncateToBudget": [
+      "bin/tene-state",
+      "lib/state/summary.js",
+      "lib/util/budget.js"
+    ],
+    "lib/util/deadline.js#DeadlineExceeded": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/deadline.js"
+    ],
+    "lib/util/deadline.js#withDeadline": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/deadline.js"
+    ],
+    "lib/util/deadline.js#elapsedMs": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/deadline.js"
+    ],
+    "lib/util/envelope.js#SCHEMA_VERSION": [
+      "bin/tene-gate",
+      "lib/util/envelope.js"
+    ],
+    "lib/util/envelope.js#ok": [
+      "bin/tene-gate",
+      "lib/util/envelope.js"
+    ],
+    "lib/util/envelope.js#fail": [
+      "bin/tene-gate",
+      "lib/util/envelope.js"
+    ],
+    "lib/util/envelope.js#emit": [
+      "bin/tene-gate",
+      "lib/util/envelope.js"
+    ],
+    "lib/util/envelope.js#run": [
+      "bin/tene-gate",
+      "lib/util/envelope.js"
+    ],
+    "lib/util/errors.js#EXIT": [
+      "bin/tene-gate",
+      "lib/util/errors.js"
+    ],
+    "lib/util/errors.js#CODES": [
+      "bin/tene-gate",
+      "lib/util/errors.js"
+    ],
+    "lib/util/errors.js#TeneError": [
+      "bin/tene-gate",
+      "lib/util/errors.js"
+    ],
+    "lib/util/errors.js#wrapError": [
+      "bin/tene-gate",
+      "lib/util/errors.js"
+    ],
+    "lib/util/json.js#sortKeys": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/json.js"
+    ],
+    "lib/util/json.js#stableJson": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/json.js"
+    ],
+    "lib/util/json.js#lineJson": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/json.js"
+    ],
+    "lib/util/json.js#parseJsonSafe": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/json.js"
+    ],
+    "lib/util/lock.js#lockPath": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/lock.js"
+    ],
+    "lib/util/lock.js#withLock": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/lock.js"
+    ],
+    "lib/util/lock.js#inspectLock": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/lock.js"
+    ],
+    "lib/util/log.js#safePath": [
+      "bin/tene-hook",
+      "lib/util/log.js"
+    ],
+    "lib/util/log.js#isDebug": [
+      "bin/tene-hook",
+      "lib/util/log.js"
+    ],
+    "lib/util/log.js#debug": [
+      "bin/tene-hook",
+      "lib/util/log.js"
+    ],
+    "lib/util/log.js#warn": [
+      "bin/tene-hook",
+      "lib/util/log.js"
+    ],
+    "lib/util/paths.js#STATE_DIR": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#VAULT_DIR": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#DEFAULT_DOCS_ROOT": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#pluginRoot": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#findProjectRoot": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#assertInProject": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#relativeInProject": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#toProjectRelative": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#isVaultPath": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#isStatePath": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#isDocOrState": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#isConfigFile": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#isTestFile": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/paths.js#statOrNull": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/stdin.js#readStdinJson": [
+      "bin/tene-hook",
+      "lib/util/stdin.js"
+    ],
+    "lib/util/time.js#nowIso": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/time.js"
+    ],
+    "lib/util/time.js#todayIso": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/time.js"
+    ],
+    "lib/util/time.js#yearMonth": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/time.js"
+    ],
+    "lib/util/time.js#makeRunId": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/time.js"
+    ],
+    "lib/util/time.js#parseIso": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/time.js"
+    ],
+    "lib/util/time.js#olderThan": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/time.js"
+    ]
+  },
+  "selfCheck": {
+    "known": [
+      {
+        "kind": "known",
+        "file": "lib/plan/aggregate.js",
+        "want": "test-only",
+        "got": "test-only",
+        "ok": true
+      },
+      {
+        "kind": "known",
+        "file": "lib/hooks/session-start.js",
+        "want": "dynamic",
+        "got": "dynamic",
+        "ok": true
+      },
+      {
+        "kind": "known",
+        "file": "lib/state/store.js",
+        "want": "reachable",
+        "got": "reachable",
+        "ok": true
+      }
+    ],
+    "synthetic": {
+      "kind": "synthetic",
+      "detail": "임시 디렉토리에 배선·미배선·테스트전용·동적 모듈을 만들어 분류기를 태웠다",
+      "rows": [
+        {
+          "file": "lib/wired.js",
+          "want": "reachable",
+          "got": "reachable"
+        },
+        {
+          "file": "lib/orphan.js",
+          "want": "unreachable",
+          "got": "unreachable"
+        },
+        {
+          "file": "lib/testonly.js",
+          "want": "test-only",
+          "got": "test-only"
+        },
+        {
+          "file": "lib/dyn.js",
+          "want": "dynamic",
+          "got": "dynamic"
+        }
+      ],
+      "ok": true,
+      "tmpDir": "/var/folders/r9/fbtgppdn7t7f_04mvv64n8_w0000gn/T/reach-TpmO75"
+    }
+  },
+  "trustworthy": true,
+  "note": "알려진 정답 3건 + 합성 4분기 검사 통과. 네 분류가 전부 실제로 산출됨을 확인했다."
+}

@@ -1,0 +1,1 @@
+{"data":{"kind":"sprint","text":"[tene] 진행 중: self-conformance (phase: qa, profile: strict)\n  · AC 10건 — 미판정 10\n  · 다음: /tene:qa — blocking AC 8건이 아직 판정되지 않았습니다\n  · 문서: docs/sprints/self-conformance-spec-audit/","tokens":72,"truncated":false},"elapsedMs":8,"ok":true,"schemaVersion":1,"tool":"tene-state","warnings":[]}

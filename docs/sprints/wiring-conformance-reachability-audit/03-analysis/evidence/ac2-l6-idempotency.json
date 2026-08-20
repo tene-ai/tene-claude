@@ -1,0 +1,11 @@
+{
+  "run1_tmpDir": "/var/folders/r9/fbtgppdn7t7f_04mvv64n8_w0000gn/T/reach-uNsKf3",
+  "run2_tmpDir": "/var/folders/r9/fbtgppdn7t7f_04mvv64n8_w0000gn/T/reach-Kg6AVE",
+  "sha256_run1_normalized": "1fb79c5b0d0e0fad95cd0aac145f0e780f69dbcee423ebbf93f0b3c804e0b2ae",
+  "sha256_run2_normalized": "1fb79c5b0d0e0fad95cd0aac145f0e780f69dbcee423ebbf93f0b3c804e0b2ae",
+  "identical_after_normalizing_tmpdir": true,
+  "run1_classifiedEntries": 408,
+  "run2_classifiedEntries": 408,
+  "run1_uniqueIds": 408,
+  "run2_uniqueIds": 408
+}

@@ -1,0 +1,116 @@
+{
+  "purpose": "정적 도달 불가 export 를 dynamic 과 test-only/unreachable 로 구분해 기록하는지",
+  "dynamicUnits": [
+    "lib/hooks/compact.js#run",
+    "lib/hooks/post-bash.js#run",
+    "lib/hooks/post-edit.js#pathsFrom",
+    "lib/hooks/post-edit.js#run",
+    "lib/hooks/pre-edit.js#run",
+    "lib/hooks/session-end.js#run",
+    "lib/hooks/session-start.js#run",
+    "lib/hooks/stop.js#run",
+    "lib/hooks/subagent-stop.js#run",
+    "lib/hooks/task-created.js#parsePhaseFromTitle",
+    "lib/hooks/task-created.js#parseAcRefs",
+    "lib/hooks/task-created.js#run",
+    "lib/hooks/user-prompt.js#run",
+    "lib/router/match.js#loadRules",
+    "lib/router/match.js#detectLang",
+    "lib/router/match.js#matchesCondition",
+    "lib/router/match.js#matchesKeywords",
+    "lib/router/match.js#readSuggested",
+    "lib/router/match.js#markSuggested",
+    "lib/router/match.js#route",
+    "lib/router/match.js#formatSuggestion"
+  ],
+  "dynamicEvidence": {
+    "lib/hooks/compact.js": [
+      "bin/tene-hook",
+      "lib/hooks/compact.js"
+    ],
+    "lib/hooks/post-bash.js": [
+      "bin/tene-hook",
+      "lib/hooks/post-bash.js"
+    ],
+    "lib/hooks/post-edit.js": [
+      "bin/tene-hook",
+      "lib/hooks/post-edit.js"
+    ],
+    "lib/hooks/pre-edit.js": [
+      "bin/tene-hook",
+      "lib/hooks/pre-edit.js"
+    ],
+    "lib/hooks/session-end.js": [
+      "bin/tene-hook",
+      "lib/hooks/session-end.js"
+    ],
+    "lib/hooks/session-start.js": [
+      "bin/tene-hook",
+      "lib/hooks/session-start.js"
+    ],
+    "lib/hooks/stop.js": [
+      "bin/tene-hook",
+      "lib/hooks/stop.js"
+    ],
+    "lib/hooks/subagent-stop.js": [
+      "bin/tene-hook",
+      "lib/hooks/subagent-stop.js"
+    ],
+    "lib/hooks/task-created.js": [
+      "bin/tene-hook",
+      "lib/hooks/task-created.js"
+    ],
+    "lib/hooks/user-prompt.js": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js"
+    ],
+    "lib/router/match.js": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ]
+  },
+  "testOnlyUnits": [
+    "lib/plan/aggregate.js#aggregate",
+    "lib/plan/aggregate.js#recommendNext",
+    "lib/plan/aggregate.js#promote",
+    "lib/plan/aggregate.js#upsertSprint",
+    "lib/plan/aggregate.js#renderStatus",
+    "lib/plan/aggregate.js#renderCarryTable"
+  ],
+  "testOnlyEvidence": {
+    "lib/plan/aggregate.js": [
+      "test/unit/router-report.test.js"
+    ]
+  },
+  "unreachableUnits": [],
+  "negativeCase": {
+    "kind": "synthetic",
+    "detail": "임시 디렉토리에 배선·미배선·테스트전용·동적 모듈을 만들어 분류기를 태웠다",
+    "rows": [
+      {
+        "file": "lib/wired.js",
+        "want": "reachable",
+        "got": "reachable"
+      },
+      {
+        "file": "lib/orphan.js",
+        "want": "unreachable",
+        "got": "unreachable"
+      },
+      {
+        "file": "lib/testonly.js",
+        "want": "test-only",
+        "got": "test-only"
+      },
+      {
+        "file": "lib/dyn.js",
+        "want": "dynamic",
+        "got": "dynamic"
+      }
+    ],
+    "ok": true,
+    "tmpDir": "/var/folders/r9/fbtgppdn7t7f_04mvv64n8_w0000gn/T/reach-TpmO75"
+  },
+  "why": "unreachable 이 실물 트리에서 0건이므로 합성 트리로 그 분기를 실제로 산출시켰다. 네 분류가 모두 관측됐다."
+}

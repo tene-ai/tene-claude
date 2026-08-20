@@ -1,0 +1,14 @@
+{
+ "failed": [
+  "layers_all_four"
+ ],
+ "layers": {
+  "id": "layers_all_four",
+  "pass": false,
+  "detail": "기재되지 않은 계층: business — \"해당 없음\" 이라도 명시해야 합니다",
+  "line": 23,
+  "value": [
+   "business"
+  ]
+ }
+}

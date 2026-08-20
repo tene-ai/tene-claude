@@ -1,0 +1,512 @@
+{
+  "root": "/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0",
+  "entrypoints": [
+    {
+      "file": "bin/tene-hook",
+      "sources": [
+        "hooks.json",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-guard",
+      "sources": [
+        "hooks.json",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-gate",
+      "sources": [
+        "hooks.json",
+        "skills/archive",
+        "skills/design",
+        "skills/loop-check",
+        "skills/plan",
+        "skills/prd",
+        "skills/qa",
+        "skills/report",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-state",
+      "sources": [
+        "skills/archive",
+        "skills/clear",
+        "skills/design",
+        "skills/doctor",
+        "skills/loop-check",
+        "skills/master-plan",
+        "skills/plan",
+        "skills/prd",
+        "skills/qa",
+        "skills/report",
+        "skills/sprint",
+        "skills/status",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-report",
+      "sources": [
+        "skills/archive",
+        "skills/master-plan",
+        "skills/report",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-scan",
+      "sources": [
+        "skills/design",
+        "skills/layers",
+        "skills/loop-check",
+        "skills/report",
+        "skills/understand",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-doc",
+      "sources": [
+        "skills/design",
+        "skills/loop-check",
+        "skills/plan",
+        "skills/prd",
+        "skills/qa",
+        "skills/report",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-loop",
+      "sources": [
+        "skills/loop-check",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "bin/tene-qa",
+      "sources": [
+        "skills/qa",
+        "bin (직접 실행 가능)"
+      ]
+    },
+    {
+      "file": "workflows/conformance-audit.js",
+      "sources": [
+        "workflow"
+      ]
+    },
+    {
+      "file": "workflows/qa-sweep.js",
+      "sources": [
+        "workflow"
+      ]
+    },
+    {
+      "file": "workflows/understand-sweep.js",
+      "sources": [
+        "workflow"
+      ]
+    }
+  ],
+  "totals": {
+    "lib": 67,
+    "reachable": 55,
+    "dynamic": 11,
+    "test-only": 1,
+    "unreachable": 0
+  },
+  "classified": {
+    "reachable": [
+      "lib/doc/extract.js",
+      "lib/doc/parser.js",
+      "lib/doc/patch.js",
+      "lib/doc/sections.js",
+      "lib/doc/template.js",
+      "lib/doc/validate.js",
+      "lib/doctor.js",
+      "lib/gate/rules.js",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js",
+      "lib/loop/judge.js",
+      "lib/loop/progress.js",
+      "lib/loop/requirements.js",
+      "lib/loop/run.js",
+      "lib/loop/unattributed.js",
+      "lib/qa/capability.js",
+      "lib/qa/charter.js",
+      "lib/qa/coverage.js",
+      "lib/qa/evidence.js",
+      "lib/qa/layers.js",
+      "lib/recover/resync.js",
+      "lib/report/carry.js",
+      "lib/report/changes.js",
+      "lib/report/index.js",
+      "lib/report/intent-map.js",
+      "lib/report/layers-questions.js",
+      "lib/report/lineage.js",
+      "lib/scan/anchors.js",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/go.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js",
+      "lib/scan/langs/python.js",
+      "lib/scan/langs/typescript.js",
+      "lib/scan/layer.js",
+      "lib/scan/query.js",
+      "lib/scan/questions.js",
+      "lib/scan/walk.js",
+      "lib/state/events.js",
+      "lib/state/migrate.js",
+      "lib/state/retention.js",
+      "lib/state/schema.js",
+      "lib/state/store.js",
+      "lib/state/summary.js",
+      "lib/util/atomic.js",
+      "lib/util/budget.js",
+      "lib/util/deadline.js",
+      "lib/util/envelope.js",
+      "lib/util/errors.js",
+      "lib/util/json.js",
+      "lib/util/lock.js",
+      "lib/util/log.js",
+      "lib/util/paths.js",
+      "lib/util/stdin.js",
+      "lib/util/time.js"
+    ],
+    "dynamic": [
+      "lib/hooks/compact.js",
+      "lib/hooks/post-bash.js",
+      "lib/hooks/post-edit.js",
+      "lib/hooks/pre-edit.js",
+      "lib/hooks/session-end.js",
+      "lib/hooks/session-start.js",
+      "lib/hooks/stop.js",
+      "lib/hooks/subagent-stop.js",
+      "lib/hooks/task-created.js",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "test-only": [
+      "lib/plan/aggregate.js"
+    ],
+    "unreachable": []
+  },
+  "paths": {
+    "lib/doc/extract.js": [
+      "bin/tene-doc",
+      "lib/doc/extract.js"
+    ],
+    "lib/doc/parser.js": [
+      "bin/tene-gate",
+      "lib/doc/parser.js"
+    ],
+    "lib/doc/patch.js": [
+      "bin/tene-doc",
+      "lib/doc/patch.js"
+    ],
+    "lib/doc/sections.js": [
+      "bin/tene-doc",
+      "lib/doc/sections.js"
+    ],
+    "lib/doc/template.js": [
+      "bin/tene-doc",
+      "lib/doc/template.js"
+    ],
+    "lib/doc/validate.js": [
+      "bin/tene-doc",
+      "lib/doc/validate.js"
+    ],
+    "lib/doctor.js": [
+      "bin/tene-state",
+      "lib/doctor.js"
+    ],
+    "lib/gate/rules.js": [
+      "bin/tene-gate",
+      "lib/gate/rules.js"
+    ],
+    "lib/guard/rules.js": [
+      "bin/tene-guard",
+      "lib/guard/rules.js"
+    ],
+    "lib/guard/segment.js": [
+      "bin/tene-guard",
+      "lib/guard/rules.js",
+      "lib/guard/segment.js"
+    ],
+    "lib/hooks/compact.js": [
+      "bin/tene-hook",
+      "lib/hooks/compact.js"
+    ],
+    "lib/hooks/post-bash.js": [
+      "bin/tene-hook",
+      "lib/hooks/post-bash.js"
+    ],
+    "lib/hooks/post-edit.js": [
+      "bin/tene-hook",
+      "lib/hooks/post-edit.js"
+    ],
+    "lib/hooks/pre-edit.js": [
+      "bin/tene-hook",
+      "lib/hooks/pre-edit.js"
+    ],
+    "lib/hooks/session-end.js": [
+      "bin/tene-hook",
+      "lib/hooks/session-end.js"
+    ],
+    "lib/hooks/session-start.js": [
+      "bin/tene-hook",
+      "lib/hooks/session-start.js"
+    ],
+    "lib/hooks/stop.js": [
+      "bin/tene-hook",
+      "lib/hooks/stop.js"
+    ],
+    "lib/hooks/subagent-stop.js": [
+      "bin/tene-hook",
+      "lib/hooks/subagent-stop.js"
+    ],
+    "lib/hooks/task-created.js": [
+      "bin/tene-hook",
+      "lib/hooks/task-created.js"
+    ],
+    "lib/hooks/user-prompt.js": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js"
+    ],
+    "lib/loop/judge.js": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/judge.js"
+    ],
+    "lib/loop/progress.js": [
+      "bin/tene-loop",
+      "lib/loop/run.js",
+      "lib/loop/progress.js"
+    ],
+    "lib/loop/requirements.js": [
+      "bin/tene-loop",
+      "lib/loop/requirements.js"
+    ],
+    "lib/loop/run.js": [
+      "bin/tene-loop",
+      "lib/loop/run.js"
+    ],
+    "lib/loop/unattributed.js": [
+      "bin/tene-gate",
+      "lib/loop/unattributed.js"
+    ],
+    "lib/qa/capability.js": [
+      "bin/tene-qa",
+      "lib/qa/capability.js"
+    ],
+    "lib/qa/charter.js": [
+      "bin/tene-qa",
+      "lib/qa/charter.js"
+    ],
+    "lib/qa/coverage.js": [
+      "bin/tene-qa",
+      "lib/qa/coverage.js"
+    ],
+    "lib/qa/evidence.js": [
+      "bin/tene-gate",
+      "lib/qa/evidence.js"
+    ],
+    "lib/qa/layers.js": [
+      "bin/tene-qa",
+      "lib/qa/layers.js"
+    ],
+    "lib/recover/resync.js": [
+      "bin/tene-state",
+      "lib/recover/resync.js"
+    ],
+    "lib/report/carry.js": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/carry.js"
+    ],
+    "lib/report/changes.js": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/changes.js"
+    ],
+    "lib/report/index.js": [
+      "bin/tene-report",
+      "lib/report/index.js"
+    ],
+    "lib/report/intent-map.js": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/intent-map.js"
+    ],
+    "lib/report/layers-questions.js": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/layers-questions.js"
+    ],
+    "lib/report/lineage.js": [
+      "bin/tene-report",
+      "lib/report/index.js",
+      "lib/report/lineage.js"
+    ],
+    "lib/router/match.js": [
+      "bin/tene-hook",
+      "lib/hooks/user-prompt.js",
+      "lib/router/match.js"
+    ],
+    "lib/scan/anchors.js": [
+      "bin/tene-scan",
+      "lib/scan/anchors.js"
+    ],
+    "lib/scan/index-builder.js": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js"
+    ],
+    "lib/scan/langs/go.js": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/go.js"
+    ],
+    "lib/scan/langs/index.js": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js"
+    ],
+    "lib/scan/langs/java.js": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/java.js"
+    ],
+    "lib/scan/langs/python.js": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/python.js"
+    ],
+    "lib/scan/langs/typescript.js": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/langs/index.js",
+      "lib/scan/langs/typescript.js"
+    ],
+    "lib/scan/layer.js": [
+      "bin/tene-scan",
+      "lib/scan/layer.js"
+    ],
+    "lib/scan/query.js": [
+      "bin/tene-scan",
+      "lib/scan/query.js"
+    ],
+    "lib/scan/questions.js": [
+      "bin/tene-scan",
+      "lib/scan/questions.js"
+    ],
+    "lib/scan/walk.js": [
+      "bin/tene-scan",
+      "lib/scan/index-builder.js",
+      "lib/scan/walk.js"
+    ],
+    "lib/state/events.js": [
+      "bin/tene-state",
+      "lib/state/events.js"
+    ],
+    "lib/state/migrate.js": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/migrate.js"
+    ],
+    "lib/state/retention.js": [
+      "bin/tene-state",
+      "lib/state/retention.js"
+    ],
+    "lib/state/schema.js": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/state/schema.js"
+    ],
+    "lib/state/store.js": [
+      "bin/tene-gate",
+      "lib/state/store.js"
+    ],
+    "lib/state/summary.js": [
+      "bin/tene-state",
+      "lib/state/summary.js"
+    ],
+    "lib/util/atomic.js": [
+      "bin/tene-doc",
+      "lib/util/atomic.js"
+    ],
+    "lib/util/budget.js": [
+      "bin/tene-state",
+      "lib/state/summary.js",
+      "lib/util/budget.js"
+    ],
+    "lib/util/deadline.js": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/deadline.js"
+    ],
+    "lib/util/envelope.js": [
+      "bin/tene-gate",
+      "lib/util/envelope.js"
+    ],
+    "lib/util/errors.js": [
+      "bin/tene-gate",
+      "lib/util/errors.js"
+    ],
+    "lib/util/json.js": [
+      "bin/tene-gate",
+      "lib/util/envelope.js",
+      "lib/util/json.js"
+    ],
+    "lib/util/lock.js": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/lock.js"
+    ],
+    "lib/util/log.js": [
+      "bin/tene-hook",
+      "lib/util/log.js"
+    ],
+    "lib/util/paths.js": [
+      "bin/tene-gate",
+      "lib/util/paths.js"
+    ],
+    "lib/util/stdin.js": [
+      "bin/tene-hook",
+      "lib/util/stdin.js"
+    ],
+    "lib/util/time.js": [
+      "bin/tene-gate",
+      "lib/state/store.js",
+      "lib/util/time.js"
+    ]
+  },
+  "selfCheck": [
+    {
+      "file": "lib/plan/aggregate.js",
+      "want": "test-only",
+      "got": "test-only",
+      "ok": true
+    },
+    {
+      "file": "lib/hooks/session-start.js",
+      "want": "dynamic",
+      "got": "dynamic",
+      "ok": true
+    },
+    {
+      "file": "lib/state/store.js",
+      "want": "reachable",
+      "got": "reachable",
+      "ok": true
+    }
+  ],
+  "trustworthy": true,
+  "note": "알려진 정답 3건과 일치. 결과를 신뢰할 수 있다."
+}

@@ -1,0 +1,259 @@
+{
+  "purpose": "ac_2 L6 — 정적 도달 불가 export 를 만드는 여러 디스패치 형태를 주입해 계측기가 무엇으로 기록하는지 관찰",
+  "case_dispatch_forms": {
+    "tree": "/private/tmp/claude-501/-Users-kaykim-Documents-GitHub-agent-kay-it-tene-claude/1ae7078d-07f7-4ff8-9958-0bf56ab81418/scratchpad (mktemp adv-*)",
+    "injected": [
+      {
+        "form": "리터럴 동적 import 등록표  TABLE={a:()=>import('../lib/tabled.js')}",
+        "target": "lib/tabled.js"
+      },
+      {
+        "form": "계산된 경로 동적 import  import(`../lib/${NAME}.js`)",
+        "target": "lib/computed.js"
+      },
+      {
+        "form": "createRequire + require('../lib/required.js')",
+        "target": "lib/required.js"
+      },
+      {
+        "form": "배럴 재-export  export * from './reexported.js'",
+        "target": "lib/reexported.js"
+      },
+      {
+        "form": "기본 export 만 있는 모듈 + 기본 import",
+        "target": "lib/defaultonly.js"
+      },
+      {
+        "form": "테스트에서만 named import",
+        "target": "lib/orphan.js"
+      },
+      {
+        "form": "진입점 정적 import",
+        "target": "lib/wired.js"
+      }
+    ],
+    "result": [
+      {
+        "file": "lib/barrel.js",
+        "module": "reachable",
+        "path": "bin/tene-barrel -> lib/barrel.js",
+        "symbols": ""
+      },
+      {
+        "file": "lib/computed.js",
+        "module": "unreachable",
+        "path": "",
+        "symbols": "computedFn:unreachable"
+      },
+      {
+        "file": "lib/defaultonly.js",
+        "module": "reachable",
+        "path": "bin/tene-default -> lib/defaultonly.js",
+        "symbols": ""
+      },
+      {
+        "file": "lib/orphan.js",
+        "module": "test-only",
+        "path": "test/orphan.test.js",
+        "symbols": "orphanFn:test-only"
+      },
+      {
+        "file": "lib/reexported.js",
+        "module": "unreachable",
+        "path": "",
+        "symbols": "reexportedFn:unreachable"
+      },
+      {
+        "file": "lib/required.js",
+        "module": "unreachable",
+        "path": "",
+        "symbols": "requiredFn:unreachable"
+      },
+      {
+        "file": "lib/tabled.js",
+        "module": "dynamic",
+        "path": "bin/tene-entry -> lib/tabled.js",
+        "symbols": "tabledFn:dynamic(approx)"
+      },
+      {
+        "file": "lib/wired.js",
+        "module": "reachable",
+        "path": "bin/tene-entry -> lib/wired.js",
+        "symbols": "wiredFn:reachable"
+      }
+    ],
+    "totals": {
+      "libFiles": 8,
+      "exports": 8,
+      "reachable": 3,
+      "dynamic": 1,
+      "test-only": 1,
+      "unreachable": 3
+    },
+    "classified": {
+      "reachable": [
+        "lib/barrel.js#(no named export)",
+        "lib/defaultonly.js#(no named export)",
+        "lib/wired.js#wiredFn"
+      ],
+      "dynamic": [
+        "lib/tabled.js#tabledFn"
+      ],
+      "test-only": [
+        "lib/orphan.js#orphanFn"
+      ],
+      "unreachable": [
+        "lib/computed.js#computedFn",
+        "lib/reexported.js#reexportedFn",
+        "lib/required.js#requiredFn"
+      ]
+    },
+    "selfCheck_on_synthetic_root": {
+      "known": [
+        {
+          "kind": "known",
+          "file": "lib/plan/aggregate.js",
+          "want": "test-only",
+          "got": "not-found",
+          "ok": false
+        },
+        {
+          "kind": "known",
+          "file": "lib/hooks/session-start.js",
+          "want": "dynamic",
+          "got": "not-found",
+          "ok": false
+        },
+        {
+          "kind": "known",
+          "file": "lib/state/store.js",
+          "want": "reachable",
+          "got": "not-found",
+          "ok": false
+        }
+      ],
+      "synthetic": {
+        "kind": "synthetic",
+        "detail": "임시 디렉토리에 배선·미배선·테스트전용·동적 모듈을 만들어 분류기를 태웠다",
+        "rows": [
+          {
+            "file": "lib/wired.js",
+            "want": "reachable",
+            "got": "reachable"
+          },
+          {
+            "file": "lib/orphan.js",
+            "want": "unreachable",
+            "got": "unreachable"
+          },
+          {
+            "file": "lib/testonly.js",
+            "want": "test-only",
+            "got": "test-only"
+          },
+          {
+            "file": "lib/dyn.js",
+            "want": "dynamic",
+            "got": "dynamic"
+          }
+        ],
+        "ok": true,
+        "tmpDir": "/var/folders/r9/fbtgppdn7t7f_04mvv64n8_w0000gn/T/reach-GkDYcD"
+      },
+      "symbol": [
+        {
+          "kind": "symbol",
+          "id": "lib/state/store.js#advance",
+          "want": "reachable",
+          "got": "not-found",
+          "ok": false
+        },
+        {
+          "kind": "symbol",
+          "id": "lib/plan/aggregate.js#promote",
+          "want": "test-only",
+          "got": "not-found",
+          "ok": false
+        },
+        {
+          "kind": "symbol",
+          "id": "lib/hooks/session-start.js#run",
+          "want": "dynamic",
+          "got": "not-found",
+          "ok": false
+        },
+        {
+          "kind": "symbol",
+          "id": "lib/doc/sections.js#isAutoBlock",
+          "want": "unreachable",
+          "got": "not-found",
+          "ok": false
+        },
+        {
+          "kind": "symbol",
+          "id": "lib/doc/sections.js#DOC_PATH",
+          "want": "reachable",
+          "got": "not-found",
+          "ok": false
+        }
+      ]
+    },
+    "trustworthy_flag": false,
+    "note_field": "자체 검사 불일치. 계측기를 신뢰하지 않는다 — 결과를 insufficient 로 다뤄야 한다."
+  },
+  "case_duplicate_records": {
+    "tree": "/private/tmp/claude-501/-Users-kaykim-Documents-GitHub-agent-kay-it-tene-claude/1ae7078d-07f7-4ff8-9958-0bf56ab81418/scratchpad (mktemp dup-*)",
+    "injected": "같은 export(same)를 진입점 2개 + 테스트 1개가 각각 import. 같은 파일에 export 3개(그중 1개는 아무도 안 씀)",
+    "result": {
+      "totals": {
+        "libFiles": 1,
+        "exports": 3,
+        "reachable": 2,
+        "dynamic": 0,
+        "test-only": 0,
+        "unreachable": 1
+      },
+      "classified": {
+        "reachable": [
+          "lib/twice.js#same",
+          "lib/twice.js#other"
+        ],
+        "dynamic": [],
+        "test-only": [],
+        "unreachable": [
+          "lib/twice.js#same2"
+        ]
+      },
+      "dupIds": [],
+      "paths": {
+        "lib/twice.js#same": {
+          "module": [
+            "bin/tene-a",
+            "lib/twice.js"
+          ],
+          "symbolUsers": [
+            "bin/tene-a",
+            "bin/tene-b",
+            "test/t.test.js"
+          ]
+        },
+        "lib/twice.js#other": {
+          "module": [
+            "bin/tene-a",
+            "lib/twice.js"
+          ],
+          "symbolUsers": [
+            "bin/tene-a"
+          ]
+        },
+        "lib/twice.js#same2": {
+          "module": [
+            "bin/tene-a",
+            "lib/twice.js"
+          ],
+          "symbolUsers": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+index/
+history/
+archive/
+*.corrupt-*
+*.bak-*
+.lock

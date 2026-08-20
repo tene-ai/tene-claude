@@ -1,0 +1,78 @@
+### ac_10 L1 static — 예산 출처·출력 정적 확인 — 2026-08-20T11:37:50Z
+
+## [1] bench.js 안의 예산 상수 정의 (file:line)
+2: * 성능 벤치 — D12 §6.2
+32:const baseline = timeIt(() => {
+53:console.log(`기준선 (node -e '')          : ${baseline.toFixed(0)}ms`)
+59:console.log(`인덱스 전체 빌드 (200 파일)   : ${buildFull.toFixed(0)}ms  (로직 ${(buildFull - baseline).toFixed(0)}ms)`)
+60:console.log(`인덱스 증분 (변경 없음)       : ${buildInc.toFixed(0)}ms  (로직 ${(buildInc - baseline).toFixed(0)}ms)`)
+75:console.log(`SessionStart 훅               : ${sessionStart.toFixed(0)}ms  (로직 ${(sessionStart - baseline).toFixed(0)}ms)`)
+76:console.log(`PostToolUse 훅                : ${postEdit.toFixed(0)}ms  (로직 ${(postEdit - baseline).toFixed(0)}ms)`)
+77:console.log(`UserPromptSubmit 훅           : ${userPrompt.toFixed(0)}ms  (로직 ${(userPrompt - baseline).toFixed(0)}ms)`)
+85:console.log(`시크릿 가드                   : ${guard.toFixed(0)}ms  (로직 ${(guard - baseline).toFixed(0)}ms)`)
+89:// 로직 예산 검사 — D12 §6.2
+90:const BUDGET = { SessionStart: 150, PostToolUse: 150, UserPromptSubmit: 100, Guard: 300 }
+92:  SessionStart: sessionStart - baseline,
+93:  PostToolUse: postEdit - baseline,
+94:  UserPromptSubmit: userPrompt - baseline,
+95:  Guard: guard - baseline,
+97:const over = Object.entries(BUDGET).filter(([k, v]) => actual[k] > v)
+
+## [2] bench.js 의 stdout 출력문 전체 (console.log/error)
+53:console.log(`기준선 (node -e '')          : ${baseline.toFixed(0)}ms`)
+54:console.log('')
+59:console.log(`인덱스 전체 빌드 (200 파일)   : ${buildFull.toFixed(0)}ms  (로직 ${(buildFull - baseline).toFixed(0)}ms)`)
+60:console.log(`인덱스 증분 (변경 없음)       : ${buildInc.toFixed(0)}ms  (로직 ${(buildInc - baseline).toFixed(0)}ms)`)
+74:console.log('')
+75:console.log(`SessionStart 훅               : ${sessionStart.toFixed(0)}ms  (로직 ${(sessionStart - baseline).toFixed(0)}ms)`)
+76:console.log(`PostToolUse 훅                : ${postEdit.toFixed(0)}ms  (로직 ${(postEdit - baseline).toFixed(0)}ms)`)
+77:console.log(`UserPromptSubmit 훅           : ${userPrompt.toFixed(0)}ms  (로직 ${(userPrompt - baseline).toFixed(0)}ms)`)
+85:console.log(`시크릿 가드                   : ${guard.toFixed(0)}ms  (로직 ${(guard - baseline).toFixed(0)}ms)`)
+99:console.log('')
+101:  console.error('✖ 로직 예산 초과:')
+102:  for (const [k, v] of over) console.error(`   ${k}: ${actual[k].toFixed(0)}ms > ${v}ms`)
+105:console.log('✔ 모든 훅이 로직 예산 안에 있습니다')
+
+## [3] D05(docs/02-design/05-skills-hooks-routing.md) 안의 ms 예산 언급
+359:  return { exit: 0, stdout: formatSummary(state) }        // ≤600 토큰
+391:export function truncateToBudget(lines, maxTokens) {
+399:    if (used + cost > maxTokens) break
+406:### 3.5 `PostToolUse:Edit|Write` 상세 (로직 200ms 예산 — D12 §6.2)
+
+## [4] D12 §6.2 로직 예산 표 원문
+> 이벤트마다 스크립트를 두면 세션 시작에만 수백 ms 가 더 붙는다.
+
+| 경로 | 로직 예산 | 초과 시 |
+|---|---|---|
+| `PostToolUse` | 150ms (여유 50ms) | 조용히 포기 |
+| `SessionStart` | 150ms | 요약 없이 통과 |
+| `PreToolUse` 가드 | 300ms | **deny** (fail-closed) |
+| `TaskCompleted` | 500ms | exit 0 (차단 안 함) |
+| `SessionEnd` | **500ms** (1.5s 공유) | 크기 확인만 |
+| `Stop` | 300ms | 안내 없이 통과 |
+
+
+## [5] 앵커 심볼 formatSummary 정의 위치
+plugins/tene/lib/state/summary.js:79:export function formatSummary(current, opts = {}) {
+
+## [6] bench.js 가 formatSummary 를 참조하는가
+(bench.js 안에 formatSummary 문자열 없음)
+
+## [7] summary.js 안의 토큰 예산 상수
+4: * `current.json` **한 파일**만 읽고 ≤600 토큰을 만든다.
+11:import { truncateToBudget } from '../util/budget.js'
+13:export const SESSION_BUDGET_TOKENS = 600
+76: * @param {{ budget?: number }} [opts]
+77: * @returns {{ text: string, tokens: number, truncated: boolean }}
+80:  const budget = opts.budget ?? SESSION_BUDGET_TOKENS
+96:  const { text, tokens } = truncateToBudget(candidates, budget)
+98:  return { text, tokens, truncated: kept < candidates.length }
+132:  const budget = opts.budget ?? SESSION_BUDGET_TOKENS
+134:  if (rec.reason === 'empty') return { text: '', tokens: 0, truncated: false }
+152:  const { text, tokens } = truncateToBudget(lines, budget)
+153:  return { text, tokens, truncated: false }
+158: * @param {{ current: object|null, plan: object|null, budget?: number }} input
+160:export function buildSessionContext({ current, plan, budget }) {
+161:  if (current?.activeSprint) return { kind: 'sprint', ...formatSummary(current, { budget }) }
+163:    return { kind: 'suggestion', ...formatNextSuggestion(recommendNext(plan), { budget }) }
+165:  return { kind: 'silent', text: '', tokens: 0, truncated: false } // 조용함이 기본값이다

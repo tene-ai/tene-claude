@@ -1,0 +1,70 @@
+### ac_10 L1 — 훅 실행 경로의 시간 계측·기록 여부 정적 확인 — 2026-08-20T11:46:17Z
+
+## [1] bin/tene-hook 안의 시간 계측 코드
+
+## [2] lib/hooks/*.js 안의 데드라인/계측 코드
+plugins/tene/lib/hooks/stop.js:11:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/stop.js:16:const DEADLINE_MS = 200
+plugins/tene/lib/hooks/stop.js:20:    return withDeadline(DEADLINE_MS, (check) => {
+plugins/tene/lib/hooks/pre-edit.js:12:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/pre-edit.js:18:const DEADLINE_MS = 100
+plugins/tene/lib/hooks/pre-edit.js:25:    return withDeadline(DEADLINE_MS, (check) => {
+plugins/tene/lib/hooks/compact.js:14:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/compact.js:20:const DEADLINE_MS = 150
+plugins/tene/lib/hooks/compact.js:36:    return withDeadline(DEADLINE_MS, (check) => {
+plugins/tene/lib/hooks/task-created.js:12:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/task-created.js:19:const DEADLINE_MS = 150
+plugins/tene/lib/hooks/task-created.js:47:    return withDeadline(DEADLINE_MS, (check) => {
+plugins/tene/lib/hooks/user-prompt.js:9:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/user-prompt.js:16:const DEADLINE_MS = 100
+plugins/tene/lib/hooks/user-prompt.js:20:    return withDeadline(DEADLINE_MS, (check) => {
+plugins/tene/lib/hooks/session-start.js:13:import { withDeadline, DeadlineExceeded } from '../util/deadline.js'
+plugins/tene/lib/hooks/session-start.js:19:const DEADLINE_MS = 150
+plugins/tene/lib/hooks/session-start.js:32:    return withDeadline(DEADLINE_MS, (check) => {
+plugins/tene/lib/hooks/post-edit.js:13:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/post-edit.js:19:const DEADLINE_MS = 150
+plugins/tene/lib/hooks/post-edit.js:35:    return withDeadline(DEADLINE_MS, (check) => {
+plugins/tene/lib/hooks/session-end.js:10:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/session-end.js:15:const DEADLINE_MS = 200
+plugins/tene/lib/hooks/session-end.js:19:    return withDeadline(DEADLINE_MS, () => {
+plugins/tene/lib/util/deadline.js:17:export function withDeadline(ms, fn) {
+plugins/tene/lib/util/deadline.js:18:  const t0 = performance.now()
+plugins/tene/lib/util/deadline.js:20:    if (performance.now() - t0 > ms) throw new DeadlineExceeded(ms)
+plugins/tene/lib/util/deadline.js:26:  return Math.round(performance.now() - t0)
+plugins/tene/lib/hooks/post-bash.js:8:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/post-bash.js:13:const DEADLINE_MS = 100
+plugins/tene/lib/hooks/post-bash.js:30:    return withDeadline(DEADLINE_MS, () => {
+plugins/tene/lib/hooks/subagent-stop.js:10:import { DeadlineExceeded, withDeadline } from '../util/deadline.js'
+plugins/tene/lib/hooks/subagent-stop.js:16:const DEADLINE_MS = 150
+plugins/tene/lib/hooks/subagent-stop.js:20:    return withDeadline(DEADLINE_MS, () => {
+
+## [3] withDeadline 구현
+/** 데드라인 가드 — D12 §6.1 (훅 성능 예산 강제) */
+
+export class DeadlineExceeded extends Error {
+  constructor(ms) {
+    super(`deadline ${ms}ms exceeded`)
+    this.name = 'DeadlineExceeded'
+    this.ms = ms
+  }
+}
+
+/**
+ * @template T
+ * @param {number} ms
+ * @param {(check: () => void) => T} fn  중간중간 check() 를 호출해 초과를 감지한다
+ * @returns {T}
+ */
+export function withDeadline(ms, fn) {
+  const t0 = performance.now()
+  const check = () => {
+    if (performance.now() - t0 > ms) throw new DeadlineExceeded(ms)
+  }
+  return fn(check)
+}
+
+export function elapsedMs(t0) {
+  return Math.round(performance.now() - t0)
+}
+
+## [4] 로그 유틸이 소요시간 필드를 남기는가

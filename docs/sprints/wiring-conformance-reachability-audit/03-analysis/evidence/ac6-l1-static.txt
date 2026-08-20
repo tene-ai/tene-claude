@@ -1,0 +1,65 @@
+# L1 static — ac_6
+date: 2026-08-20T11:38:49Z
+node: v26.0.0  npm: 11.12.1
+
+## eslint --version (npx --no-install)
+v10.8.1
+exit=0
+
+## eslint run (no config in repo)
+
+Oops! Something went wrong! :(
+
+ESLint: 10.8.1
+
+ESLint couldn't find an eslint.config.(js|mjs|cjs) file.
+
+From ESLint v9.0.0, the default configuration file is now eslint.config.js.
+If you are using a .eslintrc.* file, please follow the migration guide
+to update your configuration file to the new format:
+
+https://eslint.org/docs/latest/use/configure/migration-guide
+
+If you still have problems after following the migration guide, please stop by
+https://eslint.org/chat/help to chat with the team.
+
+exit=
+
+## repo lint config files
+(none)
+(none at repo root)
+
+## node --check over plugins/tene lib+bin+hooks
+
+## node --check over plugins/tene lib+bin+hooks (all files)
+SYNTAX-ERROR plugins/tene/hooks/hooks.json
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/hooks/hooks.json:2
+  "hooks": {
+         ^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1762:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v26.0.0
+SYNTAX-ERROR plugins/tene/lib/router/rules.json
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/lib/router/rules.json:2
+  "version": 1,
+           ^
+
+SyntaxError: Unexpected token ':'
+    at wrapSafe (node:internal/modules/cjs/loader:1762:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v26.0.0
+checked=78 syntax_errors=2
+finished: 2026-08-20T11:43:47Z
+
+## 위 2건의 대상 파일 종류 확인 (재실행, 판정 아님)
+두 파일은 확장자가 .json 이다. node --check 는 이를 JS 로 파싱했다.
+plugins/tene/hooks/hooks.json -> JSON.parse: parsed ok
+plugins/tene/lib/router/rules.json -> JSON.parse: parsed ok
+
+## node --check, .json 제외 재실행
+checked=76 syntax_errors=0
+finished: 2026-08-20T11:45:43Z

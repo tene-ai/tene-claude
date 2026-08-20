@@ -1,0 +1,189 @@
+{
+  "collectedAt": "2026-08-20T11:48:22Z",
+  "repoBase": "plugins/tene",
+  "deployBase": "~/.claude/plugins/cache/tene-ai/tene/0.1.0",
+  "claims": [
+    {
+      "claim": "lib/scan/anchors.js:48-53 앵커 종류 파싱(location/path/symbol)",
+      "file": "lib/scan/anchors.js",
+      "repoLines": [
+        {
+          "line": 46,
+          "text": "  if (/^[\\w.-]+\\/[\\w./-]+:\\d+$/.test(value)) {"
+        },
+        {
+          "line": 47,
+          "text": "    const [file, line] = value.split(':')"
+        },
+        {
+          "line": 48,
+          "text": "    return { kind: 'location', value, file, line: Number(line) }"
+        },
+        {
+          "line": 49,
+          "text": "  }"
+        },
+        {
+          "line": 50,
+          "text": "  if (value.includes('/') || /\\.\\w{1,5}$/.test(value)) {"
+        },
+        {
+          "line": 51,
+          "text": "    return { kind: 'path', value, file: value }"
+        },
+        {
+          "line": 52,
+          "text": "  }"
+        },
+        {
+          "line": 53,
+          "text": "  return { kind: 'symbol', value }"
+        }
+      ],
+      "deployLines": [
+        {
+          "line": 46,
+          "text": "  if (/^[\\w.-]+\\/[\\w./-]+:\\d+$/.test(value)) {"
+        },
+        {
+          "line": 47,
+          "text": "    const [file, line] = value.split(':')"
+        },
+        {
+          "line": 48,
+          "text": "    return { kind: 'location', value, file, line: Number(line) }"
+        },
+        {
+          "line": 49,
+          "text": "  }"
+        },
+        {
+          "line": 50,
+          "text": "  if (value.includes('/') || /\\.\\w{1,5}$/.test(value)) {"
+        },
+        {
+          "line": 51,
+          "text": "    return { kind: 'path', value, file: value }"
+        },
+        {
+          "line": 52,
+          "text": "  }"
+        },
+        {
+          "line": 53,
+          "text": "  return { kind: 'symbol', value }"
+        }
+      ],
+      "repoDeployIdentical": true
+    },
+    {
+      "claim": "lib/scan/anchors.js:82 source:'unresolved', confidence:'low'",
+      "file": "lib/scan/anchors.js",
+      "repoLines": [
+        {
+          "line": 82,
+          "text": "          const entry = { kind: 'symbol', value: a.value, file: null, source: 'unresolved', confidence: 'low' }"
+        }
+      ],
+      "deployLines": [
+        {
+          "line": 82,
+          "text": "          const entry = { kind: 'symbol', value: a.value, file: null, source: 'unresolved', confidence: 'low' }"
+        }
+      ],
+      "repoDeployIdentical": true
+    },
+    {
+      "claim": "lib/scan/anchors.js:181 (Stage 2 근거로 인용됨)",
+      "file": "lib/scan/anchors.js",
+      "repoLines": [
+        {
+          "line": 180,
+          "text": "/**"
+        },
+        {
+          "line": 181,
+          "text": " * 앵커에 걸리지 않은 변경 — D07 §4 미귀속 변경 검출의 입력."
+        },
+        {
+          "line": 182,
+          "text": " *"
+        }
+      ],
+      "deployLines": [
+        {
+          "line": 180,
+          "text": "/**"
+        },
+        {
+          "line": 181,
+          "text": " * 앵커에 걸리지 않은 변경 — D07 §4 미귀속 변경 검출의 입력."
+        },
+        {
+          "line": 182,
+          "text": " *"
+        }
+      ],
+      "repoDeployIdentical": true
+    },
+    {
+      "claim": "lib/loop/unattributed.js:2 (D07 §5)",
+      "file": "lib/loop/unattributed.js",
+      "repoLines": [
+        {
+          "line": 2,
+          "text": " * 미귀속 변경 검사 — D07 §5"
+        }
+      ],
+      "deployLines": [
+        {
+          "line": 2,
+          "text": " * 미귀속 변경 검사 — D07 §5"
+        }
+      ],
+      "repoDeployIdentical": true
+    },
+    {
+      "claim": "lib/gate/rules.js:165 remediation",
+      "file": "lib/gate/rules.js",
+      "repoLines": [
+        {
+          "line": 164,
+          "text": "      : fail('unattributed_resolved', `해소되지 않은 미귀속 변경 ${n}건`,"
+        },
+        {
+          "line": 165,
+          "text": "          { remediation: '각 변경을 (a) 앵커 추가 (b) 새 AC 승격 (c) 무관 표시 중 하나로 해소하세요' })"
+        }
+      ],
+      "deployLines": [
+        {
+          "line": 164,
+          "text": "      : fail('unattributed_resolved', `해소되지 않은 미귀속 변경 ${n}건`,"
+        },
+        {
+          "line": 165,
+          "text": "          { remediation: '각 변경을 (a) 앵커 추가 (b) 새 AC 승격 (c) 무관 표시 중 하나로 해소하세요' })"
+        }
+      ],
+      "repoDeployIdentical": true
+    },
+    {
+      "claim": "lib/state/store.js:445 if (ac?.verdict === 'passed')",
+      "file": "lib/state/store.js",
+      "repoLines": [
+        {
+          "line": 445,
+          "text": "      if (ac?.verdict === 'passed') {"
+        }
+      ],
+      "deployLines": [
+        {
+          "line": 445,
+          "text": "      if (ac?.verdict === 'passed') {"
+        }
+      ],
+      "repoDeployIdentical": true
+    }
+  ]
+}

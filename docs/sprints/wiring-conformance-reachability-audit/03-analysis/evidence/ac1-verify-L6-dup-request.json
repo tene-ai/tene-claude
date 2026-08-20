@@ -1,0 +1,143 @@
+{
+  "probe": {
+    "what": "격리된 임시 프로젝트에서 tene-qa evidence 에 완전히 동일한 --data 를 2회 전달했다",
+    "project": "/private/tmp/claude-501/-Users-kaykim-Documents-GitHub-agent-kay-it-tene-claude/1ae7078d-07f7-4ff8-9958-0bf56ab81418/scratchpad/dupprobe3",
+    "payload": {
+      "artifact": {
+        "id": "art_probe",
+        "path": "probe.txt",
+        "kind": "log",
+        "ac": "ac_1",
+        "layer": "L3",
+        "tool": "probe"
+      },
+      "case": {
+        "id": "c_probe",
+        "ac": "ac_1",
+        "layer": "L3",
+        "observed": "동일 요청 2회 관찰용",
+        "artifacts": [
+          "art_probe"
+        ],
+        "tool": "probe"
+      }
+    },
+    "call1": {
+      "ok": true,
+      "artifacts": 1,
+      "cases": 1
+    },
+    "call2": {
+      "ok": true,
+      "artifacts": 1,
+      "cases": 2
+    },
+    "manifestAfter": {
+      "artifacts": 1,
+      "cases": 2,
+      "artifactIds": [
+        "art_probe"
+      ],
+      "caseIds": [
+        "c_probe",
+        "c_probe"
+      ],
+      "caseAt": [
+        "2026-08-20T11:44:46Z",
+        "2026-08-20T11:44:48Z"
+      ]
+    },
+    "codeRef": {
+      "registerArtifact": "lib/qa/evidence.js:91-93 — 같은 id 면 배열 원소를 교체",
+      "addCase": "lib/qa/evidence.js:156 — 무조건 push"
+    }
+  },
+  "currentSprintManifest": {
+    "path": "docs/sprints/wiring-conformance-reachability-audit/03-analysis/evidence/manifest.json",
+    "artifacts": 18,
+    "cases": 13,
+    "duplicateArtifactIds": [],
+    "duplicateCaseIds": [],
+    "artifactsSharingSha256": [
+      {
+        "sha256": "06a0d81b82353eb9d0e5d06c5e8f3aeafa3226ad31b174941626bb1ddbc3e515",
+        "entries": [
+          {
+            "id": "art_reach",
+            "path": "ac1-reachability.json",
+            "ac": "ac_1"
+          },
+          {
+            "id": "art_dyn",
+            "path": "ac2-dynamic-vs-unwired.json",
+            "ac": "ac_2"
+          }
+        ]
+      }
+    ],
+    "ac_1_artifacts": [
+      {
+        "id": "art_reach",
+        "path": "ac1-reachability.json",
+        "sha256": "06a0d81b8235"
+      },
+      {
+        "id": "art_reach2",
+        "path": "ac1-reachability-v2.json",
+        "sha256": "c6ac1d6af868"
+      },
+      {
+        "id": "art_reach3",
+        "path": "ac1-reachability-v3.json",
+        "sha256": "fd4c69f8df5d"
+      },
+      {
+        "id": "art_xcheck",
+        "path": "ac1-independent-crosscheck.json",
+        "sha256": "8f1bb57bed0b"
+      },
+      {
+        "id": "art_reach4",
+        "path": "ac1-reachability-v4.json",
+        "sha256": "c04f5591e2fd"
+      },
+      {
+        "id": "art_xcheck2",
+        "path": "ac1-crosscheck-v2.json",
+        "sha256": "b04a31a8fa1f"
+      }
+    ],
+    "ac_1_cases": [
+      {
+        "id": "c_1",
+        "at": "2026-08-20T11:03:36Z",
+        "artifacts": [
+          "art_reach"
+        ]
+      },
+      {
+        "id": "c_1b",
+        "at": "2026-08-20T11:08:10Z",
+        "artifacts": [
+          "art_reach2"
+        ]
+      },
+      {
+        "id": "c_1c",
+        "at": "2026-08-20T11:14:32Z",
+        "artifacts": [
+          "art_reach3",
+          "art_xcheck"
+        ]
+      },
+      {
+        "id": "c_1d",
+        "at": "2026-08-20T11:20:00Z",
+        "artifacts": [
+          "art_reach4",
+          "art_xcheck2"
+        ]
+      }
+    ]
+  }
+}

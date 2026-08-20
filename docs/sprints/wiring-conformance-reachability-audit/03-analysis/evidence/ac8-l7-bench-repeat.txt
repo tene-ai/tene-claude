@@ -1,0 +1,48 @@
+### bench.js 단독 반복 실행 (테스트 스위트와 동시 실행 아님)
+2026-08-20T11:46:35Z
+uptime/load: 20:46  up 80 days,  3:55, 17 users, load averages: 685.45 874.53 560.87
+--- run 1 ---
+기준선 (node -e '')          : 449ms
+
+인덱스 전체 빌드 (200 파일)   : 1201ms  (로직 752ms)
+인덱스 증분 (변경 없음)       : 892ms  (로직 443ms)
+
+SessionStart 훅               : 909ms  (로직 460ms)
+PostToolUse 훅                : 627ms  (로직 178ms)
+UserPromptSubmit 훅           : 449ms  (로직 0ms)
+시크릿 가드                   : 685ms  (로직 236ms)
+
+✖ 로직 예산 초과:
+   SessionStart: 460ms > 150ms
+   PostToolUse: 178ms > 150ms
+exit=1
+--- run 2 ---
+기준선 (node -e '')          : 369ms
+
+인덱스 전체 빌드 (200 파일)   : 1566ms  (로직 1196ms)
+인덱스 증분 (변경 없음)       : 568ms  (로직 198ms)
+
+SessionStart 훅               : 1029ms  (로직 659ms)
+PostToolUse 훅                : 1271ms  (로직 901ms)
+UserPromptSubmit 훅           : 1257ms  (로직 888ms)
+시크릿 가드                   : 931ms  (로직 561ms)
+
+✖ 로직 예산 초과:
+   SessionStart: 659ms > 150ms
+   PostToolUse: 901ms > 150ms
+   UserPromptSubmit: 888ms > 100ms
+   Guard: 561ms > 300ms
+exit=1
+--- run 3 ---
+기준선 (node -e '')          : 814ms
+
+인덱스 전체 빌드 (200 파일)   : 1378ms  (로직 565ms)
+인덱스 증분 (변경 없음)       : 937ms  (로직 123ms)
+
+SessionStart 훅               : 892ms  (로직 78ms)
+PostToolUse 훅                : 754ms  (로직 -59ms)
+UserPromptSubmit 훅           : 673ms  (로직 -140ms)
+시크릿 가드                   : 455ms  (로직 -358ms)
+
+✔ 모든 훅이 로직 예산 안에 있습니다
+exit=0

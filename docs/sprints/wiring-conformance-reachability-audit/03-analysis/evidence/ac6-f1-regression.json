@@ -1,0 +1,24 @@
+{
+  "observation": "tene-scan layers 출력을 가공 없이 design 자동 블록에 넣고 tene-doc validate 실행",
+  "blockContent": "| 계층 | 파일 수 |\n|---|---|\n| interface | 22 |\n| business-logic | 39 |\n| persistence | 6 |\n| infrastructure | 3 |\n| test | 24 |\n| unclassified | 1 |\n",
+  "scannerLayerKeys": [
+    "interface",
+    "business-logic",
+    "persistence",
+    "infrastructure"
+  ],
+  "validateFailed": [
+    "layers_all_four",
+    "questions_present"
+  ],
+  "layersCheck": {
+    "detail": "기재되지 않은 계층: business — \"해당 없음\" 이라도 명시해야 합니다",
+    "id": "layers_all_four",
+    "line": 23,
+    "pass": false,
+    "value": [
+      "business"
+    ]
+  },
+  "conclusion": "F-1 재현. 스캐너가 내보낸 business-logic 을 검증기 정규식이 하이픈 때문에 인식하지 못한다."
+}

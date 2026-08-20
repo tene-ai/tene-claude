@@ -1,0 +1,40 @@
+== node --test test/unit ==
+✔ appendLine — 개행을 보장한다 (4.659104ms)
+✔ quarantine — 손상 파일을 .corrupt- 로 옮기고 원본을 지우지 않는다 (4.548811ms)
+✔ readTextOrNull — 없는 파일은 null (1.037489ms)
+✔ sortKeys — 객체 키를 재귀 정렬한다 (78.421743ms)
+✔ sortKeys — 배열 순서는 보존한다 (0.757577ms)
+✔ stableJson — 키 순서가 달라도 같은 출력 (1.130438ms)
+✔ stableJson — trailing newline 이 있다 (29.173379ms)
+✔ lineJson — 개행이 없다 (0.955908ms)
+✔ parseJsonSafe — 실패 시 null (0.947833ms)
+✔ assertInProject — 루트 안 경로는 통과 (45.865522ms)
+✔ assertInProject — 루트 밖 경로는 PATH_ESCAPE (43.044436ms)
+✔ isVaultPath — .tene/ 만 참, .tene-claude/ 는 거짓 (1.296983ms)
+✔ isStatePath — 우리 상태 디렉토리를 인식한다 (0.707956ms)
+✔ isDocOrState — 문서·상태를 인식한다 (0.764037ms)
+✔ isConfigFile / isTestFile (3.367798ms)
+✔ toProjectRelative — POSIX 상대 경로를 만든다 (31.518704ms)
+✔ findProjectRoot — 마커가 있는 디렉토리를 찾는다 (26.578228ms)
+ℹ tests 252
+ℹ suites 0
+ℹ pass 252
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7347.193457
+== orphans 앵커 관련 테스트 참조 ==
+test/unit/scan.test.js:10:import { callers, definitions, indexHealth, orphans, query } from '../../lib/scan/query.js'
+lib/scan/query.js:128:export function orphans(index, { includeTypes = false } = {}) {
+lib/scan/query.js:160: * @param {'definitions'|'references'|'callers'|'imports'|'imported-by'|'dependents'|'symbols-in'|'orphans'|'unresolved'} what
+lib/scan/query.js:172:    case 'orphans': return orphans(index, opts)
+lib/scan/query.js:181:  'imported-by', 'dependents', 'symbols-in', 'orphans', 'unresolved',
+lib/report/lineage.js:80:  const orphans = []
+lib/report/lineage.js:106:      orphans.push({
+lib/report/lineage.js:124:    orphans,
+lib/report/lineage.js:152:  if (!lineage.orphans.length) {
+lib/report/lineage.js:159:    for (const o of lineage.orphans) {
+lib/recover/resync.js:146:  const orphans = [...verdicts.values()].map((v) => ({
+lib/recover/resync.js:159:  return { ac: [...merged, ...orphans], orphanIds: orphans.map((o) => o.id) }
+lib/recover/resync.js:253:    payload: { recoveredFrom: 'docs', phase: inferred.phase, ac: summary.ac.total, orphans: orphanIds.length },

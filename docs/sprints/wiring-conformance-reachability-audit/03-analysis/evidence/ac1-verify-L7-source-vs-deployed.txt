@@ -1,0 +1,39 @@
+== diff -rq <저장소 소스> <배포본> ==
+Only in /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene: .bkit
+Only in /Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0: .in_use
+Only in /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/test/fixtures: code
+Only in /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/test/fixtures: docs
+Only in /Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/test/fixtures: state
+(exit=1)
+
+== 배포본 test 디렉토리 ==
+agent-contract.test.js
+bench.js
+eval-honesty.test.js
+fixtures
+frontmatter.test.js
+guard-matrix.test.js
+helpers
+integration
+plugin-layout.test.js
+unit
+
+== 저장소 test 디렉토리 ==
+agent-contract.test.js
+bench.js
+eval-honesty.test.js
+fixtures
+frontmatter.test.js
+guard-matrix.test.js
+helpers
+integration
+plugin-layout.test.js
+unit
+
+== qa.md Test Charter 섹션 원문 ==
+## 3. Test Charter     <!-- tene:sec=charters -->
+
+| ID | AC | 행위자 | 변형 | 필요 레이어 | 위험 |
+|---|---|---|---|---|---|
+
+## 4. AC 별 판정     <!-- tene:sec=acverdicts -->

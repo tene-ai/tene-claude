@@ -1,0 +1,338 @@
+{
+  "ac": [
+    {
+      "anchors": [
+        "orphans"
+      ],
+      "evidenceRef": "art_v_run1",
+      "id": "ac_1",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "판정자는 'DATA 증거가 기준을 직접 충족' 으로 passed 를 냈으나 반박 2/3(correctness·evidence-sufficiency)으로 강등. 반박은 증거 충분성에 대한 것이지 위반 증명이 아니다 — 강등 규칙 자체가 결함(W-6)",
+      "statement": "When 플러그인의 export 를 진입점 기준으로 조사하면, 시스템은 각 export 를 reachable·dynamic·test-only·unreachable 중 하나로 분류하고 도달 경로를 기록해야 한다",
+      "status": "pending",
+      "verdict": "failed"
+    },
+    {
+      "anchors": [
+        "questions"
+      ],
+      "evidenceRef": null,
+      "id": "ac_2",
+      "method": "DATA",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "reason": "수집 단계가 빈 결과를 냈다. 판정자: '코드 정적 확인으로 통과를 추정하지 않았다'",
+      "statement": "If export 가 정적 경로로 도달 불가하면, then 시스템은 동적 디스패치로 도달하는 것과 미배선을 구분해 기록해야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "advance"
+      ],
+      "evidenceRef": "art_ac3_state_raw",
+      "id": "ac_3",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "판정자는 상태 파일 원본(sha256 848e95f1)에서 G0~G3 pass 를 직접 확인하고 빈 프로젝트 CLI 재현까지 했으나 반박 3/3 으로 강등. W-6 동일",
+      "statement": "When 빈 프로젝트에서 claude -p 로 sprint 를 draft 에서 design 까지 진행하면, 시스템은 G0~G3 각 게이트의 판정을 상태 파일에 남겨야 한다",
+      "status": "pending",
+      "verdict": "failed"
+    },
+    {
+      "anchors": [
+        "formatSummary"
+      ],
+      "evidenceRef": null,
+      "id": "ac_4",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "수집 단계 빈 결과. 헤드리스 세션 로그가 제출되지 않았다",
+      "statement": "When claude -p 헤드리스 세션이 시작되면, 시스템은 SessionStart 훅이 주입한 컨텍스트를 세션 로그에 남겨야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "markStaleNoLock"
+      ],
+      "evidenceRef": "art_ac5_l3_transition",
+      "id": "ac_5",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "음성 대조군 포함 5개 L3 케이스로 양방향 증명. src/pay.js 편집 → pay 앵커 AC 만 stale, ship.js 앵커 2건 불변. 대칭·음성·Write 경로까지 확인. 반박을 견딤",
+      "statement": "When 앵커된 코드 파일을 편집하면, 시스템은 그 파일에 걸린 AC 의 판정을 stale 로 전환해야 한다",
+      "status": "pending",
+      "verdict": "passed"
+    },
+    {
+      "anchors": [
+        "judgeAll"
+      ],
+      "evidenceRef": null,
+      "id": "ac_6",
+      "method": "UNIT",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "reason": "수집 단계 빈 결과. tene-doc validate 실행 기록이 제출되지 않았다",
+      "statement": "If tene-scan layers 의 출력을 그대로 design 문서 자동 블록에 넣으면, then 시스템은 tene-doc validate 를 통과시켜야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "nextActionFor"
+      ],
+      "evidenceRef": null,
+      "id": "ac_7",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "수집 단계 빈 결과. 판정자가 스스로 저장소를 조회해 근거를 만드는 것을 거부했다 — 수집·판정 분리 유지",
+      "statement": "When RTM 4.1 의 3단계 앵커링과 stale 마킹을 감사하면, 시스템은 Stage 2·Stage 3 각각의 구현 여부를 파일:라인 근거와 함께 기록해야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "judgeBash"
+      ],
+      "evidenceRef": "art_ac8_run",
+      "id": "ac_8",
+      "method": "UNIT",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "tests 336 / pass 336 / fail 0 / exit 0 을 직접 실행 확인했으나 반박 3/3 으로 강등. W-6 동일",
+      "statement": "When 전체 테스트 스위트를 실행하면, 시스템은 실패 건수를 0으로 기록해야 한다",
+      "status": "pending",
+      "verdict": "failed"
+    },
+    {
+      "anchors": [
+        "judgeAll"
+      ],
+      "evidenceRef": null,
+      "id": "ac_9",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "non-blocking",
+      "reason": "수집 단계 빈 결과",
+      "statement": "When 명세 27개 요구 항목의 판정을 직전 sprint 결과와 대조하면, 시스템은 변동 항목을 기록해야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "formatSummary"
+      ],
+      "evidenceRef": null,
+      "id": "ac_10",
+      "method": "UNIT",
+      "pattern": "event",
+      "priority": "non-blocking",
+      "reason": "반박 강등",
+      "statement": "When 동기 훅을 벤치마크하면, 시스템은 각 훅의 로직 시간과 D05 예산을 함께 기록해야 한다",
+      "status": "pending",
+      "verdict": "failed"
+    }
+  ],
+  "archivedAt": "2026-08-20T12:38:51Z",
+  "carryOver": [
+    {
+      "id": "W-0",
+      "raisedAt": "2026-08-20T12:37:02Z",
+      "reason": "스킬이 gate check 와 advance --result 를 두 줄로 지시하므로 모델이 게이트를 건너뛰거나 fail 을 pass 로 적어도 전이가 성립한다. rules.js:4-8 의 주석과 배선이 어긋난다. 이번 sprint 의 게이트 기록도 전부 자기신고다",
+      "severity": "blocker",
+      "status": "open",
+      "title": "게이트가 모델 자기신고다 — store.advance() 가 evaluateGate 를 부르지 않고 --result 문자열을 받아 기록만 한다"
+    },
+    {
+      "id": "W-6",
+      "raisedAt": "2026-08-20T12:37:03Z",
+      "reason": "qa-sweep 이 ac_1·ac_3·ac_8 을 passed→failed 로 강등했는데 반박 사유는 전부 증거 충분성이다. PP3·ADR-12 를 반대로 어긴다. insufficient 착지점이 필요하다",
+      "severity": "blocker",
+      "status": "open",
+      "title": "반박 2/3 강등의 착지점이 failed 하나뿐이라 미측정이 위반으로 기록된다"
+    },
+    {
+      "id": "W-7",
+      "raisedAt": "2026-08-20T12:37:03Z",
+      "reason": "sprint 는 stale 1 인데 current 는 {passed:3, stale:0} 로 남는다. 세션 주입과 게이트가 이 캐시를 읽는다",
+      "severity": "warning",
+      "status": "open",
+      "title": "markStaleNoLock 이 syncCurrent 를 부르지 않아 current.json 의 summary.ac 가 sprint 파일과 어긋난다"
+    },
+    {
+      "id": "W-8",
+      "raisedAt": "2026-08-20T12:37:03Z",
+      "reason": "증거 매니페스트의 무결성이 깨진다",
+      "severity": "warning",
+      "status": "open",
+      "title": "lib/qa/evidence.js:156 이 같은 id 의 case 중복 등록을 허용한다"
+    },
+    {
+      "id": "W-9",
+      "raisedAt": "2026-08-20T12:37:04Z",
+      "reason": "bin 쪽에 draft/G0 이 없어 [draft] 태스크는 TaskCompleted 훅에서 무검사 통과한다",
+      "severity": "warning",
+      "status": "open",
+      "title": "GATE_BY_PHASE 가 schema.js 와 bin/tene-gate 두 곳에 중복 정의되고 이미 어긋났다"
+    },
+    {
+      "id": "W-10",
+      "raisedAt": "2026-08-20T12:37:04Z",
+      "reason": "parseArgs 에 sprint 가 없고 strict:false 라 조용히 무시된다. 다른 sprint 를 지정할 방법이 실제로 없다",
+      "severity": "warning",
+      "status": "open",
+      "title": "스킬 전부가 tene-gate 의 존재하지 않는 --sprint 플래그를 가르친다"
+    },
+    {
+      "id": "W-11",
+      "raisedAt": "2026-08-20T12:37:04Z",
+      "reason": "스키마 호출 실패 3건 포함. 워크플로 자체의 신뢰성 문제이며 재실행으로 확인해야 한다",
+      "severity": "warning",
+      "status": "open",
+      "title": "워크플로 에이전트 8건이 빈 결과를 반환해 AC 5건이 insufficient 로 끝났다"
+    },
+    {
+      "id": "W-12",
+      "raisedAt": "2026-08-20T12:37:05Z",
+      "reason": "판정된 23건만 세야 한다. 미판정을 판정으로 세면 분모 조작이다",
+      "severity": "info",
+      "status": "open",
+      "title": "conformance-audit 27건 중 4건이 스키마 실패로 판정을 못 받았다"
+    }
+  ],
+  "counters": {
+    "loopChecks": 0,
+    "maxLoopChecks": 3,
+    "maxQaRetries": 3,
+    "qaRetries": 0,
+    "qaRuns": 0
+  },
+  "coverage": {
+    "transitions": null
+  },
+  "createdAt": "2026-08-20T10:39:37Z",
+  "docs": {
+    "design": "02-design/design.md",
+    "loopCheck": [
+      "03-analysis/loop-check-1.md"
+    ],
+    "plan": "01-plan/plan.md",
+    "prd": "00-prd/prd.md",
+    "qa": "03-analysis/qa.md",
+    "report": "04-report/report.md"
+  },
+  "docsRoot": "docs/sprints",
+  "gaps": [],
+  "gates": {
+    "G0": {
+      "at": "2026-08-20T10:39:37Z",
+      "detail": "G0: id·title 확인",
+      "result": "pass"
+    },
+    "G1": {
+      "at": "2026-08-20T10:41:08Z",
+      "detail": "G1: 10개 검사 통과",
+      "result": "pass"
+    },
+    "G2": {
+      "at": "2026-08-20T10:42:00Z",
+      "detail": "G2: AC 10건 커버",
+      "result": "pass"
+    },
+    "G3": {
+      "at": "2026-08-20T10:44:34Z",
+      "detail": "G3: 6개 검사 통과",
+      "result": "pass"
+    },
+    "G4": {
+      "at": "2026-08-20T11:00:57Z",
+      "detail": "G4: 변경 파일 확인",
+      "result": "pass"
+    },
+    "G5": {
+      "at": "2026-08-20T11:02:16Z",
+      "detail": "게이트를 평가하지 않고 건너뜀",
+      "forced": true,
+      "result": "skipped"
+    },
+    "G6": {
+      "at": "2026-08-20T12:37:02Z",
+      "detail": "게이트를 평가하지 않고 건너뜀",
+      "forced": true,
+      "result": "skipped"
+    },
+    "G7": {
+      "at": "2026-08-20T12:38:51Z",
+      "detail": "G7: R1~R6 + 이월 사유 확인",
+      "result": "pass"
+    }
+  },
+  "id": "wiring-conformance",
+  "intents": [
+    {
+      "actors": [
+        "개발자"
+      ],
+      "id": "intent_1",
+      "rationale": "배선 누락은 존재·참조 검사를 전부 통과하므로 축을 하나 더 봐야 잡힌다",
+      "source": "conversation",
+      "statement": "존재가 아니라 도달로 구현 여부를 판정한다"
+    },
+    {
+      "actors": [
+        "개발자"
+      ],
+      "id": "intent_2",
+      "rationale": "직전 sprint 감사 4건이 전부 \"정적 읽기만 했다\" 는 한계를 스스로 붙였다",
+      "source": "conversation",
+      "statement": "정적 판독이 아니라 실행으로 확인한다"
+    },
+    {
+      "actors": [
+        "개발자"
+      ],
+      "id": "intent_3",
+      "rationale": "직전 sprint 의 insufficient 6건은 전부 증거 수집 실패였다",
+      "source": "conversation",
+      "statement": "판정 전에 증거를 귀속시킨다"
+    },
+    {
+      "actors": [
+        "사용자"
+      ],
+      "id": "intent_4",
+      "rationale": "이 저장소에는 이미 상태·인덱스·규칙이 있어 첫 사용자의 조건이 아니다",
+      "source": "conversation",
+      "statement": "빈 프로젝트에서 헤드리스로 돌려 사용자 조건을 재현한다"
+    }
+  ],
+  "layers": {
+    "notApplicableReason": {},
+    "required": [],
+    "resolution": {}
+  },
+  "phase": "archived",
+  "profile": "strict",
+  "rev": 27,
+  "runs": [],
+  "schemaVersion": 1,
+  "slug": "reachability-audit",
+  "sprintDir": "wiring-conformance-reachability-audit",
+  "startCommit": null,
+  "status": "archived",
+  "title": "명세 기능의 도달성과 실동작 검증",
+  "updatedAt": "2026-08-20T12:38:51Z",
+  "updatedBy": {
+    "kind": "claude",
+    "sessionId": "1ae7078d"
+  },
+  "waivers": []
+}

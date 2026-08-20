@@ -1,0 +1,15 @@
+기준선 (node -e '')          : 380ms
+
+인덱스 전체 빌드 (200 파일)   : 933ms  (로직 553ms)
+인덱스 증분 (변경 없음)       : 653ms  (로직 273ms)
+
+SessionStart 훅               : 693ms  (로직 313ms)
+PostToolUse 훅                : 556ms  (로직 177ms)
+UserPromptSubmit 훅           : 891ms  (로직 512ms)
+시크릿 가드                   : 1855ms  (로직 1475ms)
+
+✖ 로직 예산 초과:
+   SessionStart: 313ms > 150ms
+   PostToolUse: 177ms > 150ms
+   UserPromptSubmit: 512ms > 100ms
+   Guard: 1475ms > 300ms

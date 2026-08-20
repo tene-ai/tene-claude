@@ -1,0 +1,34 @@
+== 대상 루트 ==
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0
+
+== bin/tene-hook 의 디스패치 지점 ==
+16:const HANDLERS = {
+17:  'session-start': () => import('../lib/hooks/session-start.js'),
+18:  'user-prompt': () => import('../lib/hooks/user-prompt.js'),
+19:  'pre-edit': () => import('../lib/hooks/pre-edit.js'),
+20:  'post-edit': () => import('../lib/hooks/post-edit.js'),
+21:  'post-bash': () => import('../lib/hooks/post-bash.js'),
+22:  'task-created': () => import('../lib/hooks/task-created.js'),
+23:  'stop': () => import('../lib/hooks/stop.js'),
+24:  'pre-compact': () => import('../lib/hooks/compact.js'),
+25:  'post-compact': () => import('../lib/hooks/compact.js'),
+26:  'subagent-stop': () => import('../lib/hooks/subagent-stop.js'),
+27:  'session-end': () => import('../lib/hooks/session-end.js'),
+33:  if (!event || !HANDLERS[event]) {
+43:    mod = await HANDLERS[event]()
+
+== 'hooks/session-start' 를 참조하는 모든 파일 (bin+lib+test, 정적/동적 무관) ==
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/bin/tene-hook:17:  'session-start': () => import('../lib/hooks/session-start.js'),
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/unit/hooks.test.js:55:    const { run } = await import('../../lib/hooks/session-start.js')
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/unit/hooks.test.js:70:    const { run } = await import('../../lib/hooks/session-start.js')
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/unit/hooks.test.js:95:    const { run } = await import('../../lib/hooks/session-start.js')
+
+== 정적 import 문에 lib/hooks/*.js 가 나타나는 곳 (prod) ==
+(일치 0건)
+
+== plan/aggregate 참조 전부 ==
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/unit/router-report.test.js:11:import { aggregate, promote, recommendNext, upsertSprint } from '../../lib/plan/aggregate.js'
+
+== router/match 참조 전부 ==
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/lib/hooks/user-prompt.js:14:import { formatSuggestion, route } from '../router/match.js'
+/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0/test/unit/router-report.test.js:7:import { detectLang, formatSuggestion, loadRules, matchesCondition, matchesKeywords, route } from '../../lib/router/match.js'

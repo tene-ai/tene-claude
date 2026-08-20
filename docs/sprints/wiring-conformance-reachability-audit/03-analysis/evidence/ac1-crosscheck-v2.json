@@ -1,0 +1,108 @@
+{
+  "method": "대조 전에 고정한 절차: 심볼 S 와 모듈 M 에 대해 (1) M 을 named import 하면서 중괄호 안에 S 가 있는 파일, (2) M 을 네임스페이스 import 한 뒤 alias.S 를 쓰는 파일, (3) M 을 동적 import 하는 파일에서 .S( 멤버 호출. 셋 중 하나라도 프로덕션(bin/·lib/)에 있으면 도달, test/ 에만 있으면 test-only, 없으면 unreachable. 이 절차는 표본을 보기 전에 정했고 결과에 따라 바꾸지 않았다.",
+  "bucketsCovered": {
+    "dynamic": 2,
+    "test-only": 2,
+    "unreachable": 2,
+    "reachable": 2
+  },
+  "samples": [
+    {
+      "id": "lib/hooks/session-start.js#run",
+      "instrument": "dynamic",
+      "crosscheckExpect": "dynamic",
+      "namedImporters": [],
+      "nsUsers": [],
+      "dynamicMembers": [
+        "bin/tene-hook"
+      ],
+      "agrees": true
+    },
+    {
+      "id": "lib/hooks/stop.js#run",
+      "instrument": "dynamic",
+      "crosscheckExpect": "dynamic",
+      "namedImporters": [],
+      "nsUsers": [],
+      "dynamicMembers": [
+        "bin/tene-hook"
+      ],
+      "agrees": true
+    },
+    {
+      "id": "lib/plan/aggregate.js#promote",
+      "instrument": "test-only",
+      "crosscheckExpect": "test-only",
+      "namedImporters": [
+        "test/unit/router-report.test.js"
+      ],
+      "nsUsers": [],
+      "dynamicMembers": [],
+      "agrees": true
+    },
+    {
+      "id": "lib/guard/segment.js#segments",
+      "instrument": "test-only",
+      "crosscheckExpect": "test-only",
+      "namedImporters": [
+        "test/unit/guard.test.js"
+      ],
+      "nsUsers": [],
+      "dynamicMembers": [],
+      "agrees": true
+    },
+    {
+      "id": "lib/doc/sections.js#isAutoBlock",
+      "instrument": "unreachable",
+      "crosscheckExpect": "unreachable",
+      "namedImporters": [],
+      "nsUsers": [],
+      "dynamicMembers": [],
+      "agrees": true
+    },
+    {
+      "id": "lib/doc/patch.js#patchBlocks",
+      "instrument": "unreachable",
+      "crosscheckExpect": "unreachable",
+      "namedImporters": [],
+      "nsUsers": [],
+      "dynamicMembers": [],
+      "agrees": true
+    },
+    {
+      "id": "lib/state/store.js#advance",
+      "instrument": "reachable",
+      "crosscheckExpect": "reachable",
+      "namedImporters": [],
+      "nsUsers": [
+        "bin/tene-state",
+        "test/unit/state-store.test.js"
+      ],
+      "dynamicMembers": [],
+      "agrees": true
+    },
+    {
+      "id": "lib/doc/sections.js#DOC_PATH",
+      "instrument": "reachable",
+      "crosscheckExpect": "reachable",
+      "namedImporters": [
+        "bin/tene-doc"
+      ],
+      "nsUsers": [],
+      "dynamicMembers": [],
+      "agrees": true
+    }
+  ],
+  "allAgree": true,
+  "resolvedContradiction": {
+    "issue": "이전 회차에서 selfCheck 는 session-start.js 를 dynamic 이라 했는데 같은 아티팩트가 session-start.js#run 을 unreachable 로 분류했다",
+    "cause": "훅은 mod = await HANDLERS[event]() 로 모듈 객체를 받아 mod.run(...) 을 부른다. named import 가 아니라 파서가 못 잡았다",
+    "fix": "동적 import 를 하는 파일의 멤버 접근을 그 모듈들의 심볼 사용으로 과대근사한다. approximated:true 로 표시한다",
+    "result": "session-start.js#run 이 dynamic 으로 이동. dynamic 2 → 12, unreachable 134 → 124"
+  },
+  "resolvedSectionsDispute": {
+    "issue": "tene-scan 의 q3 는 lib/doc/sections.js 를 import 하는 파일이 없다고 보고하는데 계측기는 그 파일 export 를 reachable 로 분류했다",
+    "resolution": "bin/tene-doc:16 이 { DOC_PATH, DOC_TYPES, requiredSections } 를 named import 한다. 계측기가 맞고 tene-scan 의 q3 가 틀렸다",
+    "note": "이 자체가 tene 의 결함이다 — Q3 가 참조를 놓친다. 별도 findings 로 기록한다"
+  }
+}

@@ -1,0 +1,62 @@
+# L3 — stale 마킹 격리 프로젝트 실행 (D10 §3.4)
+# utc: 2026-08-20T11:47:51Z
+# 프로젝트: 임시 (스크래치패드), 저장소 상태 파일 미변경
+# 훅: node plugins/tene/bin/tene-hook post-edit < payload.json
+
+## payload
+{"tool_name":"Edit","tool_input":{"file_path":"<SCRATCH>/probe-ac7-run1/src/pay.js"}}
+
+## 실행 전 sprint 상태 (verdict 만)
+ac_p=passed ac_f=failed ac_i=insufficient ac_s=stale ac_n=pending
+rev=3
+
+## 훅 stdout
+
+(주의: 위 stdout 은 2회차 실행. 1회차에서 ac_p 가 이미 stale 로 바뀐 뒤임)
+
+## 실행 후 sprint 상태
+{
+  "ac": [
+    {
+      "id": "ac_p",
+      "priority": "blocking",
+      "staledAt": "2026-08-20T11:47:22Z",
+      "staledBy": "src/pay.js",
+      "verdict": "stale"
+    },
+    {
+      "id": "ac_f",
+      "priority": "blocking",
+      "verdict": "failed"
+    },
+    {
+      "id": "ac_i",
+      "priority": "blocking",
+      "verdict": "insufficient"
+    },
+    {
+      "id": "ac_s",
+      "priority": "blocking",
+      "verdict": "stale"
+    },
+    {
+      "id": "ac_n",
+      "priority": "blocking",
+      "verdict": "pending"
+    }
+  ],
+  "id": "probe",
+  "phase": "qa",
+  "rev": 4,
+  "schemaVersion": 1,
+  "status": "active",
+  "updatedAt": "2026-08-20T11:47:22Z"
+}
+
+## history/events.ndjson 존재 여부
+total 0
+drwxr-xr-x@ 4 kaykim  wheel  128  8 20 20:47 .
+drwxr-xr-x@ 6 kaykim  wheel  192  8 20 20:47 ..
+drwxr-xr-x@ 3 kaykim  wheel   96  8 20 20:47 index
+drwxr-xr-x@ 3 kaykim  wheel   96  8 20 20:47 state
+ls: /private/tmp/claude-501/-Users-kaykim-Documents-GitHub-agent-kay-it-tene-claude/1ae7078d-07f7-4ff8-9958-0bf56ab81418/scratchpad/probe-ac7-run1/.tene-claude/history: No such file or directory

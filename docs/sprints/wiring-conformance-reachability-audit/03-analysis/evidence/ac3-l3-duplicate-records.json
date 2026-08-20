@@ -1,0 +1,80 @@
+{
+  "probe": "금지 조건 — 같은 요청으로 레코드가 2건 이상 생성되는가",
+  "tool": "~/.claude/plugins/cache/tene-ai/tene/0.1.0/bin/tene-state (repo plugins/tene 와 diff -rq 결과 차이 없음)",
+  "rawLog": "ac3-l3-cli-replay.txt",
+  "probes": [
+    {
+      "id": "B1",
+      "request": "tene-state init --id dup-probe (동일 인자로 2회)",
+      "observed": {
+        "call1": "ok=true, sprint 생성",
+        "call2": "ok=false, error.code=SPRINT_EXISTS, exit=3",
+        "sprintFilesAfter": ["dup-probe.json"],
+        "sprintFileCount": 1
+      }
+    },
+    {
+      "id": "B2/B3",
+      "request": "tene-state advance --id dup-probe --to prd --result pass (동일 명령 2회 연속)",
+      "observed": {
+        "call1": "ok=true, from=draft to=prd gate=G0",
+        "call2": "ok=false, error.code=INVALID_TRANSITION, detail={from:prd,to:prd,allowed:[plan]}, exit=2",
+        "gatesG0": { "at": "2026-08-20T11:45:04Z", "detail": null, "result": "pass" },
+        "gatesG0IsArray": false,
+        "eventCounts": { "SprintCreated": 1, "PhaseTransitioned": 1 }
+      }
+    },
+    {
+      "id": "C",
+      "request": "동일 advance 명령 2개를 동시에 백그라운드로 발신 (--to plan --result pass)",
+      "observed": {
+        "proc1": "exit=2, INVALID_TRANSITION {from:plan,to:plan}",
+        "proc2": "exit=0, from=prd to=plan gate=G1",
+        "gatesG1": { "at": "2026-08-20T11:45:10Z", "detail": null, "result": "pass" },
+        "distinctEventRecords": {
+          "SprintCreated{profile:standard,title:중복 요청}": 1,
+          "PhaseTransitioned{draft→prd,G0}": 1,
+          "PhaseTransitioned{prd→plan,G1}": 1
+        },
+        "sprintFileCount": 1
+      }
+    },
+    {
+      "id": "D",
+      "request": "같은 게이트(G0)를 결과만 바꿔 2회 기록 (tene-state gate --to G0 --result pass → --result fail)",
+      "observed": {
+        "call1": "ok=true, {at:11:47:26Z, detail:1회차, result:pass}",
+        "call2": "ok=true, {at:11:47:26Z, detail:2회차, result:fail}",
+        "stateFileG0After": { "at": "2026-08-20T11:47:26Z", "detail": "2회차", "result": "fail" },
+        "gatesKeys": ["G0","G1","G2","G3","G4","G5","G6","G7"],
+        "gatesG0IsArray": false,
+        "gateEvaluatedEvents": [
+          "{gate:G0,result:pass} seq=4 @11:47:26Z",
+          "{gate:G0,result:fail} seq=5 @11:47:27Z"
+        ],
+        "note": "상태 파일은 1건만 남고 1회차 pass 는 파일에서 사라짐. history/events.ndjson 에는 2건 남음."
+      }
+    },
+    {
+      "id": "E",
+      "request": "이 저장소(.tene-claude/history/events.ndjson) 의 전체 이벤트에서 (type,sprint,ts,payload) 가 완전히 같은 레코드 검색",
+      "observed": {
+        "totalEvents": 72,
+        "duplicateGroups": 3,
+        "groups": [
+          "AgentCompleted|self-conformance|2026-08-20T09:58:43Z|{agent:tene:gap-auditor,phase:qa} ×2",
+          "AgentCompleted|wiring-conformance|2026-08-20T11:24:12Z|{agent:tene:refuter,phase:qa} ×2",
+          "AgentCompleted|wiring-conformance|2026-08-20T11:44:34Z|{agent:tene:gap-auditor,phase:qa} ×2"
+        ],
+        "typeCounts": { "SprintCreated": 2, "AcJudged": 5, "IntentCaptured": 2, "PhaseTransitioned": 11, "PhaseForced": 3, "AgentCompleted": 49 },
+        "note": "이벤트 레코드에 고유 id 가 없어, 같은 요청이 2건 기록된 것인지 서로 다른 두 완료가 같은 초에 기록된 것인지 레코드만으로 구분되지 않음. 게이트 계열(PhaseTransitioned/PhaseForced/GateEvaluated)에서는 중복 그룹 0건."
+      }
+    }
+  ],
+  "codeReadDuringProbe": {
+    "plugins/tene/lib/state/store.js:246": "advance() — force + gateResult 없음 → gates[gateId] = {result:'skipped', forced:true}",
+    "plugins/tene/lib/state/store.js:255": "advance() — gateResult 있음 → gates[gateId] = {result, at, detail, (force 시 forced:true)}",
+    "plugins/tene/lib/state/store.js:350": "setGate() — gates[gateId] 에 단일 객체 대입",
+    "shape": "sprint.gates 는 G0~G7 8키 고정 객체. 게이트당 배열이 아니라 단일 슬롯."
+  }
+}

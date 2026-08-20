@@ -1,0 +1,63 @@
+### 기준선: ac8-full-suite.txt (2026-08-20 19:47 수집) 요약
+ℹ tests 336
+ℹ pass 336
+ℹ fail 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27484.36187
+
+### 이번 재실행: ac3-l2-unit-suite.txt
+ℹ tests 252
+ℹ pass 252
+ℹ fail 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9937.076981
+
+### 이번 재실행: ac3-l2-cycle-integration.txt
+ℹ tests 13
+ℹ pass 13
+ℹ fail 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 165041.26012
+
+### 기준선 파일에 포함된 실행 범위
+
+### 게이트 기록 경로를 덮는 테스트 검색 (advance/gates)
+plugins/tene/test/integration/cycle.test.js
+plugins/tene/test/unit/state-store.test.js
+-- 검색어별 히트 --
+plugins/tene/test/integration/cycle.test.js:159:    () => cli(root, 'tene-state', ['advance', '--id', 'checkout', '--to', 'qa']),
+plugins/tene/test/integration/cycle.test.js:323:    const r = cli(root, 'tene-state', ['advance', '--id', 'p', '--to', to, '--force'])
+plugins/tene/test/unit/state-store.test.js:105:  assert.equal(s.gates.G0.result, 'fail', '판정은 남아야 한다')
+plugins/tene/test/unit/state-store.test.js:116:  assert.equal(s.gates.G0.forced, true)
+
+### 이 저장소 .tene-claude 상태 해시 (프로브 후)
+2b8c933765dda9624ff18a64c5ca73cdbdda28ad0b4217c1cf4859b546d24b24  .tene-claude/state/current.json
+ee2766a985787d546754329a70c54dc0f814ac6f28a5192409379c25456a3380  .tene-claude/state/sprints/self-conformance.json
+f07583bba2c3d8b4d1d2535bcf3596b95f13e7dee42a0c479bac4fcd95c12aa4  .tene-claude/state/sprints/wiring-conformance.json
+41f42d851c28107746c40fb8347c53864373d0b44b3bd8c2f40583cc3ca6c230  .tene-claude/history/events.ndjson
+(프로브 전 기록: current 2b8c9337… / self-conformance ee2766a9… / wiring-conformance f07583bb… / events a08773e2…)
+
+### git 작업트리 변경 (증거 파일 외)
+?? .tene-claude/
+?? docs/sprints/__probe__/
+?? docs/sprints/self-conformance-spec-audit/
+?? docs/sprints/wiring-conformance-reachability-audit/
+?? evals/reachability.mjs
+?? sh.err
+
+### 기준선 대조 합산 (2026-08-20 11:4x UTC 재실행)
+unit(test/unit/*.test.js) = 252
+root(test/*.test.js)      = 71
+integration(cycle)        = 13
+합계                      = 336
+기준선(ac8-full-suite.txt) = 336  fail=0
+이번 fail 합계             = 0
+
+### 상태 파일 드리프트 (프로브 전후)
+current.json / sprints/*.json : 해시 동일
+.tene-claude/history/events.ndjson : a08773e2… → 41f42d85… (프로브 전 행수는 측정하지 않음. 프로브 후 wc -l = 71, JSON 파싱 레코드 = 72)
+프로브 시각(11:44~11:46Z)에 찍힌 행: AgentCompleted 6건 (seq 66~71, payload {agent:tene:gap-auditor, phase:qa}, sessionId 1ae7078d)
+게이트 관련(PhaseTransitioned/PhaseForced/GateEvaluated) 추가 0건

@@ -1,0 +1,18 @@
+# L3 — Stage 2 관련 명령 실행 (repo bin: plugins/tene/bin/tene-scan)
+# utc: 2026-08-20T11:45:16Z
+
+## tene-scan --help
+{"elapsedMs":7,"error":{"code":"UNKNOWN_COMMAND","detail":{"available":["build","status","query","layers","violations","questions","anchors","touched","unattributed"],"command":"(none)"},"hint":"사용 가능: build, status, query, layers, violations, questions, anchors, touched, unattributed","message":"알 수 없는 명령입니다: (none)"},"ok":false,"schemaVersion":1,"tool":"tene-scan","warnings":[]}
+exit=0
+
+## tene-scan anchors (읽기)
+{"data":{"byAc":{"wiring-conformance:ac_1":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/scan/query.js","kind":"symbol","line":128,"source":"indexed","value":"orphans"}],"resolved":true},"wiring-conformance:ac_10":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/state/summary.js","kind":"symbol","line":79,"source":"indexed","value":"formatSummary"}],"resolved":true},"wiring-conformance:ac_2":{"anchors":[{"confidence":"low","file":null,"kind":"symbol","source":"unresolved","value":"questions"}],"resolved":false},"wiring-conformance:ac_3":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/state/store.js","kind":"symbol","line":229,"source":"indexed","value":"advance"}],"resolved":true},"wiring-conformance:ac_4":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/state/summary.js","kind":"symbol","line":79,"source":"indexed","value":"formatSummary"}],"resolved":true},"wiring-conformance:ac_5":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/state/store.js","kind":"symbol","line":437,"source":"indexed","value":"markStaleNoLock"}],"resolved":true},"wiring-conformance:ac_6":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/loop/judge.js","kind":"symbol","line":287,"source":"indexed","value":"judgeAll"}],"resolved":true},"wiring-conformance:ac_7":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/state/schema.js","kind":"symbol","line":163,"source":"indexed","value":"nextActionFor"}],"resolved":true},"wiring-conformance:ac_8":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/guard/rules.js","kind":"symbol","line":105,"source":"indexed","value":"judgeBash"}],"resolved":true},"wiring-conformance:ac_9":{"anchors":[{"confidence":"high","file":"plugins/tene/lib/loop/judge.js","kind":"symbol","line":287,"source":"indexed","value":"judgeAll"}],"resolved":true}},"generatedAt":"2026-08-20T11:00:58Z","stats":{"ac":10,"paths":6,"unresolved":1},"unresolved":[{"ac":"wiring-conformance:ac_2","anchor":"questions","hint":"인덱스에 'questions' 정의가 없습니다. 동적 생성이거나 미지원 언어일 수 있습니다","reason":"no_match"}]},"elapsedMs":146,"ok":true,"schemaVersion":1,"tool":"tene-scan","warnings":[]}
+exit=0
+
+## tene-scan unattributed --from HEAD~1
+{"data":{"checked":1,"count":1,"unattributed":["HEAD~1"]},"elapsedMs":4,"ok":true,"schemaVersion":1,"tool":"tene-scan","warnings":[]}
+exit=0
+
+## tene-scan touched --paths plugins/tene/lib/scan/query.js
+{"data":{"acs":["wiring-conformance:ac_1"],"byPath":{"plugins/tene/lib/scan/query.js":["wiring-conformance:ac_1"]},"unknownPaths":[]},"elapsedMs":6,"ok":true,"schemaVersion":1,"tool":"tene-scan","warnings":[]}
+exit=0

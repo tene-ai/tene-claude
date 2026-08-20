@@ -1,0 +1,161 @@
+{
+  "procedure": "xcheck 1단계와 동일 표본 8건. 차이는 import 출처 모듈을 해석하는지 여부다.",
+  "root": "/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0",
+  "rows": [
+    {
+      "id": "lib/doc/extract.js#EXTRACT_TARGETS",
+      "bucket": "reachable",
+      "pick": "first",
+      "moduleAware": {
+        "prodNamedOrNs": [
+          "bin/tene-doc"
+        ],
+        "testNamedOrNs": [],
+        "dynamicImportersOfModule": []
+      },
+      "instrumentSymbolUsers": [
+        "bin/tene-doc"
+      ],
+      "sameSet": true,
+      "nameOnlyGrepProdHits": [
+        "bin/tene-doc"
+      ]
+    },
+    {
+      "id": "lib/util/time.js#todayIso",
+      "bucket": "reachable",
+      "pick": "last",
+      "moduleAware": {
+        "prodNamedOrNs": [
+          "lib/doc/template.js"
+        ],
+        "testNamedOrNs": [],
+        "dynamicImportersOfModule": []
+      },
+      "instrumentSymbolUsers": [
+        "lib/doc/template.js"
+      ],
+      "sameSet": true,
+      "nameOnlyGrepProdHits": [
+        "lib/doc/template.js"
+      ]
+    },
+    {
+      "id": "lib/hooks/compact.js#run",
+      "bucket": "dynamic",
+      "pick": "first",
+      "moduleAware": {
+        "prodNamedOrNs": [],
+        "testNamedOrNs": [],
+        "dynamicImportersOfModule": [
+          "bin/tene-hook",
+          "test/unit/hooks.test.js"
+        ]
+      },
+      "instrumentSymbolUsers": [
+        "bin/tene-hook"
+      ],
+      "sameSet": false,
+      "nameOnlyGrepProdHits": [
+        "bin/tene-doc",
+        "bin/tene-gate",
+        "bin/tene-loop",
+        "bin/tene-qa",
+        "bin/tene-report",
+        "bin/tene-scan",
+        "bin/tene-state"
+      ]
+    },
+    {
+      "id": "lib/router/match.js#route",
+      "bucket": "dynamic",
+      "pick": "last",
+      "moduleAware": {
+        "prodNamedOrNs": [
+          "lib/hooks/user-prompt.js"
+        ],
+        "testNamedOrNs": [
+          "test/unit/router-report.test.js"
+        ],
+        "dynamicImportersOfModule": []
+      },
+      "instrumentSymbolUsers": [
+        "lib/hooks/user-prompt.js",
+        "test/unit/router-report.test.js"
+      ],
+      "sameSet": true,
+      "nameOnlyGrepProdHits": [
+        "lib/hooks/user-prompt.js"
+      ]
+    },
+    {
+      "id": "lib/doc/extract.js#earsPattern",
+      "bucket": "test-only",
+      "pick": "first",
+      "moduleAware": {
+        "prodNamedOrNs": [],
+        "testNamedOrNs": [
+          "test/unit/doc-extract.test.js"
+        ],
+        "dynamicImportersOfModule": []
+      },
+      "instrumentSymbolUsers": [
+        "test/unit/doc-extract.test.js"
+      ],
+      "sameSet": true,
+      "nameOnlyGrepProdHits": []
+    },
+    {
+      "id": "lib/util/paths.js#isStatePath",
+      "bucket": "test-only",
+      "pick": "last",
+      "moduleAware": {
+        "prodNamedOrNs": [],
+        "testNamedOrNs": [
+          "test/unit/util-paths.test.js"
+        ],
+        "dynamicImportersOfModule": [
+          "test/eval-honesty.test.js"
+        ]
+      },
+      "instrumentSymbolUsers": [
+        "test/unit/util-paths.test.js"
+      ],
+      "sameSet": true,
+      "nameOnlyGrepProdHits": []
+    },
+    {
+      "id": "lib/doc/extract.js#extractRequirements",
+      "bucket": "unreachable",
+      "pick": "first",
+      "moduleAware": {
+        "prodNamedOrNs": [],
+        "testNamedOrNs": [],
+        "dynamicImportersOfModule": []
+      },
+      "instrumentSymbolUsers": [],
+      "sameSet": true,
+      "nameOnlyGrepProdHits": [
+        "bin/tene-loop",
+        "lib/loop/run.js"
+      ]
+    },
+    {
+      "id": "lib/util/time.js#yearMonth",
+      "bucket": "unreachable",
+      "pick": "last",
+      "moduleAware": {
+        "prodNamedOrNs": [],
+        "testNamedOrNs": [],
+        "dynamicImportersOfModule": []
+      },
+      "instrumentSymbolUsers": [],
+      "sameSet": true,
+      "nameOnlyGrepProdHits": []
+    }
+  ],
+  "agreementCount": 7,
+  "disagreements": [
+    "lib/hooks/compact.js#run"
+  ]
+}

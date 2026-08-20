@@ -1,0 +1,16 @@
+{
+  "observation": "앵커된 src/pay.js 를 편집하고 bin/tene-hook post-edit 에 실제 PostToolUse 페이로드를 넣었다",
+  "before": {
+    "ac_p": "passed",
+    "ac_f": "failed",
+    "ac_i": "insufficient"
+  },
+  "after": {
+    "ac_f": "failed",
+    "ac_i": "insufficient",
+    "ac_p": "stale"
+  },
+  "hookOutput": "[tene] 이 변경으로 수용 기준 1건의 판정이 무효가 되었습니다: stale-probe:ac_p",
+  "rule": "D10 §3.4 — pass 만 stale 로 바꾼다. 이미 fail 인 것을 stale 로 바꾸면 실패 사실이 가려진다",
+  "compliant": true
+}

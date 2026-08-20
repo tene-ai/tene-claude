@@ -1,0 +1,34 @@
+[
+ {
+  "spelling": "business-logic",
+  "matches": false
+ },
+ {
+  "spelling": "business logic",
+  "matches": true
+ },
+ {
+  "spelling": "businesslogic",
+  "matches": true
+ },
+ {
+  "spelling": "Business Logic",
+  "matches": true
+ },
+ {
+  "spelling": "business_logic",
+  "matches": false
+ },
+ {
+  "spelling": "비즈니스",
+  "matches": true
+ },
+ {
+  "spelling": "처리 규칙",
+  "matches": true
+ },
+ {
+  "spelling": "business-logic (처리 규칙)",
+  "matches": true
+ }
+]

@@ -1,0 +1,45 @@
+# ac_5 L1 부록 — lib/bin 밖 파일의 node --check (2026-08-20T11:50:14Z)
+# 사유: L1 수집 중 저장소 루트에 sh.err 가 생겨 그 내용을 확인하다 발견
+
+conformance-audit.js
+qa-sweep.js
+understand-sweep.js
+
+== workflows/conformance-audit.js
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/workflows/conformance-audit.js:16
+  return { error: 'no requirements supplied', hint: 'args.requirements 에 요구 항목을 넘기세요' }
+  ^^^^^^
+
+SyntaxError: Illegal return statement
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v26.0.0
+== workflows/qa-sweep.js
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/workflows/qa-sweep.js:17
+  return { error: 'no criteria supplied', hint: 'args.criteria 에 AC 목록을 넘기세요' }
+  ^^^^^^
+
+SyntaxError: Illegal return statement
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v26.0.0
+== workflows/understand-sweep.js
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/workflows/understand-sweep.js:16
+  return { error: 'no symbols supplied', hint: 'args.symbols 에 심볼 이름 배열을 넘기세요' }
+  ^^^^^^
+
+SyntaxError: Illegal return statement
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v26.0.0
+
+== 루트에 남아 있던 sh.err 원문 ==
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/workflows/understand-sweep.js:16
+  return { error: 'no symbols supplied', hint: 'args.symbols 에 심볼 이름 배열을 넘기세요' }
+  ^^^^^^
+
+SyntaxError: Illegal return statement
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v26.0.0
+0.0

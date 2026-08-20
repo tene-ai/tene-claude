@@ -1,0 +1,61 @@
+# L1 static — ES module parse check (vm.SourceTextModule)
+# cmd: node --experimental-vm-modules scratchpad/l1check.mjs
+# utc: 2026-08-20T11:39:40Z
+# node: v26.0.0
+
+SYNTAX-ERROR plugins/tene/workflows/conformance-audit.js: Illegal return statement
+SYNTAX-ERROR plugins/tene/workflows/qa-sweep.js: Illegal return statement
+SYNTAX-ERROR plugins/tene/workflows/understand-sweep.js: Illegal return statement
+checked=94 syntax_errors=3
+exit=0
+
+# scripts/assert-no-deps.js
+✔ 외부 의존 0 확인
+exit=0
+
+# scripts/check-docs-consistency.js
+✔ 문서 정합성 확인 (문서 34개, 규칙 10종)
+exit=0
+
+# follow-up: node --check on the 3 files reported by module parse
+--- plugins/tene/workflows/conformance-audit.js
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/workflows/conformance-audit.js:16
+  return { error: 'no requirements supplied', hint: 'args.requirements 에 요구 항목을 넘기세요' }
+  ^^^^^^
+
+SyntaxError: Illegal return statement
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v26.0.0
+exit=1
+1:export const meta = {
+16:  return { error: 'no requirements supplied', hint: 'args.requirements 에 요구 항목을 넘기세요' }
+76:    return { ...a, verification: check, confirmed: !check?.refuted }
+86:return {
+--- plugins/tene/workflows/qa-sweep.js
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/workflows/qa-sweep.js:17
+  return { error: 'no criteria supplied', hint: 'args.criteria 에 AC 목록을 넘기세요' }
+  ^^^^^^
+
+SyntaxError: Illegal return statement
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v26.0.0
+exit=1
+1:export const meta = {
+17:  return { error: 'no criteria supplied', hint: 'args.criteria 에 AC 목록을 넘기세요' }
+97:    return {
+119:return {
+--- plugins/tene/workflows/understand-sweep.js
+/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/plugins/tene/workflows/understand-sweep.js:16
+  return { error: 'no symbols supplied', hint: 'args.symbols 에 심볼 이름 배열을 넘기세요' }
+  ^^^^^^
+
+SyntaxError: Illegal return statement
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v26.0.0
+exit=1
+1:export const meta = {
+16:  return { error: 'no symbols supplied', hint: 'args.symbols 에 심볼 이름 배열을 넘기세요' }
+49:return {

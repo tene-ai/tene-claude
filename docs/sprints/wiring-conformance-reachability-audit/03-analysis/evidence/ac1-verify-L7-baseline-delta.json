@@ -1,0 +1,31 @@
+{
+  "compare": {
+    "baseline_v4": "/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/docs/sprints/wiring-conformance-reachability-audit/03-analysis/evidence/ac1-reachability-v4.json",
+    "rerun": "/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/docs/sprints/wiring-conformance-reachability-audit/03-analysis/evidence/ac1-verify-L3-run1.json"
+  },
+  "totals": {
+    "baseline_v4": {
+      "libFiles": 67,
+      "exports": 408,
+      "reachable": 211,
+      "dynamic": 12,
+      "test-only": 61,
+      "unreachable": 124
+    },
+    "rerun": {
+      "libFiles": 67,
+      "exports": 408,
+      "reachable": 211,
+      "dynamic": 12,
+      "test-only": 61,
+      "unreachable": 124
+    }
+  },
+  "idCount": {
+    "baseline_v4": 408,
+    "rerun": 408
+  },
+  "changedCount": 0,
+  "changed": [],
+  "identicalAfterStrippingTmpDir": true
+}

@@ -1,0 +1,54 @@
+{
+  "observation": "빈 git 프로젝트(.tene-claude 없음)에서 claude -p 로 /tene:sprint init → /tene:prd → /tene:plan → /tene:design 진행",
+  "command": "claude -p \"...\" --allowedTools \"Bash,Read,Write,Edit,Glob,Grep,Skill,AskUserQuestion\" --output-format stream-json",
+  "skillsInvoked": [
+    "tene:sprint",
+    "tene:prd",
+    "tene:plan",
+    "tene:design"
+  ],
+  "sprint": "order-guard",
+  "phase": "design",
+  "status": "active",
+  "gates": {
+    "G0": {
+      "at": "2026-08-20T10:49:16Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G1": {
+      "at": "2026-08-20T10:51:25Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G2": {
+      "at": "2026-08-20T10:53:15Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G3": {
+      "at": "2026-08-20T10:58:24Z",
+      "detail": null,
+      "result": "pass"
+    },
+    "G4": null,
+    "G5": null,
+    "G6": null,
+    "G7": null
+  },
+  "gatesRecorded": [
+    "G0",
+    "G1",
+    "G2",
+    "G3"
+  ],
+  "anyForced": [],
+  "acCount": 8,
+  "intentCount": 3,
+  "docsCreated": {
+    "design": "02-design/design.md",
+    "plan": "01-plan/plan.md",
+    "prd": "00-prd/prd.md"
+  },
+  "layersRuleCreated": true
+}

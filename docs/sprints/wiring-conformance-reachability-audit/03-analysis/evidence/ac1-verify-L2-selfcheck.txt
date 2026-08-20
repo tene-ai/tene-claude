@@ -1,0 +1,56 @@
+진입점 12개 · lib 파일 67개 · export 408개
+
+  reachable    211
+  dynamic      12
+  test-only    61   ← 배선 누락
+  unreachable  124
+
+  test-only (테스트만 부름):
+    lib/doc/extract.js#earsPattern
+       ← test/unit/doc-extract.test.js
+    lib/gate/rules.js#GATES
+       ← test/unit/qa-gate.test.js
+    lib/guard/rules.js#isVaultPath
+       ← test/unit/guard.test.js
+    lib/guard/rules.js#isPlainEnvFile
+       ← test/unit/guard.test.js
+    lib/guard/segment.js#segments
+       ← test/unit/guard.test.js
+    lib/guard/segment.js#stripPrefix
+       ← test/unit/guard.test.js
+    lib/guard/segment.js#expandIndirect
+       ← test/unit/guard.test.js
+    lib/guard/segment.js#heredocBodies
+       ← test/unit/guard.test.js
+    … 외 53건
+
+  unreachable 후보 (아무도 named import 하지 않음):
+    lib/doc/extract.js#extractRequirements
+    lib/doc/patch.js#patchBlocks
+    lib/doc/sections.js#SECTIONS
+    lib/doc/sections.js#REQUIRED_BY_PROFILE
+    lib/doc/sections.js#AUTO_BLOCKS
+    lib/doc/sections.js#DOC_PHASE
+    lib/doc/sections.js#DOC_GATE
+    lib/doc/sections.js#isAutoBlock
+    lib/doc/template.js#templatePath
+    lib/doc/template.js#render
+    … 외 114건
+
+자체 검사 — 알려진 정답:
+  OK  lib/plan/aggregate.js  기대=test-only 실제=test-only
+  OK  lib/hooks/session-start.js  기대=dynamic 실제=dynamic
+  OK  lib/state/store.js  기대=reachable 실제=reachable
+자체 검사 — 합성 4분기:
+  OK  lib/wired.js  기대=reachable 실제=reachable
+  OK  lib/orphan.js  기대=unreachable 실제=unreachable
+  OK  lib/testonly.js  기대=test-only 실제=test-only
+  OK  lib/dyn.js  기대=dynamic 실제=dynamic
+자체 검사 — 심볼 단위 4분기:
+  OK  lib/state/store.js#advance  기대=reachable 실제=reachable
+  OK  lib/plan/aggregate.js#promote  기대=test-only 실제=test-only
+  OK  lib/hooks/session-start.js#run  기대=dynamic 실제=dynamic
+  OK  lib/doc/sections.js#isAutoBlock  기대=unreachable 실제=unreachable
+  OK  lib/doc/sections.js#DOC_PATH  기대=reachable 실제=reachable
+
+알려진 정답 3건 + 합성 4분기 검사 통과. 네 분류가 전부 실제로 산출됨을 확인했다.

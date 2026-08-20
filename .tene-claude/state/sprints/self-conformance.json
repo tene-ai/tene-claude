@@ -1,0 +1,370 @@
+{
+  "ac": [
+    {
+      "anchors": [
+        "judgeAll"
+      ],
+      "evidenceRef": "art_loop",
+      "id": "ac_1",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "증거의 분모가 RTM 27개가 아니라 sprint 문서 요구 29건이다. 증거 자신이 task_1(27개 대조)을 missing 으로 기록한다",
+      "statement": "When RTM 27개 요구 항목을 구현과 대조하면, 시스템은 각 항목에 implemented·partial·missing·unverifiable 중 하나의 판정과 근거 경로를 기록해야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "kindOf"
+      ],
+      "evidenceRef": null,
+      "id": "ac_2",
+      "method": "DATA",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "reason": "ac_2 에 귀속된 아티팩트가 0건. 관찰된 10건이 전부 missing 쪽이고 unverifiable 로 분류된 사례가 없어 '구분해 기록' 을 판정할 수 없다",
+      "statement": "If 요구 항목의 근거를 찾지 못하면, then 시스템은 그것을 missing 과 unverifiable 로 구분해 기록해야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "judgeBash"
+      ],
+      "evidenceRef": "art_guard",
+      "id": "ac_3",
+      "method": "UNIT",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "false-negative 0 · false-positive 0 · pass 5 / fail 0, '매트릭스가 비어 있지 않다' 가 공허한 참을 배제",
+      "statement": "When 가드 매트릭스를 실행하면, 시스템은 전 케이스의 기대값 대비 오탐 건수와 미탐 건수를 0으로 기록해야 한다",
+      "status": "pending",
+      "verdict": "passed"
+    },
+    {
+      "anchors": [
+        "computeAcSummary"
+      ],
+      "evidenceRef": "art_honesty",
+      "id": "ac_4",
+      "method": "UNIT",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "[정직성] 태그 테스트가 E-4·E-7·E-10·E-12 4종 7건뿐이라 '5종 전부' 가 관찰되지 않았고 computeAcSummary 의 미측정 집계 동작 관찰이 없다",
+      "statement": "When 정직성 eval 을 실행하면, 시스템은 5종 전부에서 미측정 항목을 passed 로 표기하지 않아야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "run"
+      ],
+      "evidenceRef": "art_bins",
+      "id": "ac_5",
+      "method": "UNIT",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "34행 중 10행이 D12 §1.3 코드 표에 없는 코드를 반환한다. exit 10(INTERNAL)은 D12 §1.2 범위(0~8) 밖이며 §2 의 fail-open 원칙에도 위배",
+      "statement": "When 16개 스킬 본문이 지시하는 bin 명령을 각각 실행하면, 시스템은 종료 코드 0 또는 D12 에 정의된 오류 코드를 반환해야 한다",
+      "status": "pending",
+      "verdict": "failed"
+    },
+    {
+      "anchors": [
+        "advance"
+      ],
+      "evidenceRef": "art_gate_skip",
+      "id": "ac_6",
+      "method": "DATA",
+      "pattern": "unwanted",
+      "priority": "blocking",
+      "reason": "판정 시점에 ac_6 귀속 아티팩트가 0건이었다. 판정 후 관찰 기록을 등록했으므로 다음 회차 재판정 대상",
+      "statement": "If 게이트를 평가하지 않고 전이가 일어나면, then 시스템은 그 게이트를 skipped 로 기록하고 통과 집계에서 제외해야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "ok"
+      ],
+      "evidenceRef": "art_env_h2",
+      "id": "ac_7",
+      "method": "UNIT",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "판정 시점의 두 봉투 파일이 sha256 동일(복제본)이었다. 판정 후 호출 기록을 남긴 헤드리스 재실행을 등록했으므로 다음 회차 재판정 대상",
+      "statement": "When claude -p 헤드리스로 bin 명령을 호출하면, 시스템은 대화형 세션과 동일한 JSON 봉투 필드(ok·tool·schemaVersion·data·warnings)를 반환해야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "nextActionFor"
+      ],
+      "evidenceRef": "art_gate_rec",
+      "id": "ac_8",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "blocking",
+      "reason": "판정 시점에 ac_8 귀속 아티팩트가 0건이었다. 판정 후 상태 파일 게이트 기록을 등록했으므로 다음 회차 재판정 대상",
+      "statement": "When sprint 를 draft 에서 report 까지 진행하면, 시스템은 G0~G7 각 게이트의 판정 결과를 상태 파일에 남겨야 한다",
+      "status": "pending",
+      "verdict": "insufficient"
+    },
+    {
+      "anchors": [
+        "judgeRead"
+      ],
+      "evidenceRef": "art_bench",
+      "id": "ac_9",
+      "method": "UNIT",
+      "pattern": "event",
+      "priority": "non-blocking",
+      "reason": "SessionStart 85ms · PostToolUse 104ms · UserPromptSubmit 68ms · 가드 36ms, 러너가 '모든 훅이 로직 예산 안에 있습니다' 로 마감. 독립 판정 없음(수집자 판정)",
+      "statement": "When 동기 훅을 벤치마크하면, 시스템은 각 훅의 로직 시간과 D05 가 정한 예산을 함께 보고해야 한다",
+      "status": "pending",
+      "verdict": "passed"
+    },
+    {
+      "anchors": [
+        "formatSummary"
+      ],
+      "evidenceRef": "art_ctx",
+      "id": "ac_10",
+      "method": "DATA",
+      "pattern": "event",
+      "priority": "non-blocking",
+      "reason": "tokens 69 / 예산 600, truncated false. 독립 판정 없음(수집자 판정)",
+      "statement": "When 세션이 시작되면, 시스템은 주입한 컨텍스트의 토큰 수를 D05 §3.3 예산(600 토큰)과 함께 보고해야 한다",
+      "status": "pending",
+      "verdict": "passed"
+    }
+  ],
+  "archivedAt": "2026-08-20T10:05:35Z",
+  "carryOver": [
+    {
+      "id": "F-7",
+      "raisedAt": "2026-08-20T10:03:08Z",
+      "reason": "판정과 수정을 한 sprint 에 섞지 않기로 PRD §3 에서 정했다. 수정은 다음 sprint 의 첫 항목",
+      "severity": "blocker",
+      "status": "open",
+      "title": "lastLoopResult·loopHistory·lastJudged·sprint.gaps 를 쓰는 코드가 없어 G5 가 구조적으로 통과 불가"
+    },
+    {
+      "id": "F-3",
+      "raisedAt": "2026-08-20T10:03:09Z",
+      "reason": "앵커 출처를 한 곳으로 모으는 것은 설계 변경이라 이번 범위 밖",
+      "severity": "blocker",
+      "status": "open",
+      "title": "tene-loop 는 앵커를 PRD 표에서, tene-gate G3 는 상태에서 읽어 출처가 다르다"
+    },
+    {
+      "id": "F-1",
+      "raisedAt": "2026-08-20T10:03:09Z",
+      "reason": "한 줄 수정이지만 판정 sprint 에서 코드를 고치지 않기로 했다",
+      "severity": "blocker",
+      "status": "open",
+      "title": "tene-scan 이 내보내는 business-logic 을 tene-doc validate 정규식이 하이픈 때문에 못 읽어 G3 차단"
+    },
+    {
+      "id": "F-2",
+      "raisedAt": "2026-08-20T10:03:09Z",
+      "reason": "ac_5 failed 의 직접 원인. 오류 코드 체계 정비와 함께 처리해야 한다",
+      "severity": "warning",
+      "status": "open",
+      "title": "tene-doc 이 --sprint 없이 호출되면 처리되지 않은 TypeError 로 exit 10"
+    },
+    {
+      "id": "D12-DRIFT",
+      "raisedAt": "2026-08-20T10:03:10Z",
+      "reason": "명세를 고칠지 구현을 고칠지 사용자 결정 필요",
+      "severity": "blocker",
+      "status": "open",
+      "title": "구현 오류 코드 31종 중 9종이 D12 §1.3 표(22종)에 없고 exit 10 은 §1.2 범위(0~8) 밖"
+    },
+    {
+      "id": "RTM-1.5",
+      "raisedAt": "2026-08-20T10:03:10Z",
+      "reason": "master-plan 기능 전체가 배선되지 않은 것이라 별도 sprint 가 필요하다",
+      "severity": "blocker",
+      "status": "open",
+      "title": "lib/plan/aggregate.js 가 프로덕션에서 import 되지 않아 멀티 sprint 집계·이월 승격에 실행 경로가 없다"
+    },
+    {
+      "id": "RTM-1.3",
+      "raisedAt": "2026-08-20T10:03:10Z",
+      "reason": "배선과 함께 D08 §8.1 의 4분면 표현(불리언 2개로는 3상태 불가)도 고쳐야 한다",
+      "severity": "blocker",
+      "status": "open",
+      "title": "crossJudgeDataFlow 가 bin/tene-qa 에 import 되지 않아 DATA 교차 판정이 파이프라인에 없다"
+    },
+    {
+      "id": "RTM-1.11",
+      "raisedAt": "2026-08-20T10:03:11Z",
+      "reason": "README 가 Q6 를 가장 중요한 질문으로 규정하므로 우선순위가 높으나 새 기능 구현이다",
+      "severity": "warning",
+      "status": "open",
+      "title": "Q6 의 부작용 탐지(detectMutations)가 구현되지 않아 반환 타입만 답한다"
+    },
+    {
+      "id": "RTM-4.2",
+      "raisedAt": "2026-08-20T10:03:11Z",
+      "reason": "spec-driven 강제의 핵심 지점 2개가 알림으로 강등된 것이라 설계 재확인이 필요하다",
+      "severity": "blocker",
+      "status": "open",
+      "title": "pre-edit 훅이 escalate 대신 additionalContext 만 내고 design phase 는 경고조차 없다. stop 훅은 exit 2 를 내지 않는다"
+    },
+    {
+      "id": "SECRETS-CLI",
+      "raisedAt": "2026-08-20T10:03:12Z",
+      "reason": "tene CLI v1.0.16 에서 unknown command 로 확인됨. 명령표 갱신 필요",
+      "severity": "warning",
+      "status": "open",
+      "title": "secrets 스킬이 존재하지 않는 tene status 명령을 사전 승인하고 지시한다"
+    },
+    {
+      "id": "F-9",
+      "raisedAt": "2026-08-20T10:03:12Z",
+      "reason": "감사자 격리의 실질적 구멍. 도구 수준 차단만으로 부족하다는 것이 관측됐다",
+      "severity": "warning",
+      "status": "open",
+      "title": "disallowedTools: Write 인 에이전트가 Bash heredoc 으로 파일을 쓸 수 있다"
+    },
+    {
+      "id": "AC-REJUDGE",
+      "raisedAt": "2026-08-20T10:03:12Z",
+      "reason": "판정 시점에 증거가 없어 insufficient 였다. 증거는 등록 완료했고 재실행만 남았다",
+      "severity": "info",
+      "status": "open",
+      "title": "ac_6·ac_7·ac_8 은 판정 후 증거를 갖췄으므로 재판정 대상"
+    }
+  ],
+  "counters": {
+    "loopChecks": 0,
+    "maxLoopChecks": 3,
+    "maxQaRetries": 3,
+    "qaRetries": 0,
+    "qaRuns": 0
+  },
+  "coverage": {
+    "transitions": null
+  },
+  "createdAt": "2026-08-20T09:30:41Z",
+  "docs": {
+    "design": "02-design/design.md",
+    "loopCheck": [
+      "03-analysis/loop-check-1.md"
+    ],
+    "plan": "01-plan/plan.md",
+    "prd": "00-prd/prd.md",
+    "qa": "03-analysis/qa.md",
+    "report": "04-report/report.md"
+  },
+  "docsRoot": "docs/sprints",
+  "gaps": [],
+  "gates": {
+    "G0": {
+      "at": "2026-08-20T09:33:43Z",
+      "detail": "G0: id·title 확인",
+      "result": "pass"
+    },
+    "G1": {
+      "at": "2026-08-20T09:33:44Z",
+      "detail": "G1: 10개 검사 전부 통과",
+      "result": "pass"
+    },
+    "G2": {
+      "at": "2026-08-20T09:35:23Z",
+      "detail": "G2: AC 10건 전부 커버",
+      "result": "pass"
+    },
+    "G3": {
+      "at": "2026-08-20T09:40:42Z",
+      "detail": "G3: 6개 검사 통과 (layers 표기 우회 — F-1)",
+      "result": "pass"
+    },
+    "G4": {
+      "at": "2026-08-20T09:46:05Z",
+      "detail": "G4: 9개 파일 변경",
+      "result": "pass"
+    },
+    "G5": {
+      "at": "2026-08-20T09:51:00Z",
+      "detail": "게이트를 평가하지 않고 건너뜀",
+      "forced": true,
+      "result": "skipped"
+    },
+    "G6": {
+      "at": "2026-08-20T10:02:36Z",
+      "detail": "게이트를 평가하지 않고 건너뜀",
+      "forced": true,
+      "result": "skipped"
+    },
+    "G7": {
+      "at": "2026-08-20T10:05:35Z",
+      "detail": "G7: R1~R6 전부 + 이월 사유 확인",
+      "result": "pass"
+    }
+  },
+  "id": "self-conformance",
+  "intents": [
+    {
+      "actors": [
+        "개발자"
+      ],
+      "id": "intent_1",
+      "rationale": "근거 없는 \"구현됨\"은 다음 사람이 재확인해야 하므로 검증이 아니다",
+      "source": "conversation",
+      "statement": "명세 항목마다 구현 근거를 파일:라인으로 제시한다"
+    },
+    {
+      "actors": [
+        "개발자"
+      ],
+      "id": "intent_2",
+      "rationale": "tene 의 존재 이유가 그것이며, 자기 검증에서 어기면 도구의 근거가 사라진다",
+      "source": "conversation",
+      "statement": "측정하지 못한 것을 통과로 세탁하지 않는다"
+    },
+    {
+      "actors": [
+        "사용자"
+      ],
+      "id": "intent_3",
+      "rationale": "사용자가 받는 것은 배포본이다. 로컬에서만 되는 것은 사용자에게 없는 기능이다",
+      "source": "conversation",
+      "statement": "로컬 작업 트리가 아니라 마켓플레이스 배포본을 검증한다"
+    },
+    {
+      "actors": [
+        "개발자"
+      ],
+      "id": "intent_4",
+      "rationale": "훅과 bin 은 세션 종류에 따라 다르게 동작할 수 있고, 그 차이는 대화형에서만 쓰면 드러나지 않는다",
+      "source": "conversation",
+      "statement": "대화형 세션과 헤드리스(claude -p) 양쪽에서 확인한다"
+    }
+  ],
+  "layers": {
+    "notApplicableReason": {},
+    "required": [],
+    "resolution": {}
+  },
+  "phase": "archived",
+  "profile": "strict",
+  "rev": 31,
+  "runs": [],
+  "schemaVersion": 1,
+  "slug": "spec-audit",
+  "sprintDir": "self-conformance-spec-audit",
+  "startCommit": null,
+  "status": "archived",
+  "title": "tene 자체 명세 적합성 검증",
+  "updatedAt": "2026-08-20T10:05:35Z",
+  "updatedBy": {
+    "kind": "claude",
+    "sessionId": "1ae7078d"
+  },
+  "waivers": []
+}

@@ -1,0 +1,138 @@
+{
+  "source": "/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/docs/sprints/wiring-conformance-reachability-audit/03-analysis/evidence/ac1-verify-L3-run1.json",
+  "root": "/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0",
+  "entrypointCount": 12,
+  "totals": {
+    "libFiles": 67,
+    "exports": 408,
+    "reachable": 211,
+    "dynamic": 12,
+    "test-only": 61,
+    "unreachable": 124
+  },
+  "bucketSum": 408,
+  "totalsExportsMatchesSum": true,
+  "classifiedIdCount": 408,
+  "expectedIdCount": 408,
+  "everyExportClassifiedExactlyOnce": true,
+  "duplicatesAcrossBuckets": [],
+  "duplicatesWithinBucket": [],
+  "missingFromClassification": [],
+  "extraNotInByFile": [],
+  "unknownBucketKeys": [],
+  "pathRecording": {
+    "overall": {
+      "withModulePath": 408,
+      "withSymbolUsers": 284,
+      "noPathAtAll": 0
+    },
+    "byBucket": {
+      "reachable": {
+        "total": 211,
+        "hasModulePath": 211,
+        "hasSymbolUsers": 211,
+        "neither": 0
+      },
+      "dynamic": {
+        "total": 12,
+        "hasModulePath": 12,
+        "hasSymbolUsers": 12,
+        "neither": 0
+      },
+      "test-only": {
+        "total": 61,
+        "hasModulePath": 61,
+        "hasSymbolUsers": 61,
+        "neither": 0
+      },
+      "unreachable": {
+        "total": 124,
+        "hasModulePath": 124,
+        "hasSymbolUsers": 0,
+        "neither": 0
+      }
+    },
+    "noPathExamples": {
+      "reachable": [],
+      "dynamic": [],
+      "test-only": []
+    }
+  },
+  "selfCheck": {
+    "known": [
+      {
+        "file": "lib/plan/aggregate.js",
+        "want": "test-only",
+        "got": "test-only",
+        "ok": true
+      },
+      {
+        "file": "lib/hooks/session-start.js",
+        "want": "dynamic",
+        "got": "dynamic",
+        "ok": true
+      },
+      {
+        "file": "lib/state/store.js",
+        "want": "reachable",
+        "got": "reachable",
+        "ok": true
+      }
+    ],
+    "synthetic": [
+      {
+        "file": "lib/wired.js",
+        "want": "reachable",
+        "got": "reachable"
+      },
+      {
+        "file": "lib/orphan.js",
+        "want": "unreachable",
+        "got": "unreachable"
+      },
+      {
+        "file": "lib/testonly.js",
+        "want": "test-only",
+        "got": "test-only"
+      },
+      {
+        "file": "lib/dyn.js",
+        "want": "dynamic",
+        "got": "dynamic"
+      }
+    ],
+    "symbol": [
+      {
+        "id": "lib/state/store.js#advance",
+        "want": "reachable",
+        "got": "reachable",
+        "ok": true
+      },
+      {
+        "id": "lib/plan/aggregate.js#promote",
+        "want": "test-only",
+        "got": "test-only",
+        "ok": true
+      },
+      {
+        "id": "lib/hooks/session-start.js#run",
+        "want": "dynamic",
+        "got": "dynamic",
+        "ok": true
+      },
+      {
+        "id": "lib/doc/sections.js#isAutoBlock",
+        "want": "unreachable",
+        "got": "unreachable",
+        "ok": true
+      },
+      {
+        "id": "lib/doc/sections.js#DOC_PATH",
+        "want": "reachable",
+        "got": "reachable",
+        "ok": true
+      }
+    ],
+    "trustworthyFlag": true
+  }
+}

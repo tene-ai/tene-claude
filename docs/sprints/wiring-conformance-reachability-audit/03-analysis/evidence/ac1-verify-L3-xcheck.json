@@ -1,0 +1,167 @@
+{
+  "procedure": "버킷별 id 사전순 첫/마지막 2건. 표본 선정은 결과를 보기 전에 고정된 규칙이다.",
+  "root": "/Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0",
+  "sampleCount": 8,
+  "rows": [
+    {
+      "id": "lib/doc/extract.js#EXTRACT_TARGETS",
+      "bucket": "reachable",
+      "pick": "first",
+      "instrument": {
+        "modulePathLen": 2,
+        "symbolUsers": [
+          "bin/tene-doc"
+        ]
+      },
+      "grep": {
+        "prodNamedImporters": [
+          "bin/tene-doc"
+        ],
+        "testNamedImporters": [],
+        "prodMemberOnly": [],
+        "testMemberOnly": []
+      }
+    },
+    {
+      "id": "lib/util/time.js#todayIso",
+      "bucket": "reachable",
+      "pick": "last",
+      "instrument": {
+        "modulePathLen": 3,
+        "symbolUsers": [
+          "lib/doc/template.js"
+        ]
+      },
+      "grep": {
+        "prodNamedImporters": [
+          "lib/doc/template.js"
+        ],
+        "testNamedImporters": [],
+        "prodMemberOnly": [],
+        "testMemberOnly": []
+      }
+    },
+    {
+      "id": "lib/hooks/compact.js#run",
+      "bucket": "dynamic",
+      "pick": "first",
+      "instrument": {
+        "modulePathLen": 2,
+        "symbolUsers": [
+          "bin/tene-hook"
+        ]
+      },
+      "grep": {
+        "prodNamedImporters": [
+          "bin/tene-doc",
+          "bin/tene-gate",
+          "bin/tene-loop",
+          "bin/tene-qa",
+          "bin/tene-report",
+          "bin/tene-scan",
+          "bin/tene-state"
+        ],
+        "testNamedImporters": [],
+        "prodMemberOnly": [
+          "bin/tene-hook"
+        ],
+        "testMemberOnly": []
+      }
+    },
+    {
+      "id": "lib/router/match.js#route",
+      "bucket": "dynamic",
+      "pick": "last",
+      "instrument": {
+        "modulePathLen": 3,
+        "symbolUsers": [
+          "lib/hooks/user-prompt.js",
+          "test/unit/router-report.test.js"
+        ]
+      },
+      "grep": {
+        "prodNamedImporters": [
+          "lib/hooks/user-prompt.js"
+        ],
+        "testNamedImporters": [
+          "test/unit/router-report.test.js"
+        ],
+        "prodMemberOnly": [],
+        "testMemberOnly": []
+      }
+    },
+    {
+      "id": "lib/doc/extract.js#earsPattern",
+      "bucket": "test-only",
+      "pick": "first",
+      "instrument": {
+        "modulePathLen": 2,
+        "symbolUsers": [
+          "test/unit/doc-extract.test.js"
+        ]
+      },
+      "grep": {
+        "prodNamedImporters": [],
+        "testNamedImporters": [
+          "test/unit/doc-extract.test.js"
+        ],
+        "prodMemberOnly": [],
+        "testMemberOnly": []
+      }
+    },
+    {
+      "id": "lib/util/paths.js#isStatePath",
+      "bucket": "test-only",
+      "pick": "last",
+      "instrument": {
+        "modulePathLen": 2,
+        "symbolUsers": [
+          "test/unit/util-paths.test.js"
+        ]
+      },
+      "grep": {
+        "prodNamedImporters": [],
+        "testNamedImporters": [
+          "test/unit/util-paths.test.js"
+        ],
+        "prodMemberOnly": [],
+        "testMemberOnly": []
+      }
+    },
+    {
+      "id": "lib/doc/extract.js#extractRequirements",
+      "bucket": "unreachable",
+      "pick": "first",
+      "instrument": {
+        "modulePathLen": 2,
+        "symbolUsers": []
+      },
+      "grep": {
+        "prodNamedImporters": [
+          "bin/tene-loop",
+          "lib/loop/run.js"
+        ],
+        "testNamedImporters": [
+          "test/unit/loop.test.js"
+        ],
+        "prodMemberOnly": [],
+        "testMemberOnly": []
+      }
+    },
+    {
+      "id": "lib/util/time.js#yearMonth",
+      "bucket": "unreachable",
+      "pick": "last",
+      "instrument": {
+        "modulePathLen": 3,
+        "symbolUsers": []
+      },
+      "grep": {
+        "prodNamedImporters": [],
+        "testNamedImporters": [],
+        "prodMemberOnly": [],
+        "testMemberOnly": []
+      }
+    }
+  ]
+}

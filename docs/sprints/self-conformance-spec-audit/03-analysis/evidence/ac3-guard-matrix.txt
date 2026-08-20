@@ -1,0 +1,13 @@
+✔ positive: 전 모드에서 위반을 막는다 (false-negative 0) (36.708785ms)
+✔ negative: 정상 명령을 막지 않는다 (false-positive 0) (9.583742ms)
+✔ Read: 볼트만 막고 나머지는 통과 (1.560356ms)
+✔ SR1~SR3 의 deny 는 bypass 모드에서도 유지된다 (2.495811ms)
+✔ 매트릭스 자체가 비어 있지 않다 (0.801909ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 843.336241

@@ -1,0 +1,20 @@
+== node -v ==
+v26.0.0
+
+== node --check evals/reachability.mjs ==
+exit=0 (no syntax diagnostics)
+
+== node --check over plugins/tene bin+lib (76 files, xargs -P8) ==
+checked=76 ; lines above are diagnostics (none printed = none reported)
+
+== linter/typechecker presence ==
+no root node_modules
+(eval):4: no matches found: .eslintrc*
+no eslint/tsconfig at repo root
+(eval):5: no matches found: plugins/tene/.eslintrc*
+no eslint/tsconfig in plugins/tene
+eslint/tsc not on PATH
+
+== node scripts/assert-no-deps.js ==
+✔ 외부 의존 0 확인
+exit=0

@@ -1,0 +1,17 @@
+### 저장소 사본 vs 마켓플레이스 캐시 배포본 비교
+2026-08-20T11:51:01Z
+cache: /Users/kaykim/.claude/plugins/cache/tene-ai/tene/0.1.0
+IDENTICAL  lib
+IDENTICAL  bin
+DIFF       test
+    Only in plugins/tene/test/fixtures: code
+    Only in plugins/tene/test/fixtures: docs
+    Only in plugins/tene/test/fixtures: state
+IDENTICAL  hooks
+IDENTICAL  skills
+IDENTICAL  workflows
+IDENTICAL  agents
+IDENTICAL  templates
+
+package.json diff:
+    (동일)

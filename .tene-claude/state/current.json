@@ -1,0 +1,22 @@
+{
+  "activeSprint": null,
+  "autoUntil": "design",
+  "docsRoot": "docs/sprints",
+  "nextAction": {
+    "alternatives": [],
+    "reason": "다음 sprint 를 확인하세요",
+    "skill": "master-plan"
+  },
+  "phase": null,
+  "profile": "strict",
+  "rev": 24,
+  "schemaVersion": 1,
+  "sprintDir": "wiring-conformance-reachability-audit",
+  "status": "active",
+  "summary": null,
+  "updatedAt": "2026-08-20T12:38:51Z",
+  "updatedBy": {
+    "kind": "claude",
+    "sessionId": "1ae7078d"
+  }
+}

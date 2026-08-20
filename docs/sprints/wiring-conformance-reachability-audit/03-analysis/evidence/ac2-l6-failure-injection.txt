@@ -1,0 +1,81 @@
+== (1) 존재하지 않는 루트 ==
+진입점 0개 · lib 파일 0개 · export 0개
+
+  reachable    0
+  dynamic      0
+  test-only    0   ← 배선 누락
+  unreachable  0
+
+  test-only (테스트만 부름):
+
+  unreachable 후보 (아무도 named import 하지 않음):
+
+자체 검사 — 알려진 정답:
+  XX  lib/plan/aggregate.js  기대=test-only 실제=not-found
+  XX  lib/hooks/session-start.js  기대=dynamic 실제=not-found
+  XX  lib/state/store.js  기대=reachable 실제=not-found
+자체 검사 — 합성 4분기:
+  OK  lib/wired.js  기대=reachable 실제=reachable
+  OK  lib/orphan.js  기대=unreachable 실제=unreachable
+  OK  lib/testonly.js  기대=test-only 실제=test-only
+  OK  lib/dyn.js  기대=dynamic 실제=dynamic
+exit=
+
+== (2) 빈 디렉토리 루트 ==
+root=/private/tmp/claude-501/-Users-kaykim-Documents-GitHub-agent-kay-it-tene-claude/1ae7078d-07f7-4ff8-9958-0bf56ab81418/scratchpad/empty-QgXN3c
+진입점 0개 · lib 파일 0개 · export 0개
+
+  reachable    0
+  dynamic      0
+  test-only    0   ← 배선 누락
+  unreachable  0
+
+  test-only (테스트만 부름):
+
+  unreachable 후보 (아무도 named import 하지 않음):
+
+자체 검사 — 알려진 정답:
+  XX  lib/plan/aggregate.js  기대=test-only 실제=not-found
+  XX  lib/hooks/session-start.js  기대=dynamic 실제=not-found
+  XX  lib/state/store.js  기대=reachable 실제=not-found
+자체 검사 — 합성 4분기:
+  OK  lib/wired.js  기대=reachable 실제=reachable
+  OK  lib/orphan.js  기대=unreachable 실제=unreachable
+  OK  lib/testonly.js  기대=test-only 실제=test-only
+  OK  lib/dyn.js  기대=dynamic 실제=dynamic
+exit=0
+
+== (3) 읽기 권한 없는 lib 파일 (chmod 000) ==
+root=/private/tmp/claude-501/-Users-kaykim-Documents-GitHub-agent-kay-it-tene-claude/1ae7078d-07f7-4ff8-9958-0bf56ab81418/scratchpad/perm-j1YhBO ; secret.js perms=----------
+exit=0
+{
+  "totals": {
+    "libFiles": 2,
+    "exports": 2,
+    "reachable": 2,
+    "dynamic": 0,
+    "test-only": 0,
+    "unreachable": 0
+  },
+  "classified": {
+    "reachable": [
+      "lib/ok.js#ok",
+      "lib/secret.js#(no named export)"
+    ],
+    "dynamic": [],
+    "test-only": [],
+    "unreachable": []
+  },
+  "byFile": {
+    "lib/ok.js": {
+      "cls": "reachable",
+      "exports": [
+        "ok"
+      ]
+    },
+    "lib/secret.js": {
+      "cls": "reachable",
+      "exports": []
+    }
+  }
+}
