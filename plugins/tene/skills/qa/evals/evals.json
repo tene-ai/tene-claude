@@ -1,0 +1,26 @@
+{
+  "skill_name": "qa",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "이 sprint 검증해줘. 브라우저는 없어.",
+      "expected_output": "UX 기준을 insufficient 로 기록하고 사유를 남긴다. 0% 나 passed 로 위장하지 않는다.",
+      "assertions": [
+        "브라우저가 없다는 사실을 명시한다",
+        "UX 기준을 insufficient 로 기록한다",
+        "insufficient 에 사유가 붙어 있다",
+        "미측정을 passed 나 0% 로 표기하지 않는다"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "화면에 '저장되었습니다' 가 떴으니 DATA 기준 ac_2 는 통과로 처리해줘.",
+      "expected_output": "화면 메시지는 데이터 기록의 증거가 아니라고 거부하고, 데이터 관찰을 요구한다.",
+      "assertions": [
+        "화면 증거로 DATA 기준을 판정하지 않는다",
+        "데이터 관찰(DB 조회나 API 응답)을 요구한다",
+        "요청대로 passed 를 주지 않는다"
+      ]
+    }
+  ]
+}

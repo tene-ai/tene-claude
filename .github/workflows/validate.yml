@@ -1,0 +1,82 @@
+name: validate
+on: [push, pull_request]
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Claude Code 설치
+        run: npm i -g @anthropic-ai/claude-code
+
+      - name: 플러그인 매니페스트 검증
+        run: claude plugin validate ./plugins/tene --strict
+
+      - name: 마켓플레이스 매니페스트 검증
+        run: claude plugin validate . --strict
+
+      - name: 외부 의존 0 확인
+        run: node scripts/assert-no-deps.js
+
+      - name: 버전 동기화 확인
+        run: node scripts/sync-version.js --check
+
+      - name: bin 실행 권한·shebang 확인
+        run: |
+          for f in plugins/tene/bin/*; do
+            [ -x "$f" ] || { echo "not executable: $f"; exit 1; }
+            head -1 "$f" | grep -q '^#!/usr/bin/env node' || { echo "no shebang: $f"; exit 1; }
+          done
+          echo "✔ bin/ 실행 권한·shebang 확인"
+
+      - name: 단위 테스트
+        run: node --test plugins/tene/test/unit/*.test.js
+
+      - name: 가드 매트릭스 (false-negative 0, false-positive 0)
+        run: node --test plugins/tene/test/guard-matrix.test.js
+
+      - name: 통합 테스트 (사이클 전 구간)
+        run: |
+          git config --global user.email "ci@example.com"
+          git config --global user.name "ci"
+          node --test plugins/tene/test/integration/*.test.js
+
+      - name: 플러그인 레이아웃 계약
+        run: node --test plugins/tene/test/plugin-layout.test.js
+
+      - name: frontmatter 계약 (공식 스펙 대조)
+        run: node --test plugins/tene/test/frontmatter.test.js
+
+      - name: 에이전트 프롬프트 계약
+        run: node --test plugins/tene/test/agent-contract.test.js
+
+      - name: 정직성 Eval (실패 시 릴리스 중단)
+        run: node --test plugins/tene/test/eval-honesty.test.js
+
+      - name: 훅 로직 예산
+        run: node plugins/tene/test/bench.js
+
+      - name: 문서 정합성 검사
+        run: node scripts/check-docs-consistency.js
+
+  # 지원 하한(20)과 최신에서 모두 도는지 본다.
+  # Node 26 에서 `node --test <dir>` 이 깨지는 등 버전별 차이가 실제로 있었다.
+  matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '${{ matrix.node }}' }
+      - name: 단위 테스트
+        run: node --test plugins/tene/test/unit/*.test.js
+      - name: 가드 매트릭스
+        run: node --test plugins/tene/test/guard-matrix.test.js
+      - name: 에이전트 계약 · 정직성 Eval
+        run: node --test plugins/tene/test/agent-contract.test.js plugins/tene/test/eval-honesty.test.js

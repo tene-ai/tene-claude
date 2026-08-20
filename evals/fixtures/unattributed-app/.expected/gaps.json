@@ -1,0 +1,6 @@
+{
+  "note": "ac_1 은 processPayment 에 앵커된다. utils/extra.ts 는 어떤 AC 에도 걸리지 않는다.",
+  "anchoredAc": [{ "id": "ac_1", "anchors": ["processPayment"] }],
+  "mustBeUnattributed": ["src/utils/extra.ts"],
+  "mustNotBeUnattributed": ["src/payments/process.ts"]
+}

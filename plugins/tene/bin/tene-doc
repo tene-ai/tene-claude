@@ -1,0 +1,174 @@
+#!/usr/bin/env node
+/** tene-doc — 문서 생성·검증·patch·extract 진입점 (D04, D08 §3) */
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { join } from 'node:path'
+import { parseArgs } from 'node:util'
+import { run } from '../lib/util/envelope.js'
+import { TeneError } from '../lib/util/errors.js'
+import { writeAtomic } from '../lib/util/atomic.js'
+import { findProjectRoot, DEFAULT_DOCS_ROOT, toProjectRelative } from '../lib/util/paths.js'
+import { readSprint } from '../lib/state/store.js'
+import { parseDoc } from '../lib/doc/parser.js'
+import { validateDoc } from '../lib/doc/validate.js'
+import { patchBlock, touchModified } from '../lib/doc/patch.js'
+import { extract, extractAc, EXTRACT_TARGETS } from '../lib/doc/extract.js'
+import { isUntouched, mergeMissingSections, scaffold } from '../lib/doc/template.js'
+import { DOC_PATH, DOC_TYPES, requiredSections } from '../lib/doc/sections.js'
+
+const COMMANDS = ['scaffold', 'validate', 'patch', 'extract', 'path']
+
+const { values, positionals } = parseArgs({
+  allowPositionals: true,
+  strict: false,
+  options: {
+    project: { type: 'string' },
+    'docs-root': { type: 'string' },
+    sprint: { type: 'string' },
+    doc: { type: 'string' },
+    what: { type: 'string' },
+    block: { type: 'string' },
+    'content-file': { type: 'string' },
+    'section-id': { type: 'string' },
+    meta: { type: 'string' },
+    title: { type: 'string' },
+    profile: { type: 'string', default: 'standard' },
+    lang: { type: 'string', default: 'ko' },
+    round: { type: 'string' },
+    merge: { type: 'boolean', default: false },
+    force: { type: 'boolean', default: false },
+    strict: { type: 'boolean', default: false },
+    json: { type: 'boolean', default: true },
+  },
+})
+
+const sub = positionals[0]
+
+/**
+ * sprint 디렉토리를 정한다.
+ *
+ * **상태의 `sprintDir` 이 정본이다.** 디렉토리 탐색을 먼저 하면
+ * tene-state 는 `<id>-<slug>` 에, tene-doc 은 `<id>` 에 쓰게 되어
+ * 문서가 두 곳에 생긴다 — 실제로 그렇게 만들었다가 잡았다.
+ *
+ * 순서: 상태 → 디렉토리 탐색(<id>-*) → <id>
+ */
+function findSprintDir(root, docsRoot, sprintId) {
+  try {
+    const sprint = readSprint(root, sprintId)
+    if (sprint?.sprintDir) return join(root, sprint.docsRoot ?? docsRoot, sprint.sprintDir)
+  } catch {
+    // 상태가 없거나 손상됨 — 탐색으로 넘어간다
+  }
+  const base = join(root, docsRoot)
+  if (!existsSync(base)) return null
+  const hit = readdirSync(base).find((d) => d === sprintId || d.startsWith(`${sprintId}-`))
+  return hit ? join(base, hit) : null
+}
+
+function docPathFor(root, docsRoot, sprintId, docType, round) {
+  if (docType === 'master-plan') return join(root, docsRoot, 'master-plan.md')
+  const dir = findSprintDir(root, docsRoot, sprintId) ?? join(root, docsRoot, sprintId)
+  const rel = DOC_PATH[docType].replace('{n}', String(round ?? 1))
+  return join(dir, rel)
+}
+
+function loadDoc(path) {
+  if (!existsSync(path)) return null
+  return parseDoc(readFileSync(path, 'utf8'))
+}
+
+run('tene-doc', async () => {
+  const root = findProjectRoot(values.project)
+  const docsRoot = values['docs-root'] ?? DEFAULT_DOCS_ROOT
+  const docType = values.doc
+  const sprintId = values.sprint
+  const round = values.round ? Number(values.round) : 1
+
+  if (sub !== 'extract' && docType && !DOC_TYPES.includes(docType)) {
+    throw new TeneError('UNKNOWN_COMMAND', { command: docType, available: DOC_TYPES })
+  }
+
+  switch (sub) {
+    case 'path': {
+      const p = docPathFor(root, docsRoot, sprintId, docType, round)
+      return { path: toProjectRelative(p, root), exists: existsSync(p) }
+    }
+
+    case 'scaffold': {
+      const path = docPathFor(root, docsRoot, sprintId, docType, round)
+      const required = requiredSections(docType, values.profile)
+      const ctx = { sprintId, title: values.title, profile: values.profile, lang: values.lang, round }
+
+      if (existsSync(path)) {
+        const existing = readFileSync(path, 'utf8')
+        if (values.merge) {
+          const { text, added } = mergeMissingSections(existing, docType, ctx, required)
+          if (added.length) writeAtomic(path, text, { root })
+          return { path: toProjectRelative(path, root), action: 'merged', added }
+        }
+        if (!values.force && !isUntouched(existing, docType)) {
+          throw new TeneError('DOC_INVALID', { path: toProjectRelative(path, root), failed: ['already_written'] },
+            '이미 작성된 문서가 있습니다. 누락 섹션만 추가하려면 --merge 를 쓰세요')
+        }
+      }
+      const text = scaffold(docType, ctx)
+      writeAtomic(path, text, { root })
+      return { path: toProjectRelative(path, root), action: 'created', sections: required.length }
+    }
+
+    case 'validate': {
+      const path = docPathFor(root, docsRoot, sprintId, docType, round)
+      const doc = loadDoc(path)
+      if (!doc) throw new TeneError('DOC_MISSING', { doc: docType, path: toProjectRelative(path, root) })
+
+      // AC 문맥은 PRD 에서 가져온다 (design/qa 검증에 필요)
+      const prdPath = docPathFor(root, docsRoot, sprintId, 'prd')
+      const prd = docType === 'prd' ? doc : loadDoc(prdPath)
+      const acs = prd ? extractAc(prd) : []
+
+      const result = validateDoc(doc, {
+        docType,
+        profile: values.profile,
+        acIds: acs.map((a) => a.id),
+        hasUxAc: acs.some((a) => a.method === 'UX'),
+      })
+      const warnings = values.strict ? [] : result.checks.filter((c) => !c.pass && c.severity === 'warning')
+      return { doc: toProjectRelative(path, root), type: docType, lang: doc.tene.lang ?? null, ...result, warnings }
+    }
+
+    case 'patch': {
+      const path = docPathFor(root, docsRoot, sprintId, docType, round)
+      if (!existsSync(path)) throw new TeneError('DOC_MISSING', { doc: docType, path: toProjectRelative(path, root) })
+      if (!values.block) throw new TeneError('UNKNOWN_COMMAND', { command: '--block (필수)', available: ['--block <name>'] })
+
+      const content = values['content-file']
+        ? readFileSync(values['content-file'], 'utf8')
+        : readFileSync(0, 'utf8')
+      const meta = values.meta ? JSON.parse(values.meta) : {}
+
+      let text = readFileSync(path, 'utf8')
+      text = patchBlock(text, values.block, content, { meta, sectionId: values['section-id'] ?? values.block })
+      text = touchModified(text)
+      writeAtomic(path, text, { root })
+      return { path: toProjectRelative(path, root), block: values.block, bytes: text.length }
+    }
+
+    case 'extract': {
+      const what = values.what
+      if (!EXTRACT_TARGETS.includes(what)) {
+        throw new TeneError('UNKNOWN_COMMAND', { command: what ?? '(none)', available: EXTRACT_TARGETS })
+      }
+      const docs = {}
+      for (const t of ['prd', 'plan', 'design', 'qa', 'report']) {
+        docs[t] = loadDoc(docPathFor(root, docsRoot, sprintId, t))
+      }
+      docs['master-plan'] = loadDoc(join(root, docsRoot, 'master-plan.md'))
+      const data = extract(what, docs)
+      if (!data) throw new TeneError('UNKNOWN_COMMAND', { command: what, available: EXTRACT_TARGETS })
+      return data
+    }
+
+    default:
+      throw new TeneError('UNKNOWN_COMMAND', { command: sub ?? '(none)', available: COMMANDS })
+  }
+})

@@ -1,0 +1,82 @@
+# tene 자신의 계층 규칙
+#
+# `/tene:layers scan` 이 제안한 패턴을 사람이 확인해 확정한 것이다.
+# 기본 프리셋은 웹앱(src/services, src/db)을 가정하므로 이 저장소에는 맞지 않았다 —
+# 92/112 파일이 미분류로 나왔고, 그것이 규칙을 다듬을 지점이었다.
+
+version: 1
+
+layers:
+  # 진입점 — 밖에서 tene 로 들어오는 자리
+  #
+  # lib/hooks/** 가 여기 있는 이유: 훅은 Claude Code 가 호출하는 진입점이다.
+  # 처음에 infrastructure 로 뒀더니 계층 위반 15건이 나왔는데,
+  # 전부 훅에서 나왔다 — 코드가 아니라 규칙이 틀린 것이었다.
+  # (도구가 자기 자신을 검사해서 찾았다)
+  interface:
+    paths:
+      - "plugins/tene/bin/**"
+      - "plugins/tene/lib/hooks/**"
+      - "plugins/tene/skills/**"
+      - "plugins/tene/agents/**"
+      - "plugins/tene/workflows/**"
+    imports: []
+
+  # 처리 규칙 — tene 가 무엇을 하는지가 담긴 곳
+  business-logic:
+    paths:
+      - "plugins/tene/lib/doc/**"
+      - "plugins/tene/lib/scan/**"
+      - "plugins/tene/lib/loop/**"
+      - "plugins/tene/lib/qa/**"
+      - "plugins/tene/lib/gate/**"
+      - "plugins/tene/lib/guard/**"
+      - "plugins/tene/lib/report/**"
+      - "plugins/tene/lib/plan/**"
+      - "plugins/tene/lib/router/**"
+      - "plugins/tene/lib/recover/**"   # 문서 ↔ 상태 조합
+      - "plugins/tene/lib/doctor.js"
+    imports: []
+
+  # 데이터 — 상태가 사는 곳
+  persistence:
+    paths:
+      - "plugins/tene/lib/state/**"
+      - "plugins/tene/templates/**"
+    imports: []
+
+  # 런타임 — tene 가 돌아가기 위한 조건
+  #
+  # lib/util/** 은 여기 없다. errors·time·json 같은 공통 유틸은
+  # "런타임 조건" 이 아니라 모든 계층이 쓰는 횡단 관심사다.
+  # infrastructure 로 두었더니 business-logic → util 참조가 전부
+  # infra-leak 으로 잡혔다 (29건). 4계층 모델에 공통 자리가 없는 것이 원인이고,
+  # 규칙으로 우회하기보다 계층 판정에서 빼는 편이 정직하다.
+  infrastructure:
+    paths:
+      - "plugins/tene/hooks/**"
+      - "scripts/**"
+      - ".github/**"
+    imports: []
+
+precedence:
+  - interface
+  - persistence
+  - infrastructure
+  - business-logic
+
+unmatched: unclassified
+
+# 테스트 픽스처는 구현이 아니다. 계층 통계에 넣으면 왜곡된다.
+exclude:
+  - "**/node_modules/**"
+  - "**/dist/**"
+  - "evals/fixtures/**"
+  - "plugins/tene/test/fixtures/**"
+  - "**/*.min.js"
+  # 공통 유틸 — 계층이 아니라 모든 계층의 기반이다 (위 infrastructure 주석 참조)
+  - "plugins/tene/lib/util/**"
+
+test_paths:
+  - "plugins/tene/test/**"
+  - "**/*.test.js"

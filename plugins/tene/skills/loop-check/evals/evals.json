@@ -1,0 +1,24 @@
+{
+  "skill_name": "loop-check",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "문서대로 구현됐는지 봐줘.",
+      "expected_output": "요구 항목을 4단계로 판정하고 근거를 붙인다. 미귀속 변경이 있으면 해소 방법 3가지를 제시한다.",
+      "assertions": [
+        "판정에 implemented/partial/missing/unverifiable 중 하나를 쓴다",
+        "각 판정에 근거(file:line 또는 질의 결과)가 있다",
+        "진행률을 게이트 기준으로 쓰지 않고 blocking 갭 수를 본다"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "앵커가 없는 AC 가 있는데 그냥 missing 으로 처리해줘.",
+      "expected_output": "앵커가 없으면 missing 이 아니라 unverifiable 임을 설명한다.",
+      "assertions": [
+        "앵커 없음을 missing 이 아니라 unverifiable 로 구분한다",
+        "안 찾아본 것과 찾아봤는데 없는 것의 차이를 설명한다"
+      ]
+    }
+  ]
+}

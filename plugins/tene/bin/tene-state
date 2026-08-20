@@ -1,0 +1,254 @@
+#!/usr/bin/env node
+/**
+ * tene-state — 상태 CRUD 진입점 (D03, D08 §2)
+ * 인자 파싱 + lib 호출만. 로직은 lib/state, lib/doctor 에 있다.
+ */
+import { parseArgs } from 'node:util'
+import { run } from '../lib/util/envelope.js'
+import { TeneError } from '../lib/util/errors.js'
+import { findProjectRoot, DEFAULT_DOCS_ROOT } from '../lib/util/paths.js'
+import { diagnose } from '../lib/doctor.js'
+import * as store from '../lib/state/store.js'
+import { appendEvent, readEvents } from '../lib/state/events.js'
+import { buildSessionContext } from '../lib/state/summary.js'
+import { checkSize, clean, markNeedsCleanup } from '../lib/state/retention.js'
+import { formatResyncReport, resync } from '../lib/recover/resync.js'
+
+const COMMANDS = [
+  'read', 'init', 'advance', 'gate', 'ac', 'intents', 'docs', 'carry',
+  'pause', 'resume', 'waiver',
+  'event', 'events', 'summary', 'size', 'mark-cleanup', 'clean', 'resync', 'list', 'doctor',
+]
+
+const { values, positionals } = parseArgs({
+  allowPositionals: true,
+  strict: false,
+  options: {
+    project: { type: 'string' },
+    'docs-root': { type: 'string' },
+    capability: { type: 'string' },
+    json: { type: 'boolean', default: true },
+    // init
+    id: { type: 'string' },
+    slug: { type: 'string' },
+    title: { type: 'string' },
+    profile: { type: 'string' },
+    'auto-until': { type: 'string' },
+    'max-loop-checks': { type: 'string' },
+    'start-commit': { type: 'string' },
+    // advance / gate
+    to: { type: 'string' },
+    force: { type: 'boolean', default: false },
+    'expected-rev': { type: 'string' },
+    result: { type: 'string' },
+    detail: { type: 'string' },
+    // 일반
+    data: { type: 'string' },   // JSON 문자열 — ac/intents/docs/carry/event 페이로드
+    type: { type: 'string' },
+    limit: { type: 'string' },
+    'dry-run': { type: 'boolean', default: false },
+    apply: { type: 'boolean', default: false },
+    history: { type: 'boolean', default: false },
+    archived: { type: 'boolean', default: false },
+    quarantine: { type: 'boolean', default: false },
+    budget: { type: 'string' },
+    reason: { type: 'string' },
+    ac: { type: 'string' },
+  },
+})
+
+const sub = positionals[0]
+
+/** --data 가 없으면 stdin 을 쓰지 않는다. 훅이 아니라 스킬이 부르는 경로다. */
+function payload() {
+  if (!values.data) throw new TeneError('BAD_ARGS', { need: '--data' }, '--data 에 JSON 을 넘기세요')
+  try {
+    return JSON.parse(values.data)
+  } catch (err) {
+    throw new TeneError('BAD_ARGS', { need: '--data', cause: err.message }, '--data 가 올바른 JSON 이 아닙니다')
+  }
+}
+
+function requireId() {
+  const id = values.id ?? positionals[1]
+  if (!id) throw new TeneError('BAD_ARGS', { need: 'id' }, 'sprint id 를 지정하세요')
+  return id
+}
+
+function num(v) {
+  return v === undefined ? undefined : Number(v)
+}
+
+run('tene-state', async () => {
+  const root = findProjectRoot(values.project)
+  const docsRoot = values['docs-root'] ?? process.env.CLAUDE_PLUGIN_OPTION_DOCS_ROOT ?? DEFAULT_DOCS_ROOT
+
+  switch (sub) {
+    case 'read': {
+      const current = store.readCurrent(root)
+      const id = values.id ?? positionals[1] ?? current?.activeSprint
+      const sprint = id ? store.readSprint(root, id) : null
+      return { current, sprint, masterPlan: store.readMasterPlan(root) }
+    }
+
+    case 'list':
+      return { sprints: store.listSprintIds(root), active: store.readCurrent(root)?.activeSprint ?? null }
+
+    case 'summary': {
+      // SessionStart 훅과 같은 결과를 내야 한다 — 같은 함수를 부른다.
+      const ctx = buildSessionContext({
+        current: store.readCurrent(root),
+        plan: store.readMasterPlan(root),
+        budget: num(values.budget),
+      })
+      return ctx
+    }
+
+    case 'init': {
+      const id = requireId()
+      const sprint = await store.initSprint(root, {
+        id,
+        slug: values.slug ?? id,
+        title: values.title ?? id,
+        profile: values.profile,
+        docsRoot,
+        sprintDir: values.slug ? `${id}-${values.slug}` : id,
+        startCommit: values['start-commit'] ?? null,
+        autoUntil: values['auto-until'],
+        maxLoopChecks: num(values['max-loop-checks']),
+      })
+      appendEvent(root, {
+        type: 'SprintCreated',
+        sprint: id,
+        payload: { title: sprint.title, profile: sprint.profile },
+      })
+      return { sprint }
+    }
+
+    case 'advance': {
+      const id = requireId()
+      const to = values.to ?? positionals[2]
+      if (!to) throw new TeneError('BAD_ARGS', { need: '--to' }, '전이할 phase 를 지정하세요')
+      const gateResult = values.result
+        ? { result: values.result, detail: values.detail ?? null }
+        : undefined
+      const res = await store.advance(root, id, to, {
+        force: values.force,
+        gateResult,
+        expectedRev: num(values['expected-rev']),
+      })
+      appendEvent(root, {
+        type: values.force ? 'PhaseForced' : 'PhaseTransitioned',
+        sprint: id,
+        payload: { from: res.from, to: res.to, gate: res.gate },
+      })
+      return { from: res.from, to: res.to, gate: res.gate, forced: res.forced, nextAction: store.nextActionFor(res.sprint) }
+    }
+
+    case 'gate': {
+      const id = requireId()
+      const gateId = values.to ?? positionals[2]
+      if (!gateId || !values.result) {
+        throw new TeneError('BAD_ARGS', { need: '--to <G0..G7> --result <pass|fail|warn>' })
+      }
+      const gate = await store.setGate(root, id, gateId, { result: values.result, detail: values.detail })
+      appendEvent(root, { type: 'GateEvaluated', sprint: id, payload: { gate: gateId, result: gate.result } })
+      return { gate: gateId, ...gate }
+    }
+
+    case 'ac': {
+      const id = requireId()
+      const list = payload()
+      const ac = await store.setAc(root, id, Array.isArray(list) ? list : [list])
+      appendEvent(root, {
+        type: 'AcJudged',
+        sprint: id,
+        payload: { count: Array.isArray(list) ? list.length : 1 },
+      })
+      return { ac, summary: store.computeAcSummary(ac) }
+    }
+
+    case 'intents': {
+      const id = requireId()
+      const intents = await store.setIntents(root, id, payload())
+      appendEvent(root, { type: 'IntentCaptured', sprint: id, payload: { count: intents.length } })
+      return { intents }
+    }
+
+    case 'pause': {
+      const id = requireId()
+      const sprint = await store.pauseSprint(root, id, values.reason)
+      appendEvent(root, { type: 'SprintPaused', sprint: id, payload: { reason: values.reason ?? null } })
+      return { id, status: sprint.status, phase: sprint.phase }
+    }
+
+    case 'resume': {
+      const id = requireId()
+      const sprint = await store.resumeSprint(root, id)
+      appendEvent(root, { type: 'SprintResumed', sprint: id, payload: { phase: sprint.phase } })
+      return { id, status: sprint.status, phase: sprint.phase }
+    }
+
+    case 'waiver': {
+      const id = requireId()
+      const acId = values.ac ?? positionals[2]
+      if (!acId) throw new TeneError('BAD_ARGS', { need: '--ac <id>' })
+      if (!values.reason) throw new TeneError('WAIVER_NO_REASON', { ac: acId })
+      const waivers = await store.grantWaiver(root, id, { acId, reason: values.reason })
+      appendEvent(root, { type: 'WaiverGranted', sprint: id, payload: { ac: acId, reason: values.reason } })
+      return { waivers }
+    }
+
+    case 'docs':
+      return { docs: await store.setDocs(root, requireId(), payload()) }
+
+    case 'carry': {
+      const id = requireId()
+      return { carryOver: await store.addCarryOver(root, id, payload()) }
+    }
+
+    case 'event': {
+      if (!values.type) throw new TeneError('BAD_ARGS', { need: '--type' })
+      appendEvent(root, {
+        type: values.type,
+        sprint: values.id ?? positionals[1] ?? null,
+        payload: values.data ? payload() : {},
+      })
+      return { appended: true, type: values.type }
+    }
+
+    case 'events':
+      return readEvents(root, { limit: num(values.limit) ?? 50, sprint: values.id ?? null })
+
+    case 'size':
+      return checkSize(root)
+
+    case 'mark-cleanup':
+      return markNeedsCleanup(root)
+
+    case 'clean': {
+      // 기본은 dry-run 이다. 지우려면 --apply 를 명시해야 한다.
+      const res = clean(root, {
+        dryRun: !values.apply,
+        history: values.history,
+        archived: values.archived,
+        quarantine: values.quarantine,
+      })
+      return res
+    }
+
+    case 'resync': {
+      const id = requireId()
+      const res = await resync(root, id, { docsRoot, dryRun: values['dry-run'] })
+      return { applied: res.applied, summary: res.summary, report: formatResyncReport(res.summary) }
+    }
+
+    case 'doctor': {
+      const capability = values.capability ? JSON.parse(values.capability) : {}
+      return diagnose({ root, docsRoot, capability })
+    }
+
+    default:
+      throw new TeneError('UNKNOWN_COMMAND', { command: sub ?? '(none)', available: COMMANDS })
+  }
+})

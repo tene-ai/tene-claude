@@ -1,0 +1,206 @@
+#!/usr/bin/env node
+/**
+ * tene-gate — 게이트 판정 (D02 §2, D08 §9)
+ *
+ * 결정론 경계다. 여기서 나온 pass/fail 을 자연어로 뒤집을 수 없다.
+ *
+ * `task-complete` 는 TaskCompleted 훅으로 불린다. **exit 2 로 완료를 차단한다** —
+ * 이 플러그인에서 유일하게 사용자의 행동을 막는 곳이다(guard 제외).
+ */
+import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { parseArgs } from 'node:util'
+import { emit, ok, run } from '../lib/util/envelope.js'
+import { TeneError } from '../lib/util/errors.js'
+import { DEFAULT_DOCS_ROOT, findProjectRoot } from '../lib/util/paths.js'
+import { readStdinJson } from '../lib/util/stdin.js'
+import { debug } from '../lib/util/log.js'
+import { parseDoc } from '../lib/doc/parser.js'
+import * as store from '../lib/state/store.js'
+import { evaluateGate, GATE_IDS, gateForTransition } from '../lib/gate/rules.js'
+import { evidenceVerifier } from '../lib/qa/evidence.js'
+import { changedFiles, workingChanges } from '../lib/loop/unattributed.js'
+
+const COMMANDS = ['check', 'task-complete', 'list']
+
+const GATE_BY_PHASE = {
+  prd: 'G1', plan: 'G2', design: 'G3', do: 'G4',
+  'loop-check': 'G5', qa: 'G6', report: 'G7',
+}
+
+const PHASE_ALIASES = {
+  prd: 'prd', plan: 'plan', design: 'design', do: 'do',
+  loopcheck: 'loop-check', 'loop-check': 'loop-check', check: 'loop-check',
+  qa: 'qa', report: 'report',
+}
+
+function phaseOf(title) {
+  const m = String(title ?? '').match(/^\s*\[([A-Za-z-]+)\]/)
+  return m ? (PHASE_ALIASES[m[1].toLowerCase()] ?? null) : null
+}
+
+// ── TaskCompleted 훅 경로 (인자 파싱 전에 처리한다: 표준 봉투를 쓰지 않는다)
+//
+// 상수 선언이 이 호출보다 **위에** 있어야 한다. const 는 호이스팅되지 않으므로
+// 아래에 두면 TDZ 오류가 나고, fail-open 이 그것을 삼켜 게이트가 조용히 무력화된다.
+// 실제로 그렇게 만들었다가 잡았다.
+if (process.argv[2] === 'task-complete') {
+  await taskComplete()
+} else {
+  await cli()
+}
+
+/**
+ * 훅은 봉투가 아니라 **종료 코드**로 말한다.
+ *   exit 0 → 완료 허용
+ *   exit 2 → 완료 차단 + stderr 가 모델에게 전달됨
+ *
+ * fail-open 이다. 판정할 수 없으면 막지 않는다 — 게이트를 못 읽어서
+ * 작업이 멈추는 것은 게이트의 목적이 아니다.
+ */
+async function taskComplete() {
+  try {
+    const payload = readStdinJson(800)
+    const title = payload?.task?.title ?? payload?.task?.description ?? ''
+    const phase = phaseOf(title)
+    if (!phase) process.exit(0) // tene 태스크가 아니다
+
+    const root = findProjectRoot()
+    const current = store.readCurrent(root)
+    if (!current?.activeSprint) process.exit(0)
+
+    const sprint = store.readSprint(root, current.activeSprint)
+    if (!sprint) process.exit(0)
+
+    const gateId = GATE_BY_PHASE[phase]
+    if (!gateId) process.exit(0)
+
+    const result = evaluateGate(gateId, buildContext(root, sprint, DEFAULT_DOCS_ROOT))
+    if (result.result === 'pass') process.exit(0)
+
+    // 차단한다. 무엇이 막았고 어떻게 푸는지 함께 낸다 —
+    // 막기만 하고 길을 안 알려주면 사용자는 게이트를 끄는 쪽을 택한다.
+    const lines = [
+      `[tene] ${gateId} 게이트가 이 태스크의 완료를 막았습니다.`,
+      ...result.findings.map((f) => `  ⛔ ${f.id}: ${f.detail}`),
+    ]
+    if (result.remediation.length) {
+      lines.push('', '해결:')
+      lines.push(...result.remediation.map((r) => `  → ${r}`))
+    }
+    lines.push('', `게이트를 넘기려면 사유와 함께 /tene:sprint waiver 를 쓰세요.`)
+    process.stderr.write(`${lines.join('\n')}\n`)
+    process.exit(2)
+  } catch (err) {
+    // fail-open 이되 **조용하지 않게**. 게이트가 동작하지 않았다는 사실이 보여야 한다.
+    // 조용히 통과시키면 게이트가 무력화된 채로 sprint 가 끝난다.
+    debug('task-complete gate failed:', String(err?.stack ?? err))
+    process.stderr.write(
+      `[tene] 게이트를 평가하지 못해 검사 없이 통과시킵니다: ${err?.message ?? err}\n` +
+      `  이 태스크는 게이트를 거치지 않았습니다. /tene:status 로 상태를 확인하세요.\n`,
+    )
+    process.exit(0)
+  }
+}
+
+// ── 문맥 조립 ─────────────────────────────────────────────────────────
+
+function readDoc(root, sprint, rel) {
+  if (!rel) return null
+  const p = join(root, sprint.docsRoot, sprint.sprintDir, rel)
+  if (!existsSync(p)) return null
+  try {
+    return parseDoc(readFileSync(p, 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+function buildContext(root, sprint, docsRoot) {
+  const d = sprint.docs ?? {}
+  const lastLoop = d.loopCheck?.length ? d.loopCheck[d.loopCheck.length - 1] : null
+
+  const committed = changedFiles(root, sprint.startCommit)
+  const working = workingChanges(root) ?? []
+  const changed = committed === null && !working.length
+    ? null
+    : [...new Set([...(committed ?? []), ...working])]
+
+  return {
+    root,
+    sprint,
+    docsRoot,
+    docs: {
+      prd: readDoc(root, sprint, d.prd),
+      plan: readDoc(root, sprint, d.plan),
+      design: readDoc(root, sprint, d.design),
+      'loop-check': readDoc(root, sprint, lastLoop),
+      qa: readDoc(root, sprint, d.qa),
+      report: readDoc(root, sprint, d.report),
+    },
+    changedFiles: changed,
+    loop: sprint.lastLoopResult ?? undefined,
+    qa: sprint.lastQaResult ?? undefined,
+    verifyEvidence: evidenceVerifier(root, sprint, { lastCodeChangeAt: sprint.lastCodeChangeAt }),
+  }
+}
+
+// ── CLI ───────────────────────────────────────────────────────────────
+
+async function cli() {
+  const { values, positionals } = parseArgs({
+    allowPositionals: true,
+    strict: false,
+    options: {
+      project: { type: 'string' },
+      'docs-root': { type: 'string' },
+      json: { type: 'boolean', default: true },
+      gate: { type: 'string' },
+      id: { type: 'string' },
+      from: { type: 'string' },
+      to: { type: 'string' },
+      loop: { type: 'string' },   // loop-check 결과 JSON
+      qa: { type: 'string' },     // qa 결과 JSON
+    },
+  })
+
+  const sub = positionals[0] ?? 'check'
+
+  run('tene-gate', async () => {
+    if (sub === 'list') return { gates: GATE_IDS }
+
+    if (sub !== 'check') {
+      throw new TeneError('UNKNOWN_COMMAND', { command: sub, available: COMMANDS })
+    }
+
+    const root = findProjectRoot(values.project)
+    const docsRoot = values['docs-root'] ?? process.env.CLAUDE_PLUGIN_OPTION_DOCS_ROOT ?? DEFAULT_DOCS_ROOT
+
+    const id = values.id ?? store.readCurrent(root)?.activeSprint
+    if (!id) throw new TeneError('NO_ACTIVE_SPRINT', {})
+    const sprint = store.readSprint(root, id)
+    if (!sprint) throw new TeneError('SPRINT_NOT_FOUND', { id })
+
+    const gateId = values.gate
+      ?? positionals[1]
+      ?? (values.from && values.to ? gateForTransition(values.from, values.to) : GATE_BY_PHASE[sprint.phase])
+
+    if (!gateId || !GATE_IDS.includes(gateId)) {
+      throw new TeneError('BAD_ARGS', { need: `--gate <${GATE_IDS.join('|')}>` })
+    }
+
+    const ctx = buildContext(root, sprint, docsRoot)
+    if (values.loop) ctx.loop = JSON.parse(values.loop)
+    if (values.qa) ctx.qa = JSON.parse(values.qa)
+
+    const result = evaluateGate(gateId, ctx)
+    return {
+      ...result,
+      sprint: id,
+      phase: sprint.phase,
+      // 막지는 않지만 보고서에 남아야 하는 것을 함께 낸다
+      insufficient: result.insufficient,
+      waivers: (sprint.waivers ?? []).map((w) => ({ ac: w.ac, reason: w.reason })),
+    }
+  })
+}

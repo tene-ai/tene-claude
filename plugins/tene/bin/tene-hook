@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+/**
+ * tene-hook — 훅 단일 진입점 (D05 §8)
+ *
+ * 훅마다 별도 스크립트를 두면 Node 기동이 반복된다. 하나가 첫 인자로 분기한다.
+ *
+ * 규약:
+ * · fail-open — 내부 오류 시 exit 0 (사용자를 막지 않는다)
+ * · stdout 은 Claude 에게 전달되는 내용 전용
+ * · 진단은 stderr (TENE_DEBUG=1 일 때만)
+ */
+import { readStdinJson } from '../lib/util/stdin.js'
+import { debug, isDebug } from '../lib/util/log.js'
+
+/** 이벤트 → 핸들러 모듈 (지연 로딩: 필요한 것만 파싱한다) */
+const HANDLERS = {
+  'session-start': () => import('../lib/hooks/session-start.js'),
+  'user-prompt': () => import('../lib/hooks/user-prompt.js'),
+  'pre-edit': () => import('../lib/hooks/pre-edit.js'),
+  'post-edit': () => import('../lib/hooks/post-edit.js'),
+  'post-bash': () => import('../lib/hooks/post-bash.js'),
+  'task-created': () => import('../lib/hooks/task-created.js'),
+  'stop': () => import('../lib/hooks/stop.js'),
+  'pre-compact': () => import('../lib/hooks/compact.js'),
+  'post-compact': () => import('../lib/hooks/compact.js'),
+  'subagent-stop': () => import('../lib/hooks/subagent-stop.js'),
+  'session-end': () => import('../lib/hooks/session-end.js'),
+}
+
+const event = process.argv[2]
+
+async function main() {
+  if (!event || !HANDLERS[event]) {
+    debug('unknown hook event:', event)
+    return { exit: 0 }
+  }
+
+  const payload = readStdinJson(800)
+  debug('event:', event, 'mode:', payload.permission_mode ?? '(none)')
+
+  let mod
+  try {
+    mod = await HANDLERS[event]()
+  } catch (err) {
+    // 핸들러가 아직 구현되지 않았거나 로딩 실패 — 조용히 통과
+    debug('handler load failed:', String(err?.message ?? err))
+    return { exit: 0 }
+  }
+
+  return (await mod.run(payload, event)) ?? { exit: 0 }
+}
+
+try {
+  const result = await main()
+
+  if (result.stdout) process.stdout.write(result.stdout)
+
+  if (result.additionalContext || result.hookSpecificOutput) {
+    const out = {}
+    if (result.additionalContext) out.additionalContext = result.additionalContext
+    if (result.hookSpecificOutput) out.hookSpecificOutput = result.hookSpecificOutput
+    process.stdout.write(JSON.stringify(out))
+  }
+
+  if (result.stderr) process.stderr.write(result.stderr)
+  process.exit(result.exit ?? 0)
+} catch (err) {
+  if (isDebug()) process.stderr.write(`[tene:hook] ${String(err?.stack ?? err)}\n`)
+  process.exit(0) // fail-open
+}

@@ -1,0 +1,216 @@
+#!/usr/bin/env node
+/**
+ * tene-qa — QA 계획·증거·집계 (D08)
+ *
+ * **판정하지 않는다.** 판정은 tene-judge 에이전트(L4)가 하고,
+ * 게이트는 tene-gate 가 한다. 여기는 계획을 세우고 증거를 관리한다.
+ */
+import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { parseArgs } from 'node:util'
+import { run } from '../lib/util/envelope.js'
+import { TeneError } from '../lib/util/errors.js'
+import { DEFAULT_DOCS_ROOT, findProjectRoot } from '../lib/util/paths.js'
+import { parseDoc } from '../lib/doc/parser.js'
+import { extractAc } from '../lib/doc/extract.js'
+import * as store from '../lib/state/store.js'
+import { compile, renderCharters } from '../lib/qa/charter.js'
+import { probe, layerCapability, renderCapability } from '../lib/qa/capability.js'
+import { applyCapability, planLayers, renderLayerTable, validateHandling } from '../lib/qa/layers.js'
+import { computeTransitionCoverage, planReturnPaths, renderCoverage, summarizeReturnPaths } from '../lib/qa/coverage.js'
+import {
+  addCase, evidenceDir, judgeInput, newManifest, readManifest,
+  registerArtifact, scanManifest, verifyEvidence, writeManifest,
+} from '../lib/qa/evidence.js'
+
+const COMMANDS = ['plan', 'capability', 'evidence', 'verify', 'coverage', 'judge-input', 'scan-secrets']
+
+const { values, positionals } = parseArgs({
+  allowPositionals: true,
+  strict: false,
+  options: {
+    project: { type: 'string' },
+    'docs-root': { type: 'string' },
+    json: { type: 'boolean', default: true },
+    id: { type: 'string' },
+    ac: { type: 'string' },
+    capability: { type: 'string' },
+    render: { type: 'boolean', default: false },
+    data: { type: 'string' },
+    ref: { type: 'string' },
+  },
+})
+
+const sub = positionals[0] ?? 'plan'
+
+function activeSprint(root) {
+  const id = values.id ?? store.readCurrent(root)?.activeSprint
+  if (!id) throw new TeneError('NO_ACTIVE_SPRINT', {})
+  const sprint = store.readSprint(root, id)
+  if (!sprint) throw new TeneError('SPRINT_NOT_FOUND', { id })
+  return sprint
+}
+
+function readDoc(root, sprint, rel) {
+  if (!rel) return null
+  const p = join(root, sprint.docsRoot, sprint.sprintDir, rel)
+  if (!existsSync(p)) return null
+  try {
+    return parseDoc(readFileSync(p, 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+/**
+ * 문서 AC + 상태 AC 병합.
+ * 문서가 statement·pattern 의 출처이고, 상태가 앵커·판정의 출처다.
+ */
+function mergedAc(prd, sprint) {
+  const fromDoc = prd ? extractAc(prd) : []
+  const byId = new Map(fromDoc.map((a) => [a.id, a]))
+  for (const a of sprint.ac ?? []) {
+    byId.set(a.id, { ...(byId.get(a.id) ?? {}), ...a, statement: byId.get(a.id)?.statement ?? a.statement ?? '' })
+  }
+  return [...byId.values()]
+}
+
+function payload() {
+  if (!values.data) throw new TeneError('BAD_ARGS', { need: '--data' })
+  try {
+    return JSON.parse(values.data)
+  } catch (err) {
+    throw new TeneError('BAD_ARGS', { need: '--data', cause: err.message })
+  }
+}
+
+run('tene-qa', async () => {
+  const root = findProjectRoot(values.project)
+  const docsRoot = values['docs-root'] ?? process.env.CLAUDE_PLUGIN_OPTION_DOCS_ROOT ?? DEFAULT_DOCS_ROOT
+  const injected = values.capability ? JSON.parse(values.capability) : undefined
+
+  switch (sub) {
+    case 'capability': {
+      const cap = probe(root, { injected })
+      return {
+        capability: cap,
+        layers: layerCapability(cap),
+        ...(values.render ? { markdown: renderCapability(cap) } : {}),
+      }
+    }
+
+    case 'plan': {
+      const sprint = activeSprint(root)
+      const prd = readDoc(root, sprint, sprint.docs?.prd)
+      const design = readDoc(root, sprint, sprint.docs?.design)
+
+      // statement 는 문서에만 있다. 상태의 AC 에는 앵커·판정만 있다.
+      // 문서를 기준으로 삼고 상태를 덮어씌운다 — 문서가 정본이기 때문이다.
+      const { charters, warnings, edgeTotal } = compile({ prd, design }, mergedAc(prd, sprint))
+      const cap = probe(root, { injected })
+      const plan = planLayers(sprint.ac ?? [], {
+        hasReturnPaths: charters.some((c) => c.variants.includes('retry')),
+        touchesExistingSymbols: (sprint.ac ?? []).some((a) => a.anchors?.length),
+      })
+      const preset = applyCapability(plan.required, layerCapability(cap), cap)
+      const returnPaths = planReturnPaths({
+        hasUxAc: (sprint.ac ?? []).some((a) => a.method === 'UX'),
+        hasFormSubmit: charters.some((c) => c.variants.includes('empty')),
+        hasFailurePath: charters.some((c) => c.variants.includes('recovery')),
+      })
+
+      return {
+        sprint: sprint.id,
+        charters,
+        layers: { ...plan, presetByCapability: preset },
+        capability: cap,
+        returnPaths,
+        edgeTotal,
+        warnings: [
+          ...warnings,
+          ...cap.limitations.map((l) => `${l.missing} 없음 → ${l.affects.join('/')} 가 insufficient 로 기록됩니다`),
+        ],
+        ...(values.render ? { markdown: renderCharters(charters) } : {}),
+      }
+    }
+
+    case 'evidence': {
+      const sprint = activeSprint(root)
+      const manifest = readManifest(root, sprint) ?? newManifest(sprint.id)
+      const body = payload()
+
+      if (body.artifact) registerArtifact(root, sprint, manifest, body.artifact)
+      if (body.case) addCase(manifest, body.case)
+      writeManifest(root, sprint, manifest)
+
+      return {
+        dir: evidenceDir(root, sprint).slice(root.length + 1),
+        artifacts: manifest.artifacts.length,
+        cases: manifest.cases.length,
+      }
+    }
+
+    case 'verify': {
+      const sprint = activeSprint(root)
+      const manifest = readManifest(root, sprint)
+      if (!manifest) throw new TeneError('EVIDENCE_MISSING', { sprint: sprint.id })
+
+      const dir = evidenceDir(root, sprint)
+      const refs = values.ref ? [values.ref] : manifest.artifacts.map((a) => a.id)
+      const results = refs.map((ref) => ({
+        ref,
+        ...verifyEvidence(manifest, ref, { dir, lastCodeChangeAt: sprint.lastCodeChangeAt }),
+      }))
+      return {
+        checked: results.length,
+        invalid: results.filter((r) => !r.ok),
+        ok: results.every((r) => r.ok),
+      }
+    }
+
+    case 'coverage': {
+      const sprint = activeSprint(root)
+      const design = readDoc(root, sprint, sprint.docs?.design)
+      const manifest = readManifest(root, sprint) ?? { cases: [] }
+      const cov = computeTransitionCoverage(design, manifest)
+      const planned = planReturnPaths({
+        hasUxAc: (sprint.ac ?? []).some((a) => a.method === 'UX'),
+        hasFormSubmit: true,
+        hasFailurePath: (sprint.ac ?? []).some((a) => a.pattern === 'unwanted'),
+      })
+      const ret = summarizeReturnPaths(planned, sprint.returnPathResults ?? {})
+      return {
+        transitions: cov,
+        returnPaths: ret,
+        ...(values.render ? { markdown: renderCoverage(cov, ret) } : {}),
+      }
+    }
+
+    case 'judge-input': {
+      const sprint = activeSprint(root)
+      const acId = values.ac ?? positionals[1]
+      if (!acId) throw new TeneError('BAD_ARGS', { need: '--ac <id>' })
+
+      const ac = (sprint.ac ?? []).find((a) => a.id === acId)
+      if (!ac) throw new TeneError('AC_NOT_FOUND', { id: acId })
+
+      const prd = readDoc(root, sprint, sprint.docs?.prd)
+      const design = readDoc(root, sprint, sprint.docs?.design)
+      const { charters } = compile({ prd, design }, mergedAc(prd, sprint).filter((a) => a.id === acId))
+      const manifest = readManifest(root, sprint)
+
+      // runner 의 결론을 제거한 입력을 낸다 — 판정자가 남의 판정을 읽으면 안 된다
+      return judgeInput(manifest, acId, { ac, charter: charters[0] })
+    }
+
+    case 'scan-secrets': {
+      const sprint = activeSprint(root)
+      const manifest = readManifest(root, sprint)
+      if (!manifest) return { clean: true, note: '증거가 없습니다' }
+      return scanManifest(root, sprint, manifest)
+    }
+
+    default:
+      throw new TeneError('UNKNOWN_COMMAND', { command: sub, available: COMMANDS })
+  }
+})

@@ -1,0 +1,83 @@
+#!/usr/bin/env node
+/**
+ * tene-report — 보고서 R1~R6 조립 (D10)
+ *
+ * 표와 목록만 만든다. **서술은 스킬이 쓴다** —
+ * 기계가 "어떻게 구현했는지" 를 쓰면 diff 를 옮겨 적은 글이 된다.
+ */
+import { parseArgs } from 'node:util'
+import { run } from '../lib/util/envelope.js'
+import { TeneError } from '../lib/util/errors.js'
+import { DEFAULT_DOCS_ROOT, findProjectRoot } from '../lib/util/paths.js'
+import * as store from '../lib/state/store.js'
+import { findSprintDir } from '../lib/recover/resync.js'
+import { buildReport, renderSummary } from '../lib/report/index.js'
+
+const COMMANDS = ['build', 'summary', 'carry']
+
+const { values, positionals } = parseArgs({
+  allowPositionals: true,
+  strict: false,
+  options: {
+    project: { type: 'string' },
+    'docs-root': { type: 'string' },
+    json: { type: 'boolean', default: true },
+    id: { type: 'string' },
+    section: { type: 'string' },
+    'question-limit': { type: 'string' },
+  },
+})
+
+const sub = positionals[0] ?? 'build'
+
+run('tene-report', async () => {
+  const root = findProjectRoot(values.project)
+  const docsRoot = values['docs-root'] ?? process.env.CLAUDE_PLUGIN_OPTION_DOCS_ROOT ?? DEFAULT_DOCS_ROOT
+
+  const id = values.id ?? positionals[1] ?? store.readCurrent(root)?.activeSprint
+  if (!id) throw new TeneError('NO_ACTIVE_SPRINT', {})
+  const sprint = store.readSprint(root, id)
+  if (!sprint) throw new TeneError('SPRINT_NOT_FOUND', { id })
+
+  const report = buildReport(root, sprint, {
+    masterPlan: store.readMasterPlan(root),
+    docsRoot,
+    questionLimit: values['question-limit'] ? Number(values['question-limit']) : undefined,
+    findSprintDir: (sid) => findSprintDir(root, docsRoot, sid)?.dir ?? null,
+  })
+
+  switch (sub) {
+    case 'build': {
+      if (values.section) {
+        const key = values.section.toLowerCase()
+        if (!report[key]) throw new TeneError('BAD_ARGS', { need: '--section r1..r6' })
+        return { section: key, ...report[key] }
+      }
+      return {
+        sprint: report.sprint,
+        summary: report.summary,
+        summaryMarkdown: renderSummary(report.summary),
+        sections: {
+          r1: report.r1.markdown,
+          r2: report.r2.markdown,
+          r3: report.r3.markdown,
+          r4: report.r4.markdown,
+          r5: report.r5.markdown,
+          r6: report.r6.markdown,
+        },
+        revelations: report.r5.revelations,
+        blockers: report.blockers,
+        promotable: report.promotable,
+      }
+    }
+
+    case 'summary':
+      return { summary: report.summary, markdown: renderSummary(report.summary) }
+
+    case 'carry':
+      return { ...report.r6.data, promotable: report.promotable }
+
+    default:
+      throw new TeneError('UNKNOWN_COMMAND', { command: sub, available: COMMANDS })
+  }
+})

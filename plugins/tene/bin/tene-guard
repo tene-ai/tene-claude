@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+/**
+ * tene-guard — 시크릿 가드 (D11 §3)
+ *
+ * **fail-closed.** 다른 모든 훅과 반대다.
+ * 나머지는 오류 시 통과시키지만, 가드는 검사하지 못했으면 차단한다.
+ * 검사 못 한 명령을 통과시키면 가드가 있으나 마나 하기 때문이다.
+ */
+import { judgeBash, judgeRead } from '../lib/guard/rules.js'
+import { readStdinJson } from '../lib/util/stdin.js'
+import { debug } from '../lib/util/log.js'
+
+function emit(verdict) {
+  if (verdict?.hookSpecificOutput) {
+    process.stdout.write(JSON.stringify({ hookSpecificOutput: verdict.hookSpecificOutput }))
+  }
+}
+
+function flag(name) {
+  const i = process.argv.indexOf(name)
+  return i >= 0 ? process.argv[i + 1] : null
+}
+
+try {
+  const event = flag('--event') ?? 'pretooluse-bash'
+  // strict — 입력을 못 읽으면 예외를 던져 아래 fail-closed 경로로 간다.
+  // 빈 객체로 바꾸면 "검사할 명령이 없다" 로 읽혀 통과한다.
+  const payload = readStdinJson(800, { strict: true })
+
+  const verdict = event === 'pretooluse-read' ? judgeRead(payload) : judgeBash(payload)
+  if (verdict.decision !== 'allow') debug('guard:', verdict.decision, verdict.code)
+
+  emit(verdict)
+  process.exit(0)
+} catch (err) {
+  // ★ fail-closed — 검사하지 못했으면 차단한다
+  debug('guard failed:', String(err?.stack ?? err))
+  process.stdout.write(JSON.stringify({
+    hookSpecificOutput: {
+      hookEventName: 'PreToolUse',
+      permissionDecision: 'deny',
+      permissionDecisionReason:
+        'tene 시크릿 가드가 이 명령을 검사하지 못했습니다. 안전을 위해 차단합니다. ' +
+        '가드에 문제가 있다면 /tene:doctor 로 진단하세요.',
+    },
+  }))
+  process.exit(0)
+}

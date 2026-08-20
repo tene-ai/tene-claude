@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "tene-ai",
+  "owner": {
+    "name": "tene-ai",
+    "email": "kay@agentkay.it",
+    "url": "https://github.com/tene-ai"
+  },
+  "description": "Spec-driven vibe coding tools for Claude Code",
+  "plugins": [
+    {
+      "name": "tene",
+      "source": "./plugins/tene",
+      "displayName": "Tene",
+      "description": "Spec-driven sprint workflow with intent-aware QA",
+      "author": {
+        "name": "agent-kay-it"
+      },
+      "license": "Apache-2.0",
+      "category": "development",
+      "tags": [
+        "spec-driven",
+        "sprint",
+        "qa",
+        "workflow",
+        "intent",
+        "context-engineering"
+      ],
+      "strict": true
+    }
+  ]
+}

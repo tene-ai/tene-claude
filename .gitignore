@@ -1,0 +1,19 @@
+node_modules/
+.DS_Store
+*.log
+
+# 다른 도구의 로컬 상태 — 이 저장소의 산출물이 아니다
+.bkit/
+
+# tene 자신의 상태.
+# state/ 는 팀이 공유하는 정본이라 커밋한다.
+# index/ 와 history/ 는 코드에서 다시 만들 수 있는 파생물이라 커밋하지 않는다.
+.tene-claude/index/
+.tene-claude/history/
+.tene-claude/archive/
+.tene-claude/.lock
+*.corrupt-*
+*.bak-*
+
+# eval 워크스페이스 (스크래치패드에서 돌지만 실수로 생기면 제외)
+*-workspace/

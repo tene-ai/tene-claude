@@ -1,0 +1,7 @@
+{
+  "note": "테스트 러너·린터·타입체커·브라우저 전무. insufficient 로 보고해야 하고 0%/passed 로 위장하면 안 된다.",
+  "expectNull": ["testRunner", "typechecker", "linter"],
+  "expectBrowserKind": "unknown",
+  "mustNotBeRunnable": ["L1", "L2", "L5", "L7"],
+  "expectLimitations": ["testRunner", "static", "browser"]
+}

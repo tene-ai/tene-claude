@@ -1,0 +1,797 @@
+{
+  "builtAt": "2026-08-20T04:32:23Z",
+  "engine": "node-regex",
+  "files": {
+    "src/config/env.ts": {
+      "mtime": 1787200206386.051,
+      "size": 61,
+      "lang": "typescript"
+    },
+    "src/middleware/auth.ts": {
+      "mtime": 1787200206393.0757,
+      "size": 244,
+      "lang": "typescript"
+    },
+    "src/models/client.ts": {
+      "mtime": 1787200206385.7012,
+      "size": 87,
+      "lang": "typescript"
+    },
+    "src/repositories/order.ts": {
+      "mtime": 1787200206384.9595,
+      "size": 416,
+      "lang": "typescript"
+    },
+    "src/routes/health.ts": {
+      "mtime": 1787200206367.3936,
+      "size": 140,
+      "lang": "typescript"
+    },
+    "src/routes/orders.ts": {
+      "mtime": 1787200206361.379,
+      "size": 461,
+      "lang": "typescript"
+    },
+    "src/services/order.ts": {
+      "mtime": 1787200206373.045,
+      "size": 664,
+      "lang": "typescript"
+    },
+    "src/services/payment.ts": {
+      "mtime": 1787200206379.4197,
+      "size": 383,
+      "lang": "typescript"
+    },
+    "src/utils/logger.ts": {
+      "mtime": 1787200206393.677,
+      "size": 90,
+      "lang": "typescript"
+    },
+    "tests/order.test.ts": {
+      "mtime": 1787200206402.0503,
+      "size": 142,
+      "lang": "typescript"
+    }
+  },
+  "imports": {
+    "src/config/env.ts": [],
+    "src/middleware/auth.ts": [
+      {
+        "from": "jsonwebtoken",
+        "names": [
+          {
+            "name": "default",
+            "local": "jwt"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      }
+    ],
+    "src/models/client.ts": [
+      {
+        "from": "@prisma/client",
+        "names": [
+          {
+            "name": "PrismaClient",
+            "local": "PrismaClient"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      }
+    ],
+    "src/repositories/order.ts": [
+      {
+        "from": "../models/client",
+        "names": [
+          {
+            "name": "prisma",
+            "local": "prisma"
+          }
+        ],
+        "line": 1,
+        "resolved": "src/models/client.ts"
+      }
+    ],
+    "src/routes/health.ts": [
+      {
+        "from": "express",
+        "names": [
+          {
+            "name": "Router",
+            "local": "Router"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      }
+    ],
+    "src/routes/orders.ts": [
+      {
+        "from": "express",
+        "names": [
+          {
+            "name": "Router",
+            "local": "Router"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      },
+      {
+        "from": "../services/order",
+        "names": [
+          {
+            "name": "createOrder",
+            "local": "createOrder"
+          },
+          {
+            "name": "cancelOrder",
+            "local": "cancelOrder"
+          }
+        ],
+        "line": 2,
+        "resolved": "src/services/order.ts"
+      },
+      {
+        "from": "../middleware/auth",
+        "names": [
+          {
+            "name": "requireAuth",
+            "local": "requireAuth"
+          }
+        ],
+        "line": 3,
+        "resolved": "src/middleware/auth.ts"
+      }
+    ],
+    "src/services/order.ts": [
+      {
+        "from": "../repositories/order",
+        "names": [
+          {
+            "name": "OrderRepository",
+            "local": "OrderRepository"
+          }
+        ],
+        "line": 1,
+        "resolved": "src/repositories/order.ts"
+      },
+      {
+        "from": "./payment",
+        "names": [
+          {
+            "name": "chargePayment",
+            "local": "chargePayment"
+          }
+        ],
+        "line": 2,
+        "resolved": "src/services/payment.ts"
+      },
+      {
+        "from": "../utils/logger",
+        "names": [
+          {
+            "name": "logger",
+            "local": "logger"
+          }
+        ],
+        "line": 3,
+        "resolved": "src/utils/logger.ts"
+      }
+    ],
+    "src/services/payment.ts": [
+      {
+        "from": "stripe",
+        "names": [
+          {
+            "name": "default",
+            "local": "Stripe"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      },
+      {
+        "from": "../config/env",
+        "names": [
+          {
+            "name": "config",
+            "local": "config"
+          }
+        ],
+        "line": 2,
+        "resolved": "src/config/env.ts"
+      }
+    ],
+    "src/utils/logger.ts": [],
+    "tests/order.test.ts": [
+      {
+        "from": "../src/services/order",
+        "names": [
+          {
+            "name": "createOrder",
+            "local": "createOrder"
+          }
+        ],
+        "line": 1,
+        "resolved": "src/services/order.ts"
+      }
+    ]
+  },
+  "refs": {
+    "split": [
+      {
+        "file": "src/middleware/auth.ts",
+        "line": 3,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "status": [
+      {
+        "file": "src/middleware/auth.ts",
+        "line": 4,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/middleware/auth.ts",
+        "line": 4,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "res"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 8,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "res"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 12,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 12,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "res"
+      }
+    ],
+    "end": [
+      {
+        "file": "src/middleware/auth.ts",
+        "line": 4,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 12,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "verify": [
+      {
+        "file": "src/middleware/auth.ts",
+        "line": 5,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/middleware/auth.ts",
+        "line": 5,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "jwt"
+      }
+    ],
+    "next": [
+      {
+        "file": "src/middleware/auth.ts",
+        "line": 6,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "PrismaClient": [
+      {
+        "file": "src/models/client.ts",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "create": [
+      {
+        "file": "src/repositories/order.ts",
+        "line": 4,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/repositories/order.ts",
+        "line": 4,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "order"
+      },
+      {
+        "file": "src/services/order.ts",
+        "line": 6,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.ts",
+        "line": 6,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "OrderRepository"
+      },
+      {
+        "file": "src/services/payment.ts",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/payment.ts",
+        "line": 8,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "paymentIntents"
+      }
+    ],
+    "markFailed": [
+      {
+        "file": "src/repositories/order.ts",
+        "line": 5,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.ts",
+        "line": 9,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.ts",
+        "line": 9,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "OrderRepository"
+      }
+    ],
+    "update": [
+      {
+        "file": "src/repositories/order.ts",
+        "line": 6,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/repositories/order.ts",
+        "line": 6,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "order"
+      },
+      {
+        "file": "src/repositories/order.ts",
+        "line": 9,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/repositories/order.ts",
+        "line": 9,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "order"
+      }
+    ],
+    "updateStatus": [
+      {
+        "file": "src/repositories/order.ts",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.ts",
+        "line": 17,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.ts",
+        "line": 17,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "OrderRepository"
+      }
+    ],
+    "Router": [
+      {
+        "file": "src/routes/health.ts",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 5,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "get": [
+      {
+        "file": "src/routes/health.ts",
+        "line": 3,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/health.ts",
+        "line": 3,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "router"
+      }
+    ],
+    "json": [
+      {
+        "file": "src/routes/health.ts",
+        "line": 3,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/health.ts",
+        "line": 3,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "res"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "post": [
+      {
+        "file": "src/routes/orders.ts",
+        "line": 6,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 6,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "router"
+      }
+    ],
+    "async": [
+      {
+        "file": "src/routes/orders.ts",
+        "line": 6,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/routes/orders.ts",
+        "line": 10,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "tests/order.test.ts",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "createOrder": [
+      {
+        "file": "src/routes/orders.ts",
+        "line": 7,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "tests/order.test.ts",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "delete": [
+      {
+        "file": "src/routes/orders.ts",
+        "line": 10,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "router"
+      }
+    ],
+    "cancelOrder": [
+      {
+        "file": "src/routes/orders.ts",
+        "line": 11,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "chargePayment": [
+      {
+        "file": "src/services/order.ts",
+        "line": 7,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "warn": [
+      {
+        "file": "src/services/order.ts",
+        "line": 10,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.ts",
+        "line": 10,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "logger"
+      },
+      {
+        "file": "src/utils/logger.ts",
+        "line": 1,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/utils/logger.ts",
+        "line": 1,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "console"
+      }
+    ],
+    "PaymentError": [
+      {
+        "file": "src/services/order.ts",
+        "line": 11,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "Stripe": [
+      {
+        "file": "src/services/payment.ts",
+        "line": 4,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "log": [
+      {
+        "file": "src/utils/logger.ts",
+        "line": 1,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/utils/logger.ts",
+        "line": 1,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "console"
+      }
+    ],
+    "test": [
+      {
+        "file": "tests/order.test.ts",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "expect": [
+      {
+        "file": "tests/order.test.ts",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "toBeDefined": [
+      {
+        "file": "tests/order.test.ts",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ]
+  },
+  "root": "/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/evals/fixtures/express-app",
+  "schemaVersion": 1,
+  "stats": {
+    "files": 14,
+    "indexed": 10,
+    "refs": 57,
+    "skipped": 4,
+    "symbols": 14
+  },
+  "symbols": {
+    "config": [
+      {
+        "kind": "const",
+        "file": "src/config/env.ts",
+        "line": 1,
+        "exported": true,
+        "confidence": "medium",
+        "signatureText": "export const config = { stripeKey: process.env.STRIPE_KEY! }"
+      }
+    ],
+    "requireAuth": [
+      {
+        "kind": "function",
+        "file": "src/middleware/auth.ts",
+        "line": 2,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "export function requireAuth(req, res, next) {"
+      }
+    ],
+    "prisma": [
+      {
+        "kind": "const",
+        "file": "src/models/client.ts",
+        "line": 2,
+        "exported": true,
+        "confidence": "medium",
+        "signatureText": "export const prisma = new PrismaClient()"
+      }
+    ],
+    "OrderRepository": [
+      {
+        "kind": "const",
+        "file": "src/repositories/order.ts",
+        "line": 3,
+        "exported": true,
+        "confidence": "medium",
+        "signatureText": "export const OrderRepository = {"
+      }
+    ],
+    "create": [
+      {
+        "kind": "method",
+        "file": "src/repositories/order.ts",
+        "line": 4,
+        "exported": false,
+        "confidence": "medium",
+        "signatureText": "async create(data: OrderData) { return prisma.order.create({ data }) },"
+      }
+    ],
+    "markFailed": [
+      {
+        "kind": "method",
+        "file": "src/repositories/order.ts",
+        "line": 5,
+        "exported": false,
+        "confidence": "medium",
+        "signatureText": "async markFailed(id: string, reason: string) {"
+      }
+    ],
+    "updateStatus": [
+      {
+        "kind": "method",
+        "file": "src/repositories/order.ts",
+        "line": 8,
+        "exported": false,
+        "confidence": "medium",
+        "signatureText": "async updateStatus(id: string, status: string) {"
+      }
+    ],
+    "router": [
+      {
+        "kind": "const",
+        "file": "src/routes/health.ts",
+        "line": 2,
+        "exported": false,
+        "confidence": "medium",
+        "signatureText": "const router = Router()"
+      },
+      {
+        "kind": "const",
+        "file": "src/routes/orders.ts",
+        "line": 5,
+        "exported": false,
+        "confidence": "medium",
+        "signatureText": "const router = Router()"
+      }
+    ],
+    "createOrder": [
+      {
+        "kind": "function",
+        "file": "src/services/order.ts",
+        "line": 5,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "export async function createOrder(input: OrderInput, user: User): Promise<Order> {"
+      }
+    ],
+    "cancelOrder": [
+      {
+        "kind": "function",
+        "file": "src/services/order.ts",
+        "line": 16,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "export async function cancelOrder(id: string): Promise<void> {"
+      }
+    ],
+    "stripe": [
+      {
+        "kind": "const",
+        "file": "src/services/payment.ts",
+        "line": 4,
+        "exported": false,
+        "confidence": "medium",
+        "signatureText": "const stripe = new Stripe(config.stripeKey)"
+      }
+    ],
+    "chargePayment": [
+      {
+        "kind": "function",
+        "file": "src/services/payment.ts",
+        "line": 6,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "export async function chargePayment(order: Order): Promise<ChargeResult> {"
+      }
+    ],
+    "logger": [
+      {
+        "kind": "const",
+        "file": "src/utils/logger.ts",
+        "line": 1,
+        "exported": true,
+        "confidence": "medium",
+        "signatureText": "export const logger = { warn: (m, c) => console.warn(m, c), info: (m) => console.log(m) }"
+      }
+    ]
+  },
+  "unresolved": [],
+  "unsupported": [
+    {
+      "ext": ".json",
+      "files": 3
+    },
+    {
+      "ext": ".prisma",
+      "files": 1
+    }
+  ]
+}

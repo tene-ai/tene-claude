@@ -1,0 +1,7 @@
+{
+  "note": "심어둔 위반 2건. reverse 는 blocker, layer-skip 은 warning.",
+  "expected": [
+    { "kind": "reverse", "severity": "blocker", "file": "src/db/repo.ts", "target": "src/routes/payment.ts" },
+    { "kind": "layer-skip", "severity": "warning", "file": "src/routes/payment.ts", "target": "src/db/client.ts" }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "note": "기본 프리셋(웹앱 가정)이 실제 Express 앱에서 얼마나 맞는지 본다. 규칙 파일 없이 프리셋만으로.",
+  "expect": {
+    "src/routes/orders.ts": "interface",
+    "src/routes/health.ts": "interface",
+    "src/services/order.ts": "business-logic",
+    "src/services/payment.ts": "business-logic",
+    "src/repositories/order.ts": "persistence",
+    "src/models/client.ts": "persistence",
+    "src/config/env.ts": "infrastructure",
+    "src/middleware/auth.ts": "infrastructure"
+  },
+  "expectTest": ["tests/order.test.ts"],
+  "acceptUnclassified": ["src/utils/logger.ts"]
+}

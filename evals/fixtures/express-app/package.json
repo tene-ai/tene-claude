@@ -1,0 +1,1 @@
+{ "name": "shop-api", "scripts": { "test": "jest", "lint": "eslint .", "typecheck": "tsc --noEmit" } }

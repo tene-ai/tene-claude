@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "new-feature",
+      "priority": 10,
+      "when": "no-active-sprint",
+      "any": {
+        "ko": ["새 기능", "기능 추가", "만들어줘", "구현해줘", "개발해줘", "이런 걸 만들", "새로 만들"],
+        "en": ["new feature", "add a feature", "implement", "build a", "create a feature"]
+      },
+      "suggest": "sprint init",
+      "message": {
+        "ko": "새 기능 요청으로 보입니다. sprint 로 시작하면 의도가 문서로 남고 그것이 QA 기준이 됩니다.",
+        "en": "This looks like a new feature. Starting a sprint preserves intent as QA criteria."
+      }
+    },
+    {
+      "id": "prd",
+      "priority": 20,
+      "when": "phase=draft|prd",
+      "any": {
+        "ko": ["요구사항", "기획", "스펙", "정리해줘", "뭘 만들지", "수용 기준"],
+        "en": ["requirement", "spec", "plan out", "what to build", "acceptance criteria"]
+      },
+      "suggest": "prd"
+    },
+    {
+      "id": "plan",
+      "priority": 20,
+      "when": "phase=prd|plan",
+      "any": {
+        "ko": ["작업 나누", "태스크", "일감", "순서 정하", "무엇부터"],
+        "en": ["break down", "tasks", "work items", "order of work"]
+      },
+      "suggest": "plan"
+    },
+    {
+      "id": "design",
+      "priority": 20,
+      "when": "phase=plan|design",
+      "any": {
+        "ko": ["설계", "구조", "아키텍처", "어떻게 만들", "처리 로직"],
+        "en": ["design", "architecture", "how to build", "structure"]
+      },
+      "suggest": "design"
+    },
+    {
+      "id": "loop-check",
+      "priority": 20,
+      "when": "phase>=do",
+      "any": {
+        "ko": ["문서대로", "제대로 됐", "일치", "빠진 거", "점검", "다 됐나"],
+        "en": ["as specified", "conformance", "gaps", "check against"]
+      },
+      "suggest": "loop-check"
+    },
+    {
+      "id": "qa",
+      "priority": 20,
+      "when": "phase>=loop-check",
+      "any": {
+        "ko": ["QA", "테스트", "검증", "동작 확인", "제대로 되는지", "품질"],
+        "en": ["qa", "test", "verify", "does it work"]
+      },
+      "suggest": "qa"
+    },
+    {
+      "id": "report",
+      "priority": 20,
+      "when": "phase>=qa",
+      "any": {
+        "ko": ["회고", "보고서", "정리", "리포트", "마무리"],
+        "en": ["report", "retro", "summary", "wrap up"]
+      },
+      "suggest": "report"
+    },
+    {
+      "id": "secrets",
+      "priority": 15,
+      "when": "always",
+      "any": {
+        "ko": ["API 키", "시크릿", "토큰", "비밀번호", "환경변수", "크리덴셜"],
+        "en": ["api key", "secret", "token", "credential", "env var", "password"]
+      },
+      "suggest": "secrets",
+      "message": {
+        "ko": "시크릿을 다루는 요청으로 보입니다. 평문 값이 대화 기록에 남지 않도록 /tene:secrets 를 쓰세요.",
+        "en": "This involves secrets. Use /tene:secrets so plaintext never enters the transcript."
+      }
+    },
+    {
+      "id": "understand",
+      "priority": 25,
+      "when": "always",
+      "any": {
+        "ko": ["이게 뭐야", "어디서 쓰여", "누가 호출", "영향 범위", "지워도 되"],
+        "en": ["what is this", "where is it used", "who calls", "blast radius", "safe to delete"]
+      },
+      "suggest": "understand"
+    },
+    {
+      "id": "status",
+      "priority": 30,
+      "when": "has-active-sprint",
+      "any": {
+        "ko": ["어디까지", "진행 상황", "상태 확인", "뭐가 막혀", "다음에 뭐"],
+        "en": ["where are we", "status", "what's blocking", "what's next"]
+      },
+      "suggest": "status"
+    }
+  ]
+}

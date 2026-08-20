@@ -1,0 +1,16 @@
+{
+  "name": "@agent-kay-it/tene-plugin",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "node --test test/unit/*.test.js",
+    "test:guard": "node test/guard-matrix.js",
+    "test:latency": "node test/hook-latency.js"
+  }
+}

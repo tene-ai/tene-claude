@@ -1,0 +1,178 @@
+# tene 기본 계층 규칙 — D06 §3.1
+#
+# Understanding Layer 4계층을 파일 경로와 import 로 판정한다.
+# 이 파일은 **프리셋**이다. 프로젝트에 맞추려면 `/tene:layers scan` 으로
+# docs/sprints/_meta/layers.yml 을 만들어라. 그쪽이 있으면 그쪽이 이긴다.
+#
+# 규칙에 걸리지 않는 파일은 `unclassified` 로 남긴다. 추측으로 채우지 않는다 —
+# 미분류 목록이 곧 "규칙을 다듬을 지점"이고, 억지로 채우면 계층 통계가 조용히 왜곡된다.
+
+version: 1
+
+layers:
+  # 진입점 — 외부에서 시스템으로 들어오는 자리
+  interface:
+    paths:
+      - "src/pages/**"
+      - "src/app/**"
+      - "src/components/**"
+      - "src/routes/**"
+      - "src/controllers/**"
+      - "src/handlers/**"
+      - "src/api/**"
+      - "app/**"
+      - "pages/**"
+      - "cmd/**"
+      - "**/*.controller.*"
+      - "**/*.route.*"
+      - "**/route.ts"
+      - "**/page.tsx"
+    imports:
+      - "express"
+      - "fastify"
+      - "koa"
+      - "hono"
+      - "next"
+      - "react"
+      - "react-dom"
+      - "vue"
+      - "svelte"
+      - "@angular/core"
+      - "gin"
+      - "echo"
+      - "fastapi"
+      - "flask"
+      - "django"
+      - "spring-web"
+
+  # 처리 규칙 — 이 시스템이 무엇을 하는지가 여기에 있다
+  business-logic:
+    paths:
+      - "src/services/**"
+      - "src/usecases/**"
+      - "src/domain/**"
+      # `src/core/**` 는 일부러 넣지 않았다. 어떤 프로젝트에서는 도메인 코어이고
+      # 어떤 곳에서는 인증·설정 같은 인프라다. 모호하면 미분류로 두고 사용자가 정한다.
+      - "src/reducers/**"
+      - "src/lib/**"
+      - "src/logic/**"
+      - "internal/**"
+      - "**/*.service.*"
+      - "**/*.usecase.*"
+    imports: []
+
+  # 데이터 — 상태가 사는 곳
+  persistence:
+    paths:
+      - "src/repositories/**"
+      - "src/models/**"
+      - "src/entities/**"
+      - "src/db/**"
+      - "src/dao/**"
+      - "src/store/**"
+      - "prisma/**"
+      - "migrations/**"
+      - "db/**"
+      - "**/*.repository.*"
+      - "**/*.model.*"
+      - "**/schema.sql"
+    imports:
+      - "prisma"
+      - "@prisma/client"
+      - "typeorm"
+      - "sequelize"
+      - "mongoose"
+      - "knex"
+      - "drizzle-orm"
+      - "kysely"
+      - "pg"
+      - "mysql2"
+      - "better-sqlite3"
+      - "sqlalchemy"
+      - "gorm"
+      - "redis"
+      - "ioredis"
+      - "kafkajs"
+      - "@aws-sdk/client-dynamodb"
+
+  # 런타임 — 시스템이 돌아가기 위한 조건
+  infrastructure:
+    paths:
+      - "src/config/**"
+      - "src/infra/**"
+      - "src/middleware/**"
+      - "src/auth/**"
+      - "deploy/**"
+      - "terraform/**"
+      - "k8s/**"
+      - ".github/workflows/**"
+      - "Dockerfile*"
+      - "docker-compose*"
+      - "**/*.config.*"
+      - "**/middleware.ts"
+    imports:
+      - "dotenv"
+      - "aws-sdk"
+      - "@aws-sdk/*"
+      - "googleapis"
+      - "@azure/*"
+      - "passport"
+      - "jsonwebtoken"
+      - "jose"
+      - "winston"
+      - "pino"
+      - "@opentelemetry/*"
+      - "@sentry/*"
+      # Python
+      - "jwt"
+      - "pyjwt"
+      - "python-dotenv"
+      - "boto3"
+      - "botocore"
+      - "google.cloud"
+      - "structlog"
+      - "sentry_sdk"
+      - "opentelemetry"
+      # Go / Java
+      - "github.com/aws/aws-sdk-go"
+      - "github.com/golang-jwt/jwt"
+      - "go.opentelemetry.io"
+      - "org.springframework.boot.context"
+      - "io.jsonwebtoken"
+
+# 먼저 걸리는 계층이 이긴다.
+#
+# business-logic 이 마지막인 이유: 가장 넓은 경로(src/lib/**)를 갖기 때문에
+# 앞에 두면 컨트롤러와 리포지토리를 전부 삼킨다.
+#
+# interface 가 첫째인 이유: 컨트롤러가 DB 를 직접 만지면 그건
+# **interface 파일에서 일어난 계층 위반**이지 persistence 파일이 아니다.
+# 위반은 위반으로 보여야 고칠 수 있다.
+precedence:
+  - interface
+  - persistence
+  - infrastructure
+  - business-logic
+
+# 어디에도 걸리지 않은 파일의 처리. 추측하지 않는다.
+unmatched: unclassified
+
+# 계층 판정에서 아예 제외할 경로
+exclude:
+  - "**/node_modules/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/.next/**"
+  - "**/coverage/**"
+  - "**/vendor/**"
+  - "**/*.min.js"
+  - "**/*.d.ts"
+
+# 테스트 파일은 계층 통계에서 분리한다. 구현이 아니라 검증이기 때문이다.
+test_paths:
+  - "**/*.test.*"
+  - "**/*.spec.*"
+  - "**/__tests__/**"
+  - "test/**"
+  - "tests/**"
+  - "**/*_test.go"

@@ -1,0 +1,18 @@
+{
+  "note": "Python FastAPI 구조. 경로 규칙으로 안 잡히는 것은 import 로, 그것도 모호하면 미분류로 남아야 한다.",
+  "expect": {
+    "src/services/order.py": "business-logic",
+    "src/services/payment.py": "business-logic",
+    "src/db/repository.py": "persistence",
+    "src/db/session.py": "persistence",
+    "src/api/orders.py": "interface",
+    "src/core/auth.py": "infrastructure"
+  },
+  "expectTest": [
+    "tests/test_order.py"
+  ],
+  "acceptUnclassified": [
+    "src/core/config.py"
+  ],
+  "note2": "core/auth.py 는 경로가 아니라 `jwt` import 로 판정된다 (confidence: medium). core/config.py 는 모호하므로 사용자가 정한다."
+}

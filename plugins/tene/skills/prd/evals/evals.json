@@ -1,0 +1,37 @@
+{
+  "skill_name": "prd",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "결제 실패했을 때 사용자가 입력한 내용이 날아가지 않게 해줘.",
+      "expected_output": "실패 경로·되돌아오는 경로·데이터 보존 여부를 되묻고, EARS 형식 수용 기준을 만든다. If-then 이 최소 1개 있다.",
+      "assertions": [
+        "실패 경로에 대해 질문하거나 문서에 실패 경로 절이 있다",
+        "수용 기준에 If-then(Unwanted) 패턴이 최소 1개 있다",
+        "각 수용 기준에 priority(blocking|non-blocking)와 method(UNIT|DATA|UX)가 붙어 있다",
+        "범위 밖(Non-goals)이 비어 있지 않다",
+        "화면 보존과 데이터 기록을 서로 다른 기준으로 구분한다"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "결제 화면을 좀 더 빠르고 직관적으로 만들어줘.",
+      "expected_output": "'빠르게'·'직관적'이 판정 불가능함을 지적하고 측정 가능한 기준으로 바꾸도록 되묻는다.",
+      "assertions": [
+        "'빠르게' 또는 '직관적' 이 판정 불가능하다고 지적한다",
+        "측정 가능한 형태(수치나 관찰 가능한 상태)로 바꾸도록 요구한다",
+        "모호한 표현을 그대로 수용 기준에 넣지 않는다"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "sprint 없이 그냥 PRD 만 써줘.",
+      "expected_output": "활성 sprint 가 없으면 /tene:sprint init 을 제안하고 중단한다. 임의로 진행하지 않는다.",
+      "assertions": [
+        "활성 sprint 가 없다는 사실을 알린다",
+        "sprint init 을 제안한다",
+        "sprint 없이 문서를 쓰기 시작하지 않는다"
+      ]
+    }
+  ]
+}

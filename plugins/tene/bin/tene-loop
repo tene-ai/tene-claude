@@ -1,0 +1,94 @@
+#!/usr/bin/env node
+/**
+ * tene-loop — loop-check 진입점 (D07 §7)
+ * 판정만 한다. 문서 작성은 스킬이 한다.
+ */
+import { parseArgs } from 'node:util'
+import { run } from '../lib/util/envelope.js'
+import { TeneError } from '../lib/util/errors.js'
+import { DEFAULT_DOCS_ROOT, findProjectRoot } from '../lib/util/paths.js'
+import * as store from '../lib/state/store.js'
+import { runLoopCheck, historyEntry } from '../lib/loop/run.js'
+import { renderUnattributed } from '../lib/loop/unattributed.js'
+import { extractRequirements } from '../lib/loop/requirements.js'
+
+const COMMANDS = ['check', 'requirements', 'unattributed']
+
+const { values, positionals } = parseArgs({
+  allowPositionals: true,
+  strict: false,
+  options: {
+    project: { type: 'string' },
+    'docs-root': { type: 'string' },
+    json: { type: 'boolean', default: true },
+    id: { type: 'string' },
+    round: { type: 'string' },
+    render: { type: 'boolean', default: false },
+    'no-working': { type: 'boolean', default: false },
+  },
+})
+
+const sub = positionals[0] ?? 'check'
+
+function activeSprint(root) {
+  const id = values.id ?? positionals[1] ?? store.readCurrent(root)?.activeSprint
+  if (!id) throw new TeneError('NO_ACTIVE_SPRINT', {})
+  const sprint = store.readSprint(root, id)
+  if (!sprint) throw new TeneError('SPRINT_NOT_FOUND', { id })
+  return sprint
+}
+
+run('tene-loop', async () => {
+  const root = findProjectRoot(values.project)
+  const docsRoot = values['docs-root'] ?? process.env.CLAUDE_PLUGIN_OPTION_DOCS_ROOT ?? DEFAULT_DOCS_ROOT
+
+  switch (sub) {
+    case 'check': {
+      const sprint = activeSprint(root)
+      const res = runLoopCheck(root, sprint, {
+        round: values.round ? Number(values.round) : undefined,
+        previous: sprint.lastJudged,
+        history: sprint.loopHistory ?? [],
+        includeWorking: !values['no-working'],
+        docsRoot,
+      })
+      return {
+        round: res.round,
+        maxRounds: res.maxRounds,
+        verdict: res.verdict,
+        gate: res.gate,
+        progress: res.progressText,
+        summary: res.summary,
+        requirements: res.requirements,
+        gaps: res.gaps,
+        judged: res.judged,
+        unattributed: {
+          available: res.unattributed.available,
+          unresolved: res.unattributed.unresolved,
+          items: res.unattributed.items,
+          ...(values.render ? { markdown: renderUnattributed(res.unattributed) } : {}),
+        },
+        delta: res.delta,
+        caveats: res.caveats,
+        historyEntry: historyEntry(res),
+      }
+    }
+
+    case 'requirements': {
+      const sprint = activeSprint(root)
+      const res = runLoopCheck(root, sprint, { docsRoot })
+      return { ...res.requirements, items: res.judged.map((j) => ({ id: j.requirementId, source: j.source, refId: j.refId, priority: j.priority })) }
+    }
+
+    case 'unattributed': {
+      const sprint = activeSprint(root)
+      const res = runLoopCheck(root, sprint, { docsRoot })
+      return values.render
+        ? { ...res.unattributed, markdown: renderUnattributed(res.unattributed) }
+        : res.unattributed
+    }
+
+    default:
+      throw new TeneError('UNKNOWN_COMMAND', { command: sub, available: COMMANDS })
+  }
+})

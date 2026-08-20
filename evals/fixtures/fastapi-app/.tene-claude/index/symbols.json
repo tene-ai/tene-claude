@@ -1,0 +1,604 @@
+{
+  "builtAt": "2026-08-20T04:32:22Z",
+  "engine": "node-regex",
+  "files": {
+    "src/api/orders.py": {
+      "mtime": 1787200308476.075,
+      "size": 431,
+      "lang": "python"
+    },
+    "src/core/auth.py": {
+      "mtime": 1787200308500.41,
+      "size": 83,
+      "lang": "python"
+    },
+    "src/core/config.py": {
+      "mtime": 1787200308494.3743,
+      "size": 90,
+      "lang": "python"
+    },
+    "src/db/repository.py": {
+      "mtime": 1787200308493.5608,
+      "size": 507,
+      "lang": "python"
+    },
+    "src/db/session.py": {
+      "mtime": 1787200308494.1252,
+      "size": 91,
+      "lang": "python"
+    },
+    "src/services/order.py": {
+      "mtime": 1787200308481.8608,
+      "size": 535,
+      "lang": "python"
+    },
+    "src/services/payment.py": {
+      "mtime": 1787200308487.8657,
+      "size": 280,
+      "lang": "python"
+    },
+    "tests/test_order.py": {
+      "mtime": 1787200308501.0066,
+      "size": 105,
+      "lang": "python"
+    }
+  },
+  "imports": {
+    "src/api/orders.py": [
+      {
+        "from": "fastapi",
+        "names": [
+          {
+            "name": "APIRouter",
+            "local": "APIRouter"
+          },
+          {
+            "name": "Depends",
+            "local": "Depends"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      },
+      {
+        "from": "src.services.order",
+        "names": [
+          {
+            "name": "create_order",
+            "local": "create_order"
+          },
+          {
+            "name": "cancel_order",
+            "local": "cancel_order"
+          }
+        ],
+        "line": 2,
+        "resolved": null
+      },
+      {
+        "from": "src.core.auth",
+        "names": [
+          {
+            "name": "require_user",
+            "local": "require_user"
+          }
+        ],
+        "line": 3,
+        "resolved": null
+      }
+    ],
+    "src/core/auth.py": [
+      {
+        "from": "jwt",
+        "names": [],
+        "line": 1,
+        "namespace": true,
+        "resolved": null
+      }
+    ],
+    "src/core/config.py": [
+      {
+        "from": "os",
+        "names": [],
+        "line": 1,
+        "namespace": true,
+        "resolved": null
+      }
+    ],
+    "src/db/repository.py": [
+      {
+        "from": "sqlalchemy",
+        "names": [
+          {
+            "name": "select",
+            "local": "select"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      },
+      {
+        "from": "src.db.session",
+        "names": [
+          {
+            "name": "async_session",
+            "local": "async_session"
+          }
+        ],
+        "line": 2,
+        "resolved": null
+      }
+    ],
+    "src/db/session.py": [
+      {
+        "from": "sqlalchemy.ext.asyncio",
+        "names": [
+          {
+            "name": "async_sessionmaker",
+            "local": "async_sessionmaker"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      }
+    ],
+    "src/services/order.py": [
+      {
+        "from": "src.db.repository",
+        "names": [
+          {
+            "name": "OrderRepository",
+            "local": "OrderRepository"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      },
+      {
+        "from": "src.services.payment",
+        "names": [
+          {
+            "name": "charge",
+            "local": "charge"
+          }
+        ],
+        "line": 2,
+        "resolved": null
+      }
+    ],
+    "src/services/payment.py": [
+      {
+        "from": "stripe",
+        "names": [],
+        "line": 1,
+        "namespace": true,
+        "resolved": null
+      },
+      {
+        "from": "src.core.config",
+        "names": [
+          {
+            "name": "settings",
+            "local": "settings"
+          }
+        ],
+        "line": 2,
+        "resolved": null
+      }
+    ],
+    "tests/test_order.py": [
+      {
+        "from": "src.services.order",
+        "names": [
+          {
+            "name": "create_order",
+            "local": "create_order"
+          }
+        ],
+        "line": 1,
+        "resolved": null
+      }
+    ]
+  },
+  "refs": {
+    "APIRouter": [
+      {
+        "file": "src/api/orders.py",
+        "line": 5,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "post": [
+      {
+        "file": "src/api/orders.py",
+        "line": 7,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/api/orders.py",
+        "line": 7,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "router"
+      }
+    ],
+    "Depends": [
+      {
+        "file": "src/api/orders.py",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/api/orders.py",
+        "line": 12,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "create_order": [
+      {
+        "file": "src/api/orders.py",
+        "line": 9,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "delete": [
+      {
+        "file": "src/api/orders.py",
+        "line": 11,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/api/orders.py",
+        "line": 11,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "router"
+      }
+    ],
+    "cancel_order": [
+      {
+        "file": "src/api/orders.py",
+        "line": 13,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "decode": [
+      {
+        "file": "src/core/auth.py",
+        "line": 3,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/core/auth.py",
+        "line": 3,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "jwt"
+      }
+    ],
+    "Settings": [
+      {
+        "file": "src/core/config.py",
+        "line": 4,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "async_session": [
+      {
+        "file": "src/db/repository.py",
+        "line": 7,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/db/repository.py",
+        "line": 12,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "execute": [
+      {
+        "file": "src/db/repository.py",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/db/repository.py",
+        "line": 8,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "s"
+      },
+      {
+        "file": "src/db/repository.py",
+        "line": 13,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/db/repository.py",
+        "line": 13,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "s"
+      }
+    ],
+    "select": [
+      {
+        "file": "src/db/repository.py",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "update": [
+      {
+        "file": "src/db/repository.py",
+        "line": 13,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "values": [
+      {
+        "file": "src/db/repository.py",
+        "line": 13,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "async_sessionmaker": [
+      {
+        "file": "src/db/session.py",
+        "line": 2,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "create": [
+      {
+        "file": "src/services/order.py",
+        "line": 5,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.py",
+        "line": 5,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "OrderRepository"
+      },
+      {
+        "file": "src/services/payment.py",
+        "line": 6,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/payment.py",
+        "line": 6,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "PaymentIntent"
+      }
+    ],
+    "charge": [
+      {
+        "file": "src/services/order.py",
+        "line": 6,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "mark_failed": [
+      {
+        "file": "src/services/order.py",
+        "line": 8,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.py",
+        "line": 8,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "OrderRepository"
+      }
+    ],
+    "PaymentError": [
+      {
+        "file": "src/services/order.py",
+        "line": 9,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ],
+    "update_status": [
+      {
+        "file": "src/services/order.py",
+        "line": 13,
+        "kind": "call",
+        "confidence": "high"
+      },
+      {
+        "file": "src/services/order.py",
+        "line": 13,
+        "kind": "member-call",
+        "confidence": "medium",
+        "via": "OrderRepository"
+      }
+    ],
+    "str": [
+      {
+        "file": "src/services/payment.py",
+        "line": 9,
+        "kind": "call",
+        "confidence": "high"
+      }
+    ]
+  },
+  "root": "/Users/kaykim/Documents/GitHub/agent-kay-it/tene-claude/evals/fixtures/fastapi-app",
+  "schemaVersion": 1,
+  "stats": {
+    "files": 10,
+    "indexed": 8,
+    "refs": 33,
+    "skipped": 2,
+    "symbols": 13
+  },
+  "symbols": {
+    "post_order": [
+      {
+        "kind": "function",
+        "file": "src/api/orders.py",
+        "line": 8,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "async def post_order(payload: dict, user=Depends(require_user)):"
+      }
+    ],
+    "delete_order": [
+      {
+        "kind": "function",
+        "file": "src/api/orders.py",
+        "line": 12,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "async def delete_order(order_id: str, user=Depends(require_user)):"
+      }
+    ],
+    "require_user": [
+      {
+        "kind": "function",
+        "file": "src/core/auth.py",
+        "line": 2,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "def require_user(token: str):"
+      }
+    ],
+    "Settings": [
+      {
+        "kind": "class",
+        "file": "src/core/config.py",
+        "line": 2,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "class Settings:"
+      }
+    ],
+    "OrderRepository": [
+      {
+        "kind": "class",
+        "file": "src/db/repository.py",
+        "line": 4,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "class OrderRepository:"
+      }
+    ],
+    "create": [
+      {
+        "kind": "method",
+        "file": "src/db/repository.py",
+        "line": 6,
+        "exported": true,
+        "confidence": "medium",
+        "signatureText": "async def create(data, user_id):"
+      }
+    ],
+    "mark_failed": [
+      {
+        "kind": "method",
+        "file": "src/db/repository.py",
+        "line": 11,
+        "exported": true,
+        "confidence": "medium",
+        "signatureText": "async def mark_failed(order_id, reason):"
+      }
+    ],
+    "update_status": [
+      {
+        "kind": "method",
+        "file": "src/db/repository.py",
+        "line": 16,
+        "exported": true,
+        "confidence": "medium",
+        "signatureText": "async def update_status(order_id, status):"
+      }
+    ],
+    "create_order": [
+      {
+        "kind": "function",
+        "file": "src/services/order.py",
+        "line": 4,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "async def create_order(payload, user):"
+      }
+    ],
+    "cancel_order": [
+      {
+        "kind": "function",
+        "file": "src/services/order.py",
+        "line": 12,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "async def cancel_order(order_id):"
+      }
+    ],
+    "_validate": [
+      {
+        "kind": "function",
+        "file": "src/services/order.py",
+        "line": 15,
+        "exported": false,
+        "confidence": "high",
+        "signatureText": "def _validate(payload):"
+      }
+    ],
+    "charge": [
+      {
+        "kind": "function",
+        "file": "src/services/payment.py",
+        "line": 4,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "async def charge(order):"
+      }
+    ],
+    "test_create_order": [
+      {
+        "kind": "function",
+        "file": "tests/test_order.py",
+        "line": 2,
+        "exported": true,
+        "confidence": "high",
+        "signatureText": "def test_create_order():"
+      }
+    ]
+  },
+  "unresolved": [],
+  "unsupported": [
+    {
+      "ext": ".json",
+      "files": 1
+    },
+    {
+      "ext": ".toml",
+      "files": 1
+    }
+  ]
+}

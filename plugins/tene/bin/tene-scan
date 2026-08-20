@@ -1,0 +1,208 @@
+#!/usr/bin/env node
+/**
+ * tene-scan — 코드 인텔리전스 진입점 (D06 §6)
+ * 인자 파싱 + lib 호출만. 로직은 lib/scan 에 있다.
+ */
+import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { parseArgs } from 'node:util'
+import { run } from '../lib/util/envelope.js'
+import { TeneError } from '../lib/util/errors.js'
+import { DEFAULT_DOCS_ROOT, findProjectRoot, pluginRoot } from '../lib/util/paths.js'
+import { buildAndWrite, checkFreshness, readIndex } from '../lib/scan/index-builder.js'
+import { indexHealth, query, QUERY_TARGETS } from '../lib/scan/query.js'
+import { classifyIndex, findViolations, loadRules } from '../lib/scan/layer.js'
+import { answerMany, answerSix, renderQuestionsTable } from '../lib/scan/questions.js'
+import { buildAnchorIndex, readAnchors, touched, unattributed, writeAnchors } from '../lib/scan/anchors.js'
+import * as store from '../lib/state/store.js'
+
+const COMMANDS = ['build', 'status', 'query', 'layers', 'violations', 'questions', 'anchors', 'touched', 'unattributed']
+
+const { values, positionals } = parseArgs({
+  allowPositionals: true,
+  strict: false,
+  options: {
+    project: { type: 'string' },
+    'docs-root': { type: 'string' },
+    json: { type: 'boolean', default: true },
+    force: { type: 'boolean', default: false },
+    path: { type: 'string', multiple: true },
+    sprint: { type: 'string' },
+    symbol: { type: 'string', multiple: true },
+    limit: { type: 'string' },
+    kind: { type: 'string' },
+    lang: { type: 'string' },
+    render: { type: 'boolean', default: false },
+    rebuild: { type: 'boolean', default: false },
+  },
+})
+
+const sub = positionals[0]
+
+function num(v, dflt) {
+  return v === undefined ? dflt : Number(v)
+}
+
+function requireIndex(root) {
+  const index = readIndex(root)
+  if (!index) {
+    throw new TeneError('INDEX_MISSING', { path: '.tene-claude/index/symbols.json' })
+  }
+  return index
+}
+
+function rulesFor(root, docsRoot) {
+  return loadRules(root, {
+    docsRoot,
+    presetPath: join(pluginRoot(), 'templates', 'layers.default.yml'),
+  })
+}
+
+/** sprint 상태에서 AC 앵커 목록을 만든다 */
+function acAnchorsOf(root, sprintId) {
+  const ids = sprintId ? [sprintId] : store.listSprintIds(root)
+  const out = []
+  for (const id of ids) {
+    let sprint
+    try {
+      sprint = store.readSprint(root, id)
+    } catch {
+      continue // 손상된 sprint 는 건너뛴다. 인덱싱이 멈출 이유가 아니다.
+    }
+    if (!sprint || sprint.status === 'archived') continue
+    for (const ac of sprint.ac ?? []) {
+      out.push({ sprintId: id, acId: ac.id, anchors: ac.anchors ?? [] })
+    }
+  }
+  return out
+}
+
+run('tene-scan', async () => {
+  const root = findProjectRoot(values.project)
+  const docsRoot = values['docs-root'] ?? process.env.CLAUDE_PLUGIN_OPTION_DOCS_ROOT ?? DEFAULT_DOCS_ROOT
+
+  switch (sub) {
+    case 'build': {
+      const res = buildAndWrite(root, { force: values.force, subpaths: values.path })
+      // 앵커 인덱스도 함께 갱신한다. 따로 두면 둘이 어긋난다.
+      const acList = acAnchorsOf(root, values.sprint)
+      const anchors = buildAnchorIndex(res.index, acList)
+      writeAnchors(root, anchors)
+      return {
+        mode: res.mode,
+        elapsedMs: res.elapsedMs,
+        reindexed: res.changed,
+        removed: res.removed,
+        stats: res.index.stats,
+        unsupported: res.index.unsupported,
+        anchors: anchors.stats,
+        unresolvedAnchors: anchors.unresolved.slice(0, 10),
+      }
+    }
+
+    case 'status': {
+      const index = readIndex(root)
+      if (!index) return { exists: false, hint: 'tene-scan build 로 인덱스를 만드세요' }
+      const fresh = checkFreshness(root)
+      const health = indexHealth(index)
+      const total = index.stats.files || 1
+      return {
+        exists: true,
+        ...health,
+        stale: !fresh.fresh,
+        drift: { changed: fresh.changed, added: fresh.added, removed: fresh.removed },
+        coverage: { indexedRatio: Number((index.stats.indexed / total).toFixed(3)) },
+        anchors: readAnchors(root)?.stats ?? null,
+      }
+    }
+
+    case 'query': {
+      const what = positionals[1]
+      const target = positionals[2] ?? values.symbol?.[0] ?? ''
+      if (!QUERY_TARGETS.includes(what)) {
+        throw new TeneError('BAD_ARGS', { need: `query <${QUERY_TARGETS.join('|')}> <target>` })
+      }
+      const index = requireIndex(root)
+      const res = query(index, what, target, { limit: num(values.limit) })
+      return { what, target, ...res }
+    }
+
+    case 'layers': {
+      const index = requireIndex(root)
+      const rules = rulesFor(root, docsRoot)
+      const c = classifyIndex(index, rules)
+      return {
+        rulesSource: c.rulesSource,
+        rulesPath: c.rulesPath,
+        stats: c.stats,
+        byLayer: Object.fromEntries(
+          Object.entries(c.byLayer).map(([l, files]) => [l, files.map((f) => f.path)]),
+        ),
+        unclassified: c.unclassified,
+        suggestions: c.suggestions,
+      }
+    }
+
+    case 'violations': {
+      const index = requireIndex(root)
+      const list = findViolations(index, rulesFor(root, docsRoot))
+      return {
+        violations: list,
+        blockers: list.filter((v) => v.severity === 'blocker').length,
+        warnings: list.filter((v) => v.severity === 'warning').length,
+      }
+    }
+
+    case 'questions': {
+      const symbols = values.symbol?.length ? values.symbol : positionals.slice(1)
+      if (!symbols.length) throw new TeneError('BAD_ARGS', { need: '--symbol <name>' })
+      const index = requireIndex(root)
+      const rules = rulesFor(root, docsRoot)
+
+      if (symbols.length === 1) {
+        const r = answerSix(index, symbols[0], { rules, maxLocations: num(values.limit, 10) })
+        return values.render ? { ...r, markdown: renderQuestionsTable(r) } : r
+      }
+      const many = answerMany(index, symbols, { rules, limit: num(values.limit, 20) })
+      return values.render
+        ? { ...many, markdown: many.results.map((r) => renderQuestionsTable(r)).join('\n\n') }
+        : many
+    }
+
+    case 'anchors': {
+      const index = requireIndex(root)
+      if (values.rebuild) {
+        const anchors = buildAnchorIndex(index, acAnchorsOf(root, values.sprint))
+        writeAnchors(root, anchors)
+        return { rebuilt: true, ...anchors.stats, unresolved: anchors.unresolved }
+      }
+      const anchors = readAnchors(root)
+      if (!anchors) throw new TeneError('INDEX_MISSING', { path: '.tene-claude/index/anchors.json' })
+      return {
+        stats: anchors.stats,
+        generatedAt: anchors.generatedAt,
+        byAc: anchors.byAc,
+        unresolved: anchors.unresolved,
+      }
+    }
+
+    case 'touched': {
+      const paths = values.path?.length ? values.path : positionals.slice(1)
+      if (!paths.length) throw new TeneError('BAD_ARGS', { need: '<file>...' })
+      const anchors = readAnchors(root)
+      if (!anchors) return { acs: [], byPath: {}, unknownPaths: paths, note: '앵커 인덱스가 없습니다' }
+      return touched(anchors, paths)
+    }
+
+    case 'unattributed': {
+      const paths = values.path?.length ? values.path : positionals.slice(1)
+      const anchors = readAnchors(root)
+      if (!anchors) throw new TeneError('INDEX_MISSING', { path: '.tene-claude/index/anchors.json' })
+      const list = unattributed(anchors, paths, { ignore: ['test/', '.test.', '.spec.'] })
+      return { unattributed: list, count: list.length, checked: paths.length }
+    }
+
+    default:
+      throw new TeneError('UNKNOWN_COMMAND', { command: sub ?? '(none)', available: COMMANDS })
+  }
+})

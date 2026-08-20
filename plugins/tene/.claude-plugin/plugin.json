@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "tene",
+  "displayName": "Tene",
+  "version": "0.1.0",
+  "description": "Spec-driven sprint workflow with intent-aware QA. Captures product intent in conversation, anchors it to code, and verifies UX and data flows against it.",
+  "author": {
+    "name": "tene-ai",
+    "email": "kay@agentkay.it",
+    "url": "https://github.com/tene-ai"
+  },
+  "homepage": "https://github.com/tene-ai/tene-claude",
+  "repository": "https://github.com/tene-ai/tene-claude",
+  "license": "Apache-2.0",
+  "keywords": [
+    "spec-driven",
+    "sprint",
+    "qa",
+    "context-engineering",
+    "workflow",
+    "intent"
+  ],
+  "defaultEnabled": true,
+  "hooks": "./hooks/hooks.json",
+  "userConfig": {
+    "docs_root": {
+      "type": "string",
+      "title": "문서 루트",
+      "description": "sprint 문서가 생성될 경로",
+      "default": "docs/sprints"
+    },
+    "profile": {
+      "type": "string",
+      "title": "기본 Profile",
+      "description": "strict | standard | light | off",
+      "default": "standard"
+    },
+    "auto_until": {
+      "type": "string",
+      "title": "자동 진행 상한",
+      "description": "사용자 확인 없이 진행할 마지막 phase",
+      "default": "design"
+    },
+    "max_loop_checks": {
+      "type": "number",
+      "title": "loop-check 반복 상한",
+      "description": "이 횟수를 넘으면 정지하고 waiver 를 안내한다",
+      "default": 3,
+      "min": 1,
+      "max": 10
+    },
+    "auto_trigger": {
+      "type": "boolean",
+      "title": "자연어 자동 트리거",
+      "description": "끄면 /tene:* 직접 호출만 동작한다",
+      "default": true
+    },
+    "workflow_threshold": {
+      "type": "number",
+      "title": "워크플로 전환 임계",
+      "description": "수용 기준이 이 수 이상이면 Dynamic Workflow 를 사용한다",
+      "default": 8,
+      "min": 2,
+      "max": 100
+    },
+    "doc_language": {
+      "type": "string",
+      "title": "문서 언어",
+      "description": "auto | ko | en",
+      "default": "auto"
+    },
+    "scan_langs": {
+      "type": "string",
+      "title": "인덱서 언어",
+      "description": "인덱싱할 언어 팩",
+      "default": "ts,js,py,go,java",
+      "multiple": true
+    },
+    "browser_adapter": {
+      "type": "string",
+      "title": "UX 검증 도구",
+      "description": "auto | chrome-mcp | playwright | none",
+      "default": "auto"
+    }
+  }
+}
